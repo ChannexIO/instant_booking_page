@@ -1,0 +1,9 @@
+.hotelLogo {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+}
+
+.hotelLogoLink {
+  padding: 0 1rem 0 0;
+}

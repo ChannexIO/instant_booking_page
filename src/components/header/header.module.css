@@ -1,0 +1,13 @@
+.header {
+  padding: 1rem;
+}
+
+.titleSection {
+  display: flex;
+}
+
+@media screen and (max-width: 575px) {
+  .header {
+    padding: 1rem 0;
+  }
+}
