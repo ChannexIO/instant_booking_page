@@ -1,0 +1,28 @@
+.carousel {
+  position: relative;
+  padding-bottom: 56.25%;
+  width: 100%;
+}
+
+.carousel :global .carousel-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carouselItem {
+  height: 100%;
+}
+
+.carouselItem img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.carousel :global .carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid slategray;
+}
