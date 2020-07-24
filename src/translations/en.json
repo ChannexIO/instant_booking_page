@@ -1,1 +1,9 @@
-{}
+{
+  "hotel_page": {
+    "checkin_label": "Check-in date",
+    "checkin_placeholder": "Select check-in",
+    "checkout_label": "Check-out date",
+    "checkout_placeholder": "Select check-out",
+    "search": "Search"
+  }
+}

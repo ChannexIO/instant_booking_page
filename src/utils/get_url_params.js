@@ -1,4 +1,4 @@
-export default getUrlParams = () => {
+export default () => {
   const searchString = window.location.search.substr(1);
   const searchParams = searchString.split("&");
 

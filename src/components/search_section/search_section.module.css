@@ -1,0 +1,24 @@
+.searchSection {
+  border: 1px solid #f0f0f0;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.colLeft, .colRight, .buttonContainer {
+  padding: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 1rem;
+  align-items: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+  .colLeft {
+    padding-right: 0.5rem;
+  }
+  .colRight {
+    padding-left: 0.5rem;
+  }
+}
