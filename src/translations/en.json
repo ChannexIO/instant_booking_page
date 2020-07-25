@@ -4,6 +4,8 @@
     "checkin_placeholder": "Select check-in",
     "checkout_label": "Check-out date",
     "checkout_placeholder": "Select check-out",
-    "search": "Search"
+    "search": "Search",
+    "hotel_info": "Hotel Info",
+    "hotel_facilities": "Facilities of"
   }
 }

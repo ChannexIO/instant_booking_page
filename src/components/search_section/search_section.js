@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 
 import Datepicker from "components/datepicker";
-import SearchButton from "components/search_button";
+import SearchButton from "./search_button";
 
 import getUrlParams from "utils/get_url_params";
 
