@@ -1,0 +1,15 @@
+.facility {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  white-space: nowrap;
+}
+
+.facilityIcon {
+  color: #FCB494;
+  margin-right: 0.5rem;
+}
+
+.facilityTitle {
+
+}

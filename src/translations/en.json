@@ -7,5 +7,16 @@
     "search": "Search",
     "hotel_info": "Hotel Info",
     "hotel_facilities": "Facilities of"
+  },
+  "rates_table": {
+    "room_type": "Room Type",
+    "sleeps": "Sleeps",
+    "price": "Price for {n} nights",
+    "room_availability": "Only {n} left on our site",
+    "your_choises": "Your Choices",
+    "select_rooms": "Select Rooms"
+  },
+  "facilities": {
+    "0": "Demo facility"
   }
 }
