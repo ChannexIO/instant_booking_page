@@ -1,0 +1,14 @@
+.toggle {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  color: darkslategray;
+}
+
+.toggle:global.btn:focus {
+  box-shadow: none;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}

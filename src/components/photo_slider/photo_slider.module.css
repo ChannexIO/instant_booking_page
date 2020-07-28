@@ -1,7 +1,8 @@
 .carousel {
   position: relative;
-  padding-bottom: 56.25%;
   width: 100%;
+  display: flex;
+  flex: 1;
 }
 
 .carousel :global .carousel-inner {
@@ -18,6 +19,10 @@
 .carouselItem img {
   object-fit: cover;
   height: 100%;
+}
+
+.carousel :global .carousel-indicators {
+  z-index: 1;
 }
 
 .carousel :global .carousel-indicators li {

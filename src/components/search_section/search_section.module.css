@@ -1,24 +1,22 @@
 .searchSection {
-  border: 1px solid #f0f0f0;
   padding: 1rem;
+  display: flex;
   justify-content: center;
 }
 
-.colLeft, .colRight, .buttonContainer {
-  padding: 0;
+.buttonSection {
+  min-width: 6rem;
+  margin-left: 1rem;
 }
 
-.buttonContainer {
-  display: flex;
-  margin-top: 1rem;
-  align-items: flex-end;
-}
-
-@media screen and (max-width: 767px) {
-  .colLeft {
-    padding-right: 0.5rem;
+@media screen and (max-width: 575px) {
+  .searchSection {
+    flex-direction: column;
   }
-  .colRight {
-    padding-left: 0.5rem;
+
+  .buttonSection {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
   }
 }

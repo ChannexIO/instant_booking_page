@@ -44,10 +44,13 @@ export default function HotelRatesSection({ property }) {
         title: "Room type 1",
         description: "some room",
         availability: 5,
-        bedType: {
-          code: 249,
-          value: 1,
-        },
+        bedTypes: [
+          { 
+            roomType: 0,
+            bedType: 0,
+            value: 14,
+          }
+        ],
         facilities: [ 0, 12,3,0, 1,2 ],
         otherFacilities: [0, 2, 5, 0,0,0,0,0],
         ratePlans: [

@@ -1,9 +1,10 @@
 {
+  "general": {
+    "locale": "English"
+  },
   "hotel_page": {
-    "checkin_label": "Check-in date",
-    "checkin_placeholder": "Select check-in",
-    "checkout_label": "Check-out date",
-    "checkout_placeholder": "Select check-out",
+    "checkin_placeholder": "Check-in",
+    "checkout_placeholder": "Check-out",
     "search": "Search",
     "hotel_info": "Hotel Info",
     "hotel_facilities": "Facilities of"
@@ -17,6 +18,12 @@
     "select_rooms": "Select Rooms",
     "show_more": "Show more",
     "show_less": "Show less"
+  },
+  "room_types": {
+    "0": "Demo room"
+  },
+  "bed_types": {
+    "0": "Demo bed"
   },
   "facilities": {
     "0": "Demo facility"

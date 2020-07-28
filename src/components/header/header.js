@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col } from "react-bootstrap";
 
+import LocaleSelect from "components/locale_select";
+
 import HotelTitle from "./hotel_title";
 import HotelLogo from "./hotel_logo";
 import HotelLocation from "./hotel_location";
@@ -17,8 +19,8 @@ export default function Header({ property }) {
           <HotelLocation property={property} />
         </div>
       </Col>
-      <Col xs={12} md={2}>
-        locale select
+      <Col  className={styles.localeSelectSection} md={2}>
+        <LocaleSelect />
       </Col>
     </Row>
   );

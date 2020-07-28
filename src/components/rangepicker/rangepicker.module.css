@@ -1,0 +1,16 @@
+.rangepicker :global .DateInput_input {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 575px) {
+  .rangepicker :global .DateRangePicker {
+    width: 100%;
+  }
+
+  .rangepicker :global .DateRangePickerInput {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

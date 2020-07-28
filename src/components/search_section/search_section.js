@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
+import moment from "moment";
 
-import Datepicker from "components/datepicker";
+import RangePicker from "components/rangepicker";
 import SearchButton from "./search_button";
 
 import getUrlParams from "utils/get_url_params";
@@ -11,63 +12,45 @@ import styles from "./search_section.module.css";
 
 export default function SearchSection({ property }) {
   const { t } = useTranslation();
-  const checkoutPickerRef = useRef(null);
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
     const urlParams = getUrlParams();
     const { startDate, endDate } = urlParams;
-    const parsedStartDate = Date.parse(startDate);
-    const parsedEndDate = Date.parse(endDate);
+    const parsedStartDate = moment(startDate);
+    const parsedEndDate = moment(endDate);
 
-    if (!isNaN(parsedStartDate)) {
+    if (startDate && parsedStartDate.isValid()) {
       setStartDate(parsedStartDate);
     }
 
-    if (!isNaN(parsedEndDate)) {
+    if (endDate && parsedEndDate.isValid()) {
       setEndDate(parsedEndDate);
     }
   }, []);
 
-  const handleCheckinChange = (startDate) => {
+  const handleDatesChange = ({ startDate, endDate }) => {
     setStartDate(startDate);
-
-    if (checkoutPickerRef && checkoutPickerRef.current) {
-      checkoutPickerRef.current.setOpen(true);
-    }
+    setEndDate(endDate);
   };
 
   return (
     <Row className={styles.searchSection}>
-      <Col className={styles.colLeft} lg={3} md={4} xs={6}>
-        <Datepicker
-          label={t("hotel_page:checkin_label")}
-          placeholderText={t("hotel_page:checkin_placeholder")}
-          selected={startDate}
+      <div>
+        <RangePicker
+          startDatePlaceholder={t("hotel_page:checkin_placeholder")}
+          endDatePlaceholder={t("hotel_page:checkout_placeholder")}
           startDate={startDate}
           endDate={endDate}
-          selectStart
-          onChange={handleCheckinChange}
+          name="search_dates"
+          openDirection="up"
+          onDatesChange={handleDatesChange}
         />
-      </Col>
-      <Col className={styles.colRight} lg={3} md={4} xs={6}>
-        <Datepicker
-          ref={checkoutPickerRef}
-          label={t("hotel_page:checkout_label")}
-          placeholderText={t("hotel_page:checkout_placeholder")}
-          selected={endDate}
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-          selectEnd
-          onChange={setEndDate}
-        />
-      </Col>
-      <Col className={styles.buttonContainer} lg={2} md={2} xs={12}>
+      </div>
+      <div className={styles.buttonSection}>
         <SearchButton />
-      </Col>
-      
+      </div>
     </Row>
   );
 }
