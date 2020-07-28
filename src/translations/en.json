@@ -14,7 +14,9 @@
     "price": "Price for {n} nights",
     "room_availability": "Only {n} left on our site",
     "your_choises": "Your Choices",
-    "select_rooms": "Select Rooms"
+    "select_rooms": "Select Rooms",
+    "show_more": "Show more",
+    "show_less": "Show less"
   },
   "facilities": {
     "0": "Demo facility"

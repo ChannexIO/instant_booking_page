@@ -1,0 +1,11 @@
+.roomAvailability {
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.roomAvailabilityIcon {
+  margin-right: 0.5rem;
+}
