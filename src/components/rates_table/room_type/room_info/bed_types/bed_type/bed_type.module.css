@@ -1,0 +1,14 @@
+.bed {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  white-space: nowrap;
+}
+
+.roomTitle {
+  font-weight: bold;
+}
+
+.bedTitle, .bedIcon {
+  margin-left: 0.5rem;
+}

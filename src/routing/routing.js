@@ -7,7 +7,8 @@ export default function Routing(props) {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/:hotel_id" exact>
+        {/* <Route path="/:hotel_id" exact> */}
+        <Route path="/">
           <HotelPage {...props} />
         </Route>
       </Switch>
