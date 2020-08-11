@@ -1,3 +1,19 @@
 .hotelFacilitiesTitle {
   font-weight: bold;
 }
+
+.hotelFacilitiesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.hotelFacility {
+  width: 50%;
+}
+
+@media screen and (max-width: 991px) {
+  .hotelFacilitiesContainer {
+    width: 100%;
+  }
+}

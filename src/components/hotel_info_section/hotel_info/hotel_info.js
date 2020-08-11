@@ -13,7 +13,6 @@ export default function HotelInfo({ description }) {
 
   return (
     <div>
-      <div className={styles.hotelInfoTitle}>{t("hotel_page:hotel_info")}:</div>
       <pre className={styles.hotelDescription}>{description}</pre>
     </div>  
   );
