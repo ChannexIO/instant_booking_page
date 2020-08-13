@@ -11244,6 +11244,11 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
+world-currencies@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/world-currencies/-/world-currencies-0.0.11.tgz#a373da86e46971b7abbf259b468532c7271d153c"
+  integrity sha512-0y0+KcLFmg4mXiVHhyRXzswrrpRbTWYfVK0Z8LoFa+6+BINnWPtLhuOTX/uqejUo4mSt1p7p+Sir4hpq2p4NyA==
+
 wrap-ansi@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-2.1.0.tgz#d8fc3d284dd05794fe84973caecdd1cf824fdd85"

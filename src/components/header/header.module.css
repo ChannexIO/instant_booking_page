@@ -6,10 +6,19 @@
   display: flex;
 }
 
-.localeSelectSection {
+.selectSection {
   display: flex;
   align-items: center;
+  height: 100%;
   justify-content: flex-end;
+}
+
+.selectSection > div:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.hotelInfo {
+  width: 100%;
 }
 
 @media screen and (max-width: 767px) {
@@ -17,7 +26,8 @@
     padding: 1rem 0;
   }
 
-  .localeSelectSection {
-    display: none;
+  .selectSection {
+    height: auto;
+    justify-content: flex-start;
   }
 }

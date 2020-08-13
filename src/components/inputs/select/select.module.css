@@ -3,12 +3,14 @@
   margin-left: auto;
   align-items: center;
   color: darkslategray;
+  padding: 0;
 }
 
 .toggle:global.btn:focus {
   box-shadow: none;
 }
 
-.icon {
-  margin-right: 0.5rem;
+.menu:global.dropdown-menu {
+  max-height: 25rem;
+  overflow-y: scroll;
 }
