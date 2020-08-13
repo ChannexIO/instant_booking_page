@@ -11,7 +11,7 @@ export default function RoomFacilities({ facilities }) {
 
   return (
     <div className={styles.roomFacilities}>
-      {facilities.map((code) => <Facility code={code} />)}
+      {facilities.map((code) => <Facility code={code} key={code} />)}
     </div>
   )
 }

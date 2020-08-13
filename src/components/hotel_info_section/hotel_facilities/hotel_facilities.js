@@ -13,7 +13,7 @@ export default function HotelFacilities({ title, facilities }) {
       <div className={styles.hotelFacilitiesTitle}>{`${t("hotel_page:hotel_facilities")} ${title}:`}</div>
       <div className={styles.hotelFacilitiesContainer}>
         {facilities.map((facility) => (
-          <div className={styles.hotelFacility}>
+          <div className={styles.hotelFacility} key={facility}>
             <Facility code={facility}/>
           </div>
         ))}

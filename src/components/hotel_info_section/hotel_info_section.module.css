@@ -1,5 +1,7 @@
 .hotelInfoContainer {
   border: 1px solid #f0f0f0;
+  border-width: 1px 0 1px;
   padding: 1rem;
+  margin-bottom: 1rem;
   flex-direction: column;
 }

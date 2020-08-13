@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import styles from "./locale_select.module.css";  
 
-export default function LocaleSelect({ }) {
+export default function LocaleSelect() {
   const { t } = useTranslation();
 
   return (

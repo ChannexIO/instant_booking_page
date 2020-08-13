@@ -1,0 +1,8 @@
+.ratePlanOccupancyContainer {
+  display: flex;
+  align-items: center;
+}
+
+.ratePlansOccupancyCaption {
+  margin-left: 0.25rem;
+}

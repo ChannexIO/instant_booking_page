@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Row } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 

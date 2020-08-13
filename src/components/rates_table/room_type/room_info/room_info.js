@@ -1,21 +1,19 @@
 import React from 'react';
 
 import RoomAvailability from "./room_availability";
-import BedTypes from "./bed_types";
+import BedOptions from "./bed_options";
 import RoomFacilities from "./room_facilities";
 import RoomAdditionalFacilities from "./room_additional_facilities";
 
-import styles from "./room_info.module.css";
-
 export default function RoomInfo({ roomType, rowIndex }) {
-  const { title, ratePlans, availability, bedTypes, facilities, otherFacilities } = roomType;
+  const { title, ratePlans, availability, bedOptions, facilities, otherFacilities } = roomType;
   const ratesNumber = ratePlans.length;
 
   return (
     <td rowSpan={ratesNumber}>
-      <div className>{title}</div>
+      <div>{title}</div>
       <RoomAvailability availability={availability} />
-      <BedTypes bedTypes={bedTypes} />
+      <BedOptions bedOptions={bedOptions} />
       <RoomFacilities facilities={facilities} />
       <RoomAdditionalFacilities facilities={otherFacilities} collapsable={Boolean(rowIndex)} />
     </td>

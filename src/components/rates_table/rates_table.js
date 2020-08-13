@@ -22,7 +22,7 @@ export default function RatesTable({ roomTypes }) {
       </thead>
       <tbody>
         {roomTypes.map((roomType, rowIndex) => (
-          <RoomType roomType={roomType} rowIndex={rowIndex} />
+          <RoomType roomType={roomType} rowIndex={rowIndex} key={roomType.id}/>
         ))}
       </tbody>
     </Table>

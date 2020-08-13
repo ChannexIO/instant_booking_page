@@ -1,7 +1,5 @@
 import React from 'react';
-import { Container } from "react-bootstrap";
 
-import Header from "components/header";
 import Routing from "routing";
 
 function App() {

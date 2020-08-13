@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Carousel } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 
 import styles from "./photo_slider.module.css";
 
