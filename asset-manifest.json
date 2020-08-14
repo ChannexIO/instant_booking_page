@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/instant_booking_page/static/css/main.3291f65e.chunk.css",
-    "main.js": "/instant_booking_page/static/js/main.0a9a6b9a.chunk.js",
-    "main.js.map": "/instant_booking_page/static/js/main.0a9a6b9a.chunk.js.map",
+    "main.css": "/instant_booking_page/static/css/main.1414d285.chunk.css",
+    "main.js": "/instant_booking_page/static/js/main.d19000fd.chunk.js",
+    "main.js.map": "/instant_booking_page/static/js/main.d19000fd.chunk.js.map",
     "runtime-main.js": "/instant_booking_page/static/js/runtime-main.22929162.js",
     "runtime-main.js.map": "/instant_booking_page/static/js/runtime-main.22929162.js.map",
     "static/css/2.19b7558e.chunk.css": "/instant_booking_page/static/css/2.19b7558e.chunk.css",
-    "static/js/2.2a6394f5.chunk.js": "/instant_booking_page/static/js/2.2a6394f5.chunk.js",
-    "static/js/2.2a6394f5.chunk.js.map": "/instant_booking_page/static/js/2.2a6394f5.chunk.js.map",
+    "static/js/2.15ffdcc3.chunk.js": "/instant_booking_page/static/js/2.15ffdcc3.chunk.js",
+    "static/js/2.15ffdcc3.chunk.js.map": "/instant_booking_page/static/js/2.15ffdcc3.chunk.js.map",
     "index.html": "/instant_booking_page/index.html",
-    "precache-manifest.a89a25d6d1ad98ea4311cf3f4696751c.js": "/instant_booking_page/precache-manifest.a89a25d6d1ad98ea4311cf3f4696751c.js",
+    "precache-manifest.74232dddf55989e969979021b29965be.js": "/instant_booking_page/precache-manifest.74232dddf55989e969979021b29965be.js",
     "service-worker.js": "/instant_booking_page/service-worker.js",
     "static/css/2.19b7558e.chunk.css.map": "/instant_booking_page/static/css/2.19b7558e.chunk.css.map",
-    "static/css/main.3291f65e.chunk.css.map": "/instant_booking_page/static/css/main.3291f65e.chunk.css.map",
-    "static/js/2.2a6394f5.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.2a6394f5.chunk.js.LICENSE.txt"
+    "static/css/main.1414d285.chunk.css.map": "/instant_booking_page/static/css/main.1414d285.chunk.css.map",
+    "static/js/2.15ffdcc3.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.15ffdcc3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.22929162.js",
     "static/css/2.19b7558e.chunk.css",
-    "static/js/2.2a6394f5.chunk.js",
-    "static/css/main.3291f65e.chunk.css",
-    "static/js/main.0a9a6b9a.chunk.js"
+    "static/js/2.15ffdcc3.chunk.js",
+    "static/css/main.1414d285.chunk.css",
+    "static/js/main.d19000fd.chunk.js"
   ]
 }
