@@ -1,6 +1,7 @@
 import i18next from "i18next";
 
 import en from "translations/en.json";
+import test from "translations/test.json";
 
 const i18nInit = () => i18next.init({
   interpolation: { escapeValue: false },
@@ -8,6 +9,7 @@ const i18nInit = () => i18next.init({
   lng: "en",
   resources: {
     en,
+    test,
   },
 })
 
