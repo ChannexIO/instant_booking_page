@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 
 import Header from "components/header";
+import SeparatorLine from "components/separator_line";
 import PhotoSlider from "components/photo_slider";
 import SearchSection from "components/search_section";
 import HotelInfoSection from "components/hotel_info_section";
@@ -22,7 +23,9 @@ export default function HotelPage({ property }) {
         </Container>
       </div>
       <Container>
+        <SeparatorLine />
         <HotelInfoSection property={property} />
+        <SeparatorLine />
         {/* <HotelRatesSection property={property} /> */}
       </Container>
     </div>

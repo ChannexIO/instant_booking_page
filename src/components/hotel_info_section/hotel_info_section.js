@@ -1,19 +1,19 @@
 import React from 'react';
-import { Row } from "react-bootstrap";
+
+import SeparatorLine from "components/separator_line";
 
 import HotelInfo from "./hotel_info";
 import HotelFacilities from "./hotel_facilities";
-
-import styles from "./hotel_info_section.module.css";
 
 export default function HotelInfoSection({ property }) {
   const { description, facilities, title } = property;
 
 
   return (
-    <Row className={styles.hotelInfoContainer}>
+    <>
       <HotelInfo description={description} />
+      <SeparatorLine />
       <HotelFacilities title={title} facilities={facilities} />
-    </Row>    
+    </>    
   )
 }

@@ -3,5 +3,6 @@
 }
 
 .hotelDescription {
-  white-space: normal;
+  margin: 0;
+  white-space: pre-wrap;
 }

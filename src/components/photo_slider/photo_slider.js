@@ -12,12 +12,12 @@ export default function PhotoSlider({ property }) {
 
   return (
     <Carousel className={styles.carousel}>
-      {photos.map((photoUrl, index) => (
+      {photos.map((photo, index) => (
         <Carousel.Item className={styles.carouselItem} key={index}>
           <img
             className="d-block w-100"
-            src={photoUrl}
-            alt="First slide"
+            src={photo.url}
+            alt={photo.description}
           />
         </Carousel.Item>
       ))}
