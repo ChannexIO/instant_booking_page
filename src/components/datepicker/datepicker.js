@@ -3,7 +3,7 @@ import ReactDatepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useMedia } from 'react-media';
 
-import { DATE_FORMAT } from "constants/formats";
+import { DATEPICKER_DATE_FORMAT } from "constants/formats";
 import MEDIA_QUERIES from "constants/media_queries";
 
 import styles from "./datepicker.module.css";
@@ -20,7 +20,7 @@ const Datepicker = React.forwardRef((props, ref) => {
       </div>
       <ReactDatepicker
         ref={ref}
-        dateFormat={DATE_FORMAT}
+        dateFormat={DATEPICKER_DATE_FORMAT}
         withPortal={showPortal}
         {...datepickerProps}
         className={styles.datepicker}
