@@ -1,7 +1,3 @@
-.hotelFacilitiesTitle {
-  font-weight: bold;
-}
-
 .hotelFacilitiesContainer {
   display: flex;
   flex-wrap: wrap;

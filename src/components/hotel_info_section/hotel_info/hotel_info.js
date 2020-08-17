@@ -1,6 +1,8 @@
 import React from 'react';
 import { useTranslation } from "react-i18next";
 
+import SectionTitle from "components/section_title";
+
 import styles from "./hotel_info.module.css";
 
 export default function HotelInfo({ description }) {
@@ -12,7 +14,7 @@ export default function HotelInfo({ description }) {
 
   return (
     <div>
-      <div className={styles.hotelInfoTitle}>{t("hotel_page:hotel_info")}:</div>
+      <SectionTitle>{t("hotel_page:hotel_info")}</SectionTitle>
       <pre className={styles.hotelDescription}>{description}</pre>
     </div>  
   );
