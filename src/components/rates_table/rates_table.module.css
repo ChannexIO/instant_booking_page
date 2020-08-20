@@ -1,3 +1,17 @@
-.roomTypeColumn {
-  width: 30%;
+.ratesTable {
+  margin: 0;
+}
+
+.tableContainer {
+  margin: 0.25rem 0;
+  display: flex;
+}
+
+.tableContainerMobile {
+  flex-direction: column;
+}
+
+.ratesTableMobile tr {
+  display: flex;
+  flex-direction: column;
 }

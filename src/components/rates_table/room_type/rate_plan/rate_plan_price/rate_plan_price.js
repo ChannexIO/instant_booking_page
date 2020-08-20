@@ -5,9 +5,10 @@ import styles from "./rate_plan_price.module.css";
 
 const TAX_DECIMAL_PLACES = 2;
 
-export default function RatePlanPrice({ ratePlan }) {
-  const { t } = useTranslation();  
-  const { price, taxes, currency } = ratePlan;
+export default function RatePlanPrice({ ratePlan, currency }) {
+  const { t } = useTranslation();
+
+  const { price, taxes } = ratePlan;
     const additionalTaxesAmount = taxes
     .filter((tax) => !tax.inclusive)
     .reduce((acc, tax) => acc + Number(tax.amount), 0)

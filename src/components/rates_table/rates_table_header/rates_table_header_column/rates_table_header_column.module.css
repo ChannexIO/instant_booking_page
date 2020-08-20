@@ -1,0 +1,31 @@
+.column {
+  top: 0;
+  box-sizing: content-box;
+  padding: 0 !important;
+  position: sticky;
+  z-index: 10;
+  height: 3rem;
+}
+
+.column::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -2px;
+  left: -1px;
+  right: -1px;
+  background-color: #dee2e6;
+}
+
+.columnContent {
+  z-index: 1;
+  background: white;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  position: absolute;
+  align-items: center;
+}

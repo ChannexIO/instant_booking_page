@@ -9,20 +9,19 @@ import setUrlParams from "utils/set_url_params";
 
 import { DEFAULT_CURRENCY } from "constants/defaults";
 
-export default function HotelCurrency(params) {
-  const [activeCurrency, setActiveCurrency] = useState(DEFAULT_CURRENCY);
+export default function CurrencySelect({ searchParams, handleSearchChange }) {
   const [currencyOptions, setCurrencyOptions] = useState([]); 
   const history = useHistory();
 
   const setCurrencyFromURL = () => {
     const { currency = DEFAULT_CURRENCY } = getUrlParams();
 
-    setActiveCurrency(currency);
+    handleSearchChange({ ...searchParams, currency });
   }
 
   const handleCurrencyChange = (currency) => {
     setUrlParams({ currency }, history);
-    setActiveCurrency(currency)
+    handleSearchChange({ ...searchParams, currency });
   };
 
   useEffect(function initSelectorState() {
@@ -36,15 +35,9 @@ export default function HotelCurrency(params) {
     setCurrencyFromURL();
   }, []);
 
-  useEffect(function setHistoryListener() {
-    return history.listen(() => {
-      setCurrencyFromURL();
-    })
-  }, [history]);
-
   return (
-    <Select value={activeCurrency} options={currencyOptions} onChange={handleCurrencyChange}>
-      {activeCurrency}
+    <Select value={searchParams.currency} options={currencyOptions} onChange={handleCurrencyChange}>
+      {searchParams.currency}
     </Select>
   )
 }

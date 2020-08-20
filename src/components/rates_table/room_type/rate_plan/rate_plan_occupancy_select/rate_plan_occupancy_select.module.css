@@ -1,0 +1,26 @@
+.occupancySelectContainer {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 130px;
+  max-width: 200px;
+  margin: auto;
+}
+
+.occupancySelectContainer button {
+  padding: 0.25rem 0.5rem;
+}
+
+.toggleIcon {
+  vertical-align: middle;
+}
+
+.occupancyDecreaseButton {
+  border-radius: 5px 0 0 5px;
+}
+
+.occupancyIncreaseButton {
+  border-radius: 0 5px 5px 0;
+}

@@ -5,9 +5,9 @@ import BedOptions from "./bed_options";
 import RoomFacilities from "./room_facilities";
 import RoomAdditionalFacilities from "./room_additional_facilities";
 
-export default function RoomInfo({ roomType, rowIndex }) {
+export default function RoomInfo({ roomType, rowIndex, isMobile }) {
   const { title, ratePlans, availability, bedOptions, facilities, otherFacilities } = roomType;
-  const ratesNumber = ratePlans.length;
+  const ratesNumber = !isMobile && ratePlans ? ratePlans.length : 1;
 
   return (
     <td rowSpan={ratesNumber}>
@@ -15,7 +15,8 @@ export default function RoomInfo({ roomType, rowIndex }) {
       <RoomAvailability availability={availability} />
       <BedOptions bedOptions={bedOptions} />
       <RoomFacilities facilities={facilities} />
-      <RoomAdditionalFacilities facilities={otherFacilities} collapsable={Boolean(rowIndex)} />
+      {/* do we even have additional facilities? */}
+      {/* <RoomAdditionalFacilities facilities={otherFacilities} collapsable={Boolean(rowIndex)} /> */}
     </td>
   )
 }

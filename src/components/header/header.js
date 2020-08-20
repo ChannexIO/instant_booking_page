@@ -13,14 +13,14 @@ import HotelLocation from "./hotel_location";
 
 import styles from "./header.module.css";
 
-export default function Header({ property }) {
+export default function Header({ property, searchParams, handleSearchChange }) {
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
   const isMobile = matchedQueries.xs || matchedQueries.sm;
 
   const selectors = (
     <div className={styles.selectSection}>
       <LocaleSelect />
-      <CurrencySelect />
+      <CurrencySelect searchParams={searchParams} handleSearchChange={handleSearchChange} />
     </div>
   );
 

@@ -4,8 +4,14 @@ import { useTranslation } from "react-i18next";
 
 import styles from "./room_availability.module.css";
 
+const MAX_AVAILABILITY_TO_SHOW = 10;
+
 export default function RoomAvailability({ availability }) {
   const { t } = useTranslation();
+
+  if (!availability || availability > MAX_AVAILABILITY_TO_SHOW) {
+    return null;
+  }
 
   return (
     <div className={styles.roomAvailability}>

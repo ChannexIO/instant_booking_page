@@ -13,13 +13,16 @@
     "title": "Availability",
     "room_type": "Room Type",
     "sleeps": "Sleeps",
-    "price": "Price for {n} nights",
+    "price": "Price of stay",
+    "price_multiple_nights": "Price for {n} nights",
     "room_availability": "Only {n} left on our site",
     "your_choises": "Your Choices",
     "select_rooms": "Select Rooms",
     "show_more": "Show more",
     "show_less": "Show less",
-    "taxes_and_charges": "taxes and charges"
+    "taxes_and_charges": "taxes and charges",
+    "reserve": "Reserve",
+    "show_prices": "Show prices"
   },
   "room_types": {
     "0": "Demo room"

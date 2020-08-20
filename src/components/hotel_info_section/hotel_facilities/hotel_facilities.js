@@ -11,7 +11,7 @@ export default function HotelFacilities({ title, facilities }) {
 
   return (
     <div>
-      <SectionTitle>{`${t("hotel_page:hotel_facilities")} ${title}:`}</SectionTitle>
+      <SectionTitle>{`${t("hotel_page:hotel_facilities")} ${title}`}</SectionTitle>
       <div className={styles.hotelFacilitiesContainer}>
         {facilities.map((facility) => (
           <div className={styles.hotelFacility} key={facility}>

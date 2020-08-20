@@ -1,1 +1,1 @@
-export { default } from "./hotel_currency";
+export { default } from "./currency_select";

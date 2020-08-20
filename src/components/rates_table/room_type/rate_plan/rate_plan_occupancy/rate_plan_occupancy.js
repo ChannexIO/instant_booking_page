@@ -6,10 +6,11 @@ import styles from "./rate_plan_occupancy.module.css";
 const ICONS_AS_NUMBER_THRESHOLD = 5;
 
 export default function RatePlanOccupancy({ occupancy }) {
-  const isMultipleIcons = occupancy < ICONS_AS_NUMBER_THRESHOLD;
+  const { adults } = occupancy;
+  const isMultipleIcons = adults < ICONS_AS_NUMBER_THRESHOLD;
 
-  const captionText = `x${occupancy}`;
-  const iconsAmount = isMultipleIcons ? occupancy : 1;
+  const captionText = `x${adults}`;
+  const iconsAmount = isMultipleIcons ? adults : 1;
 
   const iconsArray = new Array(iconsAmount).fill(UserOutlined);
 
