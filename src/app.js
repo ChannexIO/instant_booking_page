@@ -10,6 +10,8 @@ function App() {
     logo: "https://www.w3schools.com/howto/img_snow.jpg",
     description: "Studio apartment with a panoramic loggia and fresh renovation, located in a modern new building. There are three elevators, concierge and video surveillance.\n\nThe Sixtytwo Hotel is set in a characteristic 19th-century building. Each elegant room comes with a Nespresso coffee machine and a mini-bar. Some overlook Passeig de Gràcia Boulevard, while others overlook the hotel´s charming Japanese-style garden.",
     address: "CountryName, City, Street, Building 14/3",
+    phone: "9053094534",
+    email: "rthrth@hrth.rth",
     location: {
       lat: 41.3850014,
       lng: 2.14649269999995

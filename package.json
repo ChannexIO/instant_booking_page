@@ -5,6 +5,7 @@
   "homepage": "https://channexio.github.io/instant_booking_page/",
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
+    "google-map-react": "^2.0.8",
     "i18next": "^19.6.2",
     "moment": "^2.27.0",
     "react": "^16.13.1",

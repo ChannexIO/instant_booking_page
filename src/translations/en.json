@@ -7,7 +7,12 @@
     "checkout_placeholder": "Check-out",
     "search": "Search",
     "hotel_info": "Hotel Info",
-    "hotel_facilities": "Facilities of"
+    "hotel_facilities": "Facilities of",
+    "contact_information": "Contact information",
+    "contact_information_message": "Any question or enquires please give us a call or email us",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address"    
   },
   "rates_table": {
     "title": "Availability",

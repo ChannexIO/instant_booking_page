@@ -7,6 +7,7 @@ import PhotoSlider from "components/photo_slider";
 import SearchSection from "components/search_section";
 import HotelInfoSection from "components/hotel_info_section";
 import HotelRatesSection from "components/hotel_rates_section";
+import ContactsSection from "components/contacts_section";
 
 import { DEFAULT_CURRENCY } from "constants/defaults";
 
@@ -164,12 +165,6 @@ export default function HotelPage({ property }) {
   const [propertyRooms, setPropertyRooms] = useState(propertyRatesStub);
   const [loading, setLoading] = useState(false);
 
-  const handleCurrencyChange = (currency) => setSearchParams({ ...searchParams, currency });
-  const handleStartDateChange = (startDate) => setSearchParams({ ...searchParams, startDate });
-  const handleEndDateChange = (endDate) => setSearchParams({ ...setSearchParams, endDate })
-
-  const handleSearchChange = (name, value) =>{console.log(name, value); setSearchParams({ ...searchParams, [name]: value })};
-
   return (
     <div>
       <div className={styles.firstScreen}>
@@ -186,7 +181,9 @@ export default function HotelPage({ property }) {
         <HotelInfoSection property={property} />
         <SeparatorLine />
         <HotelRatesSection property={property} propertyRooms={propertyRooms} searchParams={searchParams} loading={loading} />
+        <SeparatorLine />
       </Container>
+      <ContactsSection property={property} />
       <div style={{height: "1400px"}}/>
     </div>
   )
