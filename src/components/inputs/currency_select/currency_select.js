@@ -4,10 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import Select from 'components/inputs/select';
 
-import getUrlParams from 'utils/get_url_params';
 import setUrlParams from 'utils/set_url_params';
-
-import { DEFAULT_CURRENCY } from 'constants/defaults';
 
 export default function CurrencySelect({ searchParams, handleSearchChange }) {
   const [currencyOptions, setCurrencyOptions] = useState([]); 
@@ -26,11 +23,7 @@ export default function CurrencySelect({ searchParams, handleSearchChange }) {
       }));
 
     setCurrencyOptions(options);
-
-    const { currency = DEFAULT_CURRENCY } = getUrlParams();
-
-    handleSearchChange({ ...searchParams, currency });
-  }, [handleSearchChange, searchParams]);
+  }, []);
 
   return (
     <Select value={searchParams.currency} options={currencyOptions} onChange={handleCurrencyChange}>

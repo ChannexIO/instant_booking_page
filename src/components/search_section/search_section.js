@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -6,7 +6,6 @@ import moment from 'moment';
 
 import RangePicker from 'components/rangepicker';
 
-import getUrlParams from 'utils/get_url_params';
 import setUrlParams from 'utils/set_url_params';
 import { DATE_FORMAT } from 'constants/formats';
 
@@ -32,25 +31,6 @@ export default function SearchSection({ searchParams, handleSearchChange }) {
     
     handleSearchChange({ ...searchParams, startDate, endDate });
   };
-
-  useEffect(function setInitialDates() {
-    const urlParams = getUrlParams();
-    const datesFromUrl = {};
-    const { startDate, endDate } = urlParams;
-
-    const parsedStartDate = moment(startDate, DATE_FORMAT);
-    const parsedEndDate = moment(endDate, DATE_FORMAT);
-
-    if (startDate && parsedStartDate.isValid()) {
-      datesFromUrl.startDate = parsedStartDate;
-    }
-
-    if (endDate && parsedEndDate.isValid()) {
-      datesFromUrl.endDate = parsedEndDate;
-    }
-
-    handleSearchChange({ ...searchParams, ...datesFromUrl });
-  }, [handleSearchChange, searchParams]);
 
   return (
     <Row className={styles.searchSection}>
