@@ -1,1 +1,1 @@
-export { default } from "./info_card_entry";
+export { default } from './info_card_entry';

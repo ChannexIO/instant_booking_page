@@ -1,14 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import { Table } from "react-bootstrap";
-import { useMedia } from "react-media";
+import { Table } from 'react-bootstrap';
+import { useMedia } from 'react-media';
 
-import MEDIA_QUERIES from "constants/media_queries";
+import MEDIA_QUERIES from 'constants/media_queries';
 
-import RoomType from "./room_type";
+import RoomType from './room_type';
 import RatesTableHeader from './rates_table_header';
-import ReserveSection from "./reserve_section";
+import ReserveSection from './reserve_section';
 
-import styles from "./rates_table.module.css";
+import styles from './rates_table.module.css';
 
 export default function RatesTable({ currency, propertyRooms, residenceTime }) {
   const [ratesOccupancyPerRoom, setRatesOccupancyPerRoom] = useState({});
@@ -35,8 +35,8 @@ export default function RatesTable({ currency, propertyRooms, residenceTime }) {
   }
   
   return (
-    <div className={tableContainerClasses.join(" ")}>
-      <Table className={tableClasses.join(" ")} striped bordered hover>
+    <div className={tableContainerClasses.join(' ')}>
+      <Table className={tableClasses.join(' ')} striped bordered hover>
         <RatesTableHeader residenceTime={residenceTime} propertyRooms={propertyRooms} isMobile={isMobile} />
         <tbody>
           {propertyRooms.map((roomType, rowIndex) => (
@@ -52,7 +52,7 @@ export default function RatesTable({ currency, propertyRooms, residenceTime }) {
           ))}
         </tbody>
       </Table>
-      <ReserveSection isMobile={isMobile} isRateSelected={isRateSelected} isRatePlansPresent={isRatePlansPresent} onClick={console.log} />
+      <ReserveSection isMobile={isMobile} isRateSelected={isRateSelected} isRatePlansPresent={isRatePlansPresent} />
     </div>
   );
 }

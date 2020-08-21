@@ -1,41 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Row } from 'react-bootstrap';
-import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
-import moment from "moment";
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
-import RangePicker from "components/rangepicker";
+import RangePicker from 'components/rangepicker';
 
-import getUrlParams from "utils/get_url_params";
-import setUrlParams from "utils/set_url_params";
-import { DATE_FORMAT } from "constants/formats";
+import getUrlParams from 'utils/get_url_params';
+import setUrlParams from 'utils/set_url_params';
+import { DATE_FORMAT } from 'constants/formats';
 
-import SearchButton from "./search_button";
+import SearchButton from './search_button';
 
-import styles from "./search_section.module.css";
+import styles from './search_section.module.css';
 
 export default function SearchSection({ searchParams, handleSearchChange }) {
   const { t } = useTranslation();
   const history = useHistory();
-
-  const setDatesFromUrl = () => {
-    const urlParams = getUrlParams();
-    const datesFromUrl = {};
-    const { startDate, endDate } = urlParams;
-
-    const parsedStartDate = moment(startDate, DATE_FORMAT);
-    const parsedEndDate = moment(endDate, DATE_FORMAT);
-
-    if (startDate && parsedStartDate.isValid()) {
-      datesFromUrl.startDate = parsedStartDate;
-    }
-
-    if (endDate && parsedEndDate.isValid()) {
-      datesFromUrl.endDate = parsedEndDate;
-    }
-
-    handleSearchChange({ ...searchParams, ...datesFromUrl })
-  };
 
   const setDatesToUrl = (startDate, endDate) => {
     const formattedDates = {
@@ -53,14 +34,29 @@ export default function SearchSection({ searchParams, handleSearchChange }) {
   };
 
   useEffect(function setInitialDates() {
-    setDatesFromUrl();
-  }, []);
+    const urlParams = getUrlParams();
+    const datesFromUrl = {};
+    const { startDate, endDate } = urlParams;
+
+    const parsedStartDate = moment(startDate, DATE_FORMAT);
+    const parsedEndDate = moment(endDate, DATE_FORMAT);
+
+    if (startDate && parsedStartDate.isValid()) {
+      datesFromUrl.startDate = parsedStartDate;
+    }
+
+    if (endDate && parsedEndDate.isValid()) {
+      datesFromUrl.endDate = parsedEndDate;
+    }
+
+    handleSearchChange({ ...searchParams, ...datesFromUrl });
+  }, [handleSearchChange, searchParams]);
 
   return (
     <Row className={styles.searchSection}>
       <RangePicker
-        startDatePlaceholder={t("hotel_page:checkin_placeholder")}
-        endDatePlaceholder={t("hotel_page:checkout_placeholder")}
+        startDatePlaceholder={t('hotel_page:checkin_placeholder')}
+        endDatePlaceholder={t('hotel_page:checkout_placeholder')}
         startDate={searchParams.startDate}
         endDate={searchParams.endDate}
         name="search_dates"

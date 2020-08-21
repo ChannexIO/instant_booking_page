@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import RatePlan from "./rate_plan";
-import RoomInfo from "./room_info";
+import RatePlan from './rate_plan';
+import RoomInfo from './room_info';
 
 export default function RoomType({ roomType, currency, rowIndex, isMobile, ratesOccupancyPerRoom, onRatesOccupancyChange }) {
   const [availableSpaces, setAvailableSpaces] = useState(0);
@@ -17,7 +17,7 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
     const emptySpaces = availability - occupiedSpaces;
 
     setAvailableSpaces(emptySpaces);
-  }, [roomRates]);
+  }, [availability, roomRates]);
 
   if (!Array.isArray(ratePlans)) {
     return (
@@ -42,5 +42,5 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
         </tr>
       ))}
     </>
-  )
+  );
 }

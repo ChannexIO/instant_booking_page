@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
+import { Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
-import styles from "./search_button.module.css";
+import styles from './search_button.module.css';
 
 export default function SearchButton({ onClick }) {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ export default function SearchButton({ onClick }) {
       className={styles.button}
       onClick={onClick}
     >
-      {t("hotel_page:search")}
+      {t('hotel_page:search')}
     </Button>
   );
 }

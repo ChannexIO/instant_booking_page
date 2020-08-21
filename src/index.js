@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { I18nextProvider } from "react-i18next";
-import i18next from "i18next";
+import { I18nextProvider } from 'react-i18next';
+import i18next from 'i18next';
 
-import i18nInit from "utils/i18n_init";
+import i18nInit from 'utils/i18n_init';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 
@@ -16,7 +16,7 @@ i18nInit().then(() => {
       </React.StrictMode>
     </I18nextProvider>,
     document.getElementById('root')
-  )
+  );
 });
 
 // If you want your app to work offline and load faster, you can change

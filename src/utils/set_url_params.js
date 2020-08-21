@@ -1,7 +1,7 @@
 export default (params, history) => {
   const originalUrl = new URL(window.location.href);
   const updatedUrl = new URL(window.location.href);
-  updatedUrl.search = "";
+  updatedUrl.search = '';
   
   originalUrl.searchParams.forEach((value, key) => {
     updatedUrl.searchParams.set(key, value);
@@ -12,4 +12,4 @@ export default (params, history) => {
   });
 
   history.push(`${updatedUrl.pathname}${updatedUrl.search}`);
-}
+};

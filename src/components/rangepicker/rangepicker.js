@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { DateRangePicker } from "react-dates";
-import "react-dates/initialize";
+import { DateRangePicker } from 'react-dates';
+import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { useMedia } from 'react-media';
 
-import MEDIA_QUERIES from "constants/media_queries";
+import MEDIA_QUERIES from 'constants/media_queries';
 
-import styles from "./rangepicker.module.css";
+import styles from './rangepicker.module.css';
 
 export default function RangePicker(props) {
-  const { startDate, endDate, name = "", openDirection = "down", startDatePlaceholder, endDatePlaceholder,  onDatesChange } = props;
+  const { startDate, endDate, name = '', openDirection = 'down', startDatePlaceholder, endDatePlaceholder,  onDatesChange } = props;
   const [focusedInput, setFocusedInput] = useState(null);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
   const isMobile = matchedQueries.xs;

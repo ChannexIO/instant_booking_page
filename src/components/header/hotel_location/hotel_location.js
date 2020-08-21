@@ -1,7 +1,7 @@
 import React from 'react';
-import { EnvironmentOutlined } from "@ant-design/icons"
+import { EnvironmentOutlined } from '@ant-design/icons';
 
-import styles from "./hotel_location.module.css";
+import styles from './hotel_location.module.css';
 
 export default function HotelLocation({ property }) {
   return (
@@ -11,5 +11,5 @@ export default function HotelLocation({ property }) {
         {property.address}
       </div>
     </div>
-  )
+  );
 }

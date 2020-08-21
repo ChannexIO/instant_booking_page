@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { Dropdown } from "react-bootstrap";
+import { Dropdown } from 'react-bootstrap';
 
-import styles from "./select.module.css";
+import styles from './select.module.css';
 
 export default function Select({ value, children, options, onChange }) {
   const renderOptions = useCallback(() => {

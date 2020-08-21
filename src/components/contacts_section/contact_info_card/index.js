@@ -1,1 +1,1 @@
-export { default } from "./contact_info_card";
+export { default } from './contact_info_card';

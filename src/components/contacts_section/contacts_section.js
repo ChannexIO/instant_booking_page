@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ContactInfoCard from "./contact_info_card";
-import Map from "./map";
+import ContactInfoCard from './contact_info_card';
+import Map from './map';
 
-import styles from "./contacts_section.module.css";
+import styles from './contacts_section.module.css';
 
 export default function ContactsSection({ property }) {
   const { location } = property;
@@ -13,5 +13,5 @@ export default function ContactsSection({ property }) {
       <Map location={location} />
       <ContactInfoCard property={property} />
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined } from '@ant-design/icons';
 
-import styles from "./rate_plan_occupancy.module.css";
+import styles from './rate_plan_occupancy.module.css';
 
 const ICONS_AS_NUMBER_THRESHOLD = 5;
 
@@ -16,7 +16,7 @@ export default function RatePlanOccupancy({ occupancy }) {
 
   return (
     <div className={styles.ratePlanOccupancyContainer}>
-      {iconsArray.map((Icon, key) => <Icon key={key} />)}
+      {iconsArray.map((Icon, key) => <Icon key={key.toString()} />)}
       {!isMultipleIcons && (
         <div className={styles.ratePlansOccupancyCaption}>
           {captionText}

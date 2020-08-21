@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, Nav } from "react-bootstrap";
+import { Image, Nav } from 'react-bootstrap';
 
-import styles from "./hotel_logo.module.css";
+import styles from './hotel_logo.module.css';
 
 export default function HotelLogo({ property }) {
   return (

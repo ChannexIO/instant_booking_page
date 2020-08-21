@@ -1,4 +1,4 @@
-import { CheckOutlined } from "@ant-design/icons";
+import { CheckOutlined } from '@ant-design/icons';
 
 const DEFAULT_ICON = CheckOutlined;
 

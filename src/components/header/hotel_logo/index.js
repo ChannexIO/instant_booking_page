@@ -1,1 +1,1 @@
-export { default } from "./hotel_logo";
+export { default } from './hotel_logo';
