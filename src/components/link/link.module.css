@@ -1,0 +1,11 @@
+.link {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  color: darkslategray;
+  white-space: nowrap;  
+}
+
+.linkIcon {
+  padding-right: 0.25rem;
+}

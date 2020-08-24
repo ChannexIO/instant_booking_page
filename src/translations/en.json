@@ -29,6 +29,11 @@
     "reserve": "Reserve",
     "show_prices": "Show prices"
   },
+  "footer": {
+    "terms_and_conditions": "Terms and Conditions",
+    "privacy_policy": "Privacy Policy",
+    "copyright_info": "Copyright Info"
+  },
   "room_types": {
     "0": "Demo room"
   },

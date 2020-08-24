@@ -9,6 +9,7 @@ import SearchSection from 'components/search_section';
 import HotelInfoSection from 'components/hotel_info_section';
 import HotelRatesSection from 'components/hotel_rates_section';
 import ContactsSection from 'components/contacts_section';
+import Footer from 'components/footer';
 
 import getUrlParams from 'utils/get_url_params';
 
@@ -206,7 +207,7 @@ export default function HotelPage({ property }) {
         <SeparatorLine />
       </Container>
       <ContactsSection property={property} />
-      <div style={{height: '1400px'}}/>
+      <Footer />
     </div>
   );
 }
