@@ -2,7 +2,7 @@ import React from 'react';
 
 import RatePlanOccupancy from './rate_plan_occupancy';
 import RatePlanPrice from './rate_plan_price';
-import RatePlanCancellationPolicy from './rate_plan_cancellation_policy';
+import RatePlanPolicies from './rate_plan_policies';
 import RatePlanOccupancySelect from './rate_plan_occupancy_select';
 
 export default function RatePlan({ ratePlan, currency, availableSpaces, ratesOccupancy, onOccupancyChange }) {
@@ -17,7 +17,7 @@ export default function RatePlan({ ratePlan, currency, availableSpaces, ratesOcc
     <>
       <td><RatePlanOccupancy occupancy={ratePlan.occupancy} /></td>
       <td><RatePlanPrice ratePlan={ratePlan} currency={currency} /></td>
-      <td><RatePlanCancellationPolicy ratePlan={ratePlan} /></td>
+      <td><RatePlanPolicies ratePlan={ratePlan} currency={currency} /></td>
       <td>
         <RatePlanOccupancySelect
           rateOccupancy={rateOccupancy}

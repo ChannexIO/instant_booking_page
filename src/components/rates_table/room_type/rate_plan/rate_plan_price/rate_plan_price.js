@@ -1,5 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { InfoCircleOutlined } from '@ant-design/icons';
+import { OverlayTrigger } from 'react-bootstrap';
+
+import Currency from 'components/currency';
+
+import RatePlanPriceBreakdown from './rate_plan_price_breakdown';
 
 import styles from './rate_plan_price.module.css';
 
@@ -16,13 +22,23 @@ export default function RatePlanPrice({ ratePlan, currency }) {
   const hasTaxes = Boolean(additionalTaxesAmount);
 
   return (
-    <div className={styles.ratePlanPriceContainer}>
-      <div className={styles.ratePlanPrice}>{`${currency} ${price}`}</div>
-      {hasTaxes && (
-        <div className={styles.ratePlanTaxes}>
-          {`+${currency} ${additionalTaxesAmount} ${t('rates_table:taxes_and_charges')}`}
+    <div>
+      <div className={styles.ratePlanPriceContainer}>
+        <div className={styles.ratePlanPrice}>
+          <Currency currency={currency} amount={price} />
         </div>
-      )}
+        <OverlayTrigger
+          placement="bottom"
+          trigger="click"
+          rootClose
+          overlay={<RatePlanPriceBreakdown ratePlan={ratePlan} currency={currency} />}
+        >
+          <InfoCircleOutlined className={styles.ratePlanInfoIcon} />
+        </OverlayTrigger>
+      </div>
+      <div className={styles.ratePlanTaxes}>
+        {t('rates_table:includes_taxes')}
+      </div>
     </div>
   );
 }

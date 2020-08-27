@@ -3,9 +3,7 @@ import { Carousel } from 'react-bootstrap';
 
 import styles from './photo_slider.module.css';
 
-export default function PhotoSlider({ property }) {
-  const { photos } = property;
-
+export default function PhotoSlider({ photos }) {
   if (!photos || !photos.length) {
     return null;
   }

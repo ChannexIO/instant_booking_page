@@ -24,7 +24,7 @@ export default function RatesTableHeader({ residenceTime, propertyRooms, isMobil
         {isRatesPresent && <>
           <RatesTableHeaderColumn>{t('rates_table:sleeps')}</RatesTableHeaderColumn>
           <RatesTableHeaderColumn>{priceColumnTitle}</RatesTableHeaderColumn>
-          <RatesTableHeaderColumn>{t('rates_table:your_choises')}</RatesTableHeaderColumn>
+          <RatesTableHeaderColumn className={styles.policiesColumn}>{t('rates_table:your_choises')}</RatesTableHeaderColumn>
           <RatesTableHeaderColumn>{t('rates_table:select_rooms')}</RatesTableHeaderColumn>
         </>}
       </tr>

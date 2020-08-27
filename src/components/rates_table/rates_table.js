@@ -12,7 +12,6 @@ import styles from './rates_table.module.css';
 
 export default function RatesTable({ currency, propertyRooms, residenceTime }) {
   const [ratesOccupancyPerRoom, setRatesOccupancyPerRoom] = useState({});
-  const [isRateSelected, setIsRatesSelected] = useState(false);
 
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
@@ -21,13 +20,8 @@ export default function RatesTable({ currency, propertyRooms, residenceTime }) {
   const isRatePlansPresent = Object.values(propertyRooms).some((room) => Array.isArray(room.ratePlans));
 
   const handleRatesOccupancyChange = useCallback((updatedRatesOccupany) => {
-    const hasSelectedRates = Object.values(updatedRatesOccupany).some((ratesOccupancies = {}) => {
-      return Object.values(ratesOccupancies).some(Boolean);
-    });
-
-    setIsRatesSelected(hasSelectedRates);
     setRatesOccupancyPerRoom(updatedRatesOccupany);
-  }, [setRatesOccupancyPerRoom, setIsRatesSelected]);
+  }, [setRatesOccupancyPerRoom]);
 
   if (isMobile) {
     tableClasses.push(styles.ratesTableMobile);
@@ -36,7 +30,7 @@ export default function RatesTable({ currency, propertyRooms, residenceTime }) {
   
   return (
     <div className={tableContainerClasses.join(' ')}>
-      <Table className={tableClasses.join(' ')} striped bordered hover>
+      <Table className={tableClasses.join(' ')} striped bordered>
         <RatesTableHeader residenceTime={residenceTime} propertyRooms={propertyRooms} isMobile={isMobile} />
         <tbody>
           {propertyRooms.map((roomType, rowIndex) => (
@@ -52,7 +46,13 @@ export default function RatesTable({ currency, propertyRooms, residenceTime }) {
           ))}
         </tbody>
       </Table>
-      <ReserveSection isMobile={isMobile} isRateSelected={isRateSelected} isRatePlansPresent={isRatePlansPresent} />
+      <ReserveSection
+        currency={currency}
+        isMobile={isMobile}
+        propertyRooms={propertyRooms}
+        ratesOccupancyPerRoom={ratesOccupancyPerRoom}
+        isRatePlansPresent={isRatePlansPresent}
+      />
     </div>
   );
 }

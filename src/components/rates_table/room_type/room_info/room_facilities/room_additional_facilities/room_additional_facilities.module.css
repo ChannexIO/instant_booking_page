@@ -5,3 +5,7 @@
 .toggleButton {
   font-size: 0.8rem;
 }
+
+.toggleButton:active, .toggleButton:focus {
+  box-shadow: none;
+}

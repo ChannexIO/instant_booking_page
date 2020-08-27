@@ -25,9 +25,21 @@
     "select_rooms": "Select Rooms",
     "show_more": "Show more",
     "show_less": "Show less",
+    "includes_taxes": "includes taxes and charges",
+    "total_price": "Total price",
+    "night": "night",
+    "room_for": "room for",
     "taxes_and_charges": "taxes and charges",
     "reserve": "Reserve",
-    "show_prices": "Show prices"
+    "show_prices": "Show prices",
+    "instant_confirmation": "Instant Confirmation",
+    "no_fees": "No Booking or Card Fees",
+    "no_registration": "No Registration Required",
+    "room_description": "Room Description",
+    "included": "included",
+    "meals": "Meals",
+    "cancellation": "Cancellation",
+    "prepayment": "Prepayment"
   },
   "footer": {
     "terms_and_conditions": "Terms and Conditions",
@@ -42,5 +54,30 @@
   },
   "facilities": {
     "0": "Demo facility"
+  },
+  "meal_types": {
+    "none": "None",
+    "all_inclusive": "All inclusive",
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "american": "American",
+    "bed_and_breakfast": "Bed and breakfast",
+    "buffet_breakfast": "Buffet breakfast",
+    "carribean_breakfast": "Carribean breakfast",
+    "continental_breakfast": "Continental breakfast",
+    "english_breakfast": "English breakfast",
+    "european_plan": "European plan",
+    "family_plan": "Family plan",
+    "full_board": "Full board",
+    "full_breakfast": "Full breakfast",
+    "half_board": "Half board",
+    "room_only": "Room only",
+    "self_catering": "Self catering",
+    "bermuda": "Bermuda",
+    "dinner_bed_and_breakfast_plan": "Dinner bed and breakfast plan",
+    "family_american": "Family american",
+    "breakfast_and_lunch": "Breakfast and lunch",
+    "lunch_and_dinner": "Lunch and dinner"
   }
 }

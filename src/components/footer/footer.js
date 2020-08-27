@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import Link from 'components/link'; 

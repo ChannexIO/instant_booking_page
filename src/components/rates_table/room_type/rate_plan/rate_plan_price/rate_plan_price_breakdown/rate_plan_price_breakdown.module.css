@@ -1,0 +1,26 @@
+.popover {
+  color: darkslategray;
+  min-width: 310px;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.totalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.totalLabel {
+  color: gray;
+  font-size: 0.875rem;
+}
+
+.totalPrice {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

@@ -1,17 +1,22 @@
 import React from 'react';
 
-import Facility from 'components/faclitily';
+import FacilitiesContainer from './facilities_container';
+import AdditionalFacilities from './room_additional_facilities';
 
-import styles from './room_facilities.module.css';
+const FACILITIES_SHOWN_BY_DEFAULT = 4;
 
 export default function RoomFacilities({ facilities }) {
   if (!Array.isArray(facilities)) {
     return null;
   }
 
+  const shownFacilities = facilities.slice(0,FACILITIES_SHOWN_BY_DEFAULT);
+  const collapsedFacilities = facilities.slice(FACILITIES_SHOWN_BY_DEFAULT);
+
   return (
-    <div className={styles.roomFacilities}>
-      {facilities.map((code) => <Facility code={code} key={code} />)}
-    </div>
+    <>
+      <FacilitiesContainer facilities={shownFacilities} />
+      <AdditionalFacilities facilities={collapsedFacilities} />
+    </>
   );
 }

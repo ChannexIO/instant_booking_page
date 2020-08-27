@@ -1,6 +1,6 @@
 .reserveSectionContainer {
   margin-left: -1px;
-  min-width: 9rem;
+  min-width: 10rem;
   border: 1px solid #dee2e6;
 }
 
@@ -27,11 +27,11 @@
   display: flex;
   position: sticky;
   top: 3rem;
+  flex-direction: column;
 }
 
 .reserveButton {
   margin: 0.75rem;
-  width: 100%;
   border-radius: 2px; 
 }
 

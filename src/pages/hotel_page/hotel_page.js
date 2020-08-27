@@ -29,7 +29,7 @@ const propertyRatesStub = [
     'type': 'room_with_rates',
     'id': 'room_id',
     'title': 'Room Title',
-    'description': 'Description',
+    'description': '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."    ',
     'availability': 3,
     'bedOptions': [
       {
@@ -43,12 +43,17 @@ const propertyRatesStub = [
         'size': '90x100 CM'
       }
     ],
-    'facilities': ['facility 1', 'facility 2'],
+    'facilities': ['facility 1', 'facility 2', 'facility 3', 'facility 4', 'facility 5', 'facility 6'],
     'photos': [
       {
-        'url': 'PHOTO_URL',
-        'title': 'title',
-        'author': 'author'
+        'url': 'https://www.yourtrainingedge.com/wp-content/uploads/2019/05/background-calm-clouds-747964.jpg',
+        'description': 'DESC',
+        'author': 'Author'
+      },
+      {
+        'url': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&w=1000&q=80',
+        'description': 'DESC1',
+        'author': 'Author1'
       }
     ],
     'ratePlans': [
@@ -61,7 +66,14 @@ const propertyRatesStub = [
           'infants': 0
         },
         'cancellationPolicy': 'Cancellation policy',
-        'price': '100.00',
+        'price': '100.50',
+        taxFreePrice: '90',
+        lengthOfStay: '4',
+        mealPolicy: {
+          type: 'american',
+          included: false,
+          price: 10,
+        },
         'taxes': [
           {
             'title': 'Tax Title',
@@ -69,12 +81,21 @@ const propertyRatesStub = [
             'inclusive': false,
             'rate': '10.00',
             'mode': 'percent'
+          },
+          {
+            'title': 'Vat',
+            'amount': '15.00',
+            'inclusive': true,
+            'rate': '15.00',
+            'mode': 'percent'
           }
         ]
       },
       {
         'id': 'RATE_PLAN_ID_2',
         'title': 'Title rate s2',
+        taxFreePrice: '90',
+        lengthOfStay: '4',
         'occupancy': {
           'adults': 3,
           'children': 0,
@@ -82,6 +103,11 @@ const propertyRatesStub = [
         },
         'cancellationPolicy': 'Cancellation policy extended',
         'price': '300.00',
+        mealPolicy: {
+          type: 'american',
+          included: true,
+          price: null,
+        },
         'taxes': [
           {
             'title': 'Tax Title',
@@ -102,6 +128,13 @@ const propertyRatesStub = [
         },
         'cancellationPolicy': 'Cancellation policy extended',
         'price': '350.00',
+        taxFreePrice: '90',
+        lengthOfStay: '4',
+        mealPolicy: {
+          type: 'american',
+          included: false,
+          price: 10,
+        },
         'taxes': [
           {
             'title': 'Tax Title',
@@ -151,6 +184,11 @@ const propertyRatesStub = [
         },
         'cancellationPolicy': 'Cancellation policy',
         'price': '100.00',
+        mealPolicy: {
+          type: 'american',
+          included: false,
+          price: 10,
+        },
         'taxes': [
           {
             'title': 'Tax Title',
@@ -194,7 +232,7 @@ export default function HotelPage({ property }) {
         <Container>
           <Header property={property}  searchParams={searchParams} handleSearchChange={setSearchParams} />
         </Container>
-        <PhotoSlider property={property} />
+        <PhotoSlider photos={property.photos} />
         <Container>
           <SearchSection property={property} searchParams={searchParams} handleSearchChange={setSearchParams} />
         </Container>

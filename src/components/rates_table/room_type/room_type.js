@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
 import RatePlan from './rate_plan';
 import RoomInfo from './room_info';
+
+import styles from './room_type.module.css';
 
 export default function RoomType({ roomType, currency, rowIndex, isMobile, ratesOccupancyPerRoom, onRatesOccupancyChange }) {
   const [availableSpaces, setAvailableSpaces] = useState(0);
@@ -29,18 +32,22 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
 
   return (
     <>
-      {ratePlans.map((ratePlan, index) => (
-        <tr key={ratePlan.id}>
-          {!index || isMobile ? <RoomInfo roomType={roomType} isMobile={isMobile} rowIndex={rowIndex} /> : null}
-          <RatePlan
-            ratePlan={ratePlan}
-            currency={currency}
-            availableSpaces={availableSpaces}
-            ratesOccupancy={roomRates}
-            onOccupancyChange={handleRatesOccupancyChange}
-          />
-        </tr>
-      ))}
+      {ratePlans.map((ratePlan, index, array) => {
+        const rowClass = index === (array.length - 1) ? styles.lastRoomRate : null;
+
+        return (
+          <tr className={rowClass} key={ratePlan.id}>
+            {!index || isMobile ? <RoomInfo roomType={roomType} isMobile={isMobile} rowIndex={rowIndex} /> : null}
+            <RatePlan
+              ratePlan={ratePlan}
+              currency={currency}
+              availableSpaces={availableSpaces}
+              ratesOccupancy={roomRates}
+              onOccupancyChange={handleRatesOccupancyChange}
+            />
+          </tr>
+        );
+      })}
     </>
   );
 }

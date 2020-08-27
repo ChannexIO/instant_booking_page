@@ -1,0 +1,15 @@
+.title {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #007bff;
+  font-weight: 600;
+  padding: 0;
+}
+
+.title:active, .title:focus {
+  outline: none;
+}
+
+.title:active {
+  color: #0062cc;
+}

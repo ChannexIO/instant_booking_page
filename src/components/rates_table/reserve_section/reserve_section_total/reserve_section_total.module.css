@@ -1,0 +1,31 @@
+.totalContainer {
+  margin: 0.75rem;
+  margin-bottom: 0;
+}
+
+.roomsAmount {
+  font-size: 0.875rem;
+}
+
+.totalPrice {
+  font-size: 1.125rem;
+}
+
+.taxesNote {
+  color: darkslategray;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 575px) {
+  .roomsAmount, .totalPrice {
+    font-size: 1rem;
+  }
+
+  .priceContainer {
+    display: flex;
+  }
+
+  .roomsAmount {
+    margin-right: 0.5rem;
+  }
+}
