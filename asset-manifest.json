@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/instant_booking_page/static/css/main.eedeb349.chunk.css",
-    "main.js": "/instant_booking_page/static/js/main.1a86bfd4.chunk.js",
-    "main.js.map": "/instant_booking_page/static/js/main.1a86bfd4.chunk.js.map",
-    "runtime-main.js": "/instant_booking_page/static/js/runtime-main.22929162.js",
-    "runtime-main.js.map": "/instant_booking_page/static/js/runtime-main.22929162.js.map",
-    "static/css/2.19b7558e.chunk.css": "/instant_booking_page/static/css/2.19b7558e.chunk.css",
-    "static/js/2.ff9a420e.chunk.js": "/instant_booking_page/static/js/2.ff9a420e.chunk.js",
-    "static/js/2.ff9a420e.chunk.js.map": "/instant_booking_page/static/js/2.ff9a420e.chunk.js.map",
-    "index.html": "/instant_booking_page/index.html",
-    "precache-manifest.434809f367425ab5a61319b7079bfcd5.js": "/instant_booking_page/precache-manifest.434809f367425ab5a61319b7079bfcd5.js",
-    "service-worker.js": "/instant_booking_page/service-worker.js",
-    "static/css/2.19b7558e.chunk.css.map": "/instant_booking_page/static/css/2.19b7558e.chunk.css.map",
-    "static/css/main.eedeb349.chunk.css.map": "/instant_booking_page/static/css/main.eedeb349.chunk.css.map",
-    "static/js/2.ff9a420e.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.ff9a420e.chunk.js.LICENSE.txt"
+    "main.css": "./static/css/main.40682f59.chunk.css",
+    "main.js": "./static/js/main.e0aff78f.chunk.js",
+    "main.js.map": "./static/js/main.e0aff78f.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.42b72e52.js",
+    "runtime-main.js.map": "./static/js/runtime-main.42b72e52.js.map",
+    "static/css/2.19b7558e.chunk.css": "./static/css/2.19b7558e.chunk.css",
+    "static/js/2.ff9a420e.chunk.js": "./static/js/2.ff9a420e.chunk.js",
+    "static/js/2.ff9a420e.chunk.js.map": "./static/js/2.ff9a420e.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.20efa669b915310651c85ff613d48a57.js": "./precache-manifest.20efa669b915310651c85ff613d48a57.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.19b7558e.chunk.css.map": "./static/css/2.19b7558e.chunk.css.map",
+    "static/css/main.40682f59.chunk.css.map": "./static/css/main.40682f59.chunk.css.map",
+    "static/js/2.ff9a420e.chunk.js.LICENSE.txt": "./static/js/2.ff9a420e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.22929162.js",
+    "static/js/runtime-main.42b72e52.js",
     "static/css/2.19b7558e.chunk.css",
     "static/js/2.ff9a420e.chunk.js",
-    "static/css/main.eedeb349.chunk.css",
-    "static/js/main.1a86bfd4.chunk.js"
+    "static/css/main.40682f59.chunk.css",
+    "static/js/main.e0aff78f.chunk.js"
   ]
 }
