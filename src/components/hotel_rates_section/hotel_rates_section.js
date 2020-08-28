@@ -10,7 +10,7 @@ import styles from './hotel_rates_section.module.css';
 export default function HotelRatesSection({ property, propertyRooms, loading, searchParams }) {
   const { currency, startDate, endDate } = searchParams;
   const { t } = useTranslation();
-  const isEnteredDatesValid = moment(startDate).isValid() && moment(endDate).isValid();
+  const isEnteredDatesValid = startDate && endDate && moment(startDate).isValid() && moment(endDate).isValid();
   const residenceTime = isEnteredDatesValid ? endDate.diff(startDate, 'days') : null;
 
   return (
