@@ -1,3 +1,8 @@
 .policiesContainer {
   padding: 0.5rem;
 }
+
+.popover {
+  color: darkslategray;
+  min-width: 310px;
+}
