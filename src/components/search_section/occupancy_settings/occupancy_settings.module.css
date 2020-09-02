@@ -1,0 +1,14 @@
+.occupancySettingsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.occupancySettingsInput {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.occupancySettingsInput:not(:last-child) {
+  margin-right: 0.5rem;
+}

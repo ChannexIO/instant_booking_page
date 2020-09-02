@@ -12,9 +12,9 @@ export default function Footer() {
  return (
    <div className={styles.footerWrapper}>
     <Container className={styles.footer}>
-      <Link>{t('footer:privacy_policy')}</Link>
-      <Link>{t('footer:terms_and_conditions')}</Link>
-      <Link>{t('footer:copyright_info')}</Link>
+      <Link href="https://stackoverflow.com/">{t('footer:privacy_policy')}</Link>
+      <Link href="https://stackoverflow.com/">{t('footer:terms_and_conditions')}</Link>
+      <Link href="https://stackoverflow.com/">{t('footer:copyright_info')}</Link>
     </Container>
    </div>
  );

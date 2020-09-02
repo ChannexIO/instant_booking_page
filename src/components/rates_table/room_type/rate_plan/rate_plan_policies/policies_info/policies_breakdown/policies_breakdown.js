@@ -11,10 +11,14 @@ const PoliciesBreakdown = forwardRef(({ ratePlan, className, ...popoverProps }, 
 
   const popoverClassName = [className, styles.popover].join(' ');
 
-  // OverlayTrigger add bunch of props that should be bypassed to popover
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return (
-    <Popover className={popoverClassName} ref={ref} {...popoverProps}>
+    <Popover
+      className={popoverClassName}
+      ref={ref}
+      // OverlayTrigger add bunch of props that should be bypassed to popover
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...popoverProps}
+    >
       <Popover.Content>
         <PolicySection title={t('rates_table:meals')} text="Lorem ipsum dolor sit amet, consectetur adipiscing eli" />
         <PolicySection title={t('rates_table:cancellation')} text="Lorem ipsum dolor sit amet, consectetur adipiscing eli" />

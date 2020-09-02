@@ -1,6 +1,7 @@
 .searchSection {
   padding: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   min-width: 430px;
   position: absolute;
@@ -9,6 +10,10 @@
   left: 50%;
   transform: translate(-50%, 0);
   width: auto;
+}
+
+.searchRow {
+  display: flex;
 }
 
 .buttonSection {
@@ -23,6 +28,9 @@
     left: auto;
     transform: none;
     bottom: auto;
+  }
+
+  .searchRow {
     flex-direction: column;
   }
 

@@ -12,7 +12,15 @@
     "contact_information_message": "Any question or enquires please give us a call or email us",
     "phone": "Phone",
     "email": "Email",
-    "address": "Address"    
+    "address": "Address",
+    "adults_label": "Adults",
+    "adults_placeholder": "Adults",
+    "adults": "adults",
+    "children_label": "Children",
+    "children_placeholder": "Children",
+    "children": "children",
+    "children_age_placeholder": "Children age",
+    "years_old": "years old"
   },
   "rates_table": {
     "title": "Availability",

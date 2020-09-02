@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import moment from 'moment';
 
 import Header from 'components/header';
 import SeparatorLine from 'components/separator_line';
@@ -11,10 +10,9 @@ import HotelRatesSection from 'components/hotel_rates_section';
 import ContactsSection from 'components/contacts_section';
 import Footer from 'components/footer';
 
-import getUrlParams from 'utils/get_url_params';
-
 import { DEFAULT_CURRENCY } from 'constants/defaults';
-import { DATE_FORMAT } from 'constants/formats';
+
+import initSearchParamsFromUrl from './init_search_params_from_url';
 
 import styles from './hotel_page.module.css';
 
@@ -208,23 +206,7 @@ export default function HotelPage({ property }) {
   const [propertyRooms, setPropertyRooms] = useState(propertyRatesStub);
   const [loading, setLoading] = useState(false);
 
-  useEffect(function initSearchParamsFromUrl() {
-    const { currency = DEFAULT_CURRENCY, startDate, endDate } = getUrlParams();
-    const datesFromUrl = {};
-
-    const parsedStartDate = moment(startDate, DATE_FORMAT);
-    const parsedEndDate = moment(endDate, DATE_FORMAT);
-
-    if (startDate && parsedStartDate.isValid()) {
-      datesFromUrl.startDate = parsedStartDate;
-    }
-
-    if (endDate && parsedEndDate.isValid()) {
-      datesFromUrl.endDate = parsedEndDate;
-    }
-
-    setSearchParams({ currency, ...datesFromUrl });
-  }, []);
+  useEffect(() => initSearchParamsFromUrl(setSearchParams), []);
   
   return (
     <div>

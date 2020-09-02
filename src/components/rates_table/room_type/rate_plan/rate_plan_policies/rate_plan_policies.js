@@ -8,7 +8,7 @@ import PoliciesInfo from './policies_info';
 import styles from './rate_plan_policies.module.css';
 
 export default function RatePlanPolicies({ ratePlan, currency }) {
-  console.log(ratePlan);
+
   return (
     <div className={styles.policyContainer}>
       <PoliciesInfo ratePlan={ratePlan} />

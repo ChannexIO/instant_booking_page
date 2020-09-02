@@ -1,0 +1,68 @@
+.dropdownMenu {
+  max-height: 20rem;
+  overflow-y: scroll;
+}
+
+.dropdownToggle {
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  min-width: 8rem;
+}
+
+.dropdownButton {
+  border: none;
+}
+
+.dropdownToggle,
+.dropdownButton {
+  background-color: white;
+  color: #484848;
+  font-size: 1rem; 
+}
+
+.dropdownToggle:hover,
+.dropdownToggle:focus,
+.dropdownButton:hover,
+.dropdownButton:focus {
+  background-color: white;
+  color: #484848;
+  outline: none;
+  box-shadow: none;
+}
+
+.dropdown:global>.btn-primary.dropdown-toggle,
+.dropdownToggle:global.btn-primary:not(:disabled):not(.disabled):focus,
+.dropdownToggle:global.btn-primary:not(:disabled):not(.disabled):active,
+.dropdownButton:global.btn-primary:not(:disabled):not(.disabled):focus,
+.dropdownButton:global.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: white;
+  color: #484848;
+  box-shadow: none;
+  outline: none;
+  border-color: #dbdbdb;
+}
+
+.dropdown:global.show>.btn-primary.dropdown-toggle,
+.dropdownToggle:global.btn-primary:not(:disabled):not(.disabled):focus {
+  border-bottom: 2px solid #008489;
+  margin-bottom: -1px;
+}
+
+
+.containerHorizontal,
+.containerVertical {
+  display: flex;
+  align-items: center;
+}
+
+.containerVertical {
+  flex-direction: column;
+}
+
+.selectLabel {
+  padding-right: 0.5rem;
+}
+
+.dropdown, .dropdownToggle {
+  width: 100%;
+}
