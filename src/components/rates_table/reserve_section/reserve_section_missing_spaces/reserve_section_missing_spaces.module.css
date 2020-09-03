@@ -1,0 +1,15 @@
+.alert {
+  margin: .75rem 0.75rem 0;
+  font-size: .875rem;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.heading {
+  font-size: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}

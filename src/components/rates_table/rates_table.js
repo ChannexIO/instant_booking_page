@@ -10,7 +10,7 @@ import ReserveSection from './reserve_section';
 
 import styles from './rates_table.module.css';
 
-export default function RatesTable({ currency, propertyRooms, residenceTime }) {
+export default function RatesTable({ currency, propertyRooms, residenceTime, adults, children }) {
   const [ratesOccupancyPerRoom, setRatesOccupancyPerRoom] = useState({});
 
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
@@ -52,6 +52,8 @@ export default function RatesTable({ currency, propertyRooms, residenceTime }) {
         propertyRooms={propertyRooms}
         ratesOccupancyPerRoom={ratesOccupancyPerRoom}
         isRatePlansPresent={isRatePlansPresent}
+        adults={adults}
+        children={children}
       />
     </div>
   );

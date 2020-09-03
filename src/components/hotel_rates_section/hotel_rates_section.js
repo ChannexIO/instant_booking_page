@@ -8,7 +8,7 @@ import RatesTable from 'components/rates_table';
 import styles from './hotel_rates_section.module.css';
 
 export default function HotelRatesSection({ property, propertyRooms, loading, searchParams }) {
-  const { currency, startDate, endDate } = searchParams;
+  const { currency, startDate, endDate, adults, children } = searchParams;
   const { t } = useTranslation();
   const isEnteredDatesValid = startDate && endDate && moment(startDate).isValid() && moment(endDate).isValid();
   const residenceTime = isEnteredDatesValid ? endDate.diff(startDate, 'days') : null;
@@ -21,6 +21,8 @@ export default function HotelRatesSection({ property, propertyRooms, loading, se
         property={property}
         propertyRooms={propertyRooms}
         currency={currency}
+        adults={adults}
+        children={children}
       />
     </div>
   );

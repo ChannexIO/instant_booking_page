@@ -4,11 +4,18 @@ import { Button } from 'react-bootstrap';
 
 import ReserveSectionDetails from './reserve_section_details';
 import ReserveSectionTotal from './reserve_section_total';
+import ReserveSectionMissingSpaces from './reserve_section_missing_spaces';
 
 import styles from './reserve_section.module.css';
 
-export default function ReserveSection({ isMobile, isRatePlansPresent, ratesOccupancyPerRoom, propertyRooms, currency, onClick }) {
+const getSpacesDeficit = (requiredAmount, availableAMount) => {
+  return availableAMount < requiredAmount ? requiredAmount - availableAMount : 0;
+};
+
+export default function ReserveSection(props) {
+  const { isMobile, isRatePlansPresent, ratesOccupancyPerRoom, propertyRooms, currency, children, adults, onClick } = props;
   const [occupiedRoomsNumber, setOccupiedRoomsNumber] = useState(0);
+  const [missingSpaces, setMissingSpaces] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const [propertyRoomsById, setRoomsById] = useState(null);
   const { t } = useTranslation();
@@ -49,6 +56,31 @@ export default function ReserveSection({ isMobile, isRatePlansPresent, ratesOccu
     setTotalPrice(newTotalPrice);
   }, [ratesOccupancyPerRoom, propertyRooms, propertyRoomsById, setOccupiedRoomsNumber, setTotalPrice]);
 
+  useEffect(function handleSpaceRequirimentsChange() {
+    let selectedAdultsSpaces = 0;
+    let selectedChildrenSpaces = 0;
+    let selectedInfantSpaces = 0;
+
+    Object.keys(ratesOccupancyPerRoom).forEach((roomId) => {
+      Object.keys(ratesOccupancyPerRoom[roomId]).forEach((rateId) => {
+        const selectedRateAmount = ratesOccupancyPerRoom[roomId][rateId];
+        const rateOccupancy = propertyRoomsById[roomId].ratePlans[rateId].occupancy;
+
+        selectedAdultsSpaces += Number(rateOccupancy.adults) * selectedRateAmount;
+        selectedChildrenSpaces += Number(rateOccupancy.children) * selectedRateAmount;
+        selectedInfantSpaces += Number(rateOccupancy.infants) * selectedRateAmount;
+      });
+
+    });
+    
+    const newMissingSpaces = {
+      adults: getSpacesDeficit(adults, selectedAdultsSpaces),
+      children: getSpacesDeficit(children, selectedChildrenSpaces),
+    };
+    console.log(newMissingSpaces, selectedAdultsSpaces, adults, selectedChildrenSpaces, children);
+    setMissingSpaces(newMissingSpaces);
+  }, [ratesOccupancyPerRoom, occupiedRoomsNumber, children, adults, propertyRoomsById]);
+
   if (isMobile) {
     containerClasses.push(styles.reserveSectionContainerMobile);
     buttonClasses.push(styles.reserveButtonMobile);
@@ -58,6 +90,9 @@ export default function ReserveSection({ isMobile, isRatePlansPresent, ratesOccu
     <div className={containerClasses.join(' ')}>
       {!isMobile && <div className={styles.reserveSectionHeader} />}
       <div className={styles.reserveSectionBody}>
+        <ReserveSectionMissingSpaces
+          missingSpaces={missingSpaces}
+        />
         <ReserveSectionTotal
           currency={currency}
           occupiedRoomsNumber={occupiedRoomsNumber}
