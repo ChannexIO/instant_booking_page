@@ -52,7 +52,8 @@
     "missing_adults": "{n} more adults",
     "missing_children": "{n} more children",
     "missing_infants": "{n} more infants",
-    "missing_spaces_description": "Check how many guests the available options can sleep"
+    "missing_spaces_description": "Check how many guests the available options can sleep",
+    "price_for_up_to": "Price for up to"
   },
   "footer": {
     "terms_and_conditions": "Terms and Conditions",

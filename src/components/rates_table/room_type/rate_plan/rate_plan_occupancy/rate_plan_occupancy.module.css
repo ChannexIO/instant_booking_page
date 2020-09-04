@@ -3,6 +3,10 @@
   flex-wrap: wrap;
 }
 
+.mobileHeader {
+  margin-bottom: 0.25rem;
+}
+
 .children {
   font-size: 0.875rem;
 }

@@ -42,6 +42,7 @@ export default function RatesTable({ currency, propertyRooms, residenceTime, adu
               adults={adults}
               children={children}
               key={roomType.id}
+              residenceTime={residenceTime}
               ratesOccupancyPerRoom={ratesOccupancyPerRoom}
               onRatesOccupancyChange={handleRatesOccupancyChange}
             />

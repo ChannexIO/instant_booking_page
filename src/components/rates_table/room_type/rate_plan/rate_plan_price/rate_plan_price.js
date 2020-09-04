@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { OverlayTrigger } from 'react-bootstrap';
 
+import PriceColumnTitle from 'components/rates_table/price_column_title';
 import Currency from 'components/currency';
 
 import RatePlanPriceBreakdown from './rate_plan_price_breakdown';
@@ -11,7 +12,7 @@ import styles from './rate_plan_price.module.css';
 
 const TAX_DECIMAL_PLACES = 2;
 
-export default function RatePlanPrice({ ratePlan, currency }) {
+export default function RatePlanPrice({ ratePlan, isMobile, residenceTime, currency }) {
   const { t } = useTranslation();
 
   const { price, taxes } = ratePlan;
@@ -23,6 +24,7 @@ export default function RatePlanPrice({ ratePlan, currency }) {
 
   return (
     <div>
+      {isMobile && <PriceColumnTitle residenceTime={residenceTime} />}
       <div className={styles.ratePlanPriceContainer}>
         <div className={styles.ratePlanPrice}>
           <Currency currency={currency} amount={price} />
