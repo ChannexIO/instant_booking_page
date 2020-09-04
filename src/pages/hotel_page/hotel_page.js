@@ -60,7 +60,7 @@ const propertyRatesStub = [
         'title': 'Title',
         'occupancy': {
           'adults': 1,
-          'children': 0,
+          'children': 1,
           'infants': 0
         },
         'cancellationPolicy': 'Cancellation policy',
@@ -96,7 +96,7 @@ const propertyRatesStub = [
         lengthOfStay: '4',
         'occupancy': {
           'adults': 3,
-          'children': 0,
+          'children': 2,
           'infants': 0
         },
         'cancellationPolicy': 'Cancellation policy extended',

@@ -1,0 +1,8 @@
+.occupancyContainer {
+  display: flex;
+  align-items: center;
+}
+
+.occupancyCaption {
+  margin-left: 0.25rem;
+}

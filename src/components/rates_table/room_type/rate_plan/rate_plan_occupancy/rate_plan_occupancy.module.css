@@ -1,8 +1,12 @@
-.ratePlanOccupancyContainer {
+.occupanciesContainer {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
 }
 
-.ratePlansOccupancyCaption {
-  margin-left: 0.25rem;
+.children {
+  font-size: 0.875rem;
+}
+
+.children::before {
+  content: " + ";
 }

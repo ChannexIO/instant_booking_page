@@ -77,7 +77,7 @@ export default function ReserveSection(props) {
       adults: getSpacesDeficit(adults, selectedAdultsSpaces),
       children: getSpacesDeficit(children, selectedChildrenSpaces),
     };
-    console.log(newMissingSpaces, selectedAdultsSpaces, adults, selectedChildrenSpaces, children);
+
     setMissingSpaces(newMissingSpaces);
   }, [ratesOccupancyPerRoom, occupiedRoomsNumber, children, adults, propertyRoomsById]);
 

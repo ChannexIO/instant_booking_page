@@ -39,6 +39,8 @@ export default function RatesTable({ currency, propertyRooms, residenceTime, adu
               currency={currency}
               rowIndex={rowIndex}
               isMobile={isMobile}
+              adults={adults}
+              children={children}
               key={roomType.id}
               ratesOccupancyPerRoom={ratesOccupancyPerRoom}
               onRatesOccupancyChange={handleRatesOccupancyChange}

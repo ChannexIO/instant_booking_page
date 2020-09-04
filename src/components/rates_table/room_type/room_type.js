@@ -5,8 +5,9 @@ import RoomInfo from './room_info';
 
 import styles from './room_type.module.css';
 
-export default function RoomType({ roomType, currency, rowIndex, isMobile, ratesOccupancyPerRoom, onRatesOccupancyChange }) {
+export default function RoomType({ roomType, currency, rowIndex, isMobile, ratesOccupancyPerRoom, adults, children, onRatesOccupancyChange }) {
   const [availableSpaces, setAvailableSpaces] = useState(0);
+  const [sortedRates, setSortedRates] = useState([]);
 
   const { ratePlans, availability, id } = roomType;
   const { [id]: roomRates = {} } = ratesOccupancyPerRoom;
@@ -22,6 +23,24 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
     setAvailableSpaces(emptySpaces);
   }, [availability, roomRates]);
 
+  useEffect(function updateRatesPlans() {
+    if (!Array.isArray(ratePlans)) {
+      return;
+    }
+
+    const ratesByOccupancyMatch = ratePlans.sort((a,b) => {
+      const aOccupancyMatchRating = Number(a.occupancy.children === children)
+        + Number(a.occupancy.adults === adults);
+
+      const bOccupancyMatchRating = Number(b.occupancy.children === children)
+      + Number(b.occupancy.adults === adults);
+
+      return bOccupancyMatchRating - aOccupancyMatchRating;
+    });
+
+    setSortedRates([...ratesByOccupancyMatch]);
+  }, [ratePlans, adults, children]);
+
   if (!Array.isArray(ratePlans)) {
     return (
       <tr key={id}>
@@ -30,9 +49,10 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
     );
   }
 
+  console.log(sortedRates);
   return (
     <>
-      {ratePlans.map((ratePlan, index, array) => {
+      {sortedRates.map((ratePlan, index, array) => {
         const rowClass = index === (array.length - 1) ? styles.lastRoomRate : null;
 
         return (
@@ -44,6 +64,8 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
               availableSpaces={availableSpaces}
               ratesOccupancy={roomRates}
               onOccupancyChange={handleRatesOccupancyChange}
+              adults={adults}
+              children={children}
             />
           </tr>
         );
