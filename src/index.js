@@ -7,6 +7,7 @@ import i18nInit from 'utils/i18n_init';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 
+import './index.css';
 
 i18nInit().then(() => {
   return render(

@@ -7,7 +7,7 @@
 }
 
 .facilityIcon {
-  color: #FCB494;
+  color: var(--icon-color);
   margin-right: 0.5rem;
 }
 

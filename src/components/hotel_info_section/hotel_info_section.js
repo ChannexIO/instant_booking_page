@@ -1,19 +1,22 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import SeparatorLine from 'components/separator_line';
+import SectionTitle from 'components/section_title';
 
-import HotelInfo from './hotel_info';
-import HotelFacilities from './hotel_facilities';
+import styles from './hotel_info_section.module.css';
 
 export default function HotelInfoSection({ property }) {
-  const { description, facilities, title } = property;
+  const { description } = property;
+  const { t } = useTranslation();
 
+  if (!description) {
+    return null;
+  }
 
   return (
-    <>
-      <HotelInfo description={description} />
-      <SeparatorLine />
-      <HotelFacilities title={title} facilities={facilities} />
-    </>    
+    <div>
+      <SectionTitle>{t('hotel_page:hotel_info')}</SectionTitle>
+      <pre className={styles.hotelDescription}>{description}</pre>
+    </div>  
   );
 }

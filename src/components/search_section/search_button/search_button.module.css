@@ -1,5 +1,17 @@
 .button {
+  background-color: var(--cta-color);
+  border-color: var(--cta-color-active);
   height: 3rem;
   border-radius: 2px;
   width: 100%;
+}
+
+.button:global.btn-primary:active,
+.button:global.btn-primary:focus,
+.button:global.btn-primary:hover,
+.button:global.btn-primary:not(:disabled):not(.disabled):active
+{
+  background-color: var(--cta-color-active);
+  border-color: var(--cta-color);
+  box-shadow: none;
 }

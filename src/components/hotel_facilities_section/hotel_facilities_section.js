@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next';
 import Facility from 'components/faclitily';
 import SectionTitle from 'components/section_title';
 
-import styles from './hotel_facilities.module.css';
+import styles from './hotel_facilities_section.module.css';
 
-export default function HotelFacilities({ title, facilities }) {
+export default function HotelFacilitiesSection({ property }) {
+  const { title, facilities } = property;
   const { t } = useTranslation();
 
   return (

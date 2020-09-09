@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
 import Header from 'components/header';
-import SeparatorLine from 'components/separator_line';
 import PhotoSlider from 'components/photo_slider';
 import SearchSection from 'components/search_section';
 import HotelInfoSection from 'components/hotel_info_section';
+import HotelFacilitiesSection from 'components/hotel_facilities_section';
 import HotelRatesSection from 'components/hotel_rates_section';
 import ContactsSection from 'components/contacts_section';
 import Footer from 'components/footer';
+import SectionWrapper from 'components/section_wrapper';
 
 import { DEFAULT_CURRENCY } from 'constants/defaults';
 
@@ -219,13 +220,15 @@ export default function HotelPage({ property }) {
           <SearchSection property={property} searchParams={searchParams} handleSearchChange={setSearchParams} />
         </Container>
       </div>
-      <Container>
-        <SeparatorLine />
+      <SectionWrapper theme="light">
         <HotelInfoSection property={property} />
-        <SeparatorLine />
+      </SectionWrapper>
+      <SectionWrapper theme="dark">
         <HotelRatesSection property={property} propertyRooms={propertyRooms} searchParams={searchParams} loading={loading} />
-        <SeparatorLine />
-      </Container>
+      </SectionWrapper>
+      <SectionWrapper theme="light">
+        <HotelFacilitiesSection property={property} />
+      </SectionWrapper>
       <ContactsSection property={property} />
       <Footer />
     </div>

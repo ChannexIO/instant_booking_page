@@ -1,9 +1,14 @@
-.roomAvailability {
-  font-size: 0.8rem;
-  font-weight: bold;
+.roomAvailability,
+.roomAvailabilityHighlighted {
+  font-size: 0.75rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
   margin: 0.5rem 0;
+}
+
+.roomAvailabilityHighlighted {
+  color: var(--cta-color-active);
 }
 
 .roomAvailabilityIcon {

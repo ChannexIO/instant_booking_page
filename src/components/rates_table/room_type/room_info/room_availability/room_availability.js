@@ -13,8 +13,10 @@ export default function RoomAvailability({ availability }) {
     return null;
   }
 
+  const containerClass = availability === 1 ? styles.roomAvailabilityHighlighted : styles.roomAvailability;
+
   return (
-    <div className={styles.roomAvailability}>
+    <div className={containerClass}>
       <ClockCircleOutlined className={styles.roomAvailabilityIcon} />
       <div className={styles.roomAvailabilityMessage}>
         {t('rates_table:room_availability').replace('{n}', availability)}

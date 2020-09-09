@@ -1,8 +1,8 @@
 .title {
   cursor: pointer;
-  text-decoration: underline;
-  color: #007bff;
-  font-weight: 600;
+  color: var(--link-color);
+  font-weight: 400;
+  font-size: 1.25rem;
   padding: 0;
 }
 

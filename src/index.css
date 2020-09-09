@@ -1,10 +1,24 @@
+:root {
+  --main-text-color: #232331;
+  --hightlight-text-color: #363B3D;
+  --info-text-color: #939EA8;
+  --cta-color: #30B61C;
+  --cta-color-active: #00BE0A;
+  --icon-color: #4281D1;
+  --link-color: #6BA9ED;
+  --button-color: #2D74CC;
+  --select-color: #56697A;
+  --border-color: #D1E1F2;
+  --section-background-dark-color: #F9FBFD;
+  --section-background-light-color: #FFFFFF;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--main-text-color);
 }
 
 code {

@@ -1,5 +1,11 @@
 .rangepicker :global .DateInput_input {
   font-size: 1rem;
+  color: var(--main-text-color);
+  font-weight: 400;
+}
+
+.rangepicker :global .DateInput_input::placeholder {
+  color: var(--info-text-color);
 }
 
 @media screen and (max-width: 575px) {

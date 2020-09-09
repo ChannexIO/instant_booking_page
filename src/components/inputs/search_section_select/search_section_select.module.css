@@ -16,7 +16,7 @@
 .dropdownToggle,
 .dropdownButton {
   background-color: white;
-  color: #484848;
+  color: var(--main-text-color);
   font-size: 1rem; 
 }
 
@@ -25,7 +25,7 @@
 .dropdownButton:hover,
 .dropdownButton:focus {
   background-color: white;
-  color: #484848;
+  color: var(--main-text-color);
   outline: none;
   box-shadow: none;
 }
@@ -36,7 +36,7 @@
 .dropdownButton:global.btn-primary:not(:disabled):not(.disabled):focus,
 .dropdownButton:global.btn-primary:not(:disabled):not(.disabled):active {
   background-color: white;
-  color: #484848;
+  color: var(--main-text-color);
   box-shadow: none;
   outline: none;
   border-color: #dbdbdb;
@@ -61,6 +61,7 @@
 
 .selectLabel {
   padding-right: 0.5rem;
+  color: var(--info-text-color);
 }
 
 .dropdown, .dropdownToggle {

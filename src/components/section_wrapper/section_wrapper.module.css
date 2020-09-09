@@ -1,0 +1,19 @@
+.containerLight {
+  background-color: var(--section-background-light-color);
+}
+
+.containerDark {
+  background-color: var(--section-background-dark-color);
+}
+
+.containerDark,
+.containerLight {
+  padding: 3rem 0;
+}
+
+@media screen and (max-width: 575px) {
+  .containerDark,
+  .containerLight {
+    padding: 1rem 0;
+  }
+}

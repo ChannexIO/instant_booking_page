@@ -1,6 +1,8 @@
 .locationContainer {
   display: flex;
   line-height: 1rem;
+  font-size: 0.75rem;
+  color: var(--info-text-color);
 }
 
 .icon {
