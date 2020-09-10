@@ -13,3 +13,7 @@
   flex-direction: row;
   align-items: baseline;
 }
+
+.description {
+  max-width: fit-content;
+}

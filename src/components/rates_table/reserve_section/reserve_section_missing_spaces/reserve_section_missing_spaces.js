@@ -33,7 +33,7 @@ export default function ReseveSectionMissingSpaces({ missingSpaces }) {
         <InfoCircleFilled className={styles.icon} />
         <div>{message}</div>
       </Alert.Heading>
-      <div>
+      <div className={styles.description}>
         {t('rates_table:missing_spaces_description')}
       </div>
     </Alert>
