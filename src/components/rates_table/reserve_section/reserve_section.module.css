@@ -32,7 +32,11 @@
 
 .reserveButton {
   margin: 0.75rem;
-  border-radius: 2px; 
+  border-radius: 2px;
+}
+
+.reserveButton:global.btn-primary {
+  background-color: var(--button-color);
 }
 
 .reserveButtonMobile {

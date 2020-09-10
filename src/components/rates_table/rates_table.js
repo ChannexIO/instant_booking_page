@@ -30,25 +30,27 @@ export default function RatesTable({ currency, propertyRooms, residenceTime, adu
   
   return (
     <div className={tableContainerClasses.join(' ')}>
-      <Table className={tableClasses.join(' ')} striped bordered>
-        <RatesTableHeader residenceTime={residenceTime} propertyRooms={propertyRooms} isMobile={isMobile} />
-        <tbody>
-          {propertyRooms.map((roomType, rowIndex) => (
-            <RoomType
-              roomType={roomType}
-              currency={currency}
-              rowIndex={rowIndex}
-              isMobile={isMobile}
-              adults={adults}
-              children={children}
-              key={roomType.id}
-              residenceTime={residenceTime}
-              ratesOccupancyPerRoom={ratesOccupancyPerRoom}
-              onRatesOccupancyChange={handleRatesOccupancyChange}
-            />
-          ))}
-        </tbody>
-      </Table>
+      <div>
+        <Table className={tableClasses.join(' ')} striped bordered>
+          <RatesTableHeader residenceTime={residenceTime} propertyRooms={propertyRooms} isMobile={isMobile} />
+          <tbody>
+            {propertyRooms.map((roomType, rowIndex) => (
+              <RoomType
+                roomType={roomType}
+                currency={currency}
+                rowIndex={rowIndex}
+                isMobile={isMobile}
+                adults={adults}
+                children={children}
+                key={roomType.id}
+                residenceTime={residenceTime}
+                ratesOccupancyPerRoom={ratesOccupancyPerRoom}
+                onRatesOccupancyChange={handleRatesOccupancyChange}
+              />
+            ))}
+          </tbody>
+        </Table>
+      </div>
       <ReserveSection
         currency={currency}
         isMobile={isMobile}

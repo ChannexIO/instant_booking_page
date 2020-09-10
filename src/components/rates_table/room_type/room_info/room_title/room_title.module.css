@@ -10,6 +10,6 @@
   outline: none;
 }
 
-.title:active {
-  color: #0062cc;
+.title:active, title:hover {
+  color: var(--icon-color);
 }

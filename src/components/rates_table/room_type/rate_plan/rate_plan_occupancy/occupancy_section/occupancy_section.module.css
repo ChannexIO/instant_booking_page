@@ -6,3 +6,11 @@
 .occupancyCaption {
   margin-left: 0.25rem;
 }
+
+.iconActive {
+  color: var(--icon-color);
+}
+
+.iconInactive {
+  color: var(--info-text-color);
+}

@@ -29,7 +29,7 @@ function App() {
       }
     ],
     facilities: [
-      'facility1', 'facility2'
+      'facility1', 'facility2', 'facility3', 'facility4', 'facility5', 'facility6', 'facility7', 'facility8', 'facility9', 'facility10'
     ]
   };
 

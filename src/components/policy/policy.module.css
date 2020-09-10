@@ -9,7 +9,7 @@
 }
 
 .highlighted {
-  color: darkorange;
+  color: var(--cta-color);
 }
 
 .highlighted, .common {

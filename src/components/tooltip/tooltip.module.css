@@ -1,0 +1,13 @@
+.tooltipContainer {
+  line-height: 1rem;
+}
+
+.tooltipIcon:focus,
+.tooltipIconActive:focus
+{
+  outline: none;
+}
+
+.tooltipIconActive {
+  color: var(--icon-color);
+}

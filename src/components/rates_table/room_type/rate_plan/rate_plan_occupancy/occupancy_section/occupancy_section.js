@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserOutlined, UserAddOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 
 import styles from './occupancy_section.module.css';
 
@@ -16,9 +16,9 @@ export default function OccupancySection({ availableSpaces, selectedSpaces, clas
     .map((el, index) => {
       // TODO - replace icon with the real one
       const isIconFilled = selectedSpaces && index < selectedSpaces;
-      const Icon = isMultipleIcons && isIconFilled ? UserAddOutlined : UserOutlined;
+      const iconClass = isMultipleIcons && isIconFilled ? styles.iconActive : styles.iconInactive;
 
-      return <Icon key={index.toString()}/>;
+      return <UserOutlined className={iconClass} key={index.toString()}/>;
     });
 
   if (!availableSpaces) {

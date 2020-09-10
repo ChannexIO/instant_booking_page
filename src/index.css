@@ -2,6 +2,7 @@
   --main-text-color: #232331;
   --hightlight-text-color: #363B3D;
   --info-text-color: #939EA8;
+  --additional-info-color: #566879;
   --cta-color: #30B61C;
   --cta-color-active: #00BE0A;
   --icon-color: #4281D1;
@@ -9,6 +10,7 @@
   --button-color: #2D74CC;
   --select-color: #56697A;
   --border-color: #D1E1F2;
+  --popover-text-color: #5D687A;
   --section-background-dark-color: #F9FBFD;
   --section-background-light-color: #FFFFFF;
 }

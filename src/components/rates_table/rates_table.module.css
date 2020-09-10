@@ -1,5 +1,6 @@
 .ratesTable {
   margin: 0;
+  color: var(--highlight-text-color);
 }
 
 .tableContainer {

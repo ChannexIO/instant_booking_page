@@ -1,14 +1,18 @@
 .hotelFacilitiesContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+  width: 66%;
 }
 
 .hotelFacility {
-  width: 50%;
+  width: 33%;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 767px) {
+  .hotelFacility {
+    width: 50%;
+  }
+
   .hotelFacilitiesContainer {
     width: 100%;
   }

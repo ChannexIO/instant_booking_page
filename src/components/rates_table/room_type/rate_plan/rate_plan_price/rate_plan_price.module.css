@@ -1,20 +1,13 @@
 .ratePlanPriceContainer {
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
-.ratePlanInfoIcon {
-  color: darkslategray;
+.ratePlanTooltip {
   position: relative;
   margin-left: 0.5rem;
 }
 
-.ratePlanInfoIcon:focus {
-  outline: none;
-}
-
 .ratePlanTaxes {
   font-size: 0.8rem;
-  color: darkslategray;
 }
