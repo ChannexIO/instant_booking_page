@@ -14,6 +14,7 @@
   align-items: baseline;
 }
 
-.description {
+.description,
+.headingText {
   max-width: fit-content;
 }

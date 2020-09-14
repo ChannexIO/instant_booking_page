@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import PriceColumnTitle from 'components/rates_table/price_column_title';
 import Currency from 'components/currency';
-import Tooltip from "components/tooltip";
+import Tooltip from 'components/tooltip';
 
 import RatePlanPriceBreakdown from './rate_plan_price_breakdown';
 

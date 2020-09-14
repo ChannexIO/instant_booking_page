@@ -1,0 +1,14 @@
+.settingsWrapper {
+  margin-top: .5rem;
+}
+
+.settingsTitle {
+  color: var(--info-text-color); 
+}
+
+.settingsContainer {
+  margin-right: -0.5rem;
+  margin-top: -0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}

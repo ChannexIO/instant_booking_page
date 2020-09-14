@@ -27,7 +27,7 @@ const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...p
         <div className={styles.priceRow}>
           <span>
             <Currency currency={currency} amount={perNightPrice} />
-            `x {lengthOfStay} nights`
+            {`x ${lengthOfStay} nights`}
           </span>
           <Currency currency={currency} amount={taxFreePrice} />
         </div>

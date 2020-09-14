@@ -12,5 +12,5 @@
 
 .menu:global.dropdown-menu {
   max-height: 25rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 }

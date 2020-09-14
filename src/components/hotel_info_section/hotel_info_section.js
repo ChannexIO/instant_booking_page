@@ -1,22 +1,20 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
-import SectionTitle from 'components/section_title';
+import HotelTitle from 'components/hotel_title';
+import HotelLocation from 'components/hotel_location';
 
 import styles from './hotel_info_section.module.css';
 
 export default function HotelInfoSection({ property }) {
   const { description } = property;
-  const { t } = useTranslation();
-
-  if (!description) {
-    return null;
-  }
 
   return (
     <div>
-      <SectionTitle>{t('hotel_page:hotel_info')}</SectionTitle>
-      <pre className={styles.hotelDescription}>{description}</pre>
+      <div className={styles.hotelTitleSection}>
+        <HotelTitle property={property} />
+        <HotelLocation property={property} />
+      </div>
+      {description && <pre className={styles.hotelDescription}>{description}</pre>}
     </div>  
   );
 }

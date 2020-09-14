@@ -11,3 +11,7 @@
 .ratePlanTaxes {
   font-size: 0.8rem;
 }
+
+.ratePlanPrice {
+  white-space: nowrap;
+}

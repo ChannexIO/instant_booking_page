@@ -6,6 +6,8 @@ import setUrlParams from 'utils/set_url_params';
 
 import ChildrenAgeInput from './children_age_input';
 
+import styles from './children_age_settings.module.css';
+
 const MAX_CHILD_AGE = 17;
 
 export default function ChildrenAgeSettings({ searchParams, handleSearchChange }) {
@@ -18,7 +20,7 @@ export default function ChildrenAgeSettings({ searchParams, handleSearchChange }
       .fill(null)
       .map((el, index) => ({
         key: index,
-        value: `${index} ${t('hotel_page:years_old')}`,
+        value: index,
       }));
 
     setChildrenAgeOptions(newChildrenAgeOptions);
@@ -37,7 +39,7 @@ export default function ChildrenAgeSettings({ searchParams, handleSearchChange }
     const updatedChildrenAge = Array(children)
       .fill(null)
       .map((el, index) => {
-        return oldChildrenAge[index];// !== undefined ? oldChildrenAge[index] : el;
+        return oldChildrenAge[index];
       });
       
     setUrlParams({ childrenAge: updatedChildrenAge }, history);
@@ -54,22 +56,27 @@ export default function ChildrenAgeSettings({ searchParams, handleSearchChange }
     handleSearchChange({ ...searchParams, childrenAge: updatedChildrenAge });
   }, [searchParams, handleSearchChange, history]);
 
-  if (!Array.isArray(searchParams.childrenAge)) {
+  if (!Array.isArray(searchParams.childrenAge) || !searchParams.childrenAge.length) {
     return null;
   }
 
   return (
-    <div>
-      {searchParams.childrenAge
-        .map((value, index) => (
-          <ChildrenAgeInput
-            key={index.toString()}
-            index={index}
-            value={value}
-            options={childrenAgeOptions}
-            onChange={handleChange}
-          />
-      ))}
+    <div className={styles.settingsWrapper}>
+      <div className={styles.settingsTitle}>
+        {t('hotel_page:children_section_title')}:
+      </div>
+      <div className={styles.settingsContainer}>
+        {searchParams.childrenAge
+          .map((value, index) => (
+            <ChildrenAgeInput
+              key={index.toString()}
+              index={index}
+              value={value}
+              options={childrenAgeOptions}
+              onChange={handleChange}
+            />
+        ))}
+      </div>
     </div>
   );
 }

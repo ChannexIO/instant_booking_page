@@ -1,0 +1,14 @@
+.infoEntry {
+  color: var(--additional-info-color);
+  margin-bottom: 1.5rem;
+}
+
+.infoEntryTitle {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.infoEntryText {
+  font-size: 0.9375;
+  line-height: 1.375;
+}

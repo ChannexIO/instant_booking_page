@@ -7,7 +7,8 @@ import SearchSection from 'components/search_section';
 import HotelInfoSection from 'components/hotel_info_section';
 import HotelFacilitiesSection from 'components/hotel_facilities_section';
 import HotelRatesSection from 'components/hotel_rates_section';
-import ContactsSection from 'components/contacts_section';
+import MapSection from 'components/map_section';
+import HotelAdditionalInfoSection from 'components/hotel_additional_info_section';
 import Footer from 'components/footer';
 import SectionWrapper from 'components/section_wrapper';
 
@@ -165,13 +166,7 @@ const propertyRatesStub = [
       }
     ],
     'facilities': ['facility 1', 'facility 2'],
-    'photos': [
-      {
-        'url': 'PHOTO_URL',
-        'title': 'title',
-        'author': 'author'
-      }
-    ],
+    'photos': [],
     'ratePlans': [
       {
         'id': 'RATE_PLAN_ID',
@@ -229,7 +224,10 @@ export default function HotelPage({ property }) {
       <SectionWrapper theme="light">
         <HotelFacilitiesSection property={property} />
       </SectionWrapper>
-      <ContactsSection property={property} />
+      <MapSection property={property} />
+      <SectionWrapper theme="dark">
+        <HotelAdditionalInfoSection property={property} />
+      </SectionWrapper>
       <Footer />
     </div>
   );

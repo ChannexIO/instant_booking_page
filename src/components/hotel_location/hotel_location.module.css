@@ -3,6 +3,7 @@
   line-height: 1rem;
   font-size: 0.75rem;
   color: var(--info-text-color);
+  padding: 0.5rem 0;
 }
 
 .icon {

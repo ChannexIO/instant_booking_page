@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   min-width: 430px;
+  max-width: 430px;
   position: absolute;
   bottom: 3rem;
   background: white;
@@ -25,6 +26,7 @@
   .searchSection {
     position: relative;
     min-width: auto;
+    max-width: auto;
     left: auto;
     transform: none;
     bottom: auto;

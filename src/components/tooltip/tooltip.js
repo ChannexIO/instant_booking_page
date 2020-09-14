@@ -9,20 +9,25 @@ export default function PoliciesInfo({ className, children }) {
   const [target, setTarget] = useState(null);
   const ref = useRef();
 
-  const handleClick = (event) => {
+  const handleShow = (event) => {
     setIsShown(!isShown);
     setTarget(event.target);
-  }
+  };
 
   const handleHide = () => {
     setIsShown(false);
-  }
+  };
 
   const iconClass = isShown ? styles.tooltipIconActive : styles.tooltipIcon;
 
   return (
-    <div className={[styles.tooltipContainer, className].join(" ")} ref={ref}>
-      <InfoCircleOutlined className={iconClass} onClick={handleClick}/>
+    <div className={[styles.tooltipContainer, className].join(' ')} ref={ref}>
+      <InfoCircleOutlined
+        className={iconClass}
+        onMouseEnter={handleShow}
+        onMouseLeave={handleHide}
+        onClick={handleShow}
+      />
 
       <Overlay
         rootClose

@@ -22,14 +22,14 @@ export default function OccupancySettings({ searchParams, isMobile, handleSearch
     const newAdultsOptions = Array(MAX_ADULTS_AMOUNT)
       .fill(null)
       .map((val, index) => ({
-        value: `${index + 1} ${t('hotel_page:adults')}`,
+        value: index + 1,
         key: index + 1,
       }));
 
     const newChildrenOptions = Array(MAX_CHILDREN_AMOUNT)
       .fill(null)
       .map((value, index) => ({
-        value: `${index} ${t('hotel_page:children')}`,
+        value: index,
         key: index,
       }));
       

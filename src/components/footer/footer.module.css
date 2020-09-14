@@ -7,5 +7,5 @@
 }
 
 .footerWrapper {
-  background: #dee2e6;
+  background: var(--section-background-light-color);
 }

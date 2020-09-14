@@ -31,7 +31,7 @@ export default function ReseveSectionMissingSpaces({ missingSpaces }) {
     <Alert variant="danger" className={styles.alert}>
       <Alert.Heading className={styles.heading}>
         <InfoCircleFilled className={styles.icon} />
-        <div>{message}</div>
+        <div className={styles.headingText}>{message}</div>
       </Alert.Heading>
       <div className={styles.description}>
         {t('rates_table:missing_spaces_description')}

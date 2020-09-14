@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 
-import ReserveSectionDetails from './reserve_section_details';
 import ReserveSectionTotal from './reserve_section_total';
 import ReserveSectionMissingSpaces from './reserve_section_missing_spaces';
 
@@ -105,7 +104,6 @@ export default function ReserveSection(props) {
         >
           {buttonText}
         </Button>
-        {!isMobile && <ReserveSectionDetails />}
       </div>
     </div>
   );

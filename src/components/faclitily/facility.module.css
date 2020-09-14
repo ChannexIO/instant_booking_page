@@ -6,11 +6,13 @@
   white-space: nowrap;
 }
 
-.facilityIcon {
-  color: var(--icon-color);
-  margin-right: 0.5rem;
+.facilityIcon span {
+  width: 0.25rem;
+  height: 0.25rem;
+  background-color: var(--icon-color);
 }
 
-.facilityTitle {
-
+.facilityIcon {
+  display: flex;
+  margin-right: 0.25rem;
 }
