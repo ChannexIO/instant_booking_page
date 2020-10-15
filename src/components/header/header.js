@@ -7,7 +7,7 @@ import HotelTitle from 'components/hotel_title';
 
 import styles from './header.module.css';
 
-export default function Header({ property, searchParams, handleSearchChange }) {
+export default function Header({ property }) {
   return (
     <Row className={styles.header}>
       <Col className={styles.titleSection} xs={12} md={9}>
@@ -18,7 +18,7 @@ export default function Header({ property, searchParams, handleSearchChange }) {
       <Col md={3}>
         <div className={styles.selectSection}>
           <LocaleSelect />
-          <CurrencySelect searchParams={searchParams} handleSearchChange={handleSearchChange} />
+          <CurrencySelect />
         </div>
       </Col>
     </Row>

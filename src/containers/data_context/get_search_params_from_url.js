@@ -5,11 +5,11 @@ import getUrlParams from 'utils/get_url_params';
 import { DEFAULT_CURRENCY } from 'constants/defaults';
 import { DATE_FORMAT } from 'constants/formats';
 
-export default function initSearchParamsFromUrl(callback) {
+export default function getSearchParamsFromUrl() {
   const {
     currency = DEFAULT_CURRENCY,
-    startDate,
-    endDate,
+    checkinDate,
+    checkoutDate,
     adults,
     children,
     childrenAge,
@@ -17,15 +17,15 @@ export default function initSearchParamsFromUrl(callback) {
   
   const optionalParams = {};
 
-  const parsedStartDate = moment(startDate, DATE_FORMAT);
-  const parsedEndDate = moment(endDate, DATE_FORMAT);
+  const parsedStartDate = moment(checkinDate, DATE_FORMAT);
+  const parsedEndDate = moment(checkoutDate, DATE_FORMAT);
 
-  if (startDate && parsedStartDate.isValid()) {
-    optionalParams.startDate = parsedStartDate;
+  if (checkinDate && parsedStartDate.isValid()) {
+    optionalParams.checkinDate = parsedStartDate;
   }
 
-  if (endDate && parsedEndDate.isValid()) {
-    optionalParams.endDate = parsedEndDate;
+  if (checkoutDate && parsedEndDate.isValid()) {
+    optionalParams.checkoutDate = parsedEndDate;
   }
   if (childrenAge) {
     const processedChildrenAge = childrenAge.split(',')
@@ -42,5 +42,5 @@ export default function initSearchParamsFromUrl(callback) {
     optionalParams.adults = Number(adults);
   }
 
-  callback({ ...optionalParams, currency });
+  return ({ ...optionalParams, currency });
 }

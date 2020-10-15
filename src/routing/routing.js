@@ -1,17 +1,15 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import HotelPage from 'pages/hotel_page';
 
-export default function Routing({ property }) {
+export default function Routing() {
   return (
-    <BrowserRouter>
-      <Switch>
-        {/* <Route path="/:hotel_id" exact> */}
-        <Route path="/">
-          <HotelPage property={property} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route path="/:channelId" exact>
+      {/* <Route path="/:"> */}
+        <HotelPage />
+      </Route>
+    </Switch>
   );
 }

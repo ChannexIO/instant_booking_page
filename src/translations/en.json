@@ -2,6 +2,9 @@
   "general": {
     "locale": "English"
   },
+  "global": {
+    "loading": "Loading..."
+  },
   "hotel_page": {
     "checkin_placeholder": "Check-in",
     "checkout_placeholder": "Check-out",

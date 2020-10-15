@@ -14,7 +14,7 @@ const TAX_DECIMAL_PLACES = 2;
 export default function RatePlanPrice({ ratePlan, isMobile, residenceTime, currency }) {
   const { t } = useTranslation();
 
-  const { price, taxes } = ratePlan;
+  const { totalPrice, taxes } = ratePlan;
     const additionalTaxesAmount = taxes
     .filter((tax) => !tax.inclusive)
     .reduce((acc, tax) => acc + Number(tax.amount), 0)
@@ -26,7 +26,7 @@ export default function RatePlanPrice({ ratePlan, isMobile, residenceTime, curre
       {isMobile && <PriceColumnTitle residenceTime={residenceTime} />}
       <div className={styles.ratePlanPriceContainer}>
         <div className={styles.ratePlanPrice}>
-          <Currency currency={currency} amount={price} />
+          <Currency currency={currency} amount={totalPrice} />
         </div>
         <Tooltip className={styles.ratePlanTooltip}>
           <RatePlanPriceBreakdown ratePlan={ratePlan} currency={currency} />

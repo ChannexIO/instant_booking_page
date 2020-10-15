@@ -6,10 +6,8 @@ import BedOptions from './bed_options';
 import RoomFacilities from './room_facilities';
 
 export default function RoomInfo({ roomType, isMobile }) {
-  const { title, ratePlans, availability, bedOptions, facilities } = roomType;
-  const ratesNumber = !isMobile && ratePlans ? ratePlans.length : 1;
-
-
+  const { ratePlans, availability, bedOptions, facilities } = roomType;
+  const ratesNumber = !isMobile && ratePlans.length ? ratePlans.length : 1;
 
   return (
     <td rowSpan={ratesNumber}>
