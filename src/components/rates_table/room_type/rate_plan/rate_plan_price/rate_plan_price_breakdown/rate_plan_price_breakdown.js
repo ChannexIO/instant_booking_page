@@ -10,9 +10,9 @@ const DECIMAL_PLACES = 2;
 
 const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...popoverProps }, ref) => {
   const { t } = useTranslation();
-  const { price, taxFreePrice, lengthOfStay, taxes } = ratePlan;
+  const { totalPrice, netPrice, lengthOfStay, taxes } = ratePlan;
 
-  const perNightPrice = (taxFreePrice / lengthOfStay).toFixed(DECIMAL_PLACES);
+  const perNightPrice = (Number(netPrice) / lengthOfStay).toFixed(DECIMAL_PLACES);
   const popoverClassName = [className, styles.popover].join(' ');
 
   return (
@@ -27,9 +27,9 @@ const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...p
         <div className={styles.priceRow}>
           <span>
             <Currency currency={currency} amount={perNightPrice} />
-            {`x ${lengthOfStay} nights`}
+            {` x ${lengthOfStay} nights`}
           </span>
-          <Currency currency={currency} amount={taxFreePrice} />
+          <Currency currency={currency} amount={netPrice} />
         </div>
         {taxes.map((tax) => (
           <div className={styles.priceRow} key={tax.title}>
@@ -43,7 +43,7 @@ const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...p
         <Currency
           className={styles.totalPrice}
           currency={currency}
-          amount={price}
+          amount={totalPrice}
         />
       </Popover.Content>
     </Popover>

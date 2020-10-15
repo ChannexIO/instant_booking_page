@@ -6,7 +6,7 @@ import RoomInfo from './room_info';
 import styles from './room_type.module.css';
 
 export default function RoomType({ roomType, currency, rowIndex, isMobile, ratesOccupancyPerRoom, adults, children, residenceTime, onRatesOccupancyChange }) {
-  const [availableSpaces, setAvailableSpaces] = useState(0);
+  const [occupiedSpaces, setOccupiedSpaces] = useState(0);
   const [sortedRates, setSortedRates] = useState([]);
 
   const { ratePlans, availability, id } = roomType;
@@ -17,10 +17,9 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
   };
 
   useEffect(function updateAvailability() {
-    const occupiedSpaces = Object.values(roomRates).reduce((a, b) => a + b, 0);
-    const emptySpaces = availability - occupiedSpaces;
+    const updatedOccupiedSpaces = Object.values(roomRates).reduce((a, b) => a + b, 0);
 
-    setAvailableSpaces(emptySpaces);
+    setOccupiedSpaces(updatedOccupiedSpaces);
   }, [availability, roomRates]);
 
   useEffect(function updateRatesPlans() {
@@ -41,7 +40,7 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
     setSortedRates([...ratesByOccupancyMatch]);
   }, [ratePlans, adults, children]);
 
-  if (!Array.isArray(ratePlans)) {
+  if (!sortedRates.length) {
     return (
       <tr key={id}>
         <RoomInfo roomType={roomType} rowIndex={rowIndex} />
@@ -49,7 +48,6 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
     );
   }
 
-  console.log(sortedRates);
   return (
     <>
       {sortedRates.map((ratePlan, index, array) => {
@@ -61,7 +59,7 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
             <RatePlan
               ratePlan={ratePlan}
               currency={currency}
-              availableSpaces={availableSpaces}
+              occupiedSpaces={occupiedSpaces}
               ratesOccupancy={roomRates}
               onOccupancyChange={handleRatesOccupancyChange}
               residenceTime={residenceTime}

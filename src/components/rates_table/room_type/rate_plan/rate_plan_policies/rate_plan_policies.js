@@ -12,7 +12,7 @@ export default function RatePlanPolicies({ ratePlan, currency }) {
   return (
     <div className={styles.policyContainer}>
       <PoliciesInfo ratePlan={ratePlan} />
-      <MealPolicy mealPolicy={ratePlan.mealPolicy} currency={currency} />
+      {/* <MealPolicy mealPolicy={ratePlan.mealPolicy} currency={currency} /> //TODO - fix when rate.mealType added */}
       <CancellationPolicy cancellationPolicy={ratePlan.cancellationPolicy} />
       <PaymentPolicy paymentPolicy={ratePlan.paymentPolicy} />
     </div>

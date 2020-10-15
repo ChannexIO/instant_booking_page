@@ -44,7 +44,7 @@ export default function ReserveSection(props) {
     Object.keys(ratesOccupancyPerRoom).forEach((roomId) => {
       Object.keys(ratesOccupancyPerRoom[roomId]).forEach((rateId) => {
         const selectedRateAmount = ratesOccupancyPerRoom[roomId][rateId];
-        const ratePrice = Number(propertyRoomsById[roomId].ratePlans[rateId].price); 
+        const ratePrice = Number(propertyRoomsById[roomId].ratePlans[rateId].totalPrice); 
 
         newTotalPrice += ratePrice * selectedRateAmount;
         newOccupiedRoomsNumber += selectedRateAmount;

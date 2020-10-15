@@ -2,6 +2,10 @@
   width: 30%;
 }
 
+.roomTypeColumnWide {
+  width: 100%;
+}
+
 .policiesColumn {
   width: 20%;
 }

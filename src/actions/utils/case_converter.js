@@ -6,16 +6,12 @@ const convertToCamelCase = (varName) => {
   return varName.replace(/_[a-z]/g, (charWithUnderscore) => `${charWithUnderscore[1].toUpperCase()}`);
 };
 
-const convertDataCase = (converter, data) => {
-  if (!data || typeof data !== 'object') {
-    return data;
-  }
+const convertArrayEntries = (array, converter) => {
+  return array.map((el) => convertDataCase(converter, el));
+}; 
 
-  if (Array.isArray(data)) {
-    return data.map((el) => convertDataCase(converter, el));
-  }
-
-  const updatedEntries = Object.entries(data)
+const convertObjectEntries = (object, converter) => {
+  const updatedEntries = Object.entries(object)
     .map(([name, value]) => {
       const updatedName = converter(name);
       const updatedValue = convertDataCase(converter, value);
@@ -24,6 +20,18 @@ const convertDataCase = (converter, data) => {
     });
 
   return Object.fromEntries(updatedEntries);
+};
+
+const convertDataCase = (converter, data) => {
+  if (!data || typeof data !== 'object') {
+    return data;
+  }
+
+  if (Array.isArray(data)) {
+    return convertArrayEntries(data, converter);
+  }
+
+  return convertObjectEntries(data, converter);
 };
 
 export default {

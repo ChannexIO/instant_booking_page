@@ -9,7 +9,8 @@ import styles from './rates_table_header.module.css';
 export default function RatesTableHeader({ residenceTime, propertyRooms, isMobile }) {
   const { t } = useTranslation();
 
-  const isRatesPresent = propertyRooms.every((room) => Array.isArray(room.ratePlans));
+  const isRatesPresent = propertyRooms.some((room) => Array.isArray(room.ratePlans) && room.ratePlans.length > 0);
+  const roomTypeColumnClass = isRatesPresent ? styles.roomTypeColumn : styles.roomTypeColumnWide;
 
   if (isMobile) {
     return null;
@@ -18,7 +19,7 @@ export default function RatesTableHeader({ residenceTime, propertyRooms, isMobil
   return (
     <thead>
       <tr className={styles.tableHeaderWrapper}>
-        <RatesTableHeaderColumn  className={styles.roomTypeColumn}>{t('rates_table:room_type')}</RatesTableHeaderColumn>
+        <RatesTableHeaderColumn  className={roomTypeColumnClass}>{t('rates_table:room_type')}</RatesTableHeaderColumn>
         {isRatesPresent && <>
           <RatesTableHeaderColumn>{t('rates_table:sleeps')}</RatesTableHeaderColumn>
           <RatesTableHeaderColumn><PriceColumnTitle residenceTime={residenceTime} /></RatesTableHeaderColumn>
