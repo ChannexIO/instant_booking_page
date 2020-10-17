@@ -8,8 +8,8 @@ import RatesTable from 'components/rates_table';
 import { DataContext } from 'containers/data_context';
 
 export default function HotelRatesSection({ property, propertyRooms, loading }) {
-  const { searchParams } = useContext(DataContext);
-  const { currency, checkinDate, checkoutDate, adults, children } = searchParams;
+  const { params } = useContext(DataContext);
+  const { currency, checkinDate, checkoutDate, adults, children } = params;
   const { t } = useTranslation();
   const isEnteredDatesValid = checkinDate && checkoutDate && moment(checkinDate).isValid() && moment(checkoutDate).isValid();
   const residenceTime = isEnteredDatesValid ? checkoutDate.diff(checkinDate, 'days') : null;

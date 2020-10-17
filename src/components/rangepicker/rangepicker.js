@@ -7,7 +7,7 @@ import { useMedia } from 'react-media';
 import { DataContext } from 'containers/data_context';
 
 import MEDIA_QUERIES from 'constants/media_queries';
-import { DATE_FORMAT } from 'constants/formats';
+import { DATE_UI_FORMAT, DATE_FORMAT } from 'constants/formats';
 
 import styles from './rangepicker.module.css';
 
@@ -63,6 +63,7 @@ export default function RangePicker(props) {
   return (
     <div className={styles.rangepicker}>
       <DateRangePicker
+        displayFormat={DATE_UI_FORMAT}
         startDate={checkinDate}
         endDate={checkoutDate}
         startDatePlaceholderText={checkinDatePlaceholder}

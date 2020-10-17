@@ -11,7 +11,7 @@ import styles from './occupancy_settings.module.css';
 const MAX_ADULTS_AMOUNT = 30;
 const MAX_CHILDREN_AMOUNT = 11;
 
-export default function OccupancySettings({ searchParams, isMobile, handleSearchChange }) {
+export default function OccupancySettings({ bookingParams, isMobile, handleSearchChange }) {
   const [adultsOptions, setAdultsOptions] = useState([]);
   const [childrenOptions, setChildrenOptions] = useState([]);
   const inputLayout = isMobile ? 'vertical' : 'horizontal';
@@ -38,9 +38,9 @@ export default function OccupancySettings({ searchParams, isMobile, handleSearch
   }, [t]);
 
   const handleChange = useCallback((value, name) => {
-    handleSearchChange({ ...searchParams, [name]: value });
+    handleSearchChange({ ...bookingParams, [name]: value });
     setUrlParams({ [name]: value }, history);
-  }, [handleSearchChange, searchParams, history]);
+  }, [handleSearchChange, bookingParams, history]);
 
   return (
     <div className={styles.occupancySettingsContainer}>
@@ -49,7 +49,7 @@ export default function OccupancySettings({ searchParams, isMobile, handleSearch
           name="adults"
           label={t('hotel_page:adults_label')}
           placeholder={t('hotel_page:adults_placeholder')}
-          value={searchParams.adults}
+          value={bookingParams.adults}
           layout={inputLayout}
           options={adultsOptions}
           onChange={handleChange}
@@ -60,7 +60,7 @@ export default function OccupancySettings({ searchParams, isMobile, handleSearch
           name="children"
           label={t('hotel_page:children_label')}
           placeholder={t('hotel_page:children_placeholder')}
-          value={searchParams.children}
+          value={bookingParams.children}
           layout={inputLayout}
           options={childrenOptions}
           onChange={handleChange}

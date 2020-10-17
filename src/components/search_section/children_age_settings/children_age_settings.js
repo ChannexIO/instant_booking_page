@@ -10,7 +10,7 @@ import styles from './children_age_settings.module.css';
 
 const MAX_CHILD_AGE = 17;
 
-export default function ChildrenAgeSettings({ searchParams, handleSearchChange }) {
+export default function ChildrenAgeSettings({ bookingParams, handleSearchChange }) {
   const [childrenAgeOptions, setChildrenAgeOptions] = useState([]);
   const { t } = useTranslation();
   const history = useHistory();
@@ -27,7 +27,7 @@ export default function ChildrenAgeSettings({ searchParams, handleSearchChange }
   }, [t]);
 
   useEffect(function handleChildrenAmountChange() {
-    const { children, childrenAge } = searchParams;
+    const { children, childrenAge } = bookingParams;
     const isChildrenArrayUpToDate = Array.isArray(childrenAge) && children === childrenAge.length;
     const isChildrenAmountUnset = children === undefined;
 
@@ -43,20 +43,20 @@ export default function ChildrenAgeSettings({ searchParams, handleSearchChange }
       });
       
     setUrlParams({ childrenAge: updatedChildrenAge }, history);
-    handleSearchChange({ ...searchParams, childrenAge: updatedChildrenAge });
-  }, [searchParams, history, handleSearchChange]);
+    handleSearchChange({ ...bookingParams, childrenAge: updatedChildrenAge });
+  }, [bookingParams, history, handleSearchChange]);
 
   const handleChange = useCallback((value, index) => {
-    const { childrenAge = [] } = searchParams;
+    const { childrenAge = [] } = bookingParams;
 
     const updatedChildrenAge = [...childrenAge];
     updatedChildrenAge[index] = value;
 
     setUrlParams({ childrenAge: updatedChildrenAge }, history);
-    handleSearchChange({ ...searchParams, childrenAge: updatedChildrenAge });
-  }, [searchParams, handleSearchChange, history]);
+    handleSearchChange({ ...bookingParams, childrenAge: updatedChildrenAge });
+  }, [bookingParams, handleSearchChange, history]);
 
-  if (!Array.isArray(searchParams.childrenAge) || !searchParams.childrenAge.length) {
+  if (!Array.isArray(bookingParams.childrenAge) || !bookingParams.childrenAge.length) {
     return null;
   }
 
@@ -66,7 +66,7 @@ export default function ChildrenAgeSettings({ searchParams, handleSearchChange }
         {t('hotel_page:children_section_title')}:
       </div>
       <div className={styles.settingsContainer}>
-        {searchParams.childrenAge
+        {bookingParams.childrenAge
           .map((value, index) => (
             <ChildrenAgeInput
               key={index.toString()}
