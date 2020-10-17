@@ -7,7 +7,7 @@ import RangePicker from 'components/rangepicker';
 import setUrlParams from 'utils/set_url_params';
 import dateFormatter from 'utils/date_formatter';
 
-export default function DateSelect({ searchParams, handleSearchChange }) {
+export default function DateSelect({ bookingParams, handleSearchChange }) {
   const { t } = useTranslation();
   const history = useHistory();
 
@@ -18,15 +18,15 @@ export default function DateSelect({ searchParams, handleSearchChange }) {
     };
 
     setUrlParams(formattedDates, history);
-    handleSearchChange({ ...searchParams, checkinDate: startDate, checkoutDate: endDate });
-  }, [history, searchParams, handleSearchChange]);
+    handleSearchChange({ ...bookingParams, checkinDate: startDate, checkoutDate: endDate });
+  }, [history, bookingParams, handleSearchChange]);
 
   return (
     <RangePicker
       checkinDatePlaceholder={t('hotel_page:checkin_placeholder')}
       checkoutDatePlaceholder={t('hotel_page:checkout_placeholder')}
-      checkinDate={searchParams.checkinDate}
-      checkoutDate={searchParams.checkoutDate}
+      checkinDate={bookingParams.checkinDate}
+      checkoutDate={bookingParams.checkoutDate}
       name="search_dates"
       openDirection="up"
       onDatesChange={handleDatesChange}

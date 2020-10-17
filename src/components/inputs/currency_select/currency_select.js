@@ -11,13 +11,12 @@ import setUrlParams from 'utils/set_url_params';
 export default function CurrencySelect() {
   const [currencyOptions, setCurrencyOptions] = useState([]); 
   const history = useHistory();
-  const { searchParams } = useContext(DataContext);
-  const { setSearchParams } = useContext(ActionsContext);
-
+  const { params } = useContext(DataContext);
+  const { setBookingParams } = useContext(ActionsContext);
 
   const handleCurrencyChange = (currency) => {
     setUrlParams({ currency }, history);
-    setSearchParams({ ...searchParams, currency });
+    setBookingParams({ ...params, currency });
   };
 
   useEffect(function initSelectorState() {
@@ -31,8 +30,8 @@ export default function CurrencySelect() {
   }, []);
 
   return (
-    <Select value={searchParams.currency} options={currencyOptions} onChange={handleCurrencyChange}>
-      {searchParams.currency}
+    <Select value={params.currency} options={currencyOptions} onChange={handleCurrencyChange}>
+      {params.currency}
     </Select>
   );
 }
