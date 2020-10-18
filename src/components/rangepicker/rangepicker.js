@@ -58,7 +58,7 @@ export default function RangePicker(props) {
     }
 
     return false;
-  }, [closedDates.data, focusedInput, getIsClosedToArrival, getIsClosedToDeparture]);
+  }, [closedDates, focusedInput, getIsClosedToArrival, getIsClosedToDeparture]);
 
   return (
     <div className={styles.rangepicker}>
