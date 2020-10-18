@@ -1,64 +1,72 @@
-import caseConverter from './case_converter';
-import attributesExtractor from './attributes_extractor';
-import stringifyArguments from './stringify_arguments';
+import caseConverter from "./case_converter";
+import attributesExtractor from "./attributes_extractor";
+import stringifyArguments from "./stringify_arguments";
 
 const formatApiResponse = async (payload) => {
   const parsedPayload = await payload.json();
   const convertedPayload = caseConverter.convertToCamelCase(parsedPayload);
 
   return convertedPayload;
-};
+}
 
 const handleApiResponse = async (payload) => {
   const formattedPayload = await formatApiResponse(payload);
 
   return attributesExtractor(formattedPayload.data);
-};
+}
 
 const handleApiError = async (payload) => {
   const formattedPayload = await formatApiResponse(payload);
 
   throw formattedPayload.errors;
-};
+}
 
-const getUrl = (path, params, useUrlParams) => {
-  const urlParams = useUrlParams ? stringifyArguments(params) : '';
+const getUrl = (path, params) => {
+  const urlParams = stringifyArguments(params);
 
   return `${process.env.REACT_APP_API_URL}${path}${urlParams}`;
-};
+}
 
-const getRequestOptions = (method, params, useUrlParams) => {
+const getRequestOptions = (method, params) => {
   const requestOptions = { method };
 
-  if (!useUrlParams) {
+  if (params) {
     requestOptions.body = JSON.stringify(params);
   }
 
   return requestOptions;
+}
+
+const requestWithBodyParams = (method) => (path, payload, queryParams) => { 
+  return request(method, path, payload, queryParams);
+
 };
 
-const request = (method, useUrlParams) => (path, payload) => { 
+const requestWithoutBodyParams = (method) => (path, queryParams) => {
+  return request(method, path, null, queryParams);
+}
+
+const request = async (method, path, payload, queryParams) => {
   const formattedPayload = caseConverter.convertToSnakeCase(payload);
+  const formattedQueryParams = caseConverter.convertToSnakeCase(queryParams);
 
-  const url = getUrl(path, formattedPayload, useUrlParams);
-  const requestOptions = getRequestOptions(method, formattedPayload, useUrlParams);
+  const url = getUrl(path, formattedQueryParams);
+  const requestOptions = getRequestOptions(method, formattedPayload);
 
-  return fetch(url, requestOptions)
-    .then(handleApiResponse)
-    .catch(handleApiError);
-};
-
-const requestWithUrlParams = (method) => {
-  const useUrlParams = true;
-
-  return request(method, useUrlParams);
-};
+  try {
+    const response = await fetch(url, requestOptions);
+    
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiError(error);
+  }
+} 
 
 export default {
-  get: requestWithUrlParams('GET'),
-  delete: requestWithUrlParams('DELETE'),
-  post: request('POST'),
-  put: request('PUT'),
-  patch: request('PATCH'),
-  options: request('OPTIONS'),
+  get: requestWithoutBodyParams("GET"),
+  delete: requestWithoutBodyParams("DELETE"),
+  post: requestWithBodyParams("POST"),
+  put: requestWithBodyParams("PUT"),
+  patch: requestWithBodyParams("PATCH"),
+  options: requestWithBodyParams("OPTIONS"),
 };

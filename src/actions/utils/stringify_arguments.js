@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-function prepareKey(key, prefix) {
+const prepareKey = (key, prefix) => {
   let output;
 
   if (prefix === null) {
@@ -12,7 +12,7 @@ function prepareKey(key, prefix) {
   return output;
 }
 
-function parseArgs(args, prefix = null) {
+const convertArgsToString = (args, prefix = null) => {
   return Object
     .keys(args)
     .reduce((acc, key) => {
@@ -22,35 +22,43 @@ function parseArgs(args, prefix = null) {
     .join('&');
 }
 
-function prepareArgument(args, key, prefix) {
-  let output;
+const stringifyArgumentValue = (argValue) => {
+  const argType = typeof argValue;
 
-  switch (typeof args[key]) {
-    case 'object':
-      if (args[key] === null) {
-        output = `${prepareKey(key, prefix)}=${encodeURIComponent(args[key])}`;
-      } else if (typeof args[key].length === 'undefined') {
-        output = parseArgs(args[key], prepareKey(key, prefix));
-      } else {
-        output = `${prepareKey(key, prefix)}=${args[key].map(encodeURIComponent).join(',')}`;
-      }
-      break;
-
-    default:
-      output = `${prepareKey(key, prefix)}=${encodeURIComponent(args[key])}`;
-      break;
+  if (argType !== "object" || argValue === null) {
+    return encodeURIComponent(argValue);
   }
 
-  return output;
+  if (Array.isArray(argValue)) {
+    return argValue.map(encodeURIComponent).join(',')
+  }
 }
 
-function stringifyArguments(args) {
+const prepareArgument = (args, key, prefix) => {
+  const argValue = args[key];
+  const isValueIsObject = checkIsPlainObject(argValue);
+
+  if (isValueIsObject) {
+    return convertArgsToString(args[key], prepareKey(key, prefix));
+  }
+
+  const stringifiedArgValue = stringifyArgumentValue(argValue);
+
+  return `${prepareKey(key, prefix)}=${stringifiedArgValue}`;
+}
+
+const checkIsPlainObject = (value) => {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+const stringifyArguments = (args) => {
   let query;
+  const isArgsPlainObject = checkIsPlainObject(args);  
 
-  if (args && typeof args === 'object' && typeof args.length === 'undefined') {
-    const parsedArgs = parseArgs(args);
+  if (isArgsPlainObject) {
+    const stringifiedArgs = convertArgsToString(args);
 
-    query = parsedArgs.length > 1 ? `?${parseArgs(args)}` : '';
+    query = stringifiedArgs.length > 1 ? `?${convertArgsToString(args)}` : '';
   } else {
     query = '';
   }

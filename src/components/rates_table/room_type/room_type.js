@@ -5,12 +5,14 @@ import RoomInfo from './room_info';
 
 import styles from './room_type.module.css';
 
+const DEFAULT_ROOM_RATES = {};
+
 export default function RoomType({ roomType, currency, rowIndex, isMobile, ratesOccupancyPerRoom, adults, children, residenceTime, onRatesOccupancyChange }) {
   const [occupiedSpaces, setOccupiedSpaces] = useState(0);
   const [sortedRates, setSortedRates] = useState([]);
 
   const { ratePlans, availability, id } = roomType;
-  const { [id]: roomRates = {} } = ratesOccupancyPerRoom;
+  const { [id]: roomRates = DEFAULT_ROOM_RATES } = ratesOccupancyPerRoom;
   
   const handleRatesOccupancyChange = (updatedRatesOccupancy) => {
     onRatesOccupancyChange({ ...ratesOccupancyPerRoom, [id]: updatedRatesOccupancy });
