@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import RatePlan from './rate_plan';
 import RoomInfo from './room_info';
@@ -11,9 +11,9 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
   const [occupiedSpaces, setOccupiedSpaces] = useState(0);
   const [sortedRates, setSortedRates] = useState([]);
 
-  const { ratePlans, availability, id } = roomType;
+  const { ratePlans, id } = roomType;
   const { [id]: roomRates = DEFAULT_ROOM_RATES } = ratesOccupancyPerRoom;
-  
+
   const handleRatesOccupancyChange = (updatedRatesOccupancy) => {
     onRatesOccupancyChange({ ...ratesOccupancyPerRoom, [id]: updatedRatesOccupancy });
   };
@@ -22,14 +22,14 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
     const updatedOccupiedSpaces = Object.values(roomRates).reduce((a, b) => a + b, 0);
 
     setOccupiedSpaces(updatedOccupiedSpaces);
-  }, [availability, roomRates]);
+  }, [roomRates]);
 
   useEffect(function updateRatesPlans() {
     if (!Array.isArray(ratePlans)) {
       return;
     }
 
-    const ratesByOccupancyMatch = ratePlans.sort((a,b) => {
+    const ratesByOccupancyMatch = ratePlans.sort((a, b) => {
       const aOccupancyMatchRating = Number(a.occupancy.children === children)
         + Number(a.occupancy.adults === adults);
 

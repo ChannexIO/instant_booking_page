@@ -7,7 +7,6 @@ import Policy from 'components/policy';
 export default function CancellationPolicy({ cancellationPolicy }) {
   const { t } = useTranslation();
 
-
   // TODO - update implementation as format will be set
   return (
     <Policy

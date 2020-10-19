@@ -8,12 +8,14 @@ export default function SearchButton({ onClick }) {
   const { t } = useTranslation();
 
   return (
-    <Button
-      variant="primary"
-      className={styles.button}
-      onClick={onClick}
-    >
-      {t('hotel_page:search')}
-    </Button>
+    <div className={styles.buttonContainer}>
+      <Button
+        variant="primary"
+        className={styles.button}
+        onClick={onClick}
+      >
+        {t('hotel_page:search')}
+      </Button>
+    </div>
   );
 }

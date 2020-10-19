@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ export default function ChildrenAgeSettings({ bookingParams, handleSearchChange 
       .map((el, index) => {
         return oldChildrenAge[index];
       });
-      
+
     setUrlParams({ childrenAge: updatedChildrenAge }, history);
     handleSearchChange({ ...bookingParams, childrenAge: updatedChildrenAge });
   }, [bookingParams, history, handleSearchChange]);
@@ -75,7 +75,7 @@ export default function ChildrenAgeSettings({ bookingParams, handleSearchChange 
               options={childrenAgeOptions}
               onChange={handleChange}
             />
-        ))}
+          ))}
       </div>
     </div>
   );

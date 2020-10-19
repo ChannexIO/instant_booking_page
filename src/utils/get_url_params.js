@@ -3,8 +3,8 @@ export default () => {
   const searchParams = searchString.split('&');
 
   return searchParams.reduce((acc, param) => {
-    const [ name, value = true ] = param.split('=');
+    const [name, value = true] = param.split('=');
 
-    return {...acc, [name]: value };
+    return { ...acc, [name]: value };
   }, {});
 };

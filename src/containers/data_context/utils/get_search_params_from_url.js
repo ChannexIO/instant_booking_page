@@ -1,9 +1,8 @@
 import moment from 'moment';
 
-import getUrlParams from 'utils/get_url_params';
-
 import { DEFAULT_CURRENCY } from 'constants/defaults';
 import { DATE_FORMAT } from 'constants/formats';
+import getUrlParams from 'utils/get_url_params';
 
 export default function getSearchParamsFromUrl() {
   const {
@@ -14,7 +13,7 @@ export default function getSearchParamsFromUrl() {
     children,
     childrenAge,
   } = getUrlParams();
-  
+
   const optionalParams = {};
 
   const parsedStartDate = moment(checkinDate, DATE_FORMAT);
@@ -29,7 +28,7 @@ export default function getSearchParamsFromUrl() {
   }
   if (childrenAge) {
     const processedChildrenAge = childrenAge.split(',')
-      .map((val) => val ? Number(val) : null);
+      .map((val) => (val ? Number(val) : null));
 
     optionalParams.childrenAge = processedChildrenAge;
   }

@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
@@ -32,7 +32,7 @@ export default function OccupancySettings({ bookingParams, isMobile, handleSearc
         value: index,
         key: index,
       }));
-      
+
     setAdultsOptions(newAdultsOptions);
     setChildrenOptions(newChildrenOptions);
   }, [t]);

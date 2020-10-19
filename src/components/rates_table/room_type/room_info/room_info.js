@@ -1,9 +1,9 @@
 import React from 'react';
 
-import RoomTitle from './room_title';
-import RoomAvailability from './room_availability';
 import BedOptions from './bed_options';
+import RoomAvailability from './room_availability';
 import RoomFacilities from './room_facilities';
+import RoomTitle from './room_title';
 
 export default function RoomInfo({ roomType, isMobile }) {
   const { ratePlans, availability, bedOptions, facilities } = roomType;

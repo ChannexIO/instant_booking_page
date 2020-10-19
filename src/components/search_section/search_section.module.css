@@ -17,11 +17,6 @@
   display: flex;
 }
 
-.buttonSection {
-  min-width: 6rem;
-  margin-left: 1rem;
-}
-
 @media screen and (max-width: 575px) {
   .searchSection {
     position: relative;
@@ -34,11 +29,5 @@
 
   .searchRow {
     flex-direction: column;
-  }
-
-  .buttonSection {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 1rem;
   }
 }

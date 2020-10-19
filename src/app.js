@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Routing from 'routing';
 
 import { DataContextProvider } from 'containers/data_context';
+
+import Routing from 'routing';
 
 function App() {
   return (

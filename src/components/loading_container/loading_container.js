@@ -7,18 +7,20 @@ import styles from './loading_container.module.css';
 export default function LoadingContainer({ loading, children }) {
   const { t } = useTranslation();
 
+  if (!loading) {
+    return children;
+  }
+
   return (
     <div className={styles.container}>
-      {loading && (
-        <div className={styles.overlay}>
-          <div className={styles.overlayContent}>
-            <Spinner animation="border" size="xl"/>
-            <div className={styles.overlayText}>
-              {t('global:loading')}
-            </div>
+      <div className={styles.overlay}>
+        <div className={styles.overlayContent}>
+          <Spinner animation="border" size="xl"/>
+          <div className={styles.overlayText}>
+            {t('global:loading')}
           </div>
         </div>
-      )}
+      </div>
       {children}
     </div>
   );

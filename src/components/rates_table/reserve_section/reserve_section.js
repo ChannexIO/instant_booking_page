@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
-import ReserveSectionTotal from './reserve_section_total';
 import ReserveSectionMissingSpaces from './reserve_section_missing_spaces';
+import ReserveSectionTotal from './reserve_section_total';
 
 import styles from './reserve_section.module.css';
 
@@ -25,9 +25,9 @@ export default function ReserveSection(props) {
 
   useEffect(function buildRoomsById() {
     const updatedRoomsById = propertyRooms.reduce((roomsById, room) => {
-      const updatedRatePlans = room.ratePlans.reduce((ratesById, rate) => ({...ratesById, [rate.id]: rate}), {});
+      const updatedRatePlans = room.ratePlans.reduce((ratesById, rate) => ({ ...ratesById, [rate.id]: rate }), {});
 
-      return {...roomsById, [room.id]: { ...room, ratePlans: updatedRatePlans } };
+      return { ...roomsById, [room.id]: { ...room, ratePlans: updatedRatePlans } };
     }, {});
 
     setRoomsById(updatedRoomsById);
@@ -44,7 +44,7 @@ export default function ReserveSection(props) {
     Object.keys(ratesOccupancyPerRoom).forEach((roomId) => {
       Object.keys(ratesOccupancyPerRoom[roomId]).forEach((rateId) => {
         const selectedRateAmount = ratesOccupancyPerRoom[roomId][rateId];
-        const ratePrice = Number(propertyRoomsById[roomId].ratePlans[rateId].totalPrice); 
+        const ratePrice = Number(propertyRoomsById[roomId].ratePlans[rateId].totalPrice);
 
         newTotalPrice += ratePrice * selectedRateAmount;
         newOccupiedRoomsNumber += selectedRateAmount;
@@ -53,7 +53,7 @@ export default function ReserveSection(props) {
 
     setOccupiedRoomsNumber(newOccupiedRoomsNumber);
     setTotalPrice(newTotalPrice);
-  }, [ratesOccupancyPerRoom, propertyRooms, propertyRoomsById, setOccupiedRoomsNumber, setTotalPrice]);
+  }, [ratesOccupancyPerRoom, propertyRooms, propertyRoomsById]);
 
   useEffect(function handleSpaceRequirimentsChange() {
     let selectedAdultsSpaces = 0;
@@ -69,9 +69,8 @@ export default function ReserveSection(props) {
         selectedChildrenSpaces += Number(rateOccupancy.children) * selectedRateAmount;
         selectedInfantSpaces += Number(rateOccupancy.infants) * selectedRateAmount;
       });
-
     });
-    
+
     const newMissingSpaces = {
       adults: getSpacesDeficit(adults, selectedAdultsSpaces),
       children: getSpacesDeficit(children, selectedChildrenSpaces),

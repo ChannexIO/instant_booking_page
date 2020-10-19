@@ -1,9 +1,9 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
-import LocaleSelect from 'components/inputs/locale_select';
-import CurrencySelect from 'components/inputs/currency_select';
 import HotelTitle from 'components/hotel_title';
+import CurrencySelect from 'components/inputs/currency_select';
+import LocaleSelect from 'components/inputs/locale_select';
 
 import styles from './header.module.css';
 

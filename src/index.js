@@ -4,6 +4,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
 
 import i18nInit from 'utils/i18n_init';
+
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 
@@ -16,7 +17,7 @@ i18nInit().then(() => {
         <App />
       </React.StrictMode>
     </I18nextProvider>,
-    document.getElementById('root')
+    document.getElementById('root'),
   );
 });
 

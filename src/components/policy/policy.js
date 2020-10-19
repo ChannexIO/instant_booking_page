@@ -7,7 +7,7 @@ export default function Policy({ icon, title, addon, isHighlighted }) {
 
   return (
     <div className={containerClass}>
-      <div  className={styles.mainSection}>
+      <div className={styles.mainSection}>
         {icon}
         <span className={styles.title}>
           {title}

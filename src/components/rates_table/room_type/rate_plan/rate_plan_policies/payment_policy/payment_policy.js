@@ -3,7 +3,7 @@ import { CheckOutlined } from '@ant-design/icons';
 
 import Policy from 'components/policy';
 
-export default function PaymentPolicy({ paymentPolicy }){
+export default function PaymentPolicy({ paymentPolicy }) {
   return (
     <Policy
       icon={<CheckOutlined />}

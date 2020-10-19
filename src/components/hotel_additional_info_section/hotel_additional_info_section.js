@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import SectionTitle from 'components/section_title';
 import Link from 'components/link';
+import SectionTitle from 'components/section_title';
 
 import InfoEntry from './info_entry';
 
@@ -19,6 +19,6 @@ export default function HotelInfoSection({ property }) {
       {address && <InfoEntry name="address">{address}</InfoEntry>}
       {phone && <InfoEntry name="phone"><Link type="phone" to={phone}>{phone}</Link></InfoEntry>}
       {email && <InfoEntry name="email"><Link type="mail" to={email}>{email}</Link></InfoEntry>}
-    </div>  
+    </div>
   );
 }

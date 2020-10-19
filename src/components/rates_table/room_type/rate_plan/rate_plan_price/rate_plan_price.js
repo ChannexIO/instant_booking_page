@@ -1,25 +1,18 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import PriceColumnTitle from 'components/rates_table/price_column_title';
 import Currency from 'components/currency';
+import PriceColumnTitle from 'components/rates_table/price_column_title';
 import Tooltip from 'components/tooltip';
 
 import RatePlanPriceBreakdown from './rate_plan_price_breakdown';
 
 import styles from './rate_plan_price.module.css';
 
-const TAX_DECIMAL_PLACES = 2;
-
 export default function RatePlanPrice({ ratePlan, isMobile, residenceTime, currency }) {
   const { t } = useTranslation();
 
-  const { totalPrice, taxes } = ratePlan;
-    const additionalTaxesAmount = taxes
-    .filter((tax) => !tax.inclusive)
-    .reduce((acc, tax) => acc + Number(tax.amount), 0)
-    .toFixed(TAX_DECIMAL_PLACES);
-  const hasTaxes = Boolean(additionalTaxesAmount);
+  const { totalPrice } = ratePlan;
 
   return (
     <div>

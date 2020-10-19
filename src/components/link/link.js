@@ -1,5 +1,5 @@
 import React from 'react';
-import { PhoneOutlined, MailOutlined, LinkOutlined } from '@ant-design/icons';
+import { LinkOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 
 import styles from './link.module.css';
 
@@ -24,7 +24,7 @@ const LINK_PROPS_BY_TYPE = {
 
 export default function Link({ type = 'url', to, children }) {
   const { [type]: linkAttrs = LINK_PROPS_BY_TYPE.default } = LINK_PROPS_BY_TYPE;
-  const { Icon, prefix } = linkAttrs; 
+  const { Icon, prefix } = linkAttrs;
 
   return (
     <a

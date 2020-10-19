@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 import RoomDetailsModal from './room_details_modal';

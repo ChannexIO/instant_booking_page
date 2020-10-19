@@ -10,7 +10,7 @@ export default function RoomFacilities({ facilities }) {
     return null;
   }
 
-  const shownFacilities = facilities.slice(0,FACILITIES_SHOWN_BY_DEFAULT);
+  const shownFacilities = facilities.slice(0, FACILITIES_SHOWN_BY_DEFAULT);
   const collapsedFacilities = facilities.slice(FACILITIES_SHOWN_BY_DEFAULT);
 
   return (

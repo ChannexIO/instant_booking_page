@@ -1,7 +1,7 @@
 import React from 'react';
 
-import HotelTitle from 'components/hotel_title';
 import HotelLocation from 'components/hotel_location';
+import HotelTitle from 'components/hotel_title';
 
 import styles from './hotel_info_section.module.css';
 
@@ -15,6 +15,6 @@ export default function HotelInfoSection({ property }) {
         <HotelLocation property={property} />
       </div>
       {description && <pre className={styles.hotelDescription}>{description}</pre>}
-    </div>  
+    </div>
   );
 }

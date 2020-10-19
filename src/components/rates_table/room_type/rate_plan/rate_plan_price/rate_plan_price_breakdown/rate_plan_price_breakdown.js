@@ -35,7 +35,7 @@ const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...p
           <div className={styles.priceRow} key={tax.title}>
             <span>{tax.title}</span>
             <Currency currency={currency} amount={tax.amount} />
-          </div> 
+          </div>
         ))}
       </Popover.Title>
       <Popover.Content className={styles.totalContainer}>

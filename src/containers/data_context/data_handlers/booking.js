@@ -1,14 +1,14 @@
-import { useReducer, useEffect, useCallback } from 'react';
+import { useReducer } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { INITIAL_STATE, reducer, actions } from './reducers/booking_data';
+import { actions, INITIAL_STATE, reducer } from './reducers/booking_data';
 
 export default () => {
   const [bookingData, dispatch] = useReducer(reducer, INITIAL_STATE);
   const location = useLocation();
 
-  const setBookingParams = (newParams) => {
-    return actions.setBookingParams(dispatch, bookingData.channelId, newParams);
+  const setParams = (newParams) => {
+    return actions.setParams(dispatch, bookingData.channelId, newParams);
   };
 
   const loadProperty = () => {
@@ -29,7 +29,7 @@ export default () => {
 
   const bookingActions = {
     initBookingData,
-    setBookingParams,
+    setParams,
     loadProperty,
     loadRoomsInfo,
     loadClosedDates,

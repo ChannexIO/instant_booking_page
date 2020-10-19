@@ -7,7 +7,7 @@ import PhotoSlider from 'components/photo_slider';
 import styles from './room_details_modal.module.css';
 
 export default function RoomDetailsModal({ room, show, onHide }) {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const { photos, description, title } = room;
 
   const isPhotosPresent = Boolean(Array.isArray(photos) && photos.length);
@@ -38,5 +38,5 @@ export default function RoomDetailsModal({ room, show, onHide }) {
         </div>
       </Modal.Footer>
     </Modal>
-  );  
+  );
 }
