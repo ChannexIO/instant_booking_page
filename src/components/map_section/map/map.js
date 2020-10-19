@@ -14,16 +14,15 @@ export default function Map({ location }) {
   }, [location]);
 
   const initMapOptions = useCallback((maps) => {
-
     return {
       zoomControlOptions: {
-        position: maps.ControlPosition.TOP_LEFT, 
+        position: maps.ControlPosition.TOP_LEFT,
       },
     };
   }, []);
 
   return (
-    <div style={{height: '50vh', width: '100%'}}>
+    <div style={{ height: '50vh', width: '100%' }}>
       <GoogleMapReact
         options={initMapOptions}
         center={location}

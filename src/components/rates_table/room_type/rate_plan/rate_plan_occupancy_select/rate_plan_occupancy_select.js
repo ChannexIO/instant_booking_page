@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Button } from 'react-bootstrap';
-import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import styles from './rate_plan_occupancy_select.module.css';
 

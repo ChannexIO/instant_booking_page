@@ -8,7 +8,7 @@ const convertToCamelCase = (varName) => {
 
 const convertArrayEntries = (array, converter) => {
   return array.map((el) => convertDataCase(converter, el));
-}; 
+};
 
 const convertObjectEntries = (object, converter) => {
   const updatedEntries = Object.entries(object)
@@ -36,5 +36,5 @@ const convertDataCase = (converter, data) => {
 
 export default {
   convertToCamelCase: convertDataCase.bind(this, convertToCamelCase),
-  convertToSnakeCase: convertDataCase.bind(this, convertToSnakeCase)
+  convertToSnakeCase: convertDataCase.bind(this, convertToSnakeCase),
 };

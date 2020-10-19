@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Alert } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { InfoCircleFilled } from '@ant-design/icons';
 
 import styles from './reserve_section_missing_spaces.module.css';
@@ -14,7 +14,7 @@ export default function ReseveSectionMissingSpaces({ missingSpaces }) {
     .reduce((acc, [key, value], index, array) => {
       if (value) {
         const textToAdd = t(`rates_table:missing_${key}`).replace('{n}', value);
-        const separator = (array.length - 1) === index ? '.' : ','; 
+        const separator = (array.length - 1) === index ? '.' : ',';
         const updatedMessage = `${acc} ${textToAdd}${separator}`;
 
         return updatedMessage;

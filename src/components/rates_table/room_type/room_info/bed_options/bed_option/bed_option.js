@@ -3,7 +3,7 @@ import { CheckOutlined } from '@ant-design/icons';
 
 import styles from './bed_option.module.css';
 
-export default function BedOption({ title, count, size }) {
+export default function BedOption({ title, count }) {
   return (
     <div className={styles.bed}>
       <div className={styles.bedTitle}>
@@ -11,4 +11,5 @@ export default function BedOption({ title, count, size }) {
       </div>
       <CheckOutlined className={styles.bedIcon} />
     </div>
-  );}
+  );
+}

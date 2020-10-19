@@ -10,7 +10,7 @@ const prepareKey = (key, prefix) => {
   }
 
   return output;
-}
+};
 
 const convertArgsToString = (args, prefix = null) => {
   return Object
@@ -20,19 +20,15 @@ const convertArgsToString = (args, prefix = null) => {
       return acc;
     }, [])
     .join('&');
-}
+};
 
 const stringifyArgumentValue = (argValue) => {
-  const argType = typeof argValue;
-
-  if (argType !== "object" || argValue === null) {
-    return encodeURIComponent(argValue);
-  }
-
   if (Array.isArray(argValue)) {
-    return argValue.map(encodeURIComponent).join(',')
+    return argValue.map(encodeURIComponent).join(',');
   }
-}
+
+  return encodeURIComponent(argValue);
+};
 
 const prepareArgument = (args, key, prefix) => {
   const argValue = args[key];
@@ -45,15 +41,15 @@ const prepareArgument = (args, key, prefix) => {
   const stringifiedArgValue = stringifyArgumentValue(argValue);
 
   return `${prepareKey(key, prefix)}=${stringifiedArgValue}`;
-}
+};
 
 const checkIsPlainObject = (value) => {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
+  return value && typeof value === 'object' && !Array.isArray(value);
+};
 
 const stringifyArguments = (args) => {
   let query;
-  const isArgsPlainObject = checkIsPlainObject(args);  
+  const isArgsPlainObject = checkIsPlainObject(args);
 
   if (isArgsPlainObject) {
     const stringifiedArgs = convertArgsToString(args);
@@ -64,6 +60,6 @@ const stringifyArguments = (args) => {
   }
 
   return query;
-}
+};
 
 export default stringifyArguments;

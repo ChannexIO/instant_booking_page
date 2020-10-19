@@ -1,21 +1,22 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { DateRangePicker } from 'react-dates';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
 import { useMedia } from 'react-media';
 
-import { DataContext } from 'containers/data_context';
+import { BookingDataContext } from 'containers/data_context';
 
+import { DATE_FORMAT, DATE_UI_FORMAT } from 'constants/formats';
 import MEDIA_QUERIES from 'constants/media_queries';
-import { DATE_UI_FORMAT, DATE_FORMAT } from 'constants/formats';
 
+import 'react-dates/lib/css/_datepicker.css';
 import styles from './rangepicker.module.css';
+
+import 'react-dates/initialize';
 
 const DEFAULT_OPEN_DIRECTION = 'down';
 
 export default function RangePicker(props) {
-  const { closedDates } = useContext(DataContext);
-  const { checkinDate, checkoutDate, name = '', openDirection = DEFAULT_OPEN_DIRECTION, checkinDatePlaceholder, checkoutDatePlaceholder,  onDatesChange } = props;
+  const { closedDates } = useContext(BookingDataContext);
+  const { checkinDate, checkoutDate, name = '', openDirection = DEFAULT_OPEN_DIRECTION, checkinDatePlaceholder, checkoutDatePlaceholder, onDatesChange } = props;
   const [focusedInput, setFocusedInput] = useState(null);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
 
@@ -54,7 +55,7 @@ export default function RangePicker(props) {
     }
 
     if (focusedInput === 'endDate') {
-       return getIsClosedToDeparture(day, formattedDay);
+      return getIsClosedToDeparture(day, formattedDay);
     }
 
     return false;

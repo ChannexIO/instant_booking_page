@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { InfoCircleOutlined } from '@ant-design/icons';
 import { Overlay } from 'react-bootstrap';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 import styles from './tooltip.module.css';
 

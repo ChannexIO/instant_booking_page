@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import PriceColumnTitle from 'components/rates_table/price_column_title';
+
 import RatesTableHeaderColumn from './rates_table_header_column';
 
 import styles from './rates_table_header.module.css';
@@ -19,7 +20,7 @@ export default function RatesTableHeader({ residenceTime, propertyRooms, isMobil
   return (
     <thead>
       <tr className={styles.tableHeaderWrapper}>
-        <RatesTableHeaderColumn  className={roomTypeColumnClass}>{t('rates_table:room_type')}</RatesTableHeaderColumn>
+        <RatesTableHeaderColumn className={roomTypeColumnClass}>{t('rates_table:room_type')}</RatesTableHeaderColumn>
         {isRatesPresent && <>
           <RatesTableHeaderColumn>{t('rates_table:sleeps')}</RatesTableHeaderColumn>
           <RatesTableHeaderColumn><PriceColumnTitle residenceTime={residenceTime} /></RatesTableHeaderColumn>

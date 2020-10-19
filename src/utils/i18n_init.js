@@ -1,5 +1,4 @@
 import i18next from 'i18next';
-
 import en from 'translations/en.json';
 import test from 'translations/test.json';
 

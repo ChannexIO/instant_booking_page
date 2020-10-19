@@ -1,6 +1,6 @@
 import React from 'react';
-import { ClockCircleOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { ClockCircleOutlined } from '@ant-design/icons';
 
 import styles from './room_availability.module.css';
 

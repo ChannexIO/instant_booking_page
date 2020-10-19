@@ -2,14 +2,14 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-import Link from 'components/link'; 
+import Link from 'components/link';
 
 import styles from './footer.module.css';
 
 export default function Footer() {
   const { t } = useTranslation();
 
- return (
+  return (
    <div className={styles.footerWrapper}>
     <Container className={styles.footer}>
       <Link href="https://stackoverflow.com/">{t('footer:privacy_policy')}</Link>
@@ -17,5 +17,5 @@ export default function Footer() {
       <Link href="https://stackoverflow.com/">{t('footer:copyright_info')}</Link>
     </Container>
    </div>
- );
+  );
 }

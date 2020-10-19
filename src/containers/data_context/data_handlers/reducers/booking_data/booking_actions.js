@@ -1,6 +1,5 @@
-import Actions from 'actions';
 import { matchPath } from 'react-router-dom';
-import convertClosedDatesToClientFormat from './convert_closed_dates_to_client_format';
+import Actions from 'actions';
 
 export const SET_CHANNEL_ID = 'SET_CHANNEL_ID';
 export const SET_PROPERTY_LOADING = 'SET_PROPERTY_LOADING';
@@ -29,7 +28,7 @@ const setRoomsLoading = (dispatch) => {
 
 const setRoomsData = (dispatch, payload) => {
   return dispatch({ type: SET_ROOMS_DATA, payload });
-}; 
+};
 
 const setClosedDatesLoading = (dispatch) => {
   return dispatch({ type: SET_CLOSED_DATES_LOADING });
@@ -39,12 +38,12 @@ const setClosedDatesData = (dispatch, payload) => {
   return dispatch({ type: SET_CLOSED_DATES_DATA, payload });
 };
 
-const setParams = (dispatch, payload) => {
+const setBookingParams = (dispatch, payload) => {
   return dispatch({ type: SET_PARAMS, payload });
 };
 
 const getChannelId = (location) => {
-  const matchedPath = matchPath(location.pathname, { path: '/:channelId'});
+  const matchedPath = matchPath(location.pathname, { path: '/:channelId' });
 
   if (!matchedPath) {
     return null;
@@ -84,14 +83,13 @@ const loadClosedDates = async (dispatch, channelId) => {
 
   setClosedDatesLoading(dispatch);
 
-  const rawData = await Actions.getClosedDates(channelId);
-  const data = convertClosedDatesToClientFormat(rawData);
+  const data = await Actions.getClosedDates(channelId);
 
   setClosedDatesData(dispatch, data);
 };
 
-const setBookingParams = (dispatch, channelId, bookingParams) => {
-  setParams(dispatch, bookingParams);
+const setParams = (dispatch, channelId, bookingParams) => {
+  setBookingParams(dispatch, bookingParams);
 
   loadRoomsInfo(dispatch, channelId, bookingParams);
 };
@@ -102,13 +100,13 @@ const initBookingData = async (dispatch, location, bookingParams) => {
   setChannelId(dispatch, channelId);
   loadProperty(dispatch, channelId);
   loadClosedDates(dispatch, channelId);
-  setBookingParams(dispatch, channelId, bookingParams);
+  setParams(dispatch, channelId, bookingParams);
 };
 
 export const actions = {
   loadProperty,
   loadRoomsInfo,
   loadClosedDates,
-  setBookingParams,
+  setParams,
   initBookingData,
 };

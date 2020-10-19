@@ -2,12 +2,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CoffeeOutlined } from '@ant-design/icons';
 
-import Policy from 'components/policy';
 import Currency from 'components/currency';
+import Policy from 'components/policy';
 
 export default function MealPolicy({ mealPolicy, currency }) {
   const { t } = useTranslation();
-  const {  type, price, included } = mealPolicy;
+  const { type, price, included } = mealPolicy;
 
   if (type === 'none') {
     return null;

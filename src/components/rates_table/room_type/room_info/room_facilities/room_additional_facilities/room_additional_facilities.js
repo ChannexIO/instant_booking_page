@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Accordion, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
@@ -17,7 +17,7 @@ export default function RoomAdditionalFacilities({ facilities }) {
   const buttonText = isOpen ? t('rates_table:show_less') : t('rates_table:show_more');
 
   if (!facilities.length) {
-    return  null;
+    return null;
   }
 
   return (

@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
-import SectionTitle from 'components/section_title';
 import RatesTable from 'components/rates_table';
+import SectionTitle from 'components/section_title';
 
-import { DataContext } from 'containers/data_context';
+import { BookingDataContext } from 'containers/data_context';
 
-export default function HotelRatesSection({ property, propertyRooms, loading }) {
-  const { params } = useContext(DataContext);
+export default function HotelRatesSection({ property, propertyRooms }) {
+  const { params } = useContext(BookingDataContext);
   const { currency, checkinDate, checkoutDate, adults, children } = params;
   const { t } = useTranslation();
   const isEnteredDatesValid = checkinDate && checkoutDate && moment(checkinDate).isValid() && moment(checkoutDate).isValid();

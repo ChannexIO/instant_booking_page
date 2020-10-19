@@ -1,22 +1,22 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useMedia } from 'react-media';
 
 import LoadingContainer from 'components/loading_container';
 
-import { DataContext } from 'containers/data_context';
+import { BookingDataContext } from 'containers/data_context';
 
 import MEDIA_QUERIES from 'constants/media_queries';
 
-import RoomType from './room_type';
 import RatesTableHeader from './rates_table_header';
 import ReserveSection from './reserve_section';
+import RoomType from './room_type';
 
 import styles from './rates_table.module.css';
 
 export default function RatesTable({ currency, residenceTime, adults, children }) {
   const [ratesOccupancyPerRoom, setRatesOccupancyPerRoom] = useState({});
-  const { roomsInfo } = useContext(DataContext);
+  const { roomsInfo } = useContext(BookingDataContext);
   const { data: roomsData, isLoading } = roomsInfo;
 
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
@@ -25,13 +25,9 @@ export default function RatesTable({ currency, residenceTime, adults, children }
   const tableContainerClasses = [styles.tableContainer];
   const isRatePlansPresent = roomsData && roomsData.some((room) => room.ratePlans?.length);
 
-  const handleRatesOccupancyChange = useCallback((updatedRatesOccupany) => {
-    setRatesOccupancyPerRoom(updatedRatesOccupany);
-  }, [setRatesOccupancyPerRoom]);
-
   useEffect(function resetSelectedRates() {
     setRatesOccupancyPerRoom({});
-  }, [ roomsData ]);
+  }, [roomsData]);
 
   if (isMobile) {
     tableClasses.push(styles.ratesTableMobile);
@@ -60,7 +56,7 @@ export default function RatesTable({ currency, residenceTime, adults, children }
                   key={roomType.id}
                   residenceTime={residenceTime}
                   ratesOccupancyPerRoom={ratesOccupancyPerRoom}
-                  onRatesOccupancyChange={handleRatesOccupancyChange}
+                  onRatesOccupancyChange={setRatesOccupancyPerRoom}
                 />
               ))}
             </tbody>

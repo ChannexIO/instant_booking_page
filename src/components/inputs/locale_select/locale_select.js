@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { GlobalOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { GlobalOutlined } from '@ant-design/icons';
 
 import Select from 'components/inputs/select';
 
-import styles from './locale_select.module.css';  
+import styles from './locale_select.module.css';
 
 const AVAILABLE_LANGUAGES = [
   {

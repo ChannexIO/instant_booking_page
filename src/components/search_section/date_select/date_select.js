@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 
 import RangePicker from 'components/rangepicker';
 
-import setUrlParams from 'utils/set_url_params';
 import dateFormatter from 'utils/date_formatter';
+import setUrlParams from 'utils/set_url_params';
 
 export default function DateSelect({ bookingParams, handleSearchChange }) {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ export default function DateSelect({ bookingParams, handleSearchChange }) {
 
   const handleDatesChange = useCallback(({ startDate, endDate }) => {
     const formattedDates = {
-      checkinDate:  dateFormatter.toClient(startDate),
+      checkinDate: dateFormatter.toClient(startDate),
       checkoutDate: dateFormatter.toClient(endDate),
     };
 

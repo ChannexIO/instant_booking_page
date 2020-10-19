@@ -1,13 +1,13 @@
-import { 
+import {
   SET_CHANNEL_ID,
-  SET_PROPERTY_LOADING,
-  SET_PROPERTY_DATA,
-  SET_ROOMS_LOADING,
-  SET_ROOMS_DATA,
-  SET_CLOSED_DATES_LOADING,
   SET_CLOSED_DATES_DATA,
+  SET_CLOSED_DATES_LOADING,
   SET_PARAMS,
- } from './booking_actions';
+  SET_PROPERTY_DATA,
+  SET_PROPERTY_LOADING,
+  SET_ROOMS_DATA,
+  SET_ROOMS_LOADING,
+} from './booking_actions';
 
 const EMPTY_ENTITY = {
   data: null,
@@ -24,10 +24,9 @@ export const INITIAL_STATE = {
 
 const actionHandlers = {
   [SET_CHANNEL_ID]: (state, action) => {
-    console.log(action, { ...state, channelId: action.payload });
     return { ...state, channelId: action.payload };
   },
-  [SET_PROPERTY_LOADING]: (state, action) => {
+  [SET_PROPERTY_LOADING]: (state) => {
     const property = { ...state.property, isLoading: true };
 
     return { ...state, property };
@@ -37,7 +36,7 @@ const actionHandlers = {
 
     return { ...state, property };
   },
-  [SET_ROOMS_LOADING]: (state, action) => {
+  [SET_ROOMS_LOADING]: (state) => {
     const roomsInfo = { ...state.roomsInfo, isLoading: true };
 
     return { ...state, roomsInfo };
@@ -47,7 +46,7 @@ const actionHandlers = {
 
     return { ...state, roomsInfo };
   },
-  [SET_CLOSED_DATES_LOADING]: (state, action) => {
+  [SET_CLOSED_DATES_LOADING]: (state) => {
     const closedDates = { ...state.closedDates, isLoading: true };
 
     return { ...state, closedDates };
@@ -59,7 +58,7 @@ const actionHandlers = {
   },
   [SET_PARAMS]: (state, action) => {
     return { ...state, params: action.payload };
-  }
+  },
 };
 
 export const reducer = (state, action) => {

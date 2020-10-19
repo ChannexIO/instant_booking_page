@@ -1,28 +1,29 @@
 import React, { useEffect } from 'react';
 
 import useBooking from './data_handlers/booking';
-
 import getSearchParamsFromUrl from './utils/get_search_params_from_url';
 
-const DataContext = React.createContext();
-const ActionsContext = React.createContext();
+const BookingDataContext = React.createContext();
+const BookingActionsContext = React.createContext();
 
-const DataContextProvider = (props) => {
+const DataContextProvider = ({ children }) => {
   const { bookingData, bookingActions } = useBooking();
 
   useEffect(function initAppData() {
-    const queryParams = getSearchParamsFromUrl();
+    if (!bookingData.channelId) {
+      const queryParams = getSearchParamsFromUrl();
 
-    bookingActions.initBookingData(queryParams);
-  }, []);
+      bookingActions.initBookingData(queryParams);
+    }
+  }, [bookingData.channelId, bookingActions]);
 
   return (
-    <ActionsContext.Provider value={bookingActions}>
-      <DataContext.Provider value={bookingData}>
-        {props.children}
-      </DataContext.Provider>
-    </ActionsContext.Provider>
+    <BookingActionsContext.Provider value={bookingActions}>
+      <BookingDataContext.Provider value={bookingData}>
+        {children}
+      </BookingDataContext.Provider>
+    </BookingActionsContext.Provider>
   );
 };
 
-export { DataContextProvider, DataContext, ActionsContext };
+export { DataContextProvider, BookingDataContext, BookingActionsContext };
