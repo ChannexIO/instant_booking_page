@@ -8,7 +8,11 @@ export default () => {
   const location = useLocation();
 
   const setParams = (newParams) => {
-    return actions.setParams(dispatch, bookingData.channelId, newParams);
+    return actions.setParams(dispatch, newParams);
+  };
+
+  const setParamsAndLoadRoomsInfo = (newParams) => {
+    return actions.setParamsAndLoadRoomsInfo(dispatch, bookingData.channelId, newParams);
   };
 
   const loadProperty = () => {
@@ -30,6 +34,7 @@ export default () => {
   const bookingActions = {
     initBookingData,
     setParams,
+    setParamsAndLoadRoomsInfo,
     loadProperty,
     loadRoomsInfo,
     loadClosedDates,

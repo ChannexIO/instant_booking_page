@@ -1,0 +1,54 @@
+.input {
+  display: flex;
+  border: 1px solid var(--input-border-color);
+  border-radius: 0;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 200px;
+  margin: auto;
+  width: 100%;
+  height: 40px;
+}
+
+.input button {
+  height: 100%;
+  padding: 0.25rem 0.5rem;
+  background-color: #FFF;
+  color: var(--main-text-color);
+  border: none;
+  border-radius: 0;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.input button:hover,
+.input button:focus {
+  background-color: var(--background-dark-color);
+  color: var(--main-text-color-hover);
+}
+
+.input button:active {
+  background-color: var(--main-text-active-background) !important;
+  color: var(--main-text-active) !important;
+
+}
+
+.input button:disabled {
+  background-color: var(--input-border-color) !important;
+  color: var(--main-text-color) !important;
+}
+
+.toggleIcon {
+  vertical-align: middle;
+}
+
+.label {
+  color: var(--label-text-color);
+  padding-right: 4px;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}

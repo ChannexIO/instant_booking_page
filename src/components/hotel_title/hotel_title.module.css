@@ -1,5 +1,6 @@
 .hotelTitle { 
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: 300;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bold;
+  color: var(--link-color);
 }

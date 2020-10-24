@@ -23,6 +23,8 @@ export default function DateSelect({ bookingParams, handleSearchChange }) {
 
   return (
     <RangePicker
+      checkinDateLabel={t('hotel_page:checkin_label')}
+      checkoutDateLabel={t('hotel_page:checkout_label')}
       checkinDatePlaceholder={t('hotel_page:checkin_placeholder')}
       checkoutDatePlaceholder={t('hotel_page:checkout_placeholder')}
       checkinDate={bookingParams.checkinDate}

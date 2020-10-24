@@ -6,9 +6,15 @@
     "loading": "Loading..."
   },
   "hotel_page": {
+    "checkin_label": "Check-in",
+    "checkout_label": "Check-out",
     "checkin_placeholder": "Check-in",
     "checkout_placeholder": "Check-out",
-    "search": "Search",
+    "total": "Total",
+    "book": "Book",
+    "expand": "Expand",
+    "booking_summary": "Booking Summary",
+    "book_for": "Book for",
     "hotel_info": "Hotel Info",
     "hotel_facilities": "Facilities of",
     "contact_information": "Contact information",
@@ -18,13 +24,16 @@
     "email": "Email",
     "address": "Address",
     "adults_label": "Adults",
-    "adults_placeholder": "Adults",
+    "guests_placeholder": "Select guests",
     "adults": "adults",
-    "children_section_title": "Select age of children",
+    "children_section_label": "HOW OLD ARE THE CHILDREN YOU’RE TRAVELING WITH?",
     "children_label": "Children",
-    "children_placeholder": "Children",
     "children": "children",
-    "children_age_placeholder": "Children age"
+    "children_age_placeholder": "Children age",
+    "price_from": "From",
+    "price_per_night": "per night",
+    "rooms": "rooms",
+    "nights": "nights" 
   },
   "rates_table": {
     "title": "Rooms & Rates",

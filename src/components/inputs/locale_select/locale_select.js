@@ -25,8 +25,11 @@ export default function LocaleSelect() {
   }, [i18n]);
 
   return (
-    <Select value={i18n.language} options={AVAILABLE_LANGUAGES} onChange={handleLocaleChange}>
-      <GlobalOutlined className={styles.icon} />{t('general:locale')}
-    </Select>
+    <Select
+      label={t('general:locale')}
+      value={i18n.language}
+      options={AVAILABLE_LANGUAGES}
+      onChange={handleLocaleChange}
+    />
   );
 }

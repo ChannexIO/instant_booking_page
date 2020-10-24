@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 
-import setUrlParams from 'utils/set_url_params';
+import Label from 'components/inputs/components/label';
 
 import ChildrenAgeInput from './children_age_input';
 
@@ -10,10 +9,9 @@ import styles from './children_age_settings.module.css';
 
 const MAX_CHILD_AGE = 17;
 
-export default function ChildrenAgeSettings({ bookingParams, handleSearchChange }) {
+export default function ChildrenAgeSettings({ name, bookingParams, onChange }) {
   const [childrenAgeOptions, setChildrenAgeOptions] = useState([]);
   const { t } = useTranslation();
-  const history = useHistory();
 
   useEffect(function initChildrenAgeOptions() {
     const newChildrenAgeOptions = Array(MAX_CHILD_AGE + 1)
@@ -42,9 +40,8 @@ export default function ChildrenAgeSettings({ bookingParams, handleSearchChange 
         return oldChildrenAge[index];
       });
 
-    setUrlParams({ childrenAge: updatedChildrenAge }, history);
-    handleSearchChange({ ...bookingParams, childrenAge: updatedChildrenAge });
-  }, [bookingParams, history, handleSearchChange]);
+    onChange(updatedChildrenAge, name);
+  }, [bookingParams, name, onChange]);
 
   const handleChange = useCallback((value, index) => {
     const { childrenAge = [] } = bookingParams;
@@ -52,9 +49,8 @@ export default function ChildrenAgeSettings({ bookingParams, handleSearchChange 
     const updatedChildrenAge = [...childrenAge];
     updatedChildrenAge[index] = value;
 
-    setUrlParams({ childrenAge: updatedChildrenAge }, history);
-    handleSearchChange({ ...bookingParams, childrenAge: updatedChildrenAge });
-  }, [bookingParams, handleSearchChange, history]);
+    onChange(updatedChildrenAge, name);
+  }, [bookingParams, onChange, name]);
 
   if (!Array.isArray(bookingParams.childrenAge) || !bookingParams.childrenAge.length) {
     return null;
@@ -62,9 +58,9 @@ export default function ChildrenAgeSettings({ bookingParams, handleSearchChange 
 
   return (
     <div className={styles.settingsWrapper}>
-      <div className={styles.settingsTitle}>
-        {t('hotel_page:children_section_title')}:
-      </div>
+      <Label>
+        {t('hotel_page:children_section_label')}:
+      </Label>
       <div className={styles.settingsContainer}>
         {bookingParams.childrenAge
           .map((value, index) => (

@@ -28,28 +28,26 @@ export default function HotelPage() {
 
   return (
     <div>
-      <div className={styles.firstScreen}>
-        <Container>
-          <Header property={propertyData} />
-        </Container>
+      <Header property={propertyData} />
+      <div className={styles.sliderContainer}>
         <PhotoSlider photos={propertyData.photos} />
-        <Container>
-          <SearchSection property={propertyData} />
-        </Container>
       </div>
-      <SectionWrapper theme="light">
-        <HotelInfoSection property={propertyData} />
-      </SectionWrapper>
-      <SectionWrapper theme="dark">
-        <HotelRatesSection property={propertyData} loading={isLoading} />
-      </SectionWrapper>
-      <SectionWrapper theme="light">
-        <HotelFacilitiesSection property={propertyData} />
-      </SectionWrapper>
+      <div className={styles.floatingSearchContainer}>
+        <SearchSection property={propertyData} />
+        <SectionWrapper theme="light">
+          <HotelInfoSection property={propertyData} />
+        </SectionWrapper>
+        <SectionWrapper theme="dark">
+          <HotelRatesSection property={propertyData} loading={isLoading} />
+        </SectionWrapper>
+        <SectionWrapper theme="light">
+          <HotelFacilitiesSection property={propertyData} />
+        </SectionWrapper>
+        <SectionWrapper theme="dark">
+          <HotelAdditionalInfoSection property={propertyData} />
+        </SectionWrapper>
+      </div>
       <MapSection property={propertyData} />
-      <SectionWrapper theme="dark">
-        <HotelAdditionalInfoSection property={propertyData} />
-      </SectionWrapper>
       <Footer />
     </div>
   );

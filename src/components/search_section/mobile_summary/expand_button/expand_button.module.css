@@ -1,0 +1,22 @@
+.expandButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: -8px;
+  padding: 0 0 8px;
+  border-bottom: 1px solid rgba(36, 46, 66, 0.12);
+}
+
+.expandButton:global.btn:focus {
+  box-shadow: none;
+}
+
+.arrowIcon {
+  transform: rotate(180deg);
+  transition: 350ms ease-in-out;
+}
+
+.arrowIconInverted {
+  transform: rotate(0deg);
+}

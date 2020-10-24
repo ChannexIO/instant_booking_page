@@ -38,7 +38,7 @@ const setClosedDatesData = (dispatch, payload) => {
   return dispatch({ type: SET_CLOSED_DATES_DATA, payload });
 };
 
-const setBookingParams = (dispatch, payload) => {
+const setParams = (dispatch, payload) => {
   return dispatch({ type: SET_PARAMS, payload });
 };
 
@@ -88,8 +88,8 @@ const loadClosedDates = async (dispatch, channelId) => {
   setClosedDatesData(dispatch, data);
 };
 
-const setParams = (dispatch, channelId, bookingParams) => {
-  setBookingParams(dispatch, bookingParams);
+const setParamsAndLoadRoomsInfo = (dispatch, channelId, bookingParams) => {
+  setParams(dispatch, bookingParams);
 
   loadRoomsInfo(dispatch, channelId, bookingParams);
 };
@@ -104,7 +104,7 @@ const initBookingData = async (dispatch, location, bookingParams) => {
   setChannelId(dispatch, channelId);
   loadProperty(dispatch, channelId);
   loadClosedDates(dispatch, channelId);
-  setParams(dispatch, channelId, bookingParams);
+  setParamsAndLoadRoomsInfo(dispatch, channelId, bookingParams);
 };
 
 export const actions = {
@@ -112,5 +112,6 @@ export const actions = {
   loadRoomsInfo,
   loadClosedDates,
   setParams,
+  setParamsAndLoadRoomsInfo,
   initBookingData,
 };

@@ -1,0 +1,24 @@
+.minPriceContainer {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 56px;
+  padding-right: 24px;
+  padding-bottom: 12px;
+  padding-left: 24px;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: var(--main-text-active-background);
+}
+
+.minPriceContent {
+  color: var(--main-text-active);
+}
+
+.minPrice {
+  padding: 0 4px;
+  font-size: 24px;
+}

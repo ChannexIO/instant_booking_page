@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 import styles from './search_section_select.module.css';
 
@@ -12,7 +12,12 @@ export default function SearchSectionSelect({ name, label, value, options, place
 
   useEffect(function updatedSelectOptions() {
     const processedOptions = options.map((option) => (
-      <Dropdown.Item key={option.key} eventKey={option.key} active={option.key === value}>
+      <Dropdown.Item
+        className={styles.menuItem}
+        key={option.key}
+        eventKey={option.key}
+        active={option.key === value}
+      >
         {option.value}
       </Dropdown.Item>
     ));
@@ -46,9 +51,7 @@ export default function SearchSectionSelect({ name, label, value, options, place
         onSelect={handleChange}
       >
         <Dropdown.Toggle className={styles.dropdownToggle}>
-          <Button className={styles.dropdownButton}>
-            {valueToDisplay}
-          </Button>
+          {valueToDisplay}
         </Dropdown.Toggle>
         <Dropdown.Menu className={styles.dropdownMenu}>
           {selectOptions}
