@@ -1,5 +1,5 @@
 .rangepicker :global .DateInput_input {
-  font-size: 1rem;
+  font-size: 14px;
   color: var(--main-text-color);
   font-weight: 400;
 }
@@ -8,15 +8,35 @@
   color: var(--info-text-color);
 }
 
-@media screen and (max-width: 575px) {
-  .rangepicker :global .DateRangePicker {
-    width: 100%;
-  }
+.rangepicker :global .DateRangePicker_picker {
+  z-index: 5;
+}
 
-  .rangepicker :global .DateRangePickerInput {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.rangepicker :global .DateInput_fang {
+  z-index: 6;
+}
+
+.rangepicker :global .DateRangePicker {
+  width: 100%;
+}
+
+.rangepicker :global .DateRangePickerInput {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.labelContainer {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+
+.labelContainer div {
+  width: 130px;
+}
+
+.rangepicker {
+  margin-bottom: 8px;
 }

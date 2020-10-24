@@ -4,7 +4,12 @@ import { DEFAULT_CURRENCY } from 'constants/defaults';
 import { DATE_FORMAT } from 'constants/formats';
 import getUrlParams from 'utils/get_url_params';
 
-export default function getSearchParamsFromUrl() {
+const DEFAULT_PARAMS = {
+  children: 0,
+  adults: 0,
+};
+
+export default function getBookingParamsFromUrl() {
   const {
     currency = DEFAULT_CURRENCY,
     checkinDate,
@@ -14,7 +19,7 @@ export default function getSearchParamsFromUrl() {
     childrenAge,
   } = getUrlParams();
 
-  const optionalParams = {};
+  const optionalParams = DEFAULT_PARAMS;
 
   const parsedStartDate = moment(checkinDate, DATE_FORMAT);
   const parsedEndDate = moment(checkoutDate, DATE_FORMAT);

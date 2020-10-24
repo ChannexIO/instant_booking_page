@@ -1,0 +1,13 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details {
+  margin-top: 8px;
+  opacity: 0.85;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}

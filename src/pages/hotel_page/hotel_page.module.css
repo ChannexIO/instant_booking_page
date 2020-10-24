@@ -1,5 +1,25 @@
-.firstScreen {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+.sliderContainer {
+  height: 540px;
+}
+
+.floatingSearchContainer {
+  position: relative;
+}
+
+@media screen and (max-width: 991px) {
+  .sliderContainer {
+    height: 480px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sliderContainer {
+    height: 340px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sliderContainer {
+    height: 200px;
+  }
 }

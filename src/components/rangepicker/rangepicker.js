@@ -2,6 +2,8 @@ import React, { useCallback, useContext, useState } from 'react';
 import { DateRangePicker } from 'react-dates';
 import { useMedia } from 'react-media';
 
+import Label from 'components/inputs/components/label';
+
 import { BookingDataContext } from 'containers/data_context';
 
 import { DATE_FORMAT, DATE_UI_FORMAT } from 'constants/formats';
@@ -16,7 +18,17 @@ const DEFAULT_OPEN_DIRECTION = 'down';
 
 export default function RangePicker(props) {
   const { closedDates } = useContext(BookingDataContext);
-  const { checkinDate, checkoutDate, name = '', openDirection = DEFAULT_OPEN_DIRECTION, checkinDatePlaceholder, checkoutDatePlaceholder, onDatesChange } = props;
+  const {
+    checkinDate,
+    checkoutDate,
+    name = '',
+    openDirection = DEFAULT_OPEN_DIRECTION,
+    checkinDatePlaceholder,
+    checkinDateLabel,
+    checkoutDatePlaceholder,
+    checkoutDateLabel,
+    onDatesChange,
+  } = props;
   const [focusedInput, setFocusedInput] = useState(null);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
 
@@ -63,6 +75,10 @@ export default function RangePicker(props) {
 
   return (
     <div className={styles.rangepicker}>
+      <div className={styles.labelContainer}>
+        <Label>{checkinDateLabel}</Label>
+        <Label>{checkoutDateLabel}</Label>
+      </div>
       <DateRangePicker
         displayFormat={DATE_UI_FORMAT}
         startDate={checkinDate}

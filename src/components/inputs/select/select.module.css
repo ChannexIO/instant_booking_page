@@ -1,9 +1,14 @@
 .toggle {
+  z-index: 1;
   display: flex;
-  margin-left: auto;
+  height: 40px;
+  padding: 0px 32px 0px 15px;
   align-items: center;
-  color: var(--select-color);
-  padding: 0;
+  color: var(--main-text-color);
+}
+
+.toggle:hover {
+  color: var(--main-text-hover);
 }
 
 .toggle:global.btn:focus {
@@ -13,4 +18,33 @@
 .menu:global.dropdown-menu {
   max-height: 25rem;
   overflow-y: auto;
+}
+
+.menu {
+  background-color: #fff;
+}
+
+.menu {
+  z-index: 2;
+  margin-top: 2px;
+  margin-left: 0px;
+  padding: 16px;
+  align-self: flex-start;
+  border-radius: 2px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.menuItem {
+  background-color: #fff;
+}
+
+.menuItem:global.active {
+  background-color: var(--main-text-active-background);
+  color: var(--main-text-active);
+}
+
+.menuItem:hover {
+  text-decoration: underline;
+  background-color: #f4f4f5;
+  color: var(--main-text-hover);
 }

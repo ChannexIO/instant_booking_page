@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import useBooking from './data_handlers/booking';
-import getSearchParamsFromUrl from './utils/get_search_params_from_url';
+import getBookingParamsFromUrl from './utils/get_booking_params_from_url';
 
 const BookingDataContext = React.createContext();
 const BookingActionsContext = React.createContext();
@@ -11,9 +11,9 @@ const DataContextProvider = ({ children }) => {
 
   useEffect(function initAppData() {
     if (!bookingData.channelId) {
-      const queryParams = getSearchParamsFromUrl();
+      const bookingParams = getBookingParamsFromUrl();
 
-      bookingActions.initBookingData(queryParams);
+      bookingActions.initBookingData(bookingParams);
     }
   }, [bookingData.channelId, bookingActions]);
 
