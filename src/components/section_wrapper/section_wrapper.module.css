@@ -8,7 +8,7 @@
 
 .containerDark,
 .containerLight {
-  padding: 3rem 0;
+  padding: 56px 0;
 }
 
 .containerInner {
@@ -23,6 +23,6 @@
 @media screen and (max-width: 575px) {
   .containerDark,
   .containerLight {
-    padding: 1rem 0;
+    padding: 24px 0;
   }
 }
