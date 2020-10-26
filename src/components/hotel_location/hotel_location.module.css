@@ -1,11 +1,7 @@
 .locationContainer {
   display: flex;
-  line-height: 1rem;
-  font-size: 0.75rem;
-  color: var(--info-text-color);
-  padding: 0.5rem 0;
 }
 
 .icon {
-  margin-right: 0.25rem;
+  margin-right: 4px;
 }

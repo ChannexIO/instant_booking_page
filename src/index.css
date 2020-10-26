@@ -161,3 +161,24 @@ blockquote {
   line-height: 22px;
   font-weight: 600;
 }
+
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 64px;
+    line-height: 60px;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: 52px;
+    line-height: 48px;
+  }
+  h3 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  h4 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+}

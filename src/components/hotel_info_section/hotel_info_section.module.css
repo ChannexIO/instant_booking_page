@@ -1,10 +1,9 @@
 .hotelDescription {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 14px;
   white-space: pre-wrap;
   font-family: inherit;
   color: var(--main-text-color);
-  line-height: 1.25rem;
 }
 
 .hotelTitleSection {
