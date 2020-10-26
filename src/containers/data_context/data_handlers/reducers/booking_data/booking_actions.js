@@ -1,5 +1,5 @@
 import { matchPath } from 'react-router-dom';
-import Actions from 'actions';
+import ApiActions from 'api_actions';
 
 export const SET_CHANNEL_ID = 'SET_CHANNEL_ID';
 export const SET_PROPERTY_LOADING = 'SET_PROPERTY_LOADING';
@@ -59,7 +59,7 @@ const loadProperty = async (dispatch, channelId) => {
 
   setPropertyLoading(dispatch);
 
-  const data = await Actions.getPropertyInfo(channelId);
+  const data = await ApiActions.getPropertyInfo(channelId);
 
   setPropertyData(dispatch, data);
 };
@@ -71,7 +71,7 @@ const loadRoomsInfo = async (dispatch, channelId, params) => {
 
   setRoomsLoading(dispatch);
 
-  const data = await Actions.getRoomsInfo(channelId, params);
+  const data = await ApiActions.getRoomsInfo(channelId, params);
 
   setRoomsData(dispatch, data);
 };
@@ -83,7 +83,7 @@ const loadClosedDates = async (dispatch, channelId) => {
 
   setClosedDatesLoading(dispatch);
 
-  const data = await Actions.getClosedDates(channelId);
+  const data = await ApiActions.getClosedDates(channelId);
 
   setClosedDatesData(dispatch, data);
 };

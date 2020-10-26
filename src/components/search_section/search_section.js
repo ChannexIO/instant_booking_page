@@ -25,6 +25,8 @@ export default function SearchSection() {
   const { data: propertyRooms } = roomsInfo;
   const { ratesOccupancyPerRoom, currency } = params;
 
+  //TODO update search params onChange handling, set query params here, not in input components;
+
   useEffect(function buildRoomsById() {
     if (!propertyRooms) {
       return;
