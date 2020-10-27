@@ -5,9 +5,20 @@ import RatePlanOccupancySelect from './rate_plan_occupancy_select';
 import RatePlanPolicies from './rate_plan_policies';
 import RatePlanPrice from './rate_plan_price';
 
+import styles from './rate_plan.module.css';
+
 const DEFAULT_AVAILABLE_SPACES = 0;
 
-export default function RatePlan({ ratePlan, currency, occupiedSpaces, ratesOccupancy, residenceTime, isMobile, adults, children, onOccupancyChange }) {
+export default function RatePlan(props) {
+  const {
+    ratePlan,
+    currency,
+    occupiedSpaces,
+    ratesOccupancy,
+    adultsOccupancy,
+    childrenOccupancy,
+    onOccupancyChange,
+  } = props;
   const [availableSpaces, setAvailableSpaces] = useState(DEFAULT_AVAILABLE_SPACES);
 
   const { id, availability } = ratePlan;
@@ -24,17 +35,21 @@ export default function RatePlan({ ratePlan, currency, occupiedSpaces, ratesOccu
   }, [occupiedSpaces, availability]);
 
   return (
-    <>
-      <td><RatePlanOccupancy occupancy={ratePlan.occupancy} adults={adults} children={children} isMobile={isMobile} /></td>
-      <td><RatePlanPrice ratePlan={ratePlan} currency={currency} residenceTime={residenceTime} isMobile={isMobile} /></td>
-      <td><RatePlanPolicies ratePlan={ratePlan} currency={currency} /></td>
-      <td>
-        <RatePlanOccupancySelect
-          rateOccupancy={rateOccupancy}
-          availableSpaces={availableSpaces}
-          onChange={handleOccupancyChange}
-        />
-      </td>
-    </>
+    <div className={styles.rate}>
+      <RatePlanOccupancy
+        occupancy={ratePlan.occupancy}
+        adultsOccupancy={adultsOccupancy}
+        childrenOccupancy={childrenOccupancy}
+      />
+      <div className={styles.flexibleContainer}>
+        <RatePlanPrice ratePlan={ratePlan} currency={currency} />
+        <RatePlanPolicies ratePlan={ratePlan} currency={currency} />
+      </div>
+      <RatePlanOccupancySelect
+        rateOccupancy={rateOccupancy}
+        availableSpaces={availableSpaces}
+        onChange={handleOccupancyChange}
+      />
+    </div>
   );
 }

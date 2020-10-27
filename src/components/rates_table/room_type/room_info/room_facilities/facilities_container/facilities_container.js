@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Facility from 'components/faclitily';
+import Caption from 'components/caption';
 
-import styles from './facilities_container.module.css';
+const FACILITY_DIVIDER = ' · ';
 
 export default function FacilitiesContainer({ facilities }) {
   return (
-    <div className={styles.facilitiesContainer}>
-      {facilities.map((code) => <Facility code={code} key={code} />)}
-    </div>
+    <Caption variant="green">
+      {facilities.join(FACILITY_DIVIDER)}
+    </Caption>
   );
 }

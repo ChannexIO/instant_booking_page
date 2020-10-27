@@ -1,15 +1,17 @@
 .title {
   cursor: pointer;
-  color: var(--link-color);
-  font-weight: 400;
-  font-size: 1.25rem;
+  color: #008ecd;
+  text-decoration: none;
   padding: 0;
+  border: none;
+  line-height: 20px;
+  font-size: 14px;
 }
 
-.title:active, .title:focus {
+.title:global.btn.btn-link:active,
+.title:global.btn.btn-link:hover,
+.title:global.btn.btn-link:focus {
   outline: none;
-}
-
-.title:active, title:hover {
-  color: var(--icon-color);
+  box-shadow: none;
+  color: #008ecd;
 }

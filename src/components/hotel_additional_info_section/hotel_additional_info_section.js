@@ -6,8 +6,6 @@ import SectionTitle from 'components/section_title';
 
 import InfoEntry from './info_entry';
 
-import styles from './hotel_additional_info_section.module.css';
-
 export default function HotelInfoSection({ property }) {
   const { address, phone, email } = property;
   const { t } = useTranslation();

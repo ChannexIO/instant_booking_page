@@ -1,0 +1,21 @@
+.caption {
+  margin-top: 8px;
+  opacity: 0.85;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.captionRight {
+  text-align: right;
+}
+
+.captionCenter {
+  text-align: center;
+}
+
+.captionGreen {
+  color: #359733;
+}

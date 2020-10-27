@@ -19,7 +19,9 @@ export default function RoomTitle({ room }) {
         className={styles.title}
         onClick={handleModalToggle}
       >
-        {room.title}
+        <strong>
+          {room.title}
+        </strong>
       </Button>
       <RoomDetailsModal room={room} show={isModalOpen} onHide={handleModalToggle} />
     </>

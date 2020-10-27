@@ -4,7 +4,8 @@ import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 import styles from './integer_input.module.css';
 
-export default function IntegerInput({ label, value, name, maxValue = null, minValue = null, onChange }) {
+export default function IntegerInput(props) {
+  const { label, value, name, maxValue = null, minValue = null, onChange } = props;
   const isDecreaseDisabled = minValue !== null ? value <= minValue : false;
   const isIncreaseDisabled = maxValue !== null ? value >= maxValue : false;
 

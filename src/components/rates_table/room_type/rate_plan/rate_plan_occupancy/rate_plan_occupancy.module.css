@@ -3,14 +3,6 @@
   flex-wrap: wrap;
 }
 
-.mobileHeader {
-  margin-bottom: 0.25rem;
-}
-
-.children {
-  font-size: 0.75rem;
-}
-
-.children::before {
-  content: " + ";
+.occupancyCell {
+  flex: 1 3 17%
 }

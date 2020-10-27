@@ -1,33 +1,33 @@
-import React, { useCallback } from 'react';
-import { Button } from 'react-bootstrap';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
+
+import Select from 'components/inputs/search_section_select';
+import Cell from 'components/layout/cell';
 
 import styles from './rate_plan_occupancy_select.module.css';
 
 export default function RatePlanOccupancySelect({ rateOccupancy, availableSpaces, onChange }) {
-  const isDecreaseDisabled = rateOccupancy <= 0;
-  const isIncreaseDisabled = availableSpaces <= 0;
+  const [options, setOptions] = useState([]);
 
-  const handleOccupancyDecrease = useCallback(() => onChange(rateOccupancy - 1), [rateOccupancy, onChange]);
-  const handleOccupancyIncrease = useCallback(() => onChange(rateOccupancy + 1), [rateOccupancy, onChange]);
+  useEffect(function buildOptionsList() {
+    const maxAvailableValue = rateOccupancy + availableSpaces;
+
+    const newOptions = Array.from(Array(maxAvailableValue + 1), (val, index) => {
+      return {
+        value: index,
+        key: index,
+      };
+    });
+
+    setOptions(newOptions);
+  }, [availableSpaces, rateOccupancy]);
 
   return (
-    <div className={styles.occupancySelectContainer}>
-      <Button
-        className={styles.occupancyDecreaseButton}
-        disabled={isDecreaseDisabled}
-        onClick={handleOccupancyDecrease}
-      >
-        <MinusOutlined className={styles.toggleIcon} />
-      </Button>
-      <div>{rateOccupancy}</div>
-      <Button
-        className={styles.occupancyIncreaseButton}
-        disabled={isIncreaseDisabled}
-        onClick={handleOccupancyIncrease}
-      >
-        <PlusOutlined className={styles.toggleIcon} />
-      </Button>
-    </div>
+    <Cell className={styles.occupancySelectCell} noPadding>
+      <Select
+        value={rateOccupancy}
+        options={options}
+        onChange={onChange}
+      />
+    </Cell>
   );
 }

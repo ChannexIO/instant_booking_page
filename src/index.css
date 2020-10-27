@@ -1,3 +1,5 @@
+/* TODO: either remove global colors at all or update all used colors to use them */
+
 :root {
   font-size: 14px;
   --main-text-color: rgba(0, 0, 0, 0.6);
@@ -21,19 +23,13 @@
   --background-light-color: #FFFFFF;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--main-text-color);
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
 
 body {
+  color: var(--main-text-color);
   margin: 0;
   font-family: Roboto, sans-serif;
   color: rgba(0, 0, 0, 0.6);

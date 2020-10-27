@@ -4,30 +4,35 @@
   padding: 0 !important;
   position: sticky;
   z-index: 10;
-  height: 3rem;
+  height: 40px;
+  flex-grow: 2;
 }
 
 .column::after {
   content: "";
   position: absolute;
-  top: -1px;
-  bottom: -2px;
-  left: -1px;
-  right: -1px;
   background-color: #dee2e6;
 }
 
 .columnContent {
   z-index: 1;
-  background: white;
-  display: flex;
-  justify-content: center;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
   position: absolute;
-  align-items: center;
-  font-size: 1.125rem;
+  font-size: 11px;
   font-weight: 400;
+  text-transform: uppercase;
+  padding: 8px;
+  align-items: center;
+  border-bottom: 2px solid rgba(36,46,66,.12);
+  background-color: #3b87c9;
+  display: block;
+  min-height: 40px;
+}
+
+.columnLabel {
+  color: #FFF;
+  opacity: 0.7;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
 
 import HotelTitle from 'components/hotel_title';
 import CurrencySelect from 'components/inputs/currency_select';

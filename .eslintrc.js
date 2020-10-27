@@ -48,12 +48,13 @@ module.exports = {
         ["^(containers)"],
         ["^(routing)"],
         ["^(constants|utils)"],
+        ["^(static)"],
         // Parent imports. Put `..` last.
         ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
         // Other relative imports. Put same-folder imports and `.` last.
         ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
         // Style imports.
-        ["^(static)","^.+\\.s?css$"],
+        ["^.+\\.s?css$"],
       ],
     }],
     "object-curly-newline": ["error", {

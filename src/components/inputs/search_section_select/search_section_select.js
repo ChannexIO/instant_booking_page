@@ -5,10 +5,13 @@ import styles from './search_section_select.module.css';
 
 const VERTICAL_ORIENTATION = 'vertical';
 
-export default function SearchSectionSelect({ name, label, value, options, placeholder, layout, onChange }) {
+export default function SearchSectionSelect(props) {
+  const { name, label, value, options, placeholder, layout, onChange } = props;
   const [selectOptions, setSelectOptions] = useState([]);
   const [valueToDisplay, setValueToDisplay] = useState(null);
-  const containerClass = layout === VERTICAL_ORIENTATION ? styles.containerVertical : styles.containerHorizontal;
+  const containerClass = layout === VERTICAL_ORIENTATION
+    ? styles.containerVertical
+    : styles.containerHorizontal;
 
   useEffect(function updatedSelectOptions() {
     const processedOptions = options.map((option) => (
@@ -38,6 +41,8 @@ export default function SearchSectionSelect({ name, label, value, options, place
     setValueToDisplay(event.target.text);
     onChange(parsedValue, name);
   }, [onChange, name]);
+
+  // TODO - fix height change when active
 
   return (
     <div className={containerClass}>

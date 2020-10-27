@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 const convertToSnakeCase = (varName) => {
   return varName.replace(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
 };

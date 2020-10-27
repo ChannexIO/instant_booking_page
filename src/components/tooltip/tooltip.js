@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { Overlay } from 'react-bootstrap';
-import { InfoCircleOutlined } from '@ant-design/icons';
 
 import styles from './tooltip.module.css';
 
@@ -18,23 +17,23 @@ export default function PoliciesInfo({ className, children }) {
     setIsShown(false);
   };
 
-  const iconClass = isShown ? styles.tooltipIconActive : styles.tooltipIcon;
-
   return (
     <div className={[styles.tooltipContainer, className].join(' ')} ref={ref}>
-      <InfoCircleOutlined
-        className={iconClass}
+      <div
+        role="button"
+        tabIndex="0"
+        className={styles.tooltipIcon}
         onMouseEnter={handleShow}
         onMouseLeave={handleHide}
+        onKeyDown={handleShow}
         onClick={handleShow}
       />
-
       <Overlay
         rootClose
         show={isShown}
         target={target}
         rootCloseEvent="click"
-        placement="bottom"
+        placement="top"
         container={ref.current}
         onHide={handleHide}
       >

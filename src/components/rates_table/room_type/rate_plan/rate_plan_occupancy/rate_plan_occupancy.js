@@ -1,20 +1,41 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+
+import Cell from 'components/layout/cell';
+
+import IconGuestChild from 'static/icons-guest-child.svg';
+import IconGuestDouble from 'static/icons-guest-double.svg';
+import IconGuestSingle from 'static/icons-guest-single.svg';
 
 import OccupancySection from './occupancy_section';
 
 import styles from './rate_plan_occupancy.module.css';
 
-export default function RatePlanOccupancy({ occupancy, adults, children, isMobile }) {
-  const { t } = useTranslation();
+const CHILD_NUMBER_THRESHOLD = 1;
+const ADULT_NUMBER_THRESHOLD = 2;
+
+export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
+  const isChildOccupancyNumberShown = occupancy.children > CHILD_NUMBER_THRESHOLD;
+  const isAdultOccupancyNumberShown = occupancy.adults > ADULT_NUMBER_THRESHOLD;
+  const adultsOccupancyIcon = occupancy.adults > 1 ? IconGuestDouble : IconGuestSingle;
 
   return (
-    <>
-      {isMobile && <div className={styles.mobileHeader}>{t('rates_table:price_for_up_to')}:</div>}
+    <Cell className={styles.occupancyCell}>
       <div className={styles.occupanciesContainer}>
-        <OccupancySection availableSpaces={occupancy.adults} selectedSpaces={adults} className={styles.adults}/>
-        {Boolean(children) && <OccupancySection availableSpaces={occupancy.children} selectedSpaces={children} className={styles.children}/>}
+        <OccupancySection
+          type="adults"
+          availableSpaces={occupancy.adults}
+          icon={adultsOccupancyIcon}
+          showNumber={isAdultOccupancyNumberShown}
+        />
+        {Boolean(childrenOccupancy) && (
+          <OccupancySection
+            type="children"
+            availableSpaces={occupancy.children}
+            icon={IconGuestChild}
+            showNumber={isChildOccupancyNumberShown}
+          />
+        )}
       </div>
-    </>
+    </Cell>
   );
 }
