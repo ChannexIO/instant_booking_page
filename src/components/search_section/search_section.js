@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
 import { useMedia } from 'react-media';
 
 import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
@@ -25,7 +24,7 @@ export default function SearchSection() {
   const { data: propertyRooms } = roomsInfo;
   const { ratesOccupancyPerRoom, currency } = params;
 
-  //TODO update search params onChange handling, set query params here, not in input components;
+  // TODO update search params onChange handling, set query params here, not in input components;
 
   useEffect(function buildRoomsById() {
     if (!propertyRooms) {
@@ -33,7 +32,9 @@ export default function SearchSection() {
     }
 
     const updatedRoomsById = propertyRooms.reduce((roomsById, room) => {
-      const updatedRatePlans = room.ratePlans.reduce((ratesById, rate) => ({ ...ratesById, [rate.id]: rate }), {});
+      const updatedRatePlans = room.ratePlans.reduce((ratesById, rate) => {
+        return { ...ratesById, [rate.id]: rate };
+      }, {});
 
       return { ...roomsById, [room.id]: { ...room, ratePlans: updatedRatePlans } };
     }, {});
@@ -73,6 +74,8 @@ export default function SearchSection() {
     setSelectedRatesList(newSelectedRatesList);
   }, [propertyRoomsById, ratesOccupancyPerRoom]);
 
+  const SummaryComponent = isMobile ? MobileSummary : Summary;
+
   return (
     <div className={styles.stickyContainer}>
       <div className={styles.searchPanelWrapper}>
@@ -80,10 +83,11 @@ export default function SearchSection() {
         <div className={styles.searchSection}>
           <DateSelect bookingParams={params} handleSearchChange={setParamsAndLoadRoomsInfo} />
           <OccupancySetting bookingParams={params} handleSearchChange={setParamsAndLoadRoomsInfo} />
-          {isMobile
-            ? <MobileSummary selectedRatesList={selectedRatesList} totalPrice={totalPrice} currency={currency}/>
-            : <Summary selectedRatesList={selectedRatesList} totalPrice={totalPrice} currency={currency}/>
-          }
+          <SummaryComponent
+            selectedRatesList={selectedRatesList}
+            totalPrice={totalPrice}
+            currency={currency}
+          />
         </div>
       </div>
     </div>

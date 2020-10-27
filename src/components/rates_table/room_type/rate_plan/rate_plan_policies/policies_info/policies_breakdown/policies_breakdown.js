@@ -6,7 +6,7 @@ import PolicySection from './policy_section';
 
 import styles from './policies_breakdown.module.css';
 
-const PoliciesBreakdown = forwardRef(({ ratePlan, className, ...popoverProps }, ref) => {
+function PoliciesBreakdown({ ratePlan, className, ...popoverProps }, ref) {
   const { t } = useTranslation();
 
   const popoverClassName = [className, styles.popover].join(' ');
@@ -19,13 +19,13 @@ const PoliciesBreakdown = forwardRef(({ ratePlan, className, ...popoverProps }, 
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...popoverProps}
     >
-      <Popover.Content>
+      <Popover.Content className={styles.popoverContent}>
         <PolicySection title={t('rates_table:meals')} text="Lorem ipsum dolor sit amet, consectetur adipiscing eli" />
         <PolicySection title={t('rates_table:cancellation')} text="Lorem ipsum dolor sit amet, consectetur adipiscing eli" />
         <PolicySection title={t('rates_table:prepayment')} text="Lorem ipsum dolor sit amet, consectetur adipiscing eli" />
       </Popover.Content>
     </Popover>
   );
-});
+}
 
-export default PoliciesBreakdown;
+export default forwardRef(PoliciesBreakdown);

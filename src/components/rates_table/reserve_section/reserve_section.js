@@ -12,7 +12,16 @@ const getSpacesDeficit = (requiredAmount, availableAMount) => {
 };
 
 export default function ReserveSection(props) {
-  const { isMobile, isRatePlansPresent, ratesOccupancyPerRoom, propertyRooms, currency, children, adults, onClick } = props;
+  const {
+    isMobile,
+    isRatePlansPresent,
+    ratesOccupancyPerRoom,
+    propertyRooms,
+    currency,
+    children,
+    adults,
+    onClick,
+  } = props;
   const [occupiedRoomsNumber, setOccupiedRoomsNumber] = useState(0);
   const [missingSpaces, setMissingSpaces] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
@@ -25,7 +34,9 @@ export default function ReserveSection(props) {
 
   useEffect(function buildRoomsById() {
     const updatedRoomsById = propertyRooms.reduce((roomsById, room) => {
-      const updatedRatePlans = room.ratePlans.reduce((ratesById, rate) => ({ ...ratesById, [rate.id]: rate }), {});
+      const updatedRatePlans = room.ratePlans.reduce((ratesById, rate) => {
+        return { ...ratesById, [rate.id]: rate };
+      }, {});
 
       return { ...roomsById, [room.id]: { ...room, ratePlans: updatedRatePlans } };
     }, {});
@@ -58,7 +69,6 @@ export default function ReserveSection(props) {
   useEffect(function handleSpaceRequirimentsChange() {
     let selectedAdultsSpaces = 0;
     let selectedChildrenSpaces = 0;
-    let selectedInfantSpaces = 0;
 
     Object.keys(ratesOccupancyPerRoom).forEach((roomId) => {
       Object.keys(ratesOccupancyPerRoom[roomId]).forEach((rateId) => {
@@ -67,7 +77,6 @@ export default function ReserveSection(props) {
 
         selectedAdultsSpaces += Number(rateOccupancy.adults) * selectedRateAmount;
         selectedChildrenSpaces += Number(rateOccupancy.children) * selectedRateAmount;
-        selectedInfantSpaces += Number(rateOccupancy.infants) * selectedRateAmount;
       });
     });
 

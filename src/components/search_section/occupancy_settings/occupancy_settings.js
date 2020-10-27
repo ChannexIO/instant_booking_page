@@ -8,8 +8,6 @@ import setUrlParams from 'utils/set_url_params';
 
 import OccupancySettingsForm from './occupancy_settings_form';
 
-import styles from './occupancy_settings.module.css';
-
 export default function OccupancySettings({ bookingParams, handleSearchChange }) {
   const { t } = useTranslation();
   const history = useHistory();

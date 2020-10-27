@@ -1,0 +1,18 @@
+.rate {
+  display: flex; 
+}
+
+.rate:last-child {
+  height: 100%;
+}
+
+.flexibleContainer {
+  flex: 3 2 66%;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .flexibleContainer {
+    flex-direction: column;
+  }
+}

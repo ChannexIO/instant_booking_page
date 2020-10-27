@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import IconNavigationDown from 'static/icons-navigation-down.svg';
+
 import styles from './expand_button.module.css';
 
 export default function ExpandButton({ expanded, onClick }) {

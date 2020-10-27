@@ -8,7 +8,7 @@ import styles from './rate_plan_price_breakdown.module.css';
 
 const DECIMAL_PLACES = 2;
 
-const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...popoverProps }, ref) => {
+function RatePlanPriceBreakdown({ ratePlan, currency, className, ...popoverProps }, ref) {
   const { t } = useTranslation();
   const { totalPrice, netPrice, lengthOfStay, taxes } = ratePlan;
 
@@ -23,7 +23,7 @@ const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...p
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...popoverProps}
     >
-      <Popover.Title>
+      <Popover.Content className={styles.totalContainer}>
         <div className={styles.priceRow}>
           <span>
             <Currency currency={currency} amount={perNightPrice} />
@@ -37,8 +37,6 @@ const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...p
             <Currency currency={currency} amount={tax.amount} />
           </div>
         ))}
-      </Popover.Title>
-      <Popover.Content className={styles.totalContainer}>
         <span className={styles.totalLabel}>{t('rates_table:total_price')}</span>
         <Currency
           className={styles.totalPrice}
@@ -48,6 +46,6 @@ const RatePlanPriceBreakdown = forwardRef(({ ratePlan, currency, className, ...p
       </Popover.Content>
     </Popover>
   );
-});
+}
 
-export default RatePlanPriceBreakdown;
+export default forwardRef(RatePlanPriceBreakdown);

@@ -3,7 +3,7 @@ import { Dropdown } from 'react-bootstrap';
 
 import styles from './select.module.css';
 
-export default function Select({ label, value, children, options, onChange }) {
+export default function Select({ label, value, options, onChange }) {
   const renderOptions = useCallback(() => {
     return options.map((option) => (
       <Dropdown.Item

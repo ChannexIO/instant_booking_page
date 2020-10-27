@@ -1,11 +1,11 @@
-.roomTypeColumn {
-  width: 30%;
+.columnNarrow {
+  flex-grow: 1;
 }
 
-.roomTypeColumnWide {
+.tableHeaderWrapper {
+  display: flex;
   width: 100%;
-}
-
-.policiesColumn {
-  width: 20%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }

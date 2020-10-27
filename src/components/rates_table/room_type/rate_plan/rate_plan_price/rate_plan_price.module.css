@@ -3,15 +3,14 @@
   flex-direction: row;
 }
 
-.ratePlanTooltip {
-  position: relative;
-  margin-left: 0.5rem;
-}
-
 .ratePlanTaxes {
   font-size: 0.8rem;
 }
 
 .ratePlanPrice {
   white-space: nowrap;
+}
+
+.ratePlanPriceCell {
+  flex: 2 1 50%;
 }

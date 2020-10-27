@@ -7,7 +7,16 @@ import styles from './room_type.module.css';
 
 const DEFAULT_ROOM_RATES = {};
 
-export default function RoomType({ roomType, currency, rowIndex, isMobile, ratesOccupancyPerRoom, adults, children, residenceTime, onRatesOccupancyChange }) {
+export default function RoomType(props) {
+  const {
+    roomType,
+    currency,
+    rowIndex,
+    ratesOccupancyPerRoom,
+    adultsOccupancy,
+    childrenOccupancy,
+    onRatesOccupancyChange,
+  } = props;
   const [occupiedSpaces, setOccupiedSpaces] = useState(0);
   const [sortedRates, setSortedRates] = useState([]);
 
@@ -30,48 +39,41 @@ export default function RoomType({ roomType, currency, rowIndex, isMobile, rates
     }
 
     const ratesByOccupancyMatch = ratePlans.sort((a, b) => {
-      const aOccupancyMatchRating = Number(a.occupancy.children === children)
-        + Number(a.occupancy.adults === adults);
+      const aOccupancyMatchRating = Number(a.occupancy.children === childrenOccupancy)
+        + Number(a.occupancy.adults === adultsOccupancy);
 
-      const bOccupancyMatchRating = Number(b.occupancy.children === children)
-      + Number(b.occupancy.adults === adults);
+      const bOccupancyMatchRating = Number(b.occupancy.children === childrenOccupancy)
+        + Number(b.occupancy.adults === adultsOccupancy);
 
       return bOccupancyMatchRating - aOccupancyMatchRating;
     });
 
     setSortedRates([...ratesByOccupancyMatch]);
-  }, [ratePlans, adults, children]);
+  }, [ratePlans, adultsOccupancy, childrenOccupancy]);
 
   if (!sortedRates.length) {
-    return (
-      <tr key={id}>
-        <RoomInfo roomType={roomType} rowIndex={rowIndex} />
-      </tr>
-    );
+    return <RoomInfo key={id} roomType={roomType} rowIndex={rowIndex} />;
   }
 
   return (
-    <>
-      {sortedRates.map((ratePlan, index, array) => {
-        const rowClass = index === (array.length - 1) ? styles.lastRoomRate : null;
-
-        return (
-          <tr className={rowClass} key={ratePlan.id}>
-            {!index || isMobile ? <RoomInfo roomType={roomType} isMobile={isMobile} rowIndex={rowIndex} /> : null}
+    <div className={styles.roomContainer}>
+      <RoomInfo roomType={roomType} rowIndex={rowIndex} />
+      <div className={styles.ratesList}>
+        {sortedRates.map((ratePlan) => {
+          return (
             <RatePlan
+              key={ratePlan.id}
               ratePlan={ratePlan}
               currency={currency}
               occupiedSpaces={occupiedSpaces}
               ratesOccupancy={roomRates}
               onOccupancyChange={handleRatesOccupancyChange}
-              residenceTime={residenceTime}
-              isMobile={isMobile}
-              adults={adults}
-              children={children}
+              adultsOccupancy={adultsOccupancy}
+              childrenOccupancy={childrenOccupancy}
             />
-          </tr>
-        );
-      })}
-    </>
+          );
+        })}
+        </div>
+      </div>
   );
 }

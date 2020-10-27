@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Accordion, Button } from 'react-bootstrap';
+import { Accordion } from 'react-bootstrap';
 
 import BookButton from '../book_button';
 import RateBreakdown from '../rate_breakdown';

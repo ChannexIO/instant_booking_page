@@ -9,7 +9,9 @@ const VERTICAL_ORIENTATION = 'vertical';
 
 export default function Dropdown({ className, layout, children, title, label }) {
   const [isVisible, setIsVisible] = useState(false);
-  const containerClass = layout === VERTICAL_ORIENTATION ? styles.containerVertical : styles.containerHorizontal;
+  const containerClass = layout === VERTICAL_ORIENTATION
+    ? styles.containerVertical
+    : styles.containerHorizontal;
 
   const handleVisibilityToggle = useCallback((newVisibilityState, event, meta) => {
     if (meta.source === 'select') {

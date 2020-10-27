@@ -1,3 +1,11 @@
 .policyContainer {
   position: relative;
 }
+
+.policyCell {
+  flex: 2 1 50%
+}
+
+.mealContainer {
+  display: flex;
+}

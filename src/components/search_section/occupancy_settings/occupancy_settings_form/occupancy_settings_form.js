@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import IntegerInput from 'components/inputs/integer_input';
@@ -39,7 +39,6 @@ export default function OccupancySettingsForm({ bookingParams, onChange }) {
       <ChildrenAgeSettings
         bookingParams={bookingParams}
         name="childrenAge"
-        bookingParams={bookingParams}
         onChange={onChange}
       />
     </div>

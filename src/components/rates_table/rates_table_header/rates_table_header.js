@@ -10,24 +10,31 @@ import styles from './rates_table_header.module.css';
 export default function RatesTableHeader({ residenceTime, propertyRooms, isMobile }) {
   const { t } = useTranslation();
 
-  const isRatesPresent = propertyRooms.some((room) => Array.isArray(room.ratePlans) && room.ratePlans.length > 0);
-  const roomTypeColumnClass = isRatesPresent ? styles.roomTypeColumn : styles.roomTypeColumnWide;
+  const isRatesPresent = propertyRooms.some((room) => {
+    return Array.isArray(room.ratePlans) && room.ratePlans.length > 0;
+  });
 
   if (isMobile) {
     return null;
   }
 
   return (
-    <thead>
-      <tr className={styles.tableHeaderWrapper}>
-        <RatesTableHeaderColumn className={roomTypeColumnClass}>{t('rates_table:room_type')}</RatesTableHeaderColumn>
-        {isRatesPresent && <>
-          <RatesTableHeaderColumn>{t('rates_table:sleeps')}</RatesTableHeaderColumn>
-          <RatesTableHeaderColumn><PriceColumnTitle residenceTime={residenceTime} /></RatesTableHeaderColumn>
-          <RatesTableHeaderColumn className={styles.policiesColumn}>{t('rates_table:your_choises')}</RatesTableHeaderColumn>
-          <RatesTableHeaderColumn>{t('rates_table:select_rooms')}</RatesTableHeaderColumn>
-        </>}
-      </tr>
-    </thead>
+    <div className={styles.tableHeaderWrapper}>
+      <RatesTableHeaderColumn>{t('rates_table:room_type')}</RatesTableHeaderColumn>
+      {isRatesPresent && <>
+        <RatesTableHeaderColumn className={styles.columnNarrow}>
+          {t('rates_table:sleeps')}
+        </RatesTableHeaderColumn>
+        <RatesTableHeaderColumn>
+          <PriceColumnTitle residenceTime={residenceTime} />
+        </RatesTableHeaderColumn>
+        <RatesTableHeaderColumn>
+          {t('rates_table:your_choises')}
+        </RatesTableHeaderColumn>
+        <RatesTableHeaderColumn className={styles.columnNarrow}>
+          {t('rates_table:rooms')}
+        </RatesTableHeaderColumn>
+      </>}
+    </div>
   );
 }

@@ -2,12 +2,24 @@
   line-height: 1rem;
 }
 
-.tooltipIcon:focus,
-.tooltipIconActive:focus
-{
-  outline: none;
+.tooltipIcon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  min-height: 14px;
+  min-width: 14px;
+  margin-top: 4px;
+  margin-left: 2px;
+  background-image: url('~static/icons-help.svg');
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 200ms ease;
+  font-size: 16px;
+  line-height: 16px;
+  cursor: help;
 }
 
-.tooltipIconActive {
-  color: var(--icon-color);
+.tooltipIcon:hover {
+  background-image: url('~static/icons-help-active.svg');
 }

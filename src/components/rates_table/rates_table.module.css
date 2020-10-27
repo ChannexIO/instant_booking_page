@@ -1,18 +1,10 @@
-.ratesTable {
-  margin: 0;
-  color: var(--highlight-text-color);
-}
-
 .tableContainer {
-  margin: 0.25rem 0;
   display: flex;
+  width: 100%;
+  flex-direction: column;
 }
 
 .tableContainerMobile {
   flex-direction: column;
 }
 
-.ratesTableMobile tr {
-  display: flex;
-  flex-direction: column;
-}

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { Table } from 'react-bootstrap';
 import { useMedia } from 'react-media';
+import moment from 'moment';
 
 import LoadingContainer from 'components/loading_container';
 
@@ -15,15 +15,27 @@ import styles from './rates_table.module.css';
 
 const DEFAULT_OCCUPANCY_PER_ROOM = {};
 
-export default function RatesTable({ currency, residenceTime, adults, children }) {
+export default function RatesTable() {
   const { roomsInfo, params } = useContext(BookingDataContext);
   const { setParams } = useContext(BookingActionsContext);
+  const {
+    ratesOccupancyPerRoom = DEFAULT_OCCUPANCY_PER_ROOM,
+    currency,
+    checkinDate,
+    checkoutDate,
+    adults,
+    children,
+  } = params;
   const { data: roomsData, isLoading } = roomsInfo;
-  const { ratesOccupancyPerRoom = DEFAULT_OCCUPANCY_PER_ROOM } = params;
+  const isCheckinDateValid = checkinDate && moment(checkinDate).isValid();
+  const isCheckoutDateValid = checkoutDate && moment(checkoutDate).isValid();
+  const isEnteredDatesValid = isCheckinDateValid && isCheckoutDateValid;
+  const residenceTime = isEnteredDatesValid
+    ? checkoutDate.diff(checkinDate, 'days')
+    : null;
 
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
-  const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
-  const tableClasses = [styles.ratesTable];
+  const isMobile = matchedQueries.xs || matchedQueries.sm;
   const tableContainerClasses = [styles.tableContainer];
 
   const setRatesOccupancyPerRoom = useCallback((updatedOccupancy) => {
@@ -33,7 +45,7 @@ export default function RatesTable({ currency, residenceTime, adults, children }
   useEffect(function resetSelectedRates() {
     const isAllSelectedRatesPresent = Object.keys(ratesOccupancyPerRoom)
       .every((roomId) => {
-        const room = roomsData.find((room) => room.id === roomId);
+        const room = roomsData.find((roomEntry) => roomEntry.id === roomId);
 
         if (!room) {
           return false;
@@ -51,7 +63,6 @@ export default function RatesTable({ currency, residenceTime, adults, children }
   }, [roomsData, ratesOccupancyPerRoom, setRatesOccupancyPerRoom]);
 
   if (isMobile) {
-    tableClasses.push(styles.ratesTableMobile);
     tableContainerClasses.push(styles.tableContainerMobile);
   }
 
@@ -62,27 +73,24 @@ export default function RatesTable({ currency, residenceTime, adults, children }
   return (
     <LoadingContainer loading={isLoading}>
       <div className={tableContainerClasses.join(' ')}>
-        <div>
-          <Table className={tableClasses.join(' ')} striped bordered>
-            <RatesTableHeader residenceTime={residenceTime} propertyRooms={roomsData} isMobile={isMobile} />
-            <tbody>
-              {roomsData && roomsData.map((roomType, rowIndex) => (
-                <RoomType
-                  roomType={roomType}
-                  currency={currency}
-                  rowIndex={rowIndex}
-                  isMobile={isMobile}
-                  adults={adults}
-                  children={children}
-                  key={roomType.id}
-                  residenceTime={residenceTime}
-                  ratesOccupancyPerRoom={ratesOccupancyPerRoom}
-                  onRatesOccupancyChange={setRatesOccupancyPerRoom}
-                />
-              ))}
-            </tbody>
-          </Table>
-        </div>
+        <RatesTableHeader
+          residenceTime={residenceTime}
+          propertyRooms={roomsData}
+          isMobile={isMobile}
+        />
+        {roomsData && roomsData.map((roomType, rowIndex) => (
+          <RoomType
+            roomType={roomType}
+            currency={currency}
+            rowIndex={rowIndex}
+            adultsOccupancy={adults}
+            childrenOccupancy={children}
+            key={roomType.id}
+            ratesOccupancyPerRoom={ratesOccupancyPerRoom}
+            onRatesOccupancyChange={setRatesOccupancyPerRoom}
+          />
+        ))}
+      </div>
         {/* <ReserveSection // TODO - remove if unused
           currency={currency}
           isMobile={isMobile}
@@ -92,7 +100,6 @@ export default function RatesTable({ currency, residenceTime, adults, children }
           adults={adults}
           children={children}
         /> */}
-      </div>
     </LoadingContainer>
   );
 }
