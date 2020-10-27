@@ -91,15 +91,6 @@ export default function RatesTable() {
           />
         ))}
       </div>
-        {/* <ReserveSection // TODO - remove if unused
-          currency={currency}
-          isMobile={isMobile}
-          propertyRooms={roomsData}
-          ratesOccupancyPerRoom={ratesOccupancyPerRoom}
-          isRatePlansPresent={isRatePlansPresent}
-          adults={adults}
-          children={children}
-        /> */}
     </LoadingContainer>
   );
 }
