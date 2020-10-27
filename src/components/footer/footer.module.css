@@ -2,10 +2,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+}
+
+.footer > * {
+  flex: 1 3 33%;
+  padding: 0 10px 24px;
 }
 
 .footerWrapper {
-  background: var(--section-background-light-color);
+  display: block;
+  max-width: 1140px;
+  padding-right: 15px;
+  padding-left: 15px;
+  align-items: stretch;
+  margin: auto;
+  padding: 56px 16px;
 }

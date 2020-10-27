@@ -1,11 +1,10 @@
 .link {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: fit-content;
-  color: var(--link-color);
-  white-space: nowrap;  
+  color: var(--main-text-color);
 }
 
-.linkIcon {
-  padding-right: 0.25rem;
+.link:hover {
+  color: var(--main-text-hover);
 }

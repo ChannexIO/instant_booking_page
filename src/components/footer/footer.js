@@ -1,21 +1,23 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
 
 import Link from 'components/link';
+import SectionTitle from 'components/section_title';
 
 import styles from './footer.module.css';
 
-export default function Footer() {
-  const { t } = useTranslation();
+export default function Footer({ property }) {
+  const { title, address, email = 'email@placeholder.zxc', phone = 'phoneplaceholder' } = property;
 
   return (
-   <div className={styles.footerWrapper}>
-    <Container className={styles.footer}>
-      <Link href="https://stackoverflow.com/">{t('footer:privacy_policy')}</Link>
-      <Link href="https://stackoverflow.com/">{t('footer:terms_and_conditions')}</Link>
-      <Link href="https://stackoverflow.com/">{t('footer:copyright_info')}</Link>
-    </Container>
-   </div>
+    <div className={styles.footerWrapper}>
+      <SectionTitle>
+        {title}
+      </SectionTitle>
+      <div className={styles.footer}>
+        {address && <Link to="#" type="location">{address}</Link>}
+        {email && <Link to={email} type="mail">{email}</Link>}
+        {phone && <Link to={phone} type="phone">{phone}</Link>}
+      </div>
+    </div>
   );
 }
