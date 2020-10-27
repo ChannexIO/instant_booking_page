@@ -22,7 +22,7 @@ export default function Map({ location }) {
   }, []);
 
   return (
-    <div style={{ height: '50vh', width: '100%' }}>
+    <div style={{ height: '400px', width: '100%' }}>
       <GoogleMapReact
         options={initMapOptions}
         center={location}

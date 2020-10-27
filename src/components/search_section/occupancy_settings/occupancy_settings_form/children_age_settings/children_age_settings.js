@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Label from 'components/inputs/components/label';
+import Label from 'components/label';
 
 import ChildrenAgeInput from './children_age_input';
 
