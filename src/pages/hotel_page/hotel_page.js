@@ -47,7 +47,7 @@ export default function HotelPage() {
         </SectionWrapper>
       </div>
       <MapSection property={propertyData} />
-      <Footer />
+      <Footer property={propertyData} />
     </div>
   );
 }

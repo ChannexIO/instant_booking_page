@@ -1,38 +1,50 @@
 import React from 'react';
-import { LinkOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+
+import MailIcon from 'static/icons-mail.svg';
+import LocationIcon from 'static/icons-maps-pin.svg';
+import PhoneIcon from 'static/icons-phone.svg';
 
 import styles from './link.module.css';
 
 const LINK_PROPS_BY_TYPE = {
   url: {
-    Icon: LinkOutlined,
+    icon: null,
     prefix: '',
   },
   phone: {
-    Icon: PhoneOutlined,
+    icon: PhoneIcon,
     prefix: 'tel:',
   },
   mail: {
-    Icon: MailOutlined,
+    icon: MailIcon,
     prefix: 'mailto:',
   },
   default: {
-    Icon: null,
+    icon: null,
+    prefix: '',
+  },
+  location: {
+    icon: LocationIcon,
     prefix: '',
   },
 };
 
-export default function Link({ type = 'url', to, children }) {
+export default function Link({ type = 'url', to = '', children }) {
   const { [type]: linkAttrs = LINK_PROPS_BY_TYPE.default } = LINK_PROPS_BY_TYPE;
-  const { Icon, prefix } = linkAttrs;
+  const { icon, prefix } = linkAttrs;
 
   return (
-    <a
-      className={styles.link}
-      href={`${prefix}${to}`}
-    >
-      <Icon className={styles.linkIcon} />
-      {children}
-    </a>
+    <div>
+      <a
+        className={styles.link}
+        href={`${prefix}${to}`}
+      >
+        <img
+          src={icon}
+          alt={type}
+        />
+        {children}
+      </a>
+    </div>
   );
 }
