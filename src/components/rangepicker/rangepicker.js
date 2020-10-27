@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useState } from 'react';
 import { DateRangePicker } from 'react-dates';
 import { useMedia } from 'react-media';
 
-import Label from 'components/inputs/components/label';
+import Label from 'components/label';
 
 import { BookingDataContext } from 'containers/data_context';
 

@@ -13,7 +13,6 @@ export default function HotelInfoSection({ property }) {
   return (
     <div>
       <SectionTitle>{t('hotel_page:additional_information')}</SectionTitle>
-
       {address && <InfoEntry name="address">{address}</InfoEntry>}
       {phone && <InfoEntry name="phone"><Link type="phone" to={phone}>{phone}</Link></InfoEntry>}
       {email && <InfoEntry name="email"><Link type="mail" to={email}>{email}</Link></InfoEntry>}

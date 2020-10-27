@@ -1,14 +1,17 @@
-.infoEntry {
-  color: var(--additional-info-color);
-  margin-bottom: 1.5rem;
+.container {
+  display: flex;
 }
 
-.infoEntryTitle {
-  font-weight: 500;
-  font-size: 0.875rem;
+.label {
+  flex: 1 2 33%;
 }
 
-.infoEntryText {
-  font-size: 0.9375;
-  line-height: 1.375;
+.content {
+  flex: 2 1 66%;
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+    flex-direction: column;
+  }
 }

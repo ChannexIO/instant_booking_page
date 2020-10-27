@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Dropdown as BootstrapDropdown } from 'react-bootstrap';
 
-import Label from 'components/inputs/components/label';
+import Label from 'components/label';
 
 import styles from './dropdown.module.css';
 
