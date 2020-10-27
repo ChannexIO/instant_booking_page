@@ -68,6 +68,7 @@ module.exports = {
         "consistent": true,
       }
     }],
+    "import/no-unused-modules": [1, {"unusedExports": true, "src": ["./src"]}],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 0, "maxEOF": 1 }],
     "eol-last": ["error", "always"],
   }
