@@ -8,9 +8,6 @@ export default function Facility({ code }) {
 
   return (
     <div className={styles.facility}>
-      <span className={styles.facilityIcon}>
-        <span/>
-      </span>
       <div className={styles.facilityTitle}>
         {t(`facilities:${code}`)}
       </div>

@@ -7,12 +7,12 @@ import SectionTitle from 'components/section_title';
 import styles from './hotel_facilities_section.module.css';
 
 export default function HotelFacilitiesSection({ property }) {
-  const { title, facilities } = property;
+  const { facilities } = property;
   const { t } = useTranslation();
 
   return (
     <div>
-      <SectionTitle>{`${t('hotel_page:hotel_facilities')} ${title}`}</SectionTitle>
+      <SectionTitle>{t('hotel_page:hotel_facilities')}</SectionTitle>
       <div className={styles.hotelFacilitiesContainer}>
         {facilities.map((facility) => (
           <div className={styles.hotelFacility} key={facility}>
