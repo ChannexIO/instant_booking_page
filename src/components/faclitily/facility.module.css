@@ -1,18 +1,8 @@
 .facility {
-  display: flex;
-  align-items: center;
-  margin: 0.5rem;
-  margin-left: 0;
-  white-space: nowrap;
-}
-
-.facilityIcon span {
-  width: 0.25rem;
-  height: 0.25rem;
-  background-color: var(--icon-color);
-}
-
-.facilityIcon {
-  display: flex;
-  margin-right: 0.25rem;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-left: 27px;
+  background-image: url('~static/icons-list.svg');
+  background-position: 1px 7px;
+  background-repeat: no-repeat;
 }
