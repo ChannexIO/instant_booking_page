@@ -43,7 +43,9 @@ export default function Link({ type = 'url', to = '', children }) {
           src={icon}
           alt={type}
         />
-        {children}
+        <pre className={styles.linkContent}>
+          {children}
+        </pre>
       </a>
     </div>
   );
