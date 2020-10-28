@@ -4,11 +4,11 @@
 }
 
 .hotelFacility {
-  flex: 1 4 25%;
+  width: 25%;
 }
 
 @media screen and (max-width: 767px) {
   .hotelFacility {
-    flex: 1 2 50%;
+    width: 50%;
   }
 }
