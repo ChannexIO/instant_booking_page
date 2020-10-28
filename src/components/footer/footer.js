@@ -14,7 +14,7 @@ export default function Footer({ property }) {
         {title}
       </SectionTitle>
       <div className={styles.footer}>
-        {address && <Link to="#" type="location">{address}</Link>}
+        {address && <Link to="#/" type="location">{address}</Link>}
         {email && <Link to={email} type="mail">{email}</Link>}
         {phone && <Link to={phone} type="phone">{phone}</Link>}
       </div>

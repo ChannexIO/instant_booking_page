@@ -1,11 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Alert from 'components/alert';
 
-export default function CancellationPolicy({ cancellationPolicy }) {
-  const { t } = useTranslation();
-
+export default function CancellationPolicy() {
   // TODO - update implementation as format will be set
   return (
     <Alert
