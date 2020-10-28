@@ -43,7 +43,7 @@ const setBookingParams = (dispatch, payload) => {
 };
 
 const getChannelId = (location) => {
-  const matchedPath = matchPath(location.pathname, { path: '/:channelId' });
+  const matchedPath = matchPath(location.pathname, { path: '/:channelId', exact: true });
 
   if (!matchedPath) {
     return null;
@@ -96,6 +96,10 @@ const setParams = (dispatch, channelId, bookingParams) => {
 
 const initBookingData = async (dispatch, location, bookingParams) => {
   const channelId = getChannelId(location);
+
+  if (!channelId) {
+    return;
+  }
 
   setChannelId(dispatch, channelId);
   loadProperty(dispatch, channelId);
