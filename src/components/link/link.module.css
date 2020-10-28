@@ -8,3 +8,11 @@
 .link:hover {
   color: var(--main-text-hover);
 }
+
+.linkContent {
+  margin: 0;
+  font-size: 14px;
+  white-space: pre-wrap;
+  font-family: inherit;
+  color: var(--main-text-color);
+}
