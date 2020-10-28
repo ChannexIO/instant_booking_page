@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="24px" viewBox="0 0 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>navigation/arrowleft</title>
+    <g id="Desktop-Template" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Bootstrap-Extra-large:-Desktops-—-12-Columns" transform="translate(-1320.000000, -1193.000000)">
+            <g id="navigation/back" transform="translate(1320.610352, 1193.000000)">
+                <path d="M0,0 L24,0 L24,24 L0,24 L0,0 Z" id="Transparent-BG" stroke-opacity="0.01" stroke="#FFFFFF" stroke-width="0.01"></path>
+                <polygon id="Path" fill="#FFFFFF" points="10 17.710871 10 20.4368474 0.684966951 11.8098149 10 3.55019746 10 6.22319774 4.61281696 11 22.5 11 22.5 13 4.91343996 13"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

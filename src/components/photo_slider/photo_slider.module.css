@@ -27,8 +27,65 @@
 }
 
 .carousel :global .carousel-indicators li {
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
+  background-color: rgba(255,255,255,.4);
   border-radius: 50%;
-  border: 1px solid slategray;
+}
+
+.carousel :global .carousel-indicators li.active {
+  background-color: #fff;
+}
+
+.carousel :global .carousel-control-next,
+.carousel :global .carousel-control-prev {
+  width: 56px;
+  opacity: 1;
+}
+
+.carousel :global .carousel-control-prev-icon {
+  background-image: url('~static/icons-arrowleft.svg');
+  
+}
+
+.carousel :global .carousel-control-next-icon {
+  background-image: url('~static/icons-arrowright.svg');
+}
+
+.carousel :global .carousel-control-next,
+.carousel :global .carousel-control-prev {
+  background: var(--main-text-active-background);
+  height: 56px;
+  top: auto;
+}
+
+.carousel :global .carousel-control-prev {
+  left: 0;
+}
+
+.carousel :global .carousel-control-next {
+  left: 56px;
+}
+
+.carousel :global .carousel-control-prev-icon,
+.carousel :global .carousel-control-next-icon {
+  height: 24px;
+  width: 24px;
+}
+
+@media screen and (max-width: 991px) {
+  .carousel :global .carousel-control-next,
+  .carousel :global .carousel-control-prev {
+    background: transparent;
+    height: auto;
+    top: 0;
+  }
+  
+  .carousel :global .carousel-control-prev {
+    left: 0;
+  }
+  
+  .carousel :global .carousel-control-next {
+    left: auto;
+  }
 }
