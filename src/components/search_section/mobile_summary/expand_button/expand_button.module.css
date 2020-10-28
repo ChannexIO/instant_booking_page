@@ -5,11 +5,16 @@
   width: 100%;
   margin-top: -8px;
   padding: 0 0 8px;
+  color: var(--cta-color);
   border-bottom: 1px solid rgba(36, 46, 66, 0.12);
 }
 
 .expandButton:global.btn:focus {
   box-shadow: none;
+}
+
+.expandButton:global.btn:hover {
+  color: var(--cta-color);
 }
 
 .arrowIcon {
