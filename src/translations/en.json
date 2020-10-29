@@ -3,7 +3,8 @@
     "locale": "English"
   },
   "global": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "search": "Search"
   },
   "hotel_page": {
     "checkin_label": "Check-in",

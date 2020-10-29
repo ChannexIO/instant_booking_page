@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { Dropdown, Form } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import styles from './select.module.css';
 
 export default function Select({ label, value, options, withSearch = false, onChange }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const { t } = useTranslation();
 
   const handleSearchInput = (e) => {
     setSearchQuery(e.target.value);
@@ -41,7 +43,7 @@ export default function Select({ label, value, options, withSearch = false, onCh
               value={searchQuery}
               className={styles.searchInput}
               type="text"
-              placeholder="Normal text"
+              placeholder={t('global:search')}
               onChange={handleSearchInput}
             />
           )}

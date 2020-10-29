@@ -1,17 +1,30 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 const DEFAULT_ZOOM = 13;
 
+const parseLocationCoords = ({ lat, lng }) => {
+  if (!lat || !lng) {
+    return null;
+  }
+
+  return {
+    lat: Number(lat),
+    lng: Number(lng),
+  };
+};
+
 export default function Map({ location }) {
+  const [parsedLocation, setParsedLocation] = useState(null);
+
   const handleMapLoading = useCallback(({ map, maps }) => {
     const newMarker = new maps.Marker({
-      position: location,
+      position: parsedLocation,
       map,
     });
 
     return newMarker;
-  }, [location]);
+  }, [parsedLocation]);
 
   const initMapOptions = useCallback((maps) => {
     return {
@@ -21,11 +34,21 @@ export default function Map({ location }) {
     };
   }, []);
 
+  useEffect(function initLocation() {
+    const newParsedLocation = parseLocationCoords(location);
+
+    setParsedLocation(newParsedLocation);
+  }, [location]);
+
+  if (!parsedLocation) {
+    return null;
+  }
+
   return (
     <div style={{ height: '400px', width: '100%' }}>
       <GoogleMapReact
         options={initMapOptions}
-        center={location}
+        center={parsedLocation}
         zoom={DEFAULT_ZOOM}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={handleMapLoading}
