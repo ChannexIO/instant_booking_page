@@ -8,6 +8,20 @@ import { BookingActionsContext, BookingDataContext } from 'containers/data_conte
 
 import setUrlParams from 'utils/set_url_params';
 
+const CURRENCY_RATE_BY_CODE = {
+  USD: 10,
+  EUR: 9,
+  JPY: 8,
+  GBP: 7,
+  AUD: 6,
+  CAD: 5,
+  CHF: 4,
+  CNH: 3,
+  HKD: 2,
+  NZD: 1,
+  default: 0,
+};
+
 export default function CurrencySelect() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const history = useHistory();
@@ -26,13 +40,24 @@ export default function CurrencySelect() {
       .map(({ name, iso }) => ({
         key: iso.code,
         value: `${name} (${iso.code})`,
-      }));
+      }))
+      .sort((a, b) => {
+        const aPriorityByCode = CURRENCY_RATE_BY_CODE[a.key] ?? CURRENCY_RATE_BY_CODE.default;
+        const bPriorityByCode = CURRENCY_RATE_BY_CODE[b.key] ?? CURRENCY_RATE_BY_CODE.default;
+
+        const isPriorityEqual = aPriorityByCode === bPriorityByCode;
+
+        return isPriorityEqual
+          ? a.value.localeCompare(b.value)
+          : bPriorityByCode - aPriorityByCode;
+      });
 
     setCurrencyOptions(options);
   }, []);
 
   return (
     <Select
+      withSearch
       label={selectLabel}
       value={params.currency}
       options={currencyOptions}

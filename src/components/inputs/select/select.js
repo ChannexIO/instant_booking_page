@@ -1,21 +1,34 @@
-import React, { useCallback } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import React, { useCallback, useState } from 'react';
+import { Dropdown, Form } from 'react-bootstrap';
 
 import styles from './select.module.css';
 
-export default function Select({ label, value, options, onChange }) {
+export default function Select({ label, value, options, withSearch = false, onChange }) {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchInput = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   const renderOptions = useCallback(() => {
-    return options.map((option) => (
-      <Dropdown.Item
-        className={styles.menuItem}
-        key={option.key}
-        eventKey={option.key}
-        active={option.key === value}
-      >
-        {option.value}
-      </Dropdown.Item>
-    ));
-  }, [value, options]);
+    return options
+      .filter((option) => {
+        const formattedSearchQuery = searchQuery.toLowerCase();
+        const optionValueFormatted = option.value.toLowerCase();
+
+        return optionValueFormatted.includes(formattedSearchQuery);
+      })
+      .map((option) => (
+        <Dropdown.Item
+          className={styles.menuItem}
+          key={option.key}
+          eventKey={option.key}
+          active={option.key === value}
+        >
+          {option.value}
+        </Dropdown.Item>
+      ));
+  }, [value, searchQuery, options]);
 
   return (
     <Dropdown onSelect={onChange}>
@@ -23,7 +36,18 @@ export default function Select({ label, value, options, onChange }) {
         {label}
       </Dropdown.Toggle>
       <Dropdown.Menu className={styles.menu}>
-        {renderOptions()}
+          {withSearch && (
+            <Form.Control
+              value={searchQuery}
+              className={styles.searchInput}
+              type="text"
+              placeholder="Normal text"
+              onChange={handleSearchInput}
+            />
+          )}
+          <div className={styles.srollableOptions}>
+            {renderOptions()}
+          </div>
       </Dropdown.Menu>
     </Dropdown>
   );
