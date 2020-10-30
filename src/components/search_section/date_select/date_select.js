@@ -30,7 +30,6 @@ export default function DateSelect({ bookingParams, handleSearchChange }) {
       checkinDate={bookingParams.checkinDate}
       checkoutDate={bookingParams.checkoutDate}
       name="search_dates"
-      openDirection="up"
       onDatesChange={handleDatesChange}
     />
   );

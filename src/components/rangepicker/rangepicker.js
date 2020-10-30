@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useRef, useState } from 'react';
 import { DateRangePicker } from 'react-dates';
 import { useMedia } from 'react-media';
 
@@ -14,7 +14,10 @@ import styles from './rangepicker.module.css';
 
 import 'react-dates/initialize';
 
-const DEFAULT_OPEN_DIRECTION = 'down';
+const OPEN_DIRECTIONS = {
+  up: 'up',
+  down: 'down',
+};
 
 export default function RangePicker(props) {
   const { closedDates } = useContext(BookingDataContext);
@@ -22,7 +25,6 @@ export default function RangePicker(props) {
     checkinDate,
     checkoutDate,
     name = '',
-    openDirection = DEFAULT_OPEN_DIRECTION,
     checkinDatePlaceholder,
     checkinDateLabel,
     checkoutDatePlaceholder,
@@ -30,7 +32,9 @@ export default function RangePicker(props) {
     onDatesChange,
   } = props;
   const [focusedInput, setFocusedInput] = useState(null);
+  const [openDirection, setOpenDirection] = useState(OPEN_DIRECTIONS.up);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
+  const inputRef = useRef(null);
 
   const isMobile = matchedQueries.xs;
   const numberOfMonths = matchedQueries.xs || matchedQueries.sm ? 1 : 2;
@@ -73,8 +77,18 @@ export default function RangePicker(props) {
     return false;
   }, [closedDates, focusedInput, getIsClosedToArrival, getIsClosedToDeparture]);
 
+  const handleFocusChange = useCallback((newFocusedInput) => {
+    const inputCoords = inputRef.current.getBoundingClientRect();
+    const isPickerCloserToTop = inputCoords.y < (window.innerHeight / 2);
+
+    const newOpenDirection = isPickerCloserToTop ? OPEN_DIRECTIONS.down : OPEN_DIRECTIONS.up;
+
+    setOpenDirection(newOpenDirection);
+    setFocusedInput(newFocusedInput);
+  }, [inputRef, setOpenDirection, setFocusedInput]);
+
   return (
-    <div className={styles.rangepicker}>
+    <div className={styles.rangepicker} ref={inputRef}>
       <div className={styles.labelContainer}>
         <Label>{checkinDateLabel}</Label>
         <Label>{checkoutDateLabel}</Label>
@@ -93,7 +107,7 @@ export default function RangePicker(props) {
         onDatesChange={onDatesChange}
         focusedInput={focusedInput}
         isDayBlocked={getIsDayBlocked}
-        onFocusChange={setFocusedInput}
+        onFocusChange={handleFocusChange}
       />
     </div>
   );
