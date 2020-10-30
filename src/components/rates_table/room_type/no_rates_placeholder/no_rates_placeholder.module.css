@@ -1,0 +1,17 @@
+.placeholderContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.placeholderContent {
+  margin: auto;
+  max-width: 300px;
+  display: flex;
+  padding-bottom: 8px;
+}
+
+.icon {
+  width: 24px;
+  margin-right: 8px;
+}

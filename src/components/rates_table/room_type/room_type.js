@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import NoRatesPlaceholder from './no_rates_placeholder';
 import RatePlan from './rate_plan';
 import RoomInfo from './room_info';
 
@@ -51,10 +52,6 @@ export default function RoomType(props) {
     setSortedRates([...ratesByOccupancyMatch]);
   }, [ratePlans, adultsOccupancy, childrenOccupancy]);
 
-  if (!sortedRates.length) {
-    return <RoomInfo key={id} roomType={roomType} rowIndex={rowIndex} />;
-  }
-
   return (
     <div className={styles.roomContainer}>
       <RoomInfo roomType={roomType} rowIndex={rowIndex} />
@@ -73,6 +70,9 @@ export default function RoomType(props) {
             />
           );
         })}
+        {!sortedRates.length && (
+          <NoRatesPlaceholder />
+        )}
         </div>
       </div>
   );

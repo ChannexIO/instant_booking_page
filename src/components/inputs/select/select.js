@@ -32,6 +32,7 @@ export default function Select({ label, value, options, withSearch = false, onCh
       ));
   }, [value, searchQuery, options]);
 
+  // TODO - unify dropdown menus for selects
   return (
     <Dropdown onSelect={onChange}>
       <Dropdown.Toggle className={styles.toggle} variant="link">
