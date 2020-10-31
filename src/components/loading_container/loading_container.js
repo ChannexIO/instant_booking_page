@@ -6,14 +6,15 @@ import styles from './loading_container.module.css';
 
 export default function LoadingContainer({ loading, children }) {
   const { t } = useTranslation();
+  const overlayStyle = [styles.overlay];
 
   if (!loading) {
-    return children;
+    overlayStyle.push(styles.hiddenOverlay);
   }
 
   return (
     <div className={styles.container}>
-      <div className={styles.overlay}>
+      <div className={overlayStyle.join(' ')}>
         <div className={styles.overlayContent}>
           <Spinner animation="border" size="xl"/>
           <div className={styles.overlayText}>
