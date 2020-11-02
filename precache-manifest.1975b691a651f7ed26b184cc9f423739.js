@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7f261d5f502bb7688b634c62e47ec8a9",
+    "revision": "f19d21c06ad616cb23be0e39cecc6310",
     "url": "/instant_booking_page/index.html"
   },
   {
-    "revision": "dac81af878983b633314",
+    "revision": "2eeb7f4e03e6cc0ec0fb",
     "url": "/instant_booking_page/static/css/2.abb78336.chunk.css"
   },
   {
-    "revision": "a8551a4f17f734b34dbe",
-    "url": "/instant_booking_page/static/css/main.c3e53544.chunk.css"
+    "revision": "c9478b92c3324064918a",
+    "url": "/instant_booking_page/static/css/main.65651c59.chunk.css"
   },
   {
-    "revision": "dac81af878983b633314",
-    "url": "/instant_booking_page/static/js/2.dcd51896.chunk.js"
+    "revision": "2eeb7f4e03e6cc0ec0fb",
+    "url": "/instant_booking_page/static/js/2.218ad690.chunk.js"
   },
   {
     "revision": "876e403427d7be82fb4e8ac24123aaf3",
-    "url": "/instant_booking_page/static/js/2.dcd51896.chunk.js.LICENSE.txt"
+    "url": "/instant_booking_page/static/js/2.218ad690.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a8551a4f17f734b34dbe",
-    "url": "/instant_booking_page/static/js/main.9425498a.chunk.js"
+    "revision": "c9478b92c3324064918a",
+    "url": "/instant_booking_page/static/js/main.2a1eb890.chunk.js"
   },
   {
     "revision": "a218e98294112bb7a28b",
