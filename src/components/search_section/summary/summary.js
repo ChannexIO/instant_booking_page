@@ -1,17 +1,17 @@
 import React from 'react';
 
 import BookButton from '../book_button';
-import RateBreakdown from '../rate_breakdown';
+import PriceBreakdown from '../price_breakdown';
 import TotalPrice from '../total_price';
 
-export default function Summary({ selectedRatesList, totalPrice, currency }) {
-  const isRateSelected = Boolean(selectedRatesList.length);
+export default function Summary({ selectedRatesByRoom, totalPrice, currency }) {
+  const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
 
   return (
     <div>
       {isRateSelected && (
         <>
-          <RateBreakdown selectedRatesList={selectedRatesList} currency={currency} />
+          <PriceBreakdown selectedRatesByRoom={selectedRatesByRoom} currency={currency} />
           <TotalPrice totalPrice={totalPrice} currency={currency} />
         </>
       )}

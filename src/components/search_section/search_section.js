@@ -15,7 +15,7 @@ import styles from './search_section.module.css';
 
 export default function SearchSection() {
   const [propertyRoomsById, setPropertyRoomsById] = useState(null);
-  const [selectedRatesList, setSelectedRatesList] = useState([]);
+  const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const { params, property, roomsInfo } = useContext(BookingDataContext);
   const { setParamsAndLoadRoomsInfo } = useContext(BookingActionsContext);
@@ -48,7 +48,7 @@ export default function SearchSection() {
     }
 
     let newTotalPrice = 0;
-    const newSelectedRatesList = [];
+    const newSelectedRatesByRoom = {};
 
     Object.keys(ratesOccupancyPerRoom).forEach((roomId) => {
       Object.keys(ratesOccupancyPerRoom[roomId]).forEach((rateId) => {
@@ -59,11 +59,14 @@ export default function SearchSection() {
         const ratePrice = Number(rate.totalPrice);
 
         if (amount) {
-          newSelectedRatesList.push({
-            room,
-            rate,
-            amount,
-          });
+          const selectedRate = { ...rate, amount };
+          const newRoom = { ...room, selectedRates: [], total: 0 };
+          const { [room.id]: selectedRoom = newRoom } = newSelectedRatesByRoom;
+
+          selectedRoom.selectedRates.push(selectedRate);
+          selectedRoom.total += amount * ratePrice;
+
+          newSelectedRatesByRoom[selectedRoom.id] = selectedRoom;
 
           newTotalPrice += ratePrice * amount;
         }
@@ -71,7 +74,7 @@ export default function SearchSection() {
     });
 
     setTotalPrice(newTotalPrice);
-    setSelectedRatesList(newSelectedRatesList);
+    setSelectedRatesByRoom(newSelectedRatesByRoom);
   }, [propertyRoomsById, ratesOccupancyPerRoom]);
 
   const SummaryComponent = isMobile ? MobileSummary : Summary;
@@ -84,7 +87,7 @@ export default function SearchSection() {
           <DateSelect bookingParams={params} handleSearchChange={setParamsAndLoadRoomsInfo} />
           <OccupancySetting bookingParams={params} handleSearchChange={setParamsAndLoadRoomsInfo} />
           <SummaryComponent
-            selectedRatesList={selectedRatesList}
+            selectedRatesByRoom={selectedRatesByRoom}
             totalPrice={totalPrice}
             currency={currency}
           />
