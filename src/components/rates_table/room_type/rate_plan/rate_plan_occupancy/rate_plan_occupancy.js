@@ -10,29 +10,33 @@ import OccupancySection from './occupancy_section';
 
 import styles from './rate_plan_occupancy.module.css';
 
-const CHILD_NUMBER_THRESHOLD = 1;
-const ADULT_NUMBER_THRESHOLD = 2;
+const CHILD_BASE_NUMBER = 1;
+const ADULT_BASE_NUMBER = 2;
+
+const getAdditionalSpaces = (spaces, baseAmount) => {
+  return spaces > baseAmount ? spaces - baseAmount : null;
+};
 
 export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
-  const isChildOccupancyNumberShown = occupancy.children > CHILD_NUMBER_THRESHOLD;
-  const isAdultOccupancyNumberShown = occupancy.adults > ADULT_NUMBER_THRESHOLD;
-  const adultsOccupancyIcon = occupancy.adults > 1 ? IconGuestDouble : IconGuestSingle;
+  const { adults, children } = occupancy;
+  const additionalChildSpaces = getAdditionalSpaces(children, CHILD_BASE_NUMBER);
+  const additionalAdultsSpaces = getAdditionalSpaces(adults, ADULT_BASE_NUMBER);
+
+  const adultsOccupancyIcon = adults > 1 ? IconGuestDouble : IconGuestSingle;
 
   return (
     <Cell className={styles.occupancyCell}>
       <div className={styles.occupanciesContainer}>
         <OccupancySection
           type="adults"
-          availableSpaces={occupancy.adults}
+          additionalSpaces={additionalAdultsSpaces}
           icon={adultsOccupancyIcon}
-          showNumber={isAdultOccupancyNumberShown}
         />
         {Boolean(childrenOccupancy) && (
           <OccupancySection
             type="children"
-            availableSpaces={occupancy.children}
+            additionalSpaces={additionalChildSpaces}
             icon={IconGuestChild}
-            showNumber={isChildOccupancyNumberShown}
           />
         )}
       </div>

@@ -2,8 +2,8 @@ import React from 'react';
 
 import styles from './occupancy_section.module.css';
 
-export default function OccupancySection({ availableSpaces, type, icon, showNumber }) {
-  const captionText = `×${availableSpaces}`;
+export default function OccupancySection({ additionalSpaces, type, icon }) {
+  const captionText = `+${additionalSpaces}`;
 
   return (
     <div className={styles.occupancyContainer}>
@@ -11,7 +11,7 @@ export default function OccupancySection({ availableSpaces, type, icon, showNumb
         src={icon}
         alt={type}
       />
-      {showNumber && (
+      {Boolean(additionalSpaces) && (
         <div className={styles.occupancyCaption}>
           {captionText}
         </div>
