@@ -8,9 +8,12 @@ const CONTAINER_STYLES = {
   dark: styles.containerDark,
 };
 
-export default function SectionWrapper({ theme, children }) {
+export default function SectionWrapper({ theme, children, id }) {
   return (
-    <div className={CONTAINER_STYLES[theme]}>
+    <div
+      id={id}
+      className={CONTAINER_STYLES[theme]}
+    >
       <div className={styles.containerInner}>
         <Row noGutters>
           <Col xs="12" lg="8" >
