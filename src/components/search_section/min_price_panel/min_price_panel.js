@@ -3,7 +3,20 @@ import { useTranslation } from 'react-i18next';
 
 import Currency from 'components/currency';
 
+import { HOTEL_INFO_SECTION } from 'constants/element_ids';
+
 import styles from './min_price_panel.module.css';
+
+const handleClick = (e) => {
+  e.preventDefault();
+  const hotelInfoSection = document.getElementById(HOTEL_INFO_SECTION);
+
+  if (!hotelInfoSection) {
+    return;
+  }
+
+  hotelInfoSection.scrollIntoView({ behavior: 'smooth' });
+};
 
 export default function MinPricePanel({ property, params }) {
   const { t } = useTranslation();
@@ -11,7 +24,7 @@ export default function MinPricePanel({ property, params }) {
   const { currency } = params;
 
   return (
-    <div className={styles.minPriceContainer}>
+    <a className={styles.minPriceContainer} href="/" onClick={handleClick}>
       <div className={styles.minPriceContent}>
         {t('hotel_page:price_from')}
         <Currency
@@ -21,6 +34,6 @@ export default function MinPricePanel({ property, params }) {
         />
         {t('hotel_page:price_per_night')}
       </div>
-    </div>
+    </a>
   );
 }
