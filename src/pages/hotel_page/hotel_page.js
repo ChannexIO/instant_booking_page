@@ -6,7 +6,6 @@ import HotelAdditionalInfoSection from 'components/hotel_additional_info_section
 import HotelFacilitiesSection from 'components/hotel_facilities_section';
 import HotelInfoSection from 'components/hotel_info_section';
 import HotelRatesSection from 'components/hotel_rates_section';
-import SectionWrapper from 'components/layout/section_wrapper';
 import Loading from 'components/loading';
 import MapSection from 'components/map_section';
 import PhotoSlider from 'components/photo_slider';
@@ -33,18 +32,10 @@ export default function HotelPage() {
       </div>
       <div className={styles.floatingSearchContainer}>
         <SearchSection property={propertyData} />
-        <SectionWrapper theme="light">
-          <HotelInfoSection property={propertyData} />
-        </SectionWrapper>
-        <SectionWrapper theme="dark">
-          <HotelRatesSection property={propertyData} loading={isLoading} />
-        </SectionWrapper>
-        <SectionWrapper theme="light">
-          <HotelFacilitiesSection property={propertyData} />
-        </SectionWrapper>
-        <SectionWrapper theme="dark">
-          <HotelAdditionalInfoSection property={propertyData} />
-        </SectionWrapper>
+        <HotelInfoSection property={propertyData} />
+        <HotelRatesSection property={propertyData} loading={isLoading} />
+        <HotelFacilitiesSection property={propertyData} />
+        <HotelAdditionalInfoSection property={propertyData} />
       </div>
       <MapSection property={propertyData} />
       <Footer property={propertyData} />
