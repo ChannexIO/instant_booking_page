@@ -18,10 +18,10 @@ export default function SearchSection() {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const { params, property, roomsInfo } = useContext(BookingDataContext);
-  const { setParamsAndLoadRoomsInfo } = useContext(BookingActionsContext);
+  const { setParams, loadRoomsInfo } = useContext(BookingActionsContext);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
-  const { data: propertyRooms } = roomsInfo;
+  const { data: propertyRooms, isLoading } = roomsInfo;
   const { ratesOccupancyPerRoom, currency } = params;
 
   // TODO update search params onChange handling, set query params here, not in input components;
@@ -84,12 +84,14 @@ export default function SearchSection() {
       <div className={styles.searchPanelWrapper}>
         <MinPricePanel property={property} params={params} />
         <div className={styles.searchSection}>
-          <DateSelect bookingParams={params} handleSearchChange={setParamsAndLoadRoomsInfo} />
-          <OccupancySetting bookingParams={params} handleSearchChange={setParamsAndLoadRoomsInfo} />
+          <DateSelect bookingParams={params} handleSearchChange={setParams} />
+          <OccupancySetting bookingParams={params} handleSearchChange={setParams} />
           <SummaryComponent
             selectedRatesByRoom={selectedRatesByRoom}
             totalPrice={totalPrice}
             currency={currency}
+            loading={isLoading}
+            onSearch={loadRoomsInfo}
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Accordion } from 'react-bootstrap';
 
-import BookButton from '../book_button';
+import ActionButton from '../action_button';
 import PriceBreakdown from '../price_breakdown';
 import TotalPrice from '../total_price';
 
@@ -9,7 +9,8 @@ import ExpandButton from './expand_button';
 
 import styles from './mobile_summary.module.css';
 
-export default function MobileSummary({ selectedRatesByRoom, totalPrice, currency }) {
+export default function MobileSummary(props) {
+  const { selectedRatesByRoom, totalPrice, currency, loading, onSearch } = props;
   const [activeKey, setActiveKey] = useState(null);
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isExpanded = Boolean(activeKey);
@@ -33,7 +34,13 @@ export default function MobileSummary({ selectedRatesByRoom, totalPrice, currenc
           </Accordion>
         </>
       )}
-      <BookButton isRateSelected={isRateSelected} total={totalPrice} currency={currency} />
+      <ActionButton
+        isRateSelected={isRateSelected}
+        total={totalPrice}
+        currency={currency}
+        loading={loading}
+        onSearch={onSearch}
+      />
     </div>
   );
 }

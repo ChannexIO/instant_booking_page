@@ -35,11 +35,6 @@
 }
 
 @media screen and (max-width: 991px) {
-  .buttonContainer {
-    width: 100%;
-    margin-left: 0;
-  }
-
   .button {
     height: 48px;
   }
