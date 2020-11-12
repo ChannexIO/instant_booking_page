@@ -106,5 +106,21 @@
     "family_american": "Family american",
     "breakfast_and_lunch": "Breakfast and lunch",
     "lunch_and_dinner": "Lunch and dinner"
+  },
+  "cancellation_policies": {
+    "types": {
+      "free": "FREE cancellation",
+      "non_refundable": "Cancellation is non-refundable",
+      "deadline": "FREE cancellation before 23.59 on {date}"
+    }
+  },
+  "payment_policies": {
+    "types": {
+      "none": "Non required",
+      "nights_based": "Nights based - prepayment is {amount}{currency} per night",
+      "percent_based": "Percent based - prepayment is {amount}{currency}",
+      "fixed_per_booking": "Fixed amount per Booking - prepayment is {amount}{currency}",
+      "fixed_per_room": "Fixed amount per Booking Room - prepayment is {amount}{currency}"
+    }
   }
 }

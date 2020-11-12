@@ -15,6 +15,7 @@ export default function RatePlan(props) {
     currency,
     occupiedSpaces,
     ratesOccupancy,
+    checkinDate,
     adultsOccupancy,
     childrenOccupancy,
     onOccupancyChange,
@@ -43,7 +44,7 @@ export default function RatePlan(props) {
       />
       <div className={styles.flexibleContainer}>
         <RatePlanPrice ratePlan={ratePlan} currency={currency} />
-        <RatePlanPolicies ratePlan={ratePlan} currency={currency} />
+        <RatePlanPolicies ratePlan={ratePlan} checkinDate={checkinDate} currency={currency} />
       </div>
       <RatePlanOccupancySelect
         rateOccupancy={rateOccupancy}

@@ -83,6 +83,7 @@ export default function RatesTable() {
             roomType={roomType}
             currency={currency}
             rowIndex={rowIndex}
+            checkinDate={checkinDate}
             adultsOccupancy={adults}
             childrenOccupancy={children}
             key={roomType.id}

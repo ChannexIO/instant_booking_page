@@ -15,6 +15,7 @@ export default function RoomType(props) {
     rowIndex,
     ratesOccupancyPerRoom,
     adultsOccupancy,
+    checkinDate,
     childrenOccupancy,
     onRatesOccupancyChange,
   } = props;
@@ -64,6 +65,7 @@ export default function RoomType(props) {
               currency={currency}
               occupiedSpaces={occupiedSpaces}
               ratesOccupancy={roomRates}
+              checkinDate={checkinDate}
               onOccupancyChange={handleRatesOccupancyChange}
               adultsOccupancy={adultsOccupancy}
               childrenOccupancy={childrenOccupancy}
