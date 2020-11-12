@@ -141,7 +141,7 @@
     "0": "Demo facility"
   },
   "meal_types": {
-    "none": "None",
+    "none": "No meal",
     "all_inclusive": "All inclusive",
     "breakfast": "Breakfast",
     "lunch": "Lunch",
