@@ -22,9 +22,6 @@
     "contact_information": "Contact information",
     "contact_information_message": "Any question or enquires please give us a call or email us",
     "additional_information": "Additional information",
-    "phone": "Phone",
-    "email": "Email",
-    "address": "Address",
     "adults_label": "Adults",
     "guests_placeholder": "Select guests",
     "adults": "adults",
@@ -35,7 +32,68 @@
     "price_from": "From",
     "price_per_night": "per night",
     "rooms": "rooms",
-    "nights": "nights" 
+    "nights": "nights",
+    "hotel_policy": {
+      "checkin_time": "Checkin Time",
+      "checkout_time": "Checkout Time",
+      "internet": {
+        "coverage_title": "Internet access coverage",
+        "coverage_options": {
+          "entire_property": "Entire Property",
+          "public_areas": "Public Areas",
+          "all_rooms": "All Rooms",
+          "some_rooms": "Some Rooms",
+          "business_centre": "Business Centre"
+        },
+        "type_title": "Internet access type",
+        "type_options": {
+          "none": "None",
+          "wired": "Wired",
+          "wifi": "Wifi"
+        },
+        "cost_title": "Internet access cost",
+        "cost_options": {
+          "free": "Free",
+          "paid": "Paid"
+        }
+      },
+      "parking": {
+        "type_title": "Parking type",
+        "type_options": {
+          "none": "None",
+          "on_site": "On Site",
+          "location_nearby": "Location Nearby"
+        },
+        "reservation_title": "Parking reservation",
+        "reservation_options": {
+          "not_available": "Not available",
+          "not_needed":"Not needed",
+          "needed": "Needed"
+        },
+        "property_title": "Parking property",
+        "property_options": {
+          "public": "Public",
+          "private": "Private"
+        }
+      },
+      "pets": {
+        "title": "Pets policy",
+        "options": {
+          "not_allowed": "Pets Not Allowed",
+          "by_arrangements": "Pets By Arrangements",
+          "assistive_only": "Assistive Animals Only",
+          "allowed": "Allowed"
+        }
+      },
+      "smoking": {
+        "title": "Smoking policy",
+        "options": {
+          "no_smoking": "Strictly no smoking",
+          "permitted_areas_only": "Smoking in permitted areas only",
+          "allowed": "Allowed"
+        }
+      }
+    }
   },
   "rates_table": {
     "title": "Rooms & Rates",

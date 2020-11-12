@@ -6,7 +6,7 @@ import SectionTitle from 'components/section_title';
 import styles from './footer.module.css';
 
 export default function Footer({ property }) {
-  const { title, address, email = 'email@placeholder.zxc', phone = 'phoneplaceholder' } = property;
+  const { title, address, email, phone } = property;
 
   return (
     <div className={styles.footerWrapper}>

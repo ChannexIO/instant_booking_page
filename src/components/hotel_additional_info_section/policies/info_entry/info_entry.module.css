@@ -1,8 +1,10 @@
 .container {
   display: flex;
+  padding-bottom: 16px;
 }
 
 .label {
+  padding-right: 16px;
   flex: 1 2 33%;
 }
 
