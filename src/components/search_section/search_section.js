@@ -1,9 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useMedia } from 'react-media';
+import { useHistory } from "react-router-dom";
 
 import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
 import MEDIA_QUERIES from 'constants/media_queries';
+
+import buildPath from "utils/build_path";
+
+import routes from "routing/routes";
 
 import DateSelect from './date_select';
 import MinPricePanel from './min_price_panel';
@@ -17,14 +22,32 @@ export default function SearchSection() {
   const [propertyRoomsById, setPropertyRoomsById] = useState(null);
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
-  const { params, property, roomsInfo } = useContext(BookingDataContext);
-  const { setParams, loadRoomsInfo } = useContext(BookingActionsContext);
+  const { channelId, params, property, roomsInfo } = useContext(BookingDataContext);
+  const {
+    setParams,
+    loadRoomsInfo,
+    saveDataToStorage,
+    clearDataFromStorage
+  } = useContext(BookingActionsContext);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
+  const history = useHistory(); 
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
   const { data: propertyRooms, isLoading } = roomsInfo;
   const { ratesOccupancyPerRoom, currency } = params;
 
   // TODO update search params onChange handling, set query params here, not in input components;
+  const handleBook = useCallback(() => {
+    saveDataToStorage();
+
+    const paymentPagePath = buildPath(history, routes.paymentPage, { channelId });
+
+    history.push(paymentPagePath);
+  }, [saveDataToStorage, history, routes, buildPath]);
+
+  const handleSearch = useCallback(() => {
+    clearDataFromStorage()
+    loadRoomsInfo();
+  }, [loadRoomsInfo, clearDataFromStorage])
 
   useEffect(function buildRoomsById() {
     if (!propertyRooms) {
@@ -91,7 +114,8 @@ export default function SearchSection() {
             totalPrice={totalPrice}
             currency={currency}
             loading={isLoading}
-            onSearch={loadRoomsInfo}
+            onBook={handleBook}
+            onSearch={handleSearch}
           />
         </div>
       </div>

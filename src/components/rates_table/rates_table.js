@@ -43,6 +43,10 @@ export default function RatesTable() {
   }, [params, setParams]);
 
   useEffect(function resetSelectedRates() {
+    if (!roomsData) {
+      return;
+    }
+
     const isAllSelectedRatesPresent = Object.keys(ratesOccupancyPerRoom)
       .every((roomId) => {
         const room = roomsData.find((roomEntry) => roomEntry.id === roomId);
