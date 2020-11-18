@@ -52,18 +52,18 @@
   background-image: url('~static/icons-arrowright.svg');
 }
 
-.carousel :global .carousel-control-next,
-.carousel :global .carousel-control-prev {
+.boxArrows :global .carousel-control-next,
+.boxArrows :global .carousel-control-prev {
   background: var(--main-text-active-background);
   height: 56px;
   top: auto;
 }
 
-.carousel :global .carousel-control-prev {
+.boxArrows :global .carousel-control-prev {
   left: 0;
 }
 
-.carousel :global .carousel-control-next {
+.boxArrows :global .carousel-control-next {
   left: 56px;
 }
 
@@ -74,18 +74,18 @@
 }
 
 @media screen and (max-width: 991px) {
-  .carousel :global .carousel-control-next,
-  .carousel :global .carousel-control-prev {
+  .boxArrows :global .carousel-control-next,
+  .boxArrows :global .carousel-control-prev {
     background: transparent;
     height: auto;
     top: 0;
   }
   
-  .carousel :global .carousel-control-prev {
+  .boxArrows :global .carousel-control-prev {
     left: 0;
   }
   
-  .carousel :global .carousel-control-next {
+  .boxArrows :global .carousel-control-next {
     left: auto;
   }
 }
