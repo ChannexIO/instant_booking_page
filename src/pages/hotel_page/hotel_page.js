@@ -28,7 +28,7 @@ export default function HotelPage() {
     <div>
       <Header property={propertyData} />
       <div className={styles.sliderContainer}>
-        <PhotoSlider photos={propertyData.photos} />
+        <PhotoSlider photos={propertyData.photos} arrowStyle="box" />
       </div>
       <div className={styles.floatingSearchContainer}>
         <SearchSection property={propertyData} />

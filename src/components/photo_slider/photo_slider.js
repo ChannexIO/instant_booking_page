@@ -3,13 +3,20 @@ import { Carousel } from 'react-bootstrap';
 
 import styles from './photo_slider.module.css';
 
-export default function PhotoSlider({ photos }) {
+const ARROW_STYLES = {
+  default: styles.defaultArrows,
+  box: styles.boxArrows,
+}
+
+export default function PhotoSlider({ photos, arrowStyle = "default" }) {
   if (!photos || !photos.length) {
     return null;
   }
 
+  const { [arrowStyle]: arrowClass = ARROW_STYLES.default } = ARROW_STYLES; 
+
   return (
-    <Carousel className={styles.carousel}>
+    <Carousel className={[styles.carousel, arrowClass].join(" ")}>
       {photos.map((photo) => (
         <Carousel.Item className={styles.carouselItem} key={photo.url}>
           <img
