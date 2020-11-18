@@ -16,6 +16,7 @@ const buildDeadlineBasedPoicyMessage = (t, policy, checkinDate) => {
   const { cancellationPolicyDeadline, cancellationPolicyDeadlineType } = policy;
 
   const deadline = checkinDate
+    .clone()
     .subtract(cancellationPolicyDeadline, cancellationPolicyDeadlineType)
     .format(DATE_UI_FULL_MONTH_FORMAT);
 
