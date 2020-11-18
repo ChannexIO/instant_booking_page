@@ -44,7 +44,8 @@ const setParams = (dispatch, payload) => {
 
 const getChannelId = (location) => {
   const basePath = process.env.REACT_APP_BASE_PATH;
-  const matchedPath = matchPath(location.pathname, { path: `${basePath}/:channelId`, exact: true });
+  // TODO - looks kinda lame, make more reliable
+  const matchedPath = matchPath(location.pathname, { path: `${basePath}/:channelId/(payment_page)?`, exact: true });
 
   if (!matchedPath) {
     return null;
@@ -95,12 +96,24 @@ const setParamsAndLoadRoomsInfo = (dispatch, channelId, bookingParams) => {
   loadRoomsInfo(dispatch, channelId, bookingParams);
 };
 
-const initBookingData = async (dispatch, location, bookingParams) => {
+const mergeBookingParams = (channelId, bookingQueryParams, savedBookingData) => {
+  if (!savedBookingData || channelId !== savedBookingData.channelId) {
+    return bookingQueryParams;
+  }
+
+  const { params } = savedBookingData;
+
+  return {...params, ...bookingQueryParams};
+}
+
+const initBookingData = async (dispatch, location, bookingQueryParams, savedBookingData) => {
   const channelId = getChannelId(location);
 
   if (!channelId) {
     return;
   }
+
+  const bookingParams = mergeBookingParams(channelId, bookingQueryParams, savedBookingData);
 
   setChannelId(dispatch, channelId);
   loadProperty(dispatch, channelId);

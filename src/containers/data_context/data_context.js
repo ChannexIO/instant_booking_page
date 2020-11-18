@@ -11,9 +11,10 @@ const DataContextProvider = ({ children }) => {
 
   useEffect(function initAppData() {
     if (!bookingData.channelId) {
-      const bookingParams = getBookingParamsFromUrl();
+      const bookingQueryParams = getBookingParamsFromUrl();
+      const savedBookingData = bookingActions.getDataFromStorage();
 
-      bookingActions.initBookingData(bookingParams);
+      bookingActions.initBookingData(bookingQueryParams, savedBookingData);
     }
   }, [bookingData.channelId, bookingActions]);
 
