@@ -126,6 +126,41 @@
     "price_for_up_to": "Price for up to",
     "no_rates_placeholder": "Select Check-In and Check-Out dates to get available rates"
   },
+  "payment_page": {
+    "payment_form": {
+      "customer_info": {
+        "title": "Customer Info",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "email",
+        "phone": "phone",
+        "special_request": "Special Request"
+      },
+      "guest_info": {
+        "title": "Guest Info",
+        "first_name": "First Name",
+        "last_name": "Last Name"
+      },
+      "billing_address": {
+        "title": "Billing Address",
+        "address_1": "Address line 1",
+        "address_2": "Address line 2",
+        "country": "Country",
+        "city": "City",
+        "state": "State",
+        "zip": "zip"
+      }
+    },
+    "booking_summary": {
+      "title": "Booking Summary",
+      "check_in": "Check In",
+      "check_out": "Check Out",
+      "guests_label": "Guests",
+      "adults": "adults",
+      "children":"children"
+    },
+    "agree_and_book": "Agree and Book"
+  },
   "footer": {
     "terms_and_conditions": "Terms and Conditions",
     "privacy_policy": "Privacy Policy",

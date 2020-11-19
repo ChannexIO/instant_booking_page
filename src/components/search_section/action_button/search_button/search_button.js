@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
-import { Button, Spinner } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+
+import Button from "components/button";
 
 import { HOTEL_INFO_SECTION } from 'constants/element_ids';
 import scrollToElementById from 'utils/scroll_to_element_by_id';
-
-import styles from './search_button.module.css';
 
 export default function SearchButton({ loading, onClick }) {
   const { t } = useTranslation();
@@ -17,15 +16,10 @@ export default function SearchButton({ loading, onClick }) {
 
   return (
     <Button
-      variant="primary"
-      className={styles.button}
-      disabled={loading}
+      loading={loading}
       onClick={handleClick}
     >
-      <>
-        {loading && <Spinner animation="border" size="sm" className={styles.spinner}/>}
-        {t('hotel_page:search')}
-      </>
+      {t('hotel_page:search')}
     </Button>
   );
 }
