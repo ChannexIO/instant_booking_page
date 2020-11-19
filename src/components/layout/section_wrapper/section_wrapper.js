@@ -8,7 +8,7 @@ const CONTAINER_STYLES = {
   dark: styles.containerDark,
 };
 
-export default function SectionWrapper({ theme, children, id }) {
+export default function SectionWrapper({ theme, children, additionalInfo, id }) {
   return (
     <div
       id={id}
@@ -19,7 +19,9 @@ export default function SectionWrapper({ theme, children, id }) {
           <Col xs="12" lg="8" >
             {children}
           </Col>
-          <Col xs="0" lg="4" />
+          <Col xs="12" lg="4" >
+            {additionalInfo}
+          </Col>
         </Row>
       </div>
     </div>

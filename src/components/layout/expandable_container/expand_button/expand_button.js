@@ -1,13 +1,11 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
 
 import IconNavigationDown from 'static/icons-navigation-down.svg';
 
 import styles from './expand_button.module.css';
 
-export default function ExpandButton({ expanded, onClick }) {
-  const { t } = useTranslation();
+export default function ExpandButton({ title, expanded, onClick }) {
   const arrowStyles = [styles.arrowIcon];
 
   if (expanded) {
@@ -16,11 +14,11 @@ export default function ExpandButton({ expanded, onClick }) {
 
   return (
     <Button variant="link" className={styles.expandButton} onClick={onClick}>
-      <strong>{t('hotel_page:booking_summary')}</strong>
+      <strong>{title}</strong>
       <img
         src={IconNavigationDown}
         className={arrowStyles.join(' ')}
-        alt={t('hotel_page:expand')}
+        alt={title}
       />
     </Button>
   );

@@ -1,0 +1,31 @@
+.summaryMainWrapper {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--border-color);
+  background-color: var(--background-light-color);
+}
+
+.title {
+  display: flex;
+  height: 48px;
+  padding: 6px 24px 0 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(36,46,66,.12);
+}
+
+.summaryWrapper {
+  padding: 0 24px;
+}
+
+.sliderContainer {
+  height: 200px;
+}
+
+@media screen and (max-width: 991px) {
+  .summaryMainWrapper {
+      display: none;
+  }
+}
