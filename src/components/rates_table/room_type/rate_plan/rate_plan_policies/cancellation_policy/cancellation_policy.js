@@ -20,7 +20,7 @@ const buildDeadlineBasedPoicyMessage = (t, policy, checkinDate) => {
     .subtract(cancellationPolicyDeadline, cancellationPolicyDeadlineType)
     .format(DATE_UI_FULL_MONTH_FORMAT);
 
-  return t('cancellation_policies:types:deadline').replace('{date}', deadline);
+  return t('cancellation_policies:types:deadline', { deadline });
 };
 
 const buildFreePolicyMessage = (t) => {

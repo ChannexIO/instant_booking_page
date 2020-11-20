@@ -13,9 +13,8 @@ export default function PaymentPolicy({ cancellationPolicy }) {
   const { guaranteePaymentPolicy, currency, guaranteePaymentAmount } = cancellationPolicy;
 
   const currencyUnit = guaranteePaymentPolicy === 'percent_based' ? '%' : currency;
-  const policyText = t(`payment_policies:types:${guaranteePaymentPolicy}`)
-    .replace('{amount}', guaranteePaymentAmount)
-    .replace('{currency}', currencyUnit);
+  const policyTextParams = { amount: guaranteePaymentAmount, currency: currencyUnit};
+  const policyText = t(`payment_policies:types:${guaranteePaymentPolicy}`, policyTextParams);
 
   return (
     <Alert
