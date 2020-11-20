@@ -12,7 +12,7 @@ export default function RoomAvailability({ availability }) {
     return null;
   }
 
-  const availabilityAlertText = t('rates_table:room_availability').replace('{n}', availability);
+  const availabilityAlertText = t('rates_table:room_availability', { availability });
 
   return (
     <Alert text={availabilityAlertText} variant="error" />

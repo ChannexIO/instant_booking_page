@@ -100,8 +100,8 @@
     "room_type": "Room Type",
     "sleeps": "Sleeps",
     "price": "Price of stay",
-    "price_multiple_nights": "Price for {n} nights",
-    "room_availability": "Only {n} left on our site",
+    "price_multiple_nights": "Price for {{residenceTime}} nights",
+    "room_availability": "Only {{availability}} left on our site",
     "your_choises": "Your Choices",
     "rooms": "Rooms",
     "show_more": "Show more",
@@ -119,9 +119,9 @@
     "cancellation": "Cancellation",
     "prepayment": "Prepayment",
     "missing_spaces_message": "You still need to fit",
-    "missing_adults": "{n} more adults",
-    "missing_children": "{n} more children",
-    "missing_infants": "{n} more infants",
+    "missing_adults": "{{amount}} more adults",
+    "missing_children": "{{amount}} more children",
+    "missing_infants": "{{amount}} more infants",
     "missing_spaces_description": "Check how many guests the available options can sleep",
     "price_for_up_to": "Price for up to",
     "no_rates_placeholder": "Select Check-In and Check-Out dates to get available rates"
@@ -149,6 +149,9 @@
         "city": "City",
         "state": "State",
         "zip": "zip"
+      },
+      "card_info": {
+        "title": "Card Info"
       }
     },
     "booking_summary": {
@@ -204,16 +207,22 @@
     "types": {
       "free": "FREE cancellation",
       "non_refundable": "Cancellation is non-refundable",
-      "deadline": "FREE cancellation before 23.59 on {date}"
+      "deadline": "FREE cancellation before 23.59 on {{deadline}}"
     }
   },
   "payment_policies": {
     "types": {
       "none": "Non required",
-      "nights_based": "Nights based - prepayment is {amount}{currency} per night",
-      "percent_based": "Percent based - prepayment is {amount}{currency}",
-      "fixed_per_booking": "Fixed amount per Booking - prepayment is {amount}{currency}",
-      "fixed_per_room": "Fixed amount per Booking Room - prepayment is {amount}{currency}"
+      "nights_based": "Nights based - prepayment is {{amount}}{{currency}} per night",
+      "percent_based": "Percent based - prepayment is {{amount}}{{currency}}",
+      "fixed_per_booking": "Fixed amount per Booking - prepayment is {{amount}}{{currency}}",
+      "fixed_per_room": "Fixed amount per Booking Room - prepayment is {{amount}}{{currency}}"
     }
+  },
+  "validation_messages": {
+    "required": "required",
+    "number": "must be a number",
+    "phone": "must be a valid phone number",
+    "email": "must be a valid email"
   }
 }
