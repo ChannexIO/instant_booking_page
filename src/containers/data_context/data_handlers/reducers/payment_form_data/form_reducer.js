@@ -1,0 +1,39 @@
+import {
+  SET_ERRORS,
+  SET_FORM_SUBMIT_ERROR,
+  SET_FORM_SUBMIT_SUCCESS,
+  SET_FORM_SUBMITTING,
+  SET_SUBMIT_HANDLER,
+} from './form_actions';
+
+const DEFAULT_ERRORS = {};
+
+export const INITIAL_STATE = {
+  errors: DEFAULT_ERRORS,
+  isSubmitting: false,
+  submitHandler: () => {},
+};
+
+const actionHandlers = {
+  [SET_ERRORS]: (state, action) => {
+    return { ...state, errors: action.payload };
+  },
+  [SET_FORM_SUBMITTING]: (state) => {
+    return { ...state, isSubmitting: true };
+  },
+  [SET_FORM_SUBMIT_SUCCESS]: (state) => {
+    return { ...state, errors: DEFAULT_ERRORS, isSubmitting: false };
+  },
+  [SET_FORM_SUBMIT_ERROR]: (state, action) => {
+    return { ...state, errors: action.payload, isSubmitting: false };
+  },
+  [SET_SUBMIT_HANDLER]: (state, action) => {
+    return { ...state, submitHandler: action.payload };
+  },
+};
+
+export const reducer = (state, action) => {
+  const handler = actionHandlers[action.type];
+
+  return handler ? handler(state, action) : state;
+};

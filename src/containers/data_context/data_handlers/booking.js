@@ -1,9 +1,8 @@
 import { useReducer } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { getSavedState, setSavedState, clearSavedState } from "./reducers/booking_data/utils/manage_saved_state";
-
 import { actions, INITIAL_STATE, reducer } from './reducers/booking_data';
+import { clearSavedState, getSavedState, setSavedState } from './reducers/booking_data/utils/manage_saved_state';
 
 export default () => {
   const [bookingData, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -35,15 +34,15 @@ export default () => {
 
   const saveDataToStorage = () => {
     setSavedState(bookingData);
-  }
+  };
 
   const getDataFromStorage = () => {
     return getSavedState();
-  }
+  };
 
   const clearDataFromStorage = () => {
     clearSavedState();
-  }
+  };
 
   const bookingActions = {
     initBookingData,

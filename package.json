@@ -5,6 +5,9 @@
   "homepage": "https://channexio.github.io/instant_booking_page/",
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
+    "@hookform/error-message": "^0.0.5",
+    "@hookform/resolvers": "^1.0.1",
+    "country-state-city": "^1.0.5",
     "google-map-react": "^2.0.8",
     "i18next": "^19.6.2",
     "moment": "^2.27.0",
@@ -14,11 +17,13 @@
     "react-dates": "^21.8.0",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^6.11.5",
     "react-i18next": "^11.7.0",
     "react-media": "^2.0.0-rc.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "world-currencies": "^0.0.11"
+    "world-currencies": "^0.0.11",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,15 +1,14 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useMedia } from 'react-media';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
+import routes from 'routing/routes';
+
 import MEDIA_QUERIES from 'constants/media_queries';
-
-import buildPath from "utils/build_path";
-import calculateSummaryParams from "utils/calculate_summary_params";
-
-import routes from "routing/routes";
+import buildPath from 'utils/build_path';
+import calculateSummaryParams from 'utils/calculate_summary_params';
 
 import DateSelect from './date_select';
 import MinPricePanel from './min_price_panel';
@@ -27,10 +26,10 @@ export default function SearchSection() {
     setParams,
     loadRoomsInfo,
     saveDataToStorage,
-    clearDataFromStorage
+    clearDataFromStorage,
   } = useContext(BookingActionsContext);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
-  const history = useHistory(); 
+  const history = useHistory();
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
   const { data: propertyRooms, isLoading } = roomsInfo;
   const { ratesOccupancyPerRoom, currency } = params;
@@ -42,16 +41,16 @@ export default function SearchSection() {
     const paymentPagePath = buildPath(history, routes.paymentPage, { channelId });
 
     history.push(paymentPagePath);
-  }, [saveDataToStorage, history, routes, buildPath]);
+  }, [saveDataToStorage, history, channelId]);
 
   const handleSearch = useCallback(() => {
-    clearDataFromStorage()
+    clearDataFromStorage();
     loadRoomsInfo();
-  }, [loadRoomsInfo, clearDataFromStorage])
+  }, [loadRoomsInfo, clearDataFromStorage]);
 
   useEffect(function setSummaryParams() {
     const summaryParams = calculateSummaryParams(propertyRooms, ratesOccupancyPerRoom);
-    
+
     if (!summaryParams) {
       return;
     }

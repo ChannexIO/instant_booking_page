@@ -1,2 +1,1 @@
-export { default } from "./date";
- 
+export { default } from './date';

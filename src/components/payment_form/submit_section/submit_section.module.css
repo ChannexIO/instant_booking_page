@@ -1,0 +1,10 @@
+.container {
+  padding-top: 16px;
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    display: block;
+  }
+}

@@ -1,0 +1,9 @@
+.message {
+  display: block;
+  margin-top: -20px;
+  padding: 0 8px;
+  color: #f8412d;
+  font-size: 11px;
+  font-style: italic;
+  text-align: right;
+}

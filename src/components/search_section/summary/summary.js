@@ -4,7 +4,8 @@ import ActionButton from '../action_button';
 import PriceBreakdown from '../price_breakdown';
 import TotalPrice from '../total_price';
 
-export default function Summary({ selectedRatesByRoom, totalPrice, currency, loading, onSearch }) {
+export default function Summary(props) {
+  const { selectedRatesByRoom, totalPrice, currency, loading, onSearch, onBook } = props;
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
 
   return (
@@ -20,6 +21,7 @@ export default function Summary({ selectedRatesByRoom, totalPrice, currency, loa
         total={totalPrice}
         currency={currency}
         loading={loading}
+        onBook={onBook}
         onSearch={onSearch}
       />
     </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Cell from "components/layout/cell";
+import Cell from 'components/layout/cell';
 
-import Date from "./date";
+import Date from './date';
 
-import styles from "./dates.module.css";
+import styles from './dates.module.css';
 
 export default function Dates({ checkinDate, checkoutDate }) {
   return (

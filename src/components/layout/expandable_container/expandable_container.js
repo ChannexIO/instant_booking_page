@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Accordion } from "react-bootstrap";
+import { Accordion } from 'react-bootstrap';
 
-import ExpandButton from "./expand_button";
+import ExpandButton from './expand_button';
 
 export default function ExpandlableContainer({ title, children }) {
   const [activeKey, setActiveKey] = useState(null);
@@ -22,5 +22,5 @@ export default function ExpandlableContainer({ title, children }) {
         </Accordion.Collapse>
       </Accordion>
     </div>
-  )
+  );
 }

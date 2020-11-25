@@ -6,12 +6,13 @@
   padding-left: 8px;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid rgba(0,0,0,.25);
   border-radius: 2px;
   transition: all 200ms ease;
   background-color: white;
   color: var(--main-text-color);
 }
+
 
 .dropdownButton {
   border: none;
@@ -42,7 +43,7 @@
   color: var(--main-text-color);
   box-shadow: none;
   outline: none;
-  border-color: #dbdbdb;
+  border-color: rgba(0,0,0,.25);
 }
 
 .dropdown:global.show>.btn-primary.dropdown-toggle,
@@ -60,11 +61,6 @@
 
 .containerVertical {
   flex-direction: column;
-}
-
-.selectLabel {
-  padding-right: 8px;
-  color: var(--info-text-color);
 }
 
 .dropdown, .dropdownToggle {
@@ -97,4 +93,12 @@
   text-decoration: underline;
   background-color: #f4f4f5;
   color: var(--main-text-hover);
+}
+
+.dropdown>.dropdownToggleInvalid:global.btn-primary.dropdown-toggle,
+.dropdownToggleInvalid:global.btn-primary:not(:disabled):not(.disabled):focus,
+.dropdownToggleInvalid:global.btn-primary:not(:disabled):not(.disabled):active,
+.dropdownToggleInvalid:global.btn-primary:not(:disabled):not(.disabled):focus,
+.dropdownToggleInvalid:global.btn-primary:not(:disabled):not(.disabled):active {
+  border-color: #dc3545;
 }

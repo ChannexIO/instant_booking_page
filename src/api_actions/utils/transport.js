@@ -1,6 +1,10 @@
+import caseConverter from 'utils/case_converter';
+
 import attributesExtractor from './attributes_extractor';
-import caseConverter from './case_converter';
 import stringifyArguments from './stringify_arguments';
+
+const API_URL = process.env.REACT_APP_API_URL;
+const PCI_URL = process.env.REACT_APP_PCI_URL;
 
 const formatApiResponse = async (payload) => {
   const parsedPayload = await payload.json();
@@ -11,8 +15,17 @@ const formatApiResponse = async (payload) => {
 
 const handleApiResponse = async (payload) => {
   const formattedPayload = await formatApiResponse(payload);
+  const { data, errors } = formattedPayload;
 
-  return attributesExtractor(formattedPayload.data);
+  if (data) {
+    return attributesExtractor(data);
+  }
+
+  if (errors) {
+    return errors;
+  }
+
+  return formattedPayload;
 };
 
 const handleApiError = async (payload) => {
@@ -21,14 +34,20 @@ const handleApiError = async (payload) => {
   throw formattedPayload.errors;
 };
 
-const getUrl = (path, params) => {
+const getUrl = (apiUrl, path, params) => {
   const urlParams = stringifyArguments(params);
 
-  return `${process.env.REACT_APP_API_URL}${path}${urlParams}`;
+  return `${apiUrl}${path}${urlParams}`;
 };
 
 const getRequestOptions = (method, params) => {
-  const requestOptions = { method };
+  const requestOptions = {
+    method,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
 
   if (params) {
     requestOptions.body = JSON.stringify(params);
@@ -37,11 +56,11 @@ const getRequestOptions = (method, params) => {
   return requestOptions;
 };
 
-const request = async (method, path, payload, queryParams) => {
+const request = async (method, apiUrl, path, payload, queryParams) => {
   const formattedPayload = caseConverter.convertToSnakeCase(payload);
   const formattedQueryParams = caseConverter.convertToSnakeCase(queryParams);
 
-  const url = getUrl(path, formattedQueryParams);
+  const url = getUrl(apiUrl, path, formattedQueryParams);
   const requestOptions = getRequestOptions(method, formattedPayload);
 
   try {
@@ -53,19 +72,23 @@ const request = async (method, path, payload, queryParams) => {
   }
 };
 
-const requestWithBodyParams = (method) => (path, payload, queryParams) => {
-  return request(method, path, payload, queryParams);
+const requestWithBodyParams = (method, apiUrl) => (path, payload, queryParams) => {
+  return request(method, apiUrl, path, payload, queryParams);
 };
 
-const requestWithoutBodyParams = (method) => (path, queryParams) => {
-  return request(method, path, null, queryParams);
+const requestWithoutBodyParams = (method, apiUrl) => (path, queryParams) => {
+  return request(method, apiUrl, path, null, queryParams);
 };
 
 export default {
-  get: requestWithoutBodyParams('GET'),
-  delete: requestWithoutBodyParams('DELETE'),
-  post: requestWithBodyParams('POST'),
-  put: requestWithBodyParams('PUT'),
-  patch: requestWithBodyParams('PATCH'),
-  options: requestWithBodyParams('OPTIONS'),
+  get: requestWithoutBodyParams('GET', API_URL),
+  delete: requestWithoutBodyParams('DELETE', API_URL),
+  post: requestWithBodyParams('POST', API_URL),
+  put: requestWithBodyParams('PUT', API_URL),
+  patch: requestWithBodyParams('PATCH', API_URL),
+  options: requestWithBodyParams('OPTIONS', API_URL),
+
+  pciGet: requestWithoutBodyParams('GET', PCI_URL),
+  pciPost: requestWithBodyParams('POST', PCI_URL),
+  pciDelete: requestWithoutBodyParams('DELETE', PCI_URL),
 };

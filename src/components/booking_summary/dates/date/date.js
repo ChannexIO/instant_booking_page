@@ -1,31 +1,31 @@
 import React from 'react';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
+
+import Label from 'components/label';
 
 import IconCheckIn from 'static/icons-checkin.svg';
 import IconCheckOut from 'static/icons-checkout.svg';
 
-import Label from "components/label";
+import styles from './date.module.css';
 
-import styles from "./date.module.css";
+const DATE_FORMAT = 'DD MMM';
+const CHECKIN_DATE = 'checkin';
 
-const DATE_FORMAT = "DD MMM";
-const CHECKIN_DATE = "checkin";
-
-export default function Date({ date, type = CHECKIN_DATE}) {
+export default function Date({ date, type = CHECKIN_DATE }) {
   const { t } = useTranslation();
 
   const dateConfig = {
     checkin: {
-      label: t("payment_page:booking_summary:check_in"),
+      label: t('payment_page:booking_summary:check_in'),
       className: styles.dateFrom,
-      iconSrc:  IconCheckIn,
+      iconSrc: IconCheckIn,
     },
     checkout: {
-      label: t("payment_page:booking_summary:check_out"),
+      label: t('payment_page:booking_summary:check_out'),
       className: styles.dateTo,
       iconSrc: IconCheckOut,
-    }
-  }
+    },
+  };
 
   const dateParams = dateConfig[type];
 
