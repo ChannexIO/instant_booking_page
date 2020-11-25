@@ -162,6 +162,10 @@
       "adults": "adults",
       "children":"children"
     },
+    "error_modal": {
+      "header": "Error",
+      "text": "Something went wrong"
+    },
     "agree_and_book": "Agree and Book"
   },
   "footer": {

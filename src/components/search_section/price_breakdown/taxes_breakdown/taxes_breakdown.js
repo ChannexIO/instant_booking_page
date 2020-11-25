@@ -9,9 +9,10 @@ export default function TaxesBreakdown({ selectedRatesByRoom, currency }) {
     const newCombinedTaxes = Object.values(selectedRatesByRoom)
       .reduce((acc, selectedRoom) => [...acc, ...selectedRoom.selectedRates], [])
       .reduce((acc, selectedRate) => {
-        const updatedTaxes = selectedRate.taxes.map((tax) => ({
+        const { amount = 0, taxes = [] } = selectedRate;
+        const updatedTaxes = taxes.map((tax) => ({
           ...tax,
-          multiplier: selectedRate.amount,
+          multiplier: amount,
         }));
 
         return [...acc, ...updatedTaxes];

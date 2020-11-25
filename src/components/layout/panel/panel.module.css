@@ -1,0 +1,21 @@
+.panelTitle {
+  display: flex;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(36, 46, 66, 0.12);
+}
+
+.panelContainer {
+  margin-bottom: 24px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.children {
+  padding-top: 16px;
+}

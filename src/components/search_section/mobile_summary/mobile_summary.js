@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import MobileSummaryContainer from "components/layout/mobile_summary_container";
-import ExpandableContainer from "components/layout/expandable_container"; 
+import ExpandableContainer from 'components/layout/expandable_container';
+import MobileSummaryContainer from 'components/layout/mobile_summary_container';
 
 import ActionButton from '../action_button';
 import PriceBreakdown from '../price_breakdown';
@@ -10,10 +10,8 @@ import TotalPrice from '../total_price';
 
 export default function MobileSummary(props) {
   const { t } = useTranslation();
-
-  const { selectedRatesByRoom, totalPrice, currency, loading, onSearch } = props;
+  const { selectedRatesByRoom, totalPrice, currency, loading, onBook, onSearch } = props;
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
-
 
   return (
     <MobileSummaryContainer>
@@ -28,6 +26,7 @@ export default function MobileSummary(props) {
         total={totalPrice}
         currency={currency}
         loading={loading}
+        onBook={onBook}
         onSearch={onSearch}
       />
     </MobileSummaryContainer>

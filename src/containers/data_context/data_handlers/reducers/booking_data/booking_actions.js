@@ -103,8 +103,8 @@ const mergeBookingParams = (channelId, bookingQueryParams, savedBookingData) => 
 
   const { params } = savedBookingData;
 
-  return {...params, ...bookingQueryParams};
-}
+  return { ...params, ...bookingQueryParams };
+};
 
 const initBookingData = async (dispatch, location, bookingQueryParams, savedBookingData) => {
   const channelId = getChannelId(location);

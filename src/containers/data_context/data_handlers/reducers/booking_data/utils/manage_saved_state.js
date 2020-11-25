@@ -1,9 +1,11 @@
-import { setToStorage, getFromStorage, removeFromStorage } from "containers/data_context/utils/session_storage_manager";
 import moment from 'moment';
-import { BOOKING_PARAMS } from "constants/storage_keys";
+
+import { getFromStorage, removeFromStorage, setToStorage } from 'containers/data_context/utils/session_storage_manager';
+
+import { BOOKING_PARAMS } from 'constants/storage_keys';
 
 export function getSavedState() {
-  const savedState = getFromStorage(BOOKING_PARAMS)
+  const savedState = getFromStorage(BOOKING_PARAMS);
 
   if (!savedState) {
     return null;
@@ -13,7 +15,7 @@ export function getSavedState() {
 
   const updatedParams = {
     ...params,
-    checkinDate:  moment(params.checkinDate),
+    checkinDate: moment(params.checkinDate),
     checkoutDate: moment(params.checkoutDate),
   };
 
@@ -22,7 +24,7 @@ export function getSavedState() {
 
 export function setSavedState(state) {
   setToStorage(BOOKING_PARAMS, state);
-} 
+}
 
 export function clearSavedState() {
   removeFromStorage(BOOKING_PARAMS);

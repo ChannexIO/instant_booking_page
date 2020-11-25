@@ -1,1 +1,1 @@
-export { default } from "./mobile_summary";
+export { default } from './mobile_summary';

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import calculateSummaryParams from "utils/calculate_summary_params";
-import { useMedia } from "react-media";
+import React, { useEffect, useState } from 'react';
+import { useMedia } from 'react-media';
 
-import Summary from "./summary";
-import MobileSummary from "./mobile_summary";
+import MEDIA_QUERIES from 'constants/media_queries';
+import calculateSummaryParams from 'utils/calculate_summary_params';
 
-import MEDIA_QUERIES from "constants/media_queries";
+import MobileSummary from './mobile_summary';
+import Summary from './summary';
 
-import styles from "./booking_summary.module.css";
+import styles from './booking_summary.module.css';
 
 export default function BookingSummary({ property, rooms, params, onBook }) {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
@@ -21,7 +21,7 @@ export default function BookingSummary({ property, rooms, params, onBook }) {
     const summaryParams = calculateSummaryParams(rooms, ratesOccupancyPerRoom);
 
     if (!summaryParams) {
-      return null;
+      return;
     }
 
     setTotal(summaryParams.total);
@@ -37,8 +37,7 @@ export default function BookingSummary({ property, rooms, params, onBook }) {
         selectedRatesByRoom={selectedRatesByRoom}
         onBook={onBook}
       />
-      <div className={styles.summaryPoliciesWrapper}>
-      </div>
+      <div className={styles.summaryPoliciesWrapper} />
     </>
   );
 }

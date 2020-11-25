@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-import Select from 'components/inputs/search_section_select';
+import MaterialSelect from 'components/inputs/material_select';
 import Cell from 'components/layout/cell';
 
 import styles from './rate_plan_occupancy_select.module.css';
@@ -21,12 +21,16 @@ export default function RatePlanOccupancySelect({ rateOccupancy, availableSpaces
     setOptions(newOptions);
   }, [availableSpaces, rateOccupancy]);
 
+  const handleChange = useCallback((newValue) => {
+    onChange(Number(newValue));
+  }, [onChange]);
+
   return (
     <Cell className={styles.occupancySelectCell} noPadding>
-      <Select
+      <MaterialSelect
         value={rateOccupancy}
         options={options}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </Cell>
   );

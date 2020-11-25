@@ -12,7 +12,7 @@ export default (propertyRooms, ratesOccupancyPerRoom) => {
       const room = propertyRooms.find((propertyRoom) => propertyRoom.id === roomId);
       const rate = room.ratePlans.find((roomRatePlan) => roomRatePlan.id === rateId);
 
-      const ratePrice = Number(rate.totalPrice);
+      const ratePrice = Number(rate?.totalPrice);
 
       if (amount) {
         const selectedRate = { ...rate, amount };
@@ -24,7 +24,6 @@ export default (propertyRooms, ratesOccupancyPerRoom) => {
 
         newSelectedRatesByRoom[selectedRoom.id] = selectedRoom;
 
-
         newTotalPrice += ratePrice * amount;
       }
     });
@@ -34,4 +33,4 @@ export default (propertyRooms, ratesOccupancyPerRoom) => {
     total: newTotalPrice,
     selectedRatesByRoom: newSelectedRatesByRoom,
   };
-}
+};

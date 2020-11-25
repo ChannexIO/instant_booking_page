@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Button from "components/button";
+import Button from 'components/button';
 
 import { HOTEL_INFO_SECTION } from 'constants/element_ids';
 import scrollToElementById from 'utils/scroll_to_element_by_id';

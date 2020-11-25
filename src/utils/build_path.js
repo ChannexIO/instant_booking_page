@@ -6,6 +6,7 @@ export default (history, route, params) => {
     const matchedParam = params[paramName];
 
     if (matchedParam === undefined) {
+      // eslint-disable-next-line no-console
       console.error(`Missing query parameter - ${paramName}`);
     }
 
@@ -13,4 +14,4 @@ export default (history, route, params) => {
   });
 
   return `${updatedRoute}${search}`;
-}
+};
