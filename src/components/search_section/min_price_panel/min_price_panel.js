@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import ApiActions from 'api_actions';
 
 import Currency from 'components/currency';
 
@@ -14,10 +15,34 @@ const handleClick = (e) => {
   scrollToElementById(HOTEL_INFO_SECTION);
 };
 
-export default function MinPricePanel({ property, params }) {
+export default function MinPricePanel({ channelId, params }) {
+  const [minPriceParams, setMinPriceParams] = useState(null);
   const { t } = useTranslation();
-  const { minPrice = 100 } = property; // TODO - update when added to API
-  const { currency } = params;
+  const { currency, checkinDate, checkoutDate } = params;
+
+  const updateMinPriceParams = useCallback(async () => {
+    try {
+      const requestParams = {
+        currency,
+        checkinDate,
+        checkoutDate,
+      };
+
+      const newMinPriceParams = await ApiActions.getBestOffer(channelId, requestParams);
+
+      setMinPriceParams(newMinPriceParams);
+    } catch (_e) {
+      setMinPriceParams(null);
+    }
+  }, [channelId, currency, checkinDate, checkoutDate]);
+
+  useEffect(function callMinPriceUpdate() {
+    updateMinPriceParams();
+  }, [updateMinPriceParams]);
+
+  if (!minPriceParams) {
+    return null;
+  }
 
   return (
     <a className={styles.minPriceContainer} href="/" onClick={handleClick}>
@@ -25,8 +50,8 @@ export default function MinPricePanel({ property, params }) {
         {t('hotel_page:price_from')}
         <Currency
           className={styles.minPrice}
-          amount={minPrice}
-          currency={currency}
+          amount={minPriceParams.offer}
+          currency={minPriceParams.currency}
         />
         {t('hotel_page:price_per_night')}
       </div>

@@ -28,6 +28,19 @@ export default {
     return transport.get(`${PATH_PREFIX}/${propertyChannelId}/rooms`, formattedQueryParams);
   },
 
+  getBestOffer: (propertyChannelId, queryParams) => {
+    const formattedQueryParams = {
+      currency: queryParams.currency,
+    };
+
+    if (queryParams.checkinDate && queryParams.checkoutDate) {
+      formattedQueryParams.checkinDate = dateFormatter.toApi(queryParams.checkinDate);
+      formattedQueryParams.checkoutDate = dateFormatter.toApi(queryParams.checkoutDate);
+    }
+
+    return transport.get(`${PATH_PREFIX}/${propertyChannelId}/best_offer`, formattedQueryParams);
+  },
+
   createBooking: (propertyChannelId, booking) => {
     return transport.post(`${PATH_PREFIX}/${propertyChannelId}/push_booking`, { booking });
   },

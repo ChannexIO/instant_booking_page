@@ -21,7 +21,7 @@ import styles from './search_section.module.css';
 export default function SearchSection() {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
-  const { channelId, params, property, roomsInfo } = useContext(BookingDataContext);
+  const { channelId, params, roomsInfo } = useContext(BookingDataContext);
   const {
     setParams,
     loadRoomsInfo,
@@ -64,7 +64,10 @@ export default function SearchSection() {
   return (
     <div className={styles.stickyContainer}>
       <div className={styles.searchPanelWrapper}>
-        <MinPricePanel property={property} params={params} />
+        <MinPricePanel
+          channelId={channelId}
+          params={params}
+        />
         <div className={styles.searchSection}>
           <DateSelect bookingParams={params} handleSearchChange={setParams} />
           <OccupancySetting bookingParams={params} handleSearchChange={setParams} />
