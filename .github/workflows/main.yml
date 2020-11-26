@@ -30,6 +30,8 @@ jobs:
           REACT_APP_BASE_PATH: ${{ secrets.REACT_APP_BASE_PATH }}
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_CHANNEL_CODE: ${{ secrets.REACT_APP_CHANNEL_CODE }}
+          REACT_APP_PCI_URL: ${{ secrets.REACT_APP_PCI_URL }}
+          REACT_APP_CAPTURE_CARD_API_KEY: ${{ secrets.REACT_APP_CAPTURE_CARD_API_KEY }}
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
