@@ -34,19 +34,21 @@ export default function Link({ type = 'url', to = '', children }) {
   const { icon, prefix } = linkAttrs;
 
   return (
-    <div>
+    <span>
       <a
         className={styles.link}
         href={`${prefix}${to}`}
       >
-        <img
-          src={icon}
-          alt={type}
-        />
+        {icon && (
+          <img
+            src={icon}
+            alt={type}
+          />
+        )}
         <pre className={styles.linkContent}>
           {children}
         </pre>
       </a>
-    </div>
+    </span>
   );
 }

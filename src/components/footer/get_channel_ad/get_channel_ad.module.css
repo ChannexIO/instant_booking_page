@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  padding-top: 32px;
+}
+
+.text {
+  color: var(--info-text-color);
+  line-height: 24px;
+  margin-right: 4px;
+}
