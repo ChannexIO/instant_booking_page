@@ -23,6 +23,21 @@ const OPEN_DIRECTIONS = {
   down: 'down',
 };
 
+const MIN_STAY_LENGTH = 1;
+
+const getMinStayLength = (closedDates, checkinDate) => {
+  if (!checkinDate || !moment(checkinDate).isValid()) {
+    return MIN_STAY_LENGTH;
+  }
+  const { minStayArrival, minStayThrough } = closedDates.data;
+  const formattedCheckinDate = checkinDate.format(DATE_FORMAT);
+  const { [formattedCheckinDate]: minStayArrivalValue = MIN_STAY_LENGTH } = minStayArrival;
+  const { [formattedCheckinDate]: minStayThroughValue = MIN_STAY_LENGTH } = minStayThrough;
+  const minStayLength = Math.max(minStayArrivalValue, minStayThroughValue);
+
+  return minStayLength;
+};
+
 export default function RangePicker(props) {
   const { closedDates } = useContext(BookingDataContext);
   const {
@@ -38,6 +53,7 @@ export default function RangePicker(props) {
   const [focusedInput, setFocusedInput] = useState(null);
   const [openDirection, setOpenDirection] = useState(OPEN_DIRECTIONS.up);
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
+  const minStayLength = getMinStayLength(closedDates, checkinDate);
   const inputRef = useRef(null);
 
   const isMobile = matchedQueries.xs;
@@ -105,8 +121,15 @@ export default function RangePicker(props) {
     onDatesChange({ startDate: null, endDate: null });
   }, [onDatesChange]);
 
-  /* eslint-disable-next-line react/jsx-props-no-spreading */
-  const renderCalendarDay = useCallback((dayProps) => <DayCell {...dayProps} />, []);
+  const renderCalendarDay = useCallback((dayProps) => {
+    return (
+      <DayCell
+        /* eslint-disable-next-line react/jsx-props-no-spreading */
+        {...dayProps}
+        minStayLength={minStayLength}
+      />
+    );
+  }, [minStayLength]);
 
   const renderCalendarInfo = useCallback(() => (
     <InfoSection onClear={handleDatesReset} />
@@ -132,6 +155,7 @@ export default function RangePicker(props) {
         withFullScreenPortal={isMobile}
         onDatesChange={onDatesChange}
         focusedInput={focusedInput}
+        minimumNights={minStayLength}
         renderCalendarDay={renderCalendarDay}
         isDayBlocked={getIsDayBlocked}
         onFocusChange={handleFocusChange}

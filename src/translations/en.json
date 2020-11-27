@@ -11,6 +11,7 @@
     "checkout_label": "Check-out",
     "checkin_placeholder": "Check-in",
     "checkout_placeholder": "Check-out",
+    "night_minimum": "night minimum",
     "total": "Total",
     "search": "Search",
     "clear": "Clear",

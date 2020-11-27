@@ -6,6 +6,17 @@ export default (closedDates) => {
       const closedDatesEntry = closedDates[key];
 
       if (!Array.isArray(closedDatesEntry)) {
+        acc[key] = Object.keys(closedDatesEntry)
+          .reduce((newEntry, originalKey) => {
+            const formattedKey = dateFormatter.toClient(originalKey);
+            const updatedEntry = {
+              ...newEntry,
+              [formattedKey]: closedDatesEntry[originalKey],
+            };
+
+            return updatedEntry;
+          }, {});
+
         return acc;
       }
 

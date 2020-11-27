@@ -1,4 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
+
+import LengthOfStayTooltip from './length_of_stay_tooltip';
 
 import styles from './day_cell.module.css';
 
@@ -12,10 +14,25 @@ const CALENDAR_DAY_STYLE_MODIFICATORS = {
   'hovered-span': styles.dayCellHoveredSpan,
 };
 
+const DEFAULT_MODIFIERS = new Set();
+const MIN_STAY_TO_SHOW = 2;
+
 export default function DayCell(props) {
-  const { isOutsideDay, modifiers = [], day, onDayClick, onDayMouseEnter, onDayMouseLeave } = props;
+  const containerRef = useRef();
+  const {
+    isOutsideDay,
+    minStayLength,
+    modifiers = DEFAULT_MODIFIERS,
+    day,
+    onDayClick,
+    onDayMouseEnter,
+    onDayMouseLeave,
+  } = props;
 
   const dayStyling = [styles.dayCell];
+
+  const isSelectedStart = modifiers && modifiers.has('selected-start');
+  const isTooltipShown = isSelectedStart && minStayLength >= MIN_STAY_TO_SHOW;
 
   modifiers.forEach((modifier) => dayStyling.push(CALENDAR_DAY_STYLE_MODIFICATORS[modifier]));
 
@@ -29,6 +46,7 @@ export default function DayCell(props) {
 
   return (
     <td
+      ref={containerRef}
       role="presentation"
       className={dayStyling.join(' ')}
       onMouseEnter={handleMouseEnter}
@@ -36,6 +54,11 @@ export default function DayCell(props) {
       onClick={handleClick}
     >
       {day.format('D')}
+      <LengthOfStayTooltip
+        show={isTooltipShown}
+        minStayLength={minStayLength}
+        containerRef={containerRef}
+      />
     </td>
   );
 }
