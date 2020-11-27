@@ -7,6 +7,7 @@ const composeRoute = (route) => {
 const routes = {
   hotelPage: composeRoute('/:channelId'),
   paymentPage: composeRoute('/:channelId/payment_page'),
+  confirmationPage: composeRoute('/:channelId/confirmation/:bookingId'),
 };
 
 export default routes;

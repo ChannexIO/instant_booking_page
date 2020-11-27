@@ -168,6 +168,11 @@
     },
     "agree_and_book": "Agree and Book"
   },
+  "confirmation_page": {
+    "thank_you": "Thank You",
+    "your_number": "Your confirmation number is",
+    "confirmation_sent_to": "E-mail confirmation has been sent to"
+  },
   "footer": {
     "terms_and_conditions": "Terms and Conditions",
     "privacy_policy": "Privacy Policy",

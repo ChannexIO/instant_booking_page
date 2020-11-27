@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import SectionWrapper from 'components/layout/section_wrapper';
@@ -20,12 +21,14 @@ export default function HotelInfoSection({ property }) {
 
   return (
     <SectionWrapper theme="dark">
-      <SectionTitle>{t('hotel_page:additional_information')}</SectionTitle>
-      <GeneralPolicies hotelPolicy={hotelPolicy} />
-      <InternetAccessPolicies hotelPolicy={hotelPolicy} />
-      <ParkingPolicies hotelPolicy={hotelPolicy} />
-      <SmokingPolicies hotelPolicy={hotelPolicy} />
-      <PetsPolicies hotelPolicy={hotelPolicy} />
+      <Col xs="12" lg="8" >
+        <SectionTitle>{t('hotel_page:additional_information')}</SectionTitle>
+        <GeneralPolicies hotelPolicy={hotelPolicy} />
+        <InternetAccessPolicies hotelPolicy={hotelPolicy} />
+        <ParkingPolicies hotelPolicy={hotelPolicy} />
+        <SmokingPolicies hotelPolicy={hotelPolicy} />
+        <PetsPolicies hotelPolicy={hotelPolicy} />
+      </Col>
     </SectionWrapper>
   );
 }

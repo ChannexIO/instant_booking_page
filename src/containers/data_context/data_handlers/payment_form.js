@@ -5,10 +5,6 @@ import { actions, INITIAL_STATE, reducer } from './reducers/payment_form_data';
 export default () => {
   const [paymentFormData, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-  const setErrors = useCallback((newErrors) => {
-    return actions.setErrors(dispatch, newErrors);
-  }, [dispatch]);
-
   const createBooking = useCallback((channelId, bookingData) => {
     return actions.createBooking(dispatch, channelId, bookingData);
   }, [dispatch]);
@@ -22,7 +18,6 @@ export default () => {
   }, [paymentFormData]);
 
   const paymentFormActions = {
-    setErrors,
     setSubmitHandler,
     createBooking,
     startSubmit,

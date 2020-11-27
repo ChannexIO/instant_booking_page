@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import SectionWrapper from 'components/layout/section_wrapper';
@@ -10,8 +11,10 @@ export default function HotelRatesSection() {
 
   return (
     <SectionWrapper theme="dark">
-      <SectionTitle>{t('rates_table:title')}</SectionTitle>
-      <RatesTable />
+      <Col xs="12" lg="8" >
+        <SectionTitle>{t('rates_table:title')}</SectionTitle>
+        <RatesTable />
+      </Col>
     </SectionWrapper>
   );
 }

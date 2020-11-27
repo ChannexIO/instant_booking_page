@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Comfirmation Email</title>
+    <defs>
+        <circle id="path-1" cx="64" cy="64" r="64"></circle>
+        <polygon id="path-3" points="3.33066907e-15 48 48 80.0833333 96 48 96 108 0 108"></polygon>
+    </defs>
+    <g id="3.-Spot-illustrations" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Spot-Illustrations" transform="translate(-653.000000, -986.000000)">
+            <g id="Comfirmation-Email" transform="translate(653.000000, 986.000000)">
+                <g id="/Illustration-small#3">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#F4F4F4" xlink:href="#path-1"></use>
+                    <g id="shield" mask="url(#mask-2)">
+                        <g transform="translate(16.000000, 28.000000)">
+                            <polygon id="Mask" stroke="none" fill="#252525" fill-rule="evenodd" opacity="0.119489397" points="3.33066907e-15 48 48 20 96 48 96 108 3.33066907e-15 108"></polygon>
+                            <rect id="Letter" stroke="none" fill="#35A3F7" fill-rule="evenodd" x="10" y="0" width="75" height="88"></rect>
+                            <path d="M62.1612903,0 L83,0 C84.1045695,-4.3491699e-15 85,0.8954305 85,2 L85,86 C85,87.1045695 84.1045695,88 83,88 L26,88 L26,88 L62.1612903,0 Z" id="Letter" stroke="none" fill="#297FCA" fill-rule="evenodd"></path>
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="Mask" stroke="none" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        </g>
+                    </g>
+                    <g id="Group" mask="url(#mask-2)">
+                        <g transform="translate(42.000000, 36.000000)" id="content/erase">
+                            <path d="M0,0 L49,0 L49,49 L0,49 L0,0 Z" id="Transparent-BG" stroke-opacity="0.01" stroke="#FFFFFF" stroke-width="0.01"></path>
+                            <polygon id="Icon" fill="#FFFFFF" points="18.9887779 32.5564199 10.3055696 23.9324199 6.84290288 27.4012116 18.1594555 39.6318105 38.8015554 19.6528486 38.8015554 12.8644689"></polygon>
+                        </g>
+                    </g>
+                </g>
+                <g id="Group-2" transform="translate(16.564706, 0.000000)" stroke="#646464" stroke-width="1.00392157">
+                    <path d="M11.545098,0 L11.545098,10.0392157" id="Path-2-Copy"></path>
+                    <path d="M11.545098,13.0509804 L11.545098,23.0901961" id="Path-2-Copy-2"></path>
+                    <path d="M4.76862745,6.77647059 L4.76862745,16.8156863" id="Path-2-Copy" transform="translate(5.019608, 11.796078) rotate(90.000000) translate(-5.019608, -11.796078) "></path>
+                    <path d="M17.8196078,6.77647059 L17.8196078,16.8156863" id="Path-2-Copy-3" transform="translate(18.070588, 11.796078) rotate(90.000000) translate(-18.070588, -11.796078) "></path>
+                </g>
+                <g id="Group-3" transform="translate(3.000000, 24.000000)" stroke="#646464" stroke-width="1.00392157">
+                    <path d="M7.02745098,0 L7.02745098,4.26666667" id="Path-2-Copy-4"></path>
+                    <path d="M7.02745098,9.03529412 L7.02745098,13.3019608" id="Path-2-Copy-5"></path>
+                    <path d="M2.25882353,4.76862745 L2.25882353,9.03529412" id="Path-2-Copy-6" transform="translate(2.509804, 6.901961) rotate(90.000000) translate(-2.509804, -6.901961) "></path>
+                    <path d="M11.2941176,4.76862745 L11.2941176,9.03529412" id="Path-2-Copy-7" transform="translate(11.545098, 6.901961) rotate(90.000000) translate(-11.545098, -6.901961) "></path>
+                </g>
+                <path d="M110.264605,94 L110.264605,108.619869 M110.264605,113.00583 L110.264605,127.625699 M108.619869,110.264605 L94,110.264605 M127.625699,110.264605 L113.00583,110.264605" id="Combined-Shape" stroke="#646464" stroke-width="1.24878051"></path>
+            </g>
+        </g>
+    </g>
+</svg>

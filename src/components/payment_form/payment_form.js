@@ -23,7 +23,7 @@ const getSchema = () => (
 
 const EMPTY_CARD = {};
 
-export default function PaymentForm({ channelId, property, rooms, params }) {
+export default function PaymentForm({ channelId, property, rooms, params, onSuccess }) {
   const [cardInfo, setCardInfo] = useState(EMPTY_CARD);
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
   const paymentFormMethods = useForm({
@@ -40,7 +40,6 @@ export default function PaymentForm({ channelId, property, rooms, params }) {
   const prevCardInfo = prevCardInfoRef.current;
 
   // TODO - add api errors handling
-  // const { apiErrors } = useContext(PaymentFormDataContext)
   const { setSubmitHandler, createBooking } = useContext(PaymentFormActionsContext);
 
   const handleCaptureFormValidated = async ({ valid: isCaptureFormValid }) => {
@@ -74,16 +73,14 @@ export default function PaymentForm({ channelId, property, rooms, params }) {
     const booking = buildBooking(property, rooms, params, cardInfo, formData);
 
     try {
-      const bookingIds = await createBooking(channelId, booking);
+      const bookingParams = await createBooking(channelId, booking);
 
-      // eslint-disable-next-line no-alert
-      alert(`success: ${JSON.stringify(bookingIds)}`);
+      onSuccess(bookingParams);
     } catch (error) {
       toggleErrorModal();
+      captureFormRef.current.resetSession();
     }
-
-    captureFormRef.current.resetSession();
-  }, [cardInfo, property, rooms, params, createBooking, channelId, toggleErrorModal]);
+  }, [cardInfo, property, rooms, params, createBooking, channelId, onSuccess, toggleErrorModal]);
 
   useEffect(function initSubmitHandler() {
     setSubmitHandler(captureFormRef.current.validate);

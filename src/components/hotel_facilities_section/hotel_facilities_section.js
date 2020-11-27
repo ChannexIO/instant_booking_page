@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import Facility from 'components/faclitily';
@@ -13,14 +14,16 @@ export default function HotelFacilitiesSection({ property }) {
 
   return (
     <SectionWrapper theme="light">
-      <SectionTitle>{t('hotel_page:hotel_facilities')}</SectionTitle>
-      <div className={styles.hotelFacilitiesContainer}>
-        {facilities.map((facility) => (
-          <div className={styles.hotelFacility} key={facility}>
-            <Facility code={facility}/>
-          </div>
-        ))}
-      </div>
+      <Col xs="12" lg="8" >
+        <SectionTitle>{t('hotel_page:hotel_facilities')}</SectionTitle>
+        <div className={styles.hotelFacilitiesContainer}>
+          {facilities.map((facility) => (
+            <div className={styles.hotelFacility} key={facility}>
+              <Facility code={facility}/>
+            </div>
+          ))}
+        </div>
+      </Col>
     </SectionWrapper>
   );
 }

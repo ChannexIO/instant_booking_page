@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 
 import HotelLocation from 'components/hotel_location';
 import SectionWrapper from 'components/layout/section_wrapper';
@@ -13,17 +14,19 @@ export default function HotelInfoSection({ property }) {
 
   return (
     <SectionWrapper id={HOTEL_INFO_SECTION} theme="light">
-      <div className={styles.hotelTitleSection}>
-        <SectionTitle>
-          {title}
-        </SectionTitle>
-        <HotelLocation property={property} />
-      </div>
-      {description && (
-        <pre className={styles.hotelDescription}>
-          {description}
-        </pre>
-      )}
+      <Col xs="12" lg="8" >
+        <div className={styles.hotelTitleSection}>
+          <SectionTitle>
+            {title}
+          </SectionTitle>
+          <HotelLocation property={property} />
+        </div>
+        {description && (
+          <pre className={styles.hotelDescription}>
+            {description}
+          </pre>
+        )}
+      </Col>
     </SectionWrapper>
   );
 }

@@ -45,7 +45,7 @@ const setParams = (dispatch, payload) => {
 const getChannelId = (location) => {
   const basePath = process.env.REACT_APP_BASE_PATH;
   // TODO - looks kinda lame, make more reliable
-  const matchedPath = matchPath(location.pathname, { path: `${basePath}/:channelId/(payment_page)?`, exact: true });
+  const matchedPath = matchPath(location.pathname, { path: `${basePath}/:channelId` });
 
   if (!matchedPath) {
     return null;

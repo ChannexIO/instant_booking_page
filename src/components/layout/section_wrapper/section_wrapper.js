@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 import styles from './section_wrapper.module.css';
 
@@ -8,7 +8,7 @@ const CONTAINER_STYLES = {
   dark: styles.containerDark,
 };
 
-export default function SectionWrapper({ theme, children, additionalInfo, id }) {
+export default function SectionWrapper({ theme, children, id }) {
   return (
     <div
       id={id}
@@ -16,12 +16,7 @@ export default function SectionWrapper({ theme, children, additionalInfo, id }) 
     >
       <div className={styles.containerInner}>
         <Row noGutters>
-          <Col xs="12" lg="8" >
-            {children}
-          </Col>
-          <Col xs="12" lg="4" >
-            {additionalInfo}
-          </Col>
+          {children}
         </Row>
       </div>
     </div>

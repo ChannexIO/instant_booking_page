@@ -1,10 +1,15 @@
 import ApiActions from 'api_actions';
 
+export const SET_SUBMITTED_VALUE = 'SET_SUBMITTED_VALUE';
 export const SET_ERRORS = 'SET_ERRORS';
 export const SET_FORM_SUBMITTING = 'SET_FORM_SUBMITTING';
 export const SET_FORM_SUBMIT_SUCCESS = 'SET_FORM_SUBMIT_SUCCESS';
 export const SET_FORM_SUBMIT_ERROR = 'SET_FORM_SUBMIT_ERROR';
 export const SET_SUBMIT_HANDLER = 'SET_SUBMIT_HANDLER';
+
+const setSubmittedValue = (dispatch, payload) => {
+  return dispatch({ type: SET_SUBMITTED_VALUE, payload });
+};
 
 const setErrors = (dispatch, payload) => {
   return dispatch({ type: SET_ERRORS, payload });
@@ -28,15 +33,14 @@ const setFormSubmitError = (dispatch, payload) => {
 
 const createBooking = async (dispatch, channelId, formParams) => {
   setFormSubmitting(dispatch);
-
-  setFormSubmitSuccess(dispatch);
+  setSubmittedValue(dispatch, formParams);
 
   try {
-    const response = await ApiActions.createBooking(channelId, formParams);
+    const [newBookingInfo] = await ApiActions.createBooking(channelId, formParams);
 
     setFormSubmitSuccess(dispatch);
 
-    return response;
+    return newBookingInfo;
   } catch (error) {
     setFormSubmitError(dispatch, error);
 
