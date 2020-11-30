@@ -6,7 +6,7 @@ import getUrlParams from 'utils/get_url_params';
 
 const DEFAULT_PARAMS = {
   children: 0,
-  adults: 0,
+  adults: 1,
 };
 
 export default function getBookingParamsFromUrl() {
@@ -38,12 +38,14 @@ export default function getBookingParamsFromUrl() {
     optionalParams.childrenAge = processedChildrenAge;
   }
 
-  if (!Number.isNaN(Number(children))) {
-    optionalParams.children = Number(children);
+  const parsedChildrenAmount = Number(children);
+  if (!Number.isNaN(parsedChildrenAmount)) {
+    optionalParams.children = Math.max(DEFAULT_PARAMS.children, parsedChildrenAmount);
   }
 
-  if (!Number.isNaN(Number(adults))) {
-    optionalParams.adults = Number(adults);
+  const parsedAdultsAmount = Number(adults);
+  if (!Number.isNaN(parsedAdultsAmount)) {
+    optionalParams.adults = Math.max(DEFAULT_PARAMS.adults, parsedAdultsAmount);
   }
 
   return ({ ...optionalParams, currency });
