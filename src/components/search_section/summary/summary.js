@@ -5,8 +5,16 @@ import PriceBreakdown from '../price_breakdown';
 import TotalPrice from '../total_price';
 
 export default function Summary(props) {
-  const { selectedRatesByRoom, totalPrice, currency, loading, onSearch, onBook } = props;
-  const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
+  const {
+    selectedRatesByRoom,
+    isDatesSelected,
+    isRateSelected,
+    totalPrice,
+    currency,
+    loading,
+    onSearch,
+    onBook,
+  } = props;
 
   return (
     <div>
@@ -17,6 +25,7 @@ export default function Summary(props) {
         </>
       )}
       <ActionButton
+        isDatesSelected={isDatesSelected}
         isRateSelected={isRateSelected}
         total={totalPrice}
         currency={currency}

@@ -10,8 +10,16 @@ import TotalPrice from '../total_price';
 
 export default function MobileSummary(props) {
   const { t } = useTranslation();
-  const { selectedRatesByRoom, totalPrice, currency, loading, onBook, onSearch } = props;
-  const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
+  const {
+    selectedRatesByRoom,
+    isDatesSelected,
+    isRateSelected,
+    totalPrice,
+    currency,
+    loading,
+    onBook,
+    onSearch,
+  } = props;
 
   return (
     <MobileSummaryContainer>
@@ -22,6 +30,7 @@ export default function MobileSummary(props) {
         </ExpandableContainer>
       )}
       <ActionButton
+        isDatesSelected={isDatesSelected}
         isRateSelected={isRateSelected}
         total={totalPrice}
         currency={currency}

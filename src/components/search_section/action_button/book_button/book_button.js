@@ -6,12 +6,13 @@ import Currency from 'components/currency';
 
 import styles from './book_button.module.css';
 
-export default function BookButton({ total, currency, onClick }) {
+export default function BookButton({ total, currency, disabled, onClick }) {
   const { t } = useTranslation();
 
   return (
     <Button
       variant="primary"
+      disabled={disabled}
       onClick={onClick}
     >
       <>

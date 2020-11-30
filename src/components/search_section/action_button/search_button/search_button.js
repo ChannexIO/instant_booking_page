@@ -6,7 +6,7 @@ import Button from 'components/button';
 import { HOTEL_INFO_SECTION } from 'constants/element_ids';
 import scrollToElementById from 'utils/scroll_to_element_by_id';
 
-export default function SearchButton({ loading, onClick }) {
+export default function SearchButton({ loading, disabled, onClick }) {
   const { t } = useTranslation();
 
   const handleClick = useCallback(async () => {
@@ -17,6 +17,7 @@ export default function SearchButton({ loading, onClick }) {
   return (
     <Button
       loading={loading}
+      disabled={disabled}
       onClick={handleClick}
     >
       {t('hotel_page:search')}

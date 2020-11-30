@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useMedia } from 'react-media';
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
 import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
@@ -32,7 +33,9 @@ export default function SearchSection() {
   const history = useHistory();
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
   const { data: propertyRooms, isLoading } = roomsInfo;
-  const { ratesOccupancyPerRoom, currency } = params;
+  const { ratesOccupancyPerRoom, currency, checkinDate = null, checkoutDate = null } = params;
+  const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
+  const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
 
   // TODO update search params onChange handling, set query params here, not in input components;
   const handleBook = useCallback(() => {
@@ -73,6 +76,8 @@ export default function SearchSection() {
           <OccupancySetting bookingParams={params} handleSearchChange={setParams} />
           <SummaryComponent
             selectedRatesByRoom={selectedRatesByRoom}
+            isDatesSelected={isDatesSelected}
+            isRateSelected={isRateSelected}
             totalPrice={totalPrice}
             currency={currency}
             loading={isLoading}
