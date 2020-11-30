@@ -26,7 +26,7 @@ const OPEN_DIRECTIONS = {
 const MIN_STAY_LENGTH = 1;
 
 const getMinStayLength = (closedDates, checkinDate) => {
-  if (!checkinDate || !moment(checkinDate).isValid()) {
+  if (!checkinDate || !moment(checkinDate).isValid() || !closedDates.data) {
     return MIN_STAY_LENGTH;
   }
   const { minStayArrival, minStayThrough } = closedDates.data;
@@ -121,15 +121,13 @@ export default function RangePicker(props) {
     onDatesChange({ startDate: null, endDate: null });
   }, [onDatesChange]);
 
-  const renderCalendarDay = useCallback((dayProps) => {
-    return (
+  const renderCalendarDay = useCallback((dayProps) => (
       <DayCell
         /* eslint-disable-next-line react/jsx-props-no-spreading */
         {...dayProps}
         minStayLength={minStayLength}
       />
-    );
-  }, [minStayLength]);
+  ), [minStayLength]);
 
   const renderCalendarInfo = useCallback(() => (
     <InfoSection onClear={handleDatesReset} />
