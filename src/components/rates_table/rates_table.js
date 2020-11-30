@@ -1,12 +1,9 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { useMedia } from 'react-media';
 import moment from 'moment';
 
 import LoadingContainer from 'components/loading_container';
 
 import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
-
-import MEDIA_QUERIES from 'constants/media_queries';
 
 import RatesTableHeader from './rates_table_header';
 import RoomType from './room_type';
@@ -33,10 +30,6 @@ export default function RatesTable() {
   const residenceTime = isEnteredDatesValid
     ? checkoutDate.diff(checkinDate, 'days')
     : null;
-
-  const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
-  const isMobile = matchedQueries.xs || matchedQueries.sm;
-  const tableContainerClasses = [styles.tableContainer];
 
   const setRatesOccupancyPerRoom = useCallback((updatedOccupancy) => {
     setParams({ ...params, ratesOccupancyPerRoom: updatedOccupancy });
@@ -66,21 +59,16 @@ export default function RatesTable() {
     }
   }, [roomsData, ratesOccupancyPerRoom, setRatesOccupancyPerRoom]);
 
-  if (isMobile) {
-    tableContainerClasses.push(styles.tableContainerMobile);
-  }
-
   if (!Array.isArray(roomsData)) {
     return null;
   }
 
   return (
     <LoadingContainer loading={isLoading}>
-      <div className={tableContainerClasses.join(' ')}>
+      <div className={styles.tableContainer}>
         <RatesTableHeader
           residenceTime={residenceTime}
           propertyRooms={roomsData}
-          isMobile={isMobile}
         />
         {roomsData && roomsData.map((roomType, rowIndex) => (
           <RoomType

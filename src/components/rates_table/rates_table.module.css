@@ -4,7 +4,10 @@
   flex-direction: column;
 }
 
-.tableContainerMobile {
-  flex-direction: column;
+@media screen and (max-width: 767px) {
+  .tableContainer {
+    flex-direction: column;
+  }
 }
+
 

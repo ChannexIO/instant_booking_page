@@ -6,7 +6,6 @@ const DATE_MAPS_KEYS = [
 ];
 
 export default (closedDates) => {
-  console.log(closedDates);
   return Object.keys(closedDates)
     .reduce((acc, key) => {
       const closedDatesEntry = closedDates[key];
