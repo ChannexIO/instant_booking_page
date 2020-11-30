@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import currencies from 'world-currencies';
 
@@ -25,15 +25,25 @@ const CURRENCY_RATE_BY_CODE = {
 export default function CurrencySelect() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const history = useHistory();
-  const { params } = useContext(BookingDataContext);
+  const { params, property } = useContext(BookingDataContext);
   const { setParams } = useContext(BookingActionsContext);
+  const { data: propertyData } = property;
   const currencySign = currencies[params.currency]?.units.major.symbol || '';
   const selectLabel = `${currencySign} (${params.currency})`;
 
-  const handleCurrencyChange = (currency) => {
+  const handleCurrencyChange = useCallback((currency) => {
     setUrlParams({ currency }, history);
     setParams({ ...params, currency });
-  };
+  }, [history, setParams, params]);
+
+  useEffect(function handlePropertyLoad() {
+    if (params.currency) {
+      return;
+    }
+
+    const { currency } = propertyData.hotelPolicy;
+    handleCurrencyChange(currency);
+  }, [propertyData, handleCurrencyChange, params.currency]);
 
   useEffect(function initSelectorState() {
     const options = Object.values(currencies)

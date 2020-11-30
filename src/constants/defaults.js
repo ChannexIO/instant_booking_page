@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const DEFAULT_CURRENCY = 'GBP';
+export const DEFAULT_CURRENCY = 'USD';

@@ -1,6 +1,5 @@
 import moment from 'moment';
 
-import { DEFAULT_CURRENCY } from 'constants/defaults';
 import { DATE_FORMAT } from 'constants/formats';
 import getUrlParams from 'utils/get_url_params';
 
@@ -11,7 +10,7 @@ const DEFAULT_PARAMS = {
 
 export default function getBookingParamsFromUrl() {
   const {
-    currency = DEFAULT_CURRENCY,
+    currency,
     checkinDate,
     checkoutDate,
     adults,
