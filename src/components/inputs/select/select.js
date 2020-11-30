@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './select.module.css';
 
 export default function Select({ label, value, options, withSearch = false, onChange }) {
+  const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { t } = useTranslation();
 
@@ -32,9 +33,18 @@ export default function Select({ label, value, options, withSearch = false, onCh
       ));
   }, [value, searchQuery, options]);
 
+  const handleSelectToggle = useCallback(() => {
+    setIsOpen(!isOpen);
+    setSearchQuery('');
+  }, [isOpen]);
+
   // TODO - unify dropdown menus for selects
   return (
-    <Dropdown onSelect={onChange}>
+    <Dropdown
+      show={isOpen}
+      onSelect={onChange}
+      onToggle={handleSelectToggle}
+    >
       <Dropdown.Toggle className={styles.toggle} variant="link">
         {label}
       </Dropdown.Toggle>
