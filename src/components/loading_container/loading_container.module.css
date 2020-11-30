@@ -2,32 +2,6 @@
   position: relative;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 1;
-  height: 100%;
-  background-color: rgba(73, 209, 207, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 15;
-  transition: ease-in 300ms;
-  pointer-events: initial;
-}
-
-.hiddenOverlay {
-  pointer-events: none;
-  opacity: 0;
-}
-
-.overlayContent {
-  text-align: center;
-  color: var(--main-text-color);
-}
-
 .overlayText {
   line-height: 2rem;
 }

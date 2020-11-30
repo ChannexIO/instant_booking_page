@@ -1,0 +1,7 @@
+.container {
+  position: relative;
+} 
+
+.content {
+  min-width: 200px;
+}

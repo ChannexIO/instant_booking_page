@@ -28,6 +28,7 @@
 
 .button:global.btn-primary:disabled {
   background-color: var(--cta-color-active); 
+  opacity: 1;
 }
 
 .buttonCaption {

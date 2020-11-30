@@ -6,6 +6,7 @@ import Select from 'components/inputs/select';
 
 import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
+import { DEFAULT_CURRENCY } from 'constants/defaults';
 import setUrlParams from 'utils/set_url_params';
 
 const CURRENCY_RATE_BY_CODE = {
@@ -41,7 +42,7 @@ export default function CurrencySelect() {
       return;
     }
 
-    const { currency } = propertyData.hotelPolicy;
+    const { currency = DEFAULT_CURRENCY } = propertyData.hotelPolicy;
     handleCurrencyChange(currency);
   }, [propertyData, handleCurrencyChange, params.currency]);
 

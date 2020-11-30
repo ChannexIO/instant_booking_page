@@ -2,26 +2,21 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
+import Overlay from 'components/layout/overlay';
+
 import styles from './loading_container.module.css';
 
 export default function LoadingContainer({ loading, children }) {
   const { t } = useTranslation();
-  const overlayStyle = [styles.overlay];
-
-  if (!loading) {
-    overlayStyle.push(styles.hiddenOverlay);
-  }
 
   return (
     <div className={styles.container}>
-      <div className={overlayStyle.join(' ')}>
-        <div className={styles.overlayContent}>
-          <Spinner animation="border" size="xl"/>
-          <div className={styles.overlayText}>
-            {t('global:loading')}
-          </div>
+      <Overlay active={loading}>
+        <Spinner animation="border" size="xl"/>
+        <div className={styles.overlayText}>
+          {t('global:loading')}
         </div>
-      </div>
+      </Overlay>
       {children}
     </div>
   );
