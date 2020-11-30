@@ -26,15 +26,15 @@ export default function CurrencySelect() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const history = useHistory();
   const { params, property } = useContext(BookingDataContext);
-  const { setParams } = useContext(BookingActionsContext);
+  const { setParamsAndLoadRoomsInfo } = useContext(BookingActionsContext);
   const { data: propertyData } = property;
   const currencySign = currencies[params.currency]?.units.major.symbol || '';
   const selectLabel = `${currencySign} (${params.currency})`;
 
   const handleCurrencyChange = useCallback((currency) => {
     setUrlParams({ currency }, history);
-    setParams({ ...params, currency });
-  }, [history, setParams, params]);
+    setParamsAndLoadRoomsInfo({ ...params, currency });
+  }, [history, setParamsAndLoadRoomsInfo, params]);
 
   useEffect(function handlePropertyLoad() {
     if (params.currency) {
