@@ -59,7 +59,7 @@ export default function ChildrenAgeSettings({ name, bookingParams, onChange }) {
   return (
     <div className={styles.settingsWrapper}>
       <Label>
-        {t('hotel_page:children_section_label')}:
+        {t('hotel_page:children_section_label')}
       </Label>
       <div className={styles.settingsContainer}>
         {bookingParams.childrenAge
