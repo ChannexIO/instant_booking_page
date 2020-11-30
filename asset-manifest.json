@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/instant_booking_page/static/css/main.5e3303d3.chunk.css",
-    "main.js": "/instant_booking_page/static/js/main.0a2d73b0.chunk.js",
-    "main.js.map": "/instant_booking_page/static/js/main.0a2d73b0.chunk.js.map",
+    "main.css": "/instant_booking_page/static/css/main.ed8af43c.chunk.css",
+    "main.js": "/instant_booking_page/static/js/main.7c1e0824.chunk.js",
+    "main.js.map": "/instant_booking_page/static/js/main.7c1e0824.chunk.js.map",
     "runtime-main.js": "/instant_booking_page/static/js/runtime-main.22929162.js",
     "runtime-main.js.map": "/instant_booking_page/static/js/runtime-main.22929162.js.map",
     "static/css/2.abb78336.chunk.css": "/instant_booking_page/static/css/2.abb78336.chunk.css",
-    "static/js/2.4e34e3bc.chunk.js": "/instant_booking_page/static/js/2.4e34e3bc.chunk.js",
-    "static/js/2.4e34e3bc.chunk.js.map": "/instant_booking_page/static/js/2.4e34e3bc.chunk.js.map",
+    "static/js/2.dcea19c0.chunk.js": "/instant_booking_page/static/js/2.dcea19c0.chunk.js",
+    "static/js/2.dcea19c0.chunk.js.map": "/instant_booking_page/static/js/2.dcea19c0.chunk.js.map",
     "index.html": "/instant_booking_page/index.html",
-    "precache-manifest.e1b04af23745b9277139db9f8cb630ed.js": "/instant_booking_page/precache-manifest.e1b04af23745b9277139db9f8cb630ed.js",
+    "precache-manifest.649f64a5d3a78cf5108e4aeb938f119c.js": "/instant_booking_page/precache-manifest.649f64a5d3a78cf5108e4aeb938f119c.js",
     "service-worker.js": "/instant_booking_page/service-worker.js",
     "static/css/2.abb78336.chunk.css.map": "/instant_booking_page/static/css/2.abb78336.chunk.css.map",
-    "static/css/main.5e3303d3.chunk.css.map": "/instant_booking_page/static/css/main.5e3303d3.chunk.css.map",
-    "static/js/2.4e34e3bc.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.4e34e3bc.chunk.js.LICENSE.txt",
+    "static/css/main.ed8af43c.chunk.css.map": "/instant_booking_page/static/css/main.ed8af43c.chunk.css.map",
+    "static/js/2.dcea19c0.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.dcea19c0.chunk.js.LICENSE.txt",
     "static/media/photo_slider.module.css": "/instant_booking_page/static/media/icons-arrowright.fe7a7322.svg",
     "static/media/icons-checkin.svg": "/instant_booking_page/static/media/icons-checkin.f9e0660d.svg",
     "static/media/icons-checkout.svg": "/instant_booking_page/static/media/icons-checkout.4341dde0.svg",
@@ -33,8 +33,8 @@
   "entrypoints": [
     "static/js/runtime-main.22929162.js",
     "static/css/2.abb78336.chunk.css",
-    "static/js/2.4e34e3bc.chunk.js",
-    "static/css/main.5e3303d3.chunk.css",
-    "static/js/main.0a2d73b0.chunk.js"
+    "static/js/2.dcea19c0.chunk.js",
+    "static/css/main.ed8af43c.chunk.css",
+    "static/js/main.7c1e0824.chunk.js"
   ]
 }
