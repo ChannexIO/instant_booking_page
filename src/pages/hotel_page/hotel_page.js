@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import Footer from 'components/footer';
 import Header from 'components/header';
@@ -11,14 +11,20 @@ import MapSection from 'components/map_section';
 import PhotoSlider from 'components/photo_slider';
 import SearchSection from 'components/search_section';
 
-import { BookingDataContext } from 'containers/data_context';
+import { AppActionsContext, BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
 import styles from './hotel_page.module.css';
 
 export default function HotelPage() {
-  const { property } = useContext(BookingDataContext);
+  const { property, channelId } = useContext(BookingDataContext);
+  const bookingActions = useContext(BookingActionsContext);
+  const { init } = useContext(AppActionsContext);
   const { data: propertyData, isLoading } = property;
   const isPropertyPresent = propertyData && !isLoading;
+
+  useEffect(function initApp() {
+    init(channelId, bookingActions);
+  }, [bookingActions, channelId, init]);
 
   if (!isPropertyPresent) {
     return <Loading />;

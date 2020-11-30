@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ import SectionWrapper from 'components/layout/section_wrapper';
 import Loading from 'components/loading';
 import PaymentForm from 'components/payment_form';
 
-import { BookingDataContext } from 'containers/data_context';
+import { AppActionsContext, BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
 import routes from 'routing/routes';
 
@@ -17,6 +17,8 @@ import buildPath from 'utils/build_path';
 
 export default function PaymentPage() {
   const { property, params, roomsInfo, channelId } = useContext(BookingDataContext);
+  const bookingActions = useContext(BookingActionsContext);
+  const { init } = useContext(AppActionsContext);
   const history = useHistory();
   const { data: propertyData, isLoading: isPropertyLoading } = property;
   const { data: roomsData, isLoading: isRoomsLoading } = roomsInfo;
@@ -30,6 +32,12 @@ export default function PaymentPage() {
 
     history.push(confirmationPagePath);
   };
+
+  useEffect(function initApp() {
+    const savedBookingParams = bookingActions.getDataFromStorage();
+
+    init(channelId, bookingActions, savedBookingParams);
+  }, [bookingActions, channelId, init]);
 
   if (!isPropertyPresent || !isRoomsPresent) {
     return <Loading />;

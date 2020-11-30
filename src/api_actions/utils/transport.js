@@ -14,6 +14,10 @@ const formatApiResponse = async (payload) => {
 };
 
 const handleApiResponse = async (payload) => {
+  if (!payload?.ok) {
+    throw payload;
+  }
+
   const formattedPayload = await formatApiResponse(payload);
   const { data, errors } = formattedPayload;
 
