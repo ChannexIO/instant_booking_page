@@ -13,8 +13,10 @@ export default function LengthOfStayTootip({ show, minStayLength, containerRef }
       container={containerRef}
     >
       {(props) => (
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        <Tooltip {...props}>
+        <Tooltip
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...props}
+        >
           {`${minStayLength}-${t('hotel_page:night_minimum')}`}
         </Tooltip>
       )}
