@@ -1,0 +1,20 @@
+.container {
+  padding: 24px;
+  max-width: 1140px;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.button {
+  padding: 0;
+  display: flex;
+  color: var(--main-text-color);
+  align-items: center;
+}
+
+.button:active,
+.button:focus,
+.button:hover {
+  box-shadow: none;
+  color: var( --main-text-hover);
+}

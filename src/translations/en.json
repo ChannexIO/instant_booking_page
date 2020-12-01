@@ -4,7 +4,8 @@
   },
   "global": {
     "loading": "Loading...",
-    "search": "Search"
+    "search": "Search",
+    "back": "Back"
   },
   "hotel_page": {
     "checkin_label": "Check-in",
@@ -167,6 +168,7 @@
       "header": "Error",
       "text": "Something went wrong"
     },
+    "back_to_hotel_page": "Back to Hotel Page",
     "agree_and_book": "Agree and Book"
   },
   "confirmation_page": {

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 import BookinSummary from 'components/booking_summary';
@@ -8,6 +9,7 @@ import Header from 'components/header';
 import SectionWrapper from 'components/layout/section_wrapper';
 import Loading from 'components/loading';
 import PaymentForm from 'components/payment_form';
+import ReturnLink from 'components/return_link';
 
 import { AppActionsContext, BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
@@ -19,11 +21,13 @@ export default function PaymentPage() {
   const { property, params, roomsInfo, channelId } = useContext(BookingDataContext);
   const bookingActions = useContext(BookingActionsContext);
   const { init } = useContext(AppActionsContext);
+  const { t } = useTranslation();
   const history = useHistory();
   const { data: propertyData, isLoading: isPropertyLoading } = property;
   const { data: roomsData, isLoading: isRoomsLoading } = roomsInfo;
   const isPropertyPresent = propertyData && !isPropertyLoading;
   const isRoomsPresent = roomsData && !isRoomsLoading;
+  const hotelPageLocation = buildPath(history, routes.hotelPage, { channelId });
 
   const onSuccess = (bookingParams) => {
     const { uniqueId: bookingId } = bookingParams;
@@ -46,6 +50,9 @@ export default function PaymentPage() {
   return (
     <div>
       <Header property={propertyData} />
+      <ReturnLink to={hotelPageLocation}>
+        {t('payment_page:back_to_hotel_page')}
+      </ReturnLink>
       <SectionWrapper theme="dark" >
         <Col xs="12" lg="8" >
           <PaymentForm
