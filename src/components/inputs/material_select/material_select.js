@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useState } from 'react';
 import { Dropdown, Form } from 'react-bootstrap';
 
 import Label from 'components/label';
@@ -8,7 +8,7 @@ import styles from './material_select.module.css';
 
 const DEFAULT_OPTIONS = [];
 
-export default function MaterialSelect(props) {
+const MaterialSelect = forwardRef((props, ref) => {
   const {
     name,
     label,
@@ -56,7 +56,6 @@ export default function MaterialSelect(props) {
     setValueToDisplay(event.target.text);
     onChange(newValue, name);
   }, [onChange, name]);
-
   // TODO - fix height change when active
 
   return (
@@ -68,10 +67,11 @@ export default function MaterialSelect(props) {
           </Label>
         </Form.Label>
         <Dropdown
+          ref={ref}
           className={styles.dropdown}
           onSelect={handleChange}
         >
-          <Dropdown.Toggle className={toggleClasses.join(' ')} valid={valid}>
+          <Dropdown.Toggle className={toggleClasses.join(' ')}>
             {valueToDisplay}
           </Dropdown.Toggle>
           <Dropdown.Menu className={styles.dropdownMenu}>
@@ -84,4 +84,6 @@ export default function MaterialSelect(props) {
       </Form.Group>
     </FieldWrapper>
   );
-}
+});
+
+export default MaterialSelect;

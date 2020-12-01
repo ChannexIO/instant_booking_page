@@ -21,10 +21,15 @@ const getFormattedAddress = (address) => {
     const newChunk = addressChunks.splice(0, MAX_ADDRESS_LINE_SIZE);
 
     groupedAddressChunks.push(newChunk.join(', '));
-    groupedAddressChunks.push(<br/>);
   }
 
-  return groupedAddressChunks;
+  return (
+    <>
+      {groupedAddressChunks.map((chunk, index) => (
+        <div key={index.toString()}>{chunk}</div>
+      ))}
+    </>
+  );
 };
 
 export default function Footer({ property }) {

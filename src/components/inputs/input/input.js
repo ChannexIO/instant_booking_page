@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Form } from 'react-bootstrap';
 
 import Label from 'components/label';
@@ -6,7 +6,7 @@ import FieldWrapper from 'components/layout/field_wrapper';
 
 import styles from './input.module.css';
 
-export default function Input(props) {
+function Input(props, ref) {
   const { value = '', label, placeholder, type, text, valid = true, onChange } = props;
 
   return (
@@ -20,6 +20,7 @@ export default function Input(props) {
         <Form.Control
           className={styles.input}
           as="input"
+          ref={ref}
           value={value}
           placeholder={placeholder}
           type={type}
@@ -33,3 +34,5 @@ export default function Input(props) {
     </FieldWrapper>
   );
 }
+
+export default forwardRef(Input);

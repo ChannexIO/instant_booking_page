@@ -49,7 +49,11 @@ export default function MinPricePanel({ channelId, params }) {
   }
 
   return (
-    <a className={styles.minPriceContainer} href="/" onClick={handleClick}>
+    <a
+      className={styles.minPriceContainer}
+      onClick={handleClick}
+      href="/"
+    >
       <div className={styles.minPriceContent}>
         {t('hotel_page:price_from')}
         <Currency
