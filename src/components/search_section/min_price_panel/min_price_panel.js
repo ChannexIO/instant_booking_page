@@ -21,6 +21,10 @@ export default function MinPricePanel({ channelId, params }) {
   const { currency, checkinDate, checkoutDate } = params;
 
   const updateMinPriceParams = useCallback(async () => {
+    if (!currency) {
+      return;
+    }
+
     try {
       const requestParams = {
         currency,
