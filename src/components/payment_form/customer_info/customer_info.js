@@ -16,8 +16,8 @@ const phoneRegExp = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -
 
 export const getSchema = () => (
   yup.object({
-    name: yup.string().required(errors.required()),
-    surname: yup.string().required(errors.required()),
+    name: yup.string().trim().required(errors.required()),
+    surname: yup.string().trim().required(errors.required()),
     mail: yup.string()
       .email(errors.email())
       .required(errors.required()),

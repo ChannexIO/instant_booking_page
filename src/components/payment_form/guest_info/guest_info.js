@@ -13,8 +13,8 @@ const TRANSLATION_PATH = 'payment_page:payment_form:guest_info';
 
 export const getSchema = () => (
   yup.object({
-    firstName: yup.string().required(errors.required),
-    lastName: yup.string().required(errors.required),
+    firstName: yup.string().trim().required(errors.required),
+    lastName: yup.string().trim().required(errors.required),
   })
 );
 
