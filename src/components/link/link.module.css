@@ -9,6 +9,16 @@
   color: var(--main-text-hover);
 }
 
+.link[disabled] {
+  color: var(--main-text-color);
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
 .linkContent {
   margin: 0;
   font-size: 14px;
