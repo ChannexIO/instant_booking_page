@@ -19,11 +19,20 @@ export default function PhotoSlider({ photos, arrowStyle = 'default' }) {
     <Carousel className={[styles.carousel, arrowClass].join(' ')}>
       {photos.map((photo) => (
         <Carousel.Item className={styles.carouselItem} key={photo.url}>
-          <img
-            className="d-block w-100"
-            src={photo.url}
-            alt={photo.description}
-          />
+          <picture>
+            <source media="(max-width: 575px)" srcSet={`${photo.url}-/resize/575x/575.jpg 1x`}/>
+            <source media="(min-width: 576px) and (max-width: 767px)" srcSet={`${photo.url}-/resize/767x/767.jpg 1x`}/>
+            <source media="(min-width: 768px) and (max-width: 991px)" srcSet={`${photo.url}-/resize/991x/991.jpg 1x`}/>
+            <source media="(min-width: 992px) and (max-width: 1199px)" srcSet={`${photo.url}-/resize/1199x/1199.jpg 1x`}/>
+            <source media="(min-width: 1200px) and (max-width: 1920px)" srcSet={`${photo.url}-/resize/1920x/1920.jpg 1x`}/>
+            <source media="(min-width: 1921px)" srcSet={`${photo.url} 1x`}/>
+
+            <img
+              className="d-block w-100"
+              src={photo.url}
+              alt={photo.description}
+            />
+          </picture>
         </Carousel.Item>
       ))}
     </Carousel>

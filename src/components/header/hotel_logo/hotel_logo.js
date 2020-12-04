@@ -7,7 +7,7 @@ export default function HotelLogo({ logo, title }) {
     <div className={styles.logoContainer}>
       <img
         className={styles.logo}
-        src={logo}
+        src={`${logo}-/resize/x80/80.jpg`}
         alt={title}
       />
     </div>
