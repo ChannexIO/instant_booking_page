@@ -5,7 +5,8 @@ import Cell from 'components/layout/cell';
 
 import styles from './rate_plan_occupancy_select.module.css';
 
-export default function RatePlanOccupancySelect({ rateOccupancy, availableSpaces, onChange }) {
+export default function RatePlanOccupancySelect(props) {
+  const { rateOccupancy, disabled, availableSpaces, onChange } = props;
   const [options, setOptions] = useState([]);
 
   useEffect(function buildOptionsList() {
@@ -28,6 +29,7 @@ export default function RatePlanOccupancySelect({ rateOccupancy, availableSpaces
   return (
     <Cell className={styles.occupancySelectCell} noPadding>
       <MaterialSelect
+        disabled={disabled}
         value={rateOccupancy}
         options={options}
         onChange={handleChange}

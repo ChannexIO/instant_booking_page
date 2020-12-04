@@ -17,6 +17,7 @@ const MaterialSelect = forwardRef((props, ref) => {
     placeholder,
     meta = {},
     text,
+    disabled,
     onChange,
   } = props;
   const { valid = true } = meta;
@@ -71,7 +72,7 @@ const MaterialSelect = forwardRef((props, ref) => {
           className={styles.dropdown}
           onSelect={handleChange}
         >
-          <Dropdown.Toggle className={toggleClasses.join(' ')}>
+          <Dropdown.Toggle disabled={disabled} className={toggleClasses.join(' ')}>
             {valueToDisplay}
           </Dropdown.Toggle>
           <Dropdown.Menu className={styles.dropdownMenu}>

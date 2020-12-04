@@ -8,7 +8,7 @@
   color: var(--info-text-color);
 }
 
-.rangepicker :global .DateRangePicker_picker {
+:global .DateRangePicker_picker {
   z-index: 5;
 }
 

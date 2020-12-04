@@ -13,6 +13,7 @@ export default function RatePlan(props) {
   const {
     ratePlan,
     currency,
+    disabled,
     occupiedSpaces,
     ratesOccupancy,
     checkinDate,
@@ -47,6 +48,7 @@ export default function RatePlan(props) {
         <RatePlanPolicies ratePlan={ratePlan} checkinDate={checkinDate} currency={currency} />
       </div>
       <RatePlanOccupancySelect
+        disabled={disabled}
         rateOccupancy={rateOccupancy}
         availableSpaces={availableSpaces}
         onChange={handleOccupancyChange}

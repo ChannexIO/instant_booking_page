@@ -16,6 +16,7 @@ export default function RoomType(props) {
     ratesOccupancyPerRoom,
     adultsOccupancy,
     checkinDate,
+    disabled,
     childrenOccupancy,
     onRatesOccupancyChange,
   } = props;
@@ -60,6 +61,7 @@ export default function RoomType(props) {
         {sortedRates.map((ratePlan) => {
           return (
             <RatePlan
+              disabled={disabled}
               key={ratePlan.id}
               ratePlan={ratePlan}
               currency={currency}
