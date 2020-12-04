@@ -32,6 +32,13 @@ const getBookedRoomDays = (dates, price, ratePlanCode) => {
   }));
 };
 
+const formatCardInfo = (cardInfo) => {
+  const { expirationMonth, expirationYear, ...rest } = cardInfo;
+  const expirationDate = `${expirationMonth}/${expirationYear}`;
+
+  return { ...rest, expirationDate };
+}
+
 const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { billingAddress, customer, guest } = formData;
   const { state, additionalAddress, ...restAddress } = billingAddress;
@@ -50,6 +57,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
   const bookedDatesList = getOccupiedDatesList(checkinDate, checkoutDate);
+  const guarantee = formatCardInfo(cardInfo);
 
   const bookedRooms = Object.keys(ratesOccupancyPerRoom).reduce((roomsList, roomTypeCode) => {
     const selectedRates = ratesOccupancyPerRoom[roomTypeCode];
@@ -93,7 +101,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
         additionalAddress,
       },
     },
-    guarantee: cardInfo,
+    guarantee,
     rooms: bookedRooms,
   };
 
