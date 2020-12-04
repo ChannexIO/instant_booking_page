@@ -3,14 +3,14 @@ import GoogleMapReact from 'google-map-react';
 
 const DEFAULT_ZOOM = 13;
 
-const parseLocationCoords = ({ lat, lng }) => {
-  if (!lat || !lng) {
+const parseLocationCoords = ({ latitude, longitude }) => {
+  if (!latitude || !longitude) {
     return null;
   }
 
   return {
-    lat: Number(lat),
-    lng: Number(lng),
+    lat: Number(latitude),
+    lng: Number(longitude),
   };
 };
 
