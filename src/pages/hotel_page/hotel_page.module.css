@@ -1,6 +1,6 @@
 .sliderContainer {
   height: 540px;
-  max-height: 50%;
+  max-height: 50vh;
 }
 
 .floatingSearchContainer {
