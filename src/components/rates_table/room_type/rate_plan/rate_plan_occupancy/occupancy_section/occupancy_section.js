@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './occupancy_section.module.css';
 
 export default function OccupancySection({ additionalSpaces, type, icon }) {
-  const captionText = `+${additionalSpaces}`;
+  const captionText = `× ${additionalSpaces}`;
 
   return (
     <div className={styles.occupancyContainer}>

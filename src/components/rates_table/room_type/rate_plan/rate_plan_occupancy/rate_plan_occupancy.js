@@ -14,7 +14,7 @@ const CHILD_BASE_NUMBER = 1;
 const ADULT_BASE_NUMBER = 2;
 
 const getAdditionalSpaces = (spaces, baseAmount) => {
-  return spaces > baseAmount ? spaces - baseAmount : null;
+  return spaces > baseAmount ? spaces : null;
 };
 
 export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
@@ -22,7 +22,7 @@ export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
   const additionalChildSpaces = getAdditionalSpaces(children, CHILD_BASE_NUMBER);
   const additionalAdultsSpaces = getAdditionalSpaces(adults, ADULT_BASE_NUMBER);
 
-  const adultsOccupancyIcon = adults > 1 ? IconGuestDouble : IconGuestSingle;
+  const adultsOccupancyIcon = adults === 2 ? IconGuestDouble : IconGuestSingle;
 
   return (
     <Cell className={styles.occupancyCell}>
