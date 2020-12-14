@@ -82,7 +82,7 @@ export default forwardRef(function CardCaptureForm(props, ref) {
         height="220"
         width="400"
         scrolling="no"
-        style={{ border: 'none', maxWidth: "100%" }}
+        style={{ border: 'none', maxWidth: '100%' }}
         src={`${PCI_URL}/api/v1/capture_form?session_token=${sessionToken}`}
       />
     </Panel>

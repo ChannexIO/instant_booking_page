@@ -37,7 +37,7 @@ const formatCardInfo = (cardInfo) => {
   const expirationDate = `${expirationMonth}/${expirationYear}`;
 
   return { ...rest, expirationDate };
-}
+};
 
 const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { billingAddress, customer, guest } = formData;
