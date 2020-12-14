@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Dropdown as BootstrapDropdown } from 'react-bootstrap';
 
 import Label from 'components/label';
@@ -7,8 +7,7 @@ import styles from './dropdown.module.css';
 
 const VERTICAL_ORIENTATION = 'vertical';
 
-export default function Dropdown({ className, layout, children, title, label }) {
-  const [isVisible, setIsVisible] = useState(false);
+export default function Dropdown({ className, layout, children, title, show, onToggle, label }) {
   const containerClass = layout === VERTICAL_ORIENTATION
     ? styles.containerVertical
     : styles.containerHorizontal;
@@ -18,8 +17,8 @@ export default function Dropdown({ className, layout, children, title, label }) 
       return;
     }
 
-    setIsVisible(newVisibilityState);
-  }, []);
+    onToggle(newVisibilityState);
+  }, [onToggle]);
 
   return (
     <div className={[containerClass, className].join(' ')}>
@@ -28,7 +27,7 @@ export default function Dropdown({ className, layout, children, title, label }) 
     )}
     <BootstrapDropdown
       className={styles.dropdown}
-      show={isVisible}
+      show={show}
       onToggle={handleVisibilityToggle}
     >
       <BootstrapDropdown.Toggle className={styles.dropdownToggle}>
