@@ -13,7 +13,7 @@ import styles from './summary.module.css';
 
 export default function Summary({ params, property, selectedRatesByRoom, total }) {
   const { t } = useTranslation();
-  const { checkinDate, checkoutDate, adults, children, currency } = params;
+  const { checkinDate, checkoutDate, currency } = params;
 
   return (
     <div className={styles.summaryMainWrapper}>
@@ -28,7 +28,7 @@ export default function Summary({ params, property, selectedRatesByRoom, total }
       <div className={styles.summaryWrapper}>
         <Title property={property} />
         <Dates checkinDate={checkinDate} checkoutDate={checkoutDate} />
-        <Guests adultGuests={adults} childrenGuests={children} />
+        <Guests selectedRatesByRoom={selectedRatesByRoom} />
         <PriceBreakdown
           selectedRatesByRoom={selectedRatesByRoom}
           currency={currency}

@@ -12,13 +12,13 @@ import Guests from '../guests';
 
 export default function MobileSummary({ params, selectedRatesByRoom, total }) {
   const { t } = useTranslation();
-  const { checkinDate, checkoutDate, adults, children, currency } = params;
+  const { checkinDate, checkoutDate, currency } = params;
 
   return (
     <MobileSummaryContainer>
       <ExpandableContainer title={t('payment_page:booking_summary:title')}>
         <Dates checkinDate={checkinDate} checkoutDate={checkoutDate} />
-        <Guests adultGuests={adults} childrenGuests={children} />
+        <Guests selectedRatesByRoom={selectedRatesByRoom} />
         <PriceBreakdown
           selectedRatesByRoom={selectedRatesByRoom}
           currency={currency}
