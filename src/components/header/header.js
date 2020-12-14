@@ -11,14 +11,11 @@ import styles from './header.module.css';
 export default function Header({ property }) {
   const { title, logo } = property;
 
-  const titleComponent = logo
-    ? <HotelLogo logo={logo} title={title} />
-    : <HotelTitle title={title} />;
-
   return (
     <div className={styles.header}>
       <div className={styles.titleSection}>
-        {titleComponent}
+        {logo && <HotelLogo logo={logo} title={title} />}
+        <HotelTitle title={title} />
       </div>
       <div className={styles.selectSection}>
         <CurrencySelect />

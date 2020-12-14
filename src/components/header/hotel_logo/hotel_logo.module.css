@@ -1,16 +1,14 @@
 .logo {
-  height: 100%;
-  width: auto;
+  width: 56px;
+  height: 56px;
   border: 0;
   vertical-align: middle;
   display: inline-block;
   object-fit: contain;
-  padding: 12px 0;
 }
 
 .logoContainer {
+  margin: 12px 12px 12px 0;
   display: flex;
-  width: 320px;
-  height: 80px;
   align-items: center;
 }
