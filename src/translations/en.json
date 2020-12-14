@@ -5,7 +5,8 @@
   "global": {
     "loading": "Loading...",
     "search": "Search",
-    "back": "Back"
+    "back": "Back",
+    "close": "Close"
   },
   "hotel_page": {
     "checkin_label": "Check-in",

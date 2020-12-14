@@ -1,0 +1,15 @@
+.button:global.btn-link {
+  color: var(--main-text-color);
+  text-decoration: underline;
+  border: none;
+  padding: 0;
+  line-height: 20px;
+}
+
+.button:global.btn-link:hover,
+.button:global.btn-link:active,
+.button:global.btn-link:focus {
+  color: var(--main-text-color-active);
+  box-shadow: none;
+  border: none;
+}

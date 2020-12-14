@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+
+import LinkButton from 'components/buttons/link_button';
 
 import styles from './info_section.module.css';
 
@@ -9,13 +10,11 @@ export default function InfoSection({ onClear }) {
 
   return (
     <div className={styles.infoContainer}>
-      <Button
-        className={styles.clearButton}
-        variant="link"
+      <LinkButton
         onClick={onClear}
       >
         {t('hotel_page:clear')}
-      </Button>
+      </LinkButton>
     </div>
   );
 }

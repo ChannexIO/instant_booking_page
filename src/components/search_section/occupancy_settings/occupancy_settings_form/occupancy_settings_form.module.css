@@ -1,0 +1,6 @@
+.closeSection {
+  padding-top: 8px;
+  margin-bottom: -12px;
+  display: flex;
+  justify-content: flex-end;
+}

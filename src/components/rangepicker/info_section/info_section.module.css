@@ -1,17 +1,4 @@
 .infoContainer {
-  margin: 0px 22px 0 12px;
-}
-
-.clearButton:global.btn-link {
-  color: var(--main-text-color);
-  text-decoration: underline;
-  border: none;
-}
-
-.clearButton:global.btn-link:hover,
-.clearButton:global.btn-link:active,
-.clearButton:global.btn-link:focus {
-  color: var(--main-text-color-active);
-  box-shadow: none;
-  border: none;
+  margin: 0px 22px 0 20px;
+  padding-bottom: 12px;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Button from 'components/button';
+import Button from 'components/buttons/button';
 import Currency from 'components/currency';
 
 import styles from './book_button.module.css';
