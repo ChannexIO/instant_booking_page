@@ -71,7 +71,7 @@
   max-height: 300px;
   overflow-y: auto;
   background-color: #fff;
-  z-index: 2;
+  z-index: 5;
   margin-top: 2px;
   margin-left: 0px;
   padding: 16px;
