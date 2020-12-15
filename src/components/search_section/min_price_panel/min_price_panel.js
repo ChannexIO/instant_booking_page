@@ -19,6 +19,7 @@ export default function MinPricePanel({ channelId, params }) {
   const [minPriceParams, setMinPriceParams] = useState(null);
   const { t } = useTranslation();
   const { currency, checkinDate, checkoutDate } = params;
+  const hasEnteredDates = checkinDate && checkoutDate;
 
   const updateMinPriceParams = useCallback(async () => {
     if (!currency) {
@@ -61,7 +62,7 @@ export default function MinPricePanel({ channelId, params }) {
           amount={minPriceParams.offer}
           currency={minPriceParams.currency}
         />
-        {t('hotel_page:price_per_night')}
+        {!hasEnteredDates && t('hotel_page:price_per_night')}
       </div>
     </a>
   );
