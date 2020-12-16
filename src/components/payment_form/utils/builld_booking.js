@@ -15,12 +15,11 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { state, additionalAddress, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
   const { hotelPolicy = {} } = property;
-  const { checkinTime: arrivalHour = DEFAULT_CHECKIN_TIME } = hotelPolicy;
+  const { checkinTime: arrivalHour = DEFAULT_CHECKIN_TIME, currency } = hotelPolicy;
   const {
     ratesOccupancyPerRoom,
     checkinDate,
     checkoutDate,
-    currency,
   } = params;
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
