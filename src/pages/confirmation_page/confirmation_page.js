@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
+import { Col } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 import Footer from 'components/footer';
 import Header from 'components/header';
+import SectionWrapper from 'components/layout/section_wrapper';
 import Loading from 'components/loading';
-import ReturnLink from 'components/return_link';
+import Navigation from 'components/navigation';
 
 import {
   AppActionsContext,
@@ -13,10 +14,6 @@ import {
   BookingDataContext,
   PaymentFormDataContext,
 } from 'containers/data_context';
-
-import routes from 'routing/routes';
-
-import buildPath from 'utils/build_path';
 
 import ThankPanel from './thank_panel';
 
@@ -26,12 +23,9 @@ export default function ConfirmationPage() {
   const bookingActions = useContext(BookingActionsContext);
   const { init } = useContext(AppActionsContext);
   const { bookingId } = useParams();
-  const { t } = useTranslation();
-  const history = useHistory();
   const { data: propertyData, isLoading } = property;
   const isPropertyPresent = propertyData && !isLoading;
   const email = value?.customer?.mail;
-  const hotelPageLocation = buildPath(history, routes.hotelPage, { channelId });
 
   useEffect(function initApp() {
     const savedBookingParams = bookingActions.getDataFromStorage();
@@ -46,13 +40,17 @@ export default function ConfirmationPage() {
   return (
     <div>
       <Header property={propertyData} />
-      <ReturnLink to={hotelPageLocation}>
-        {t('payment_page:back_to_hotel_page')}
-      </ReturnLink>
-      <ThankPanel
-        bookingId={bookingId}
-        email={email}
-      />
+      <SectionWrapper theme="light" >
+        <Col xs="12">
+          <Navigation />
+        </Col>
+        <Col xs="12">
+          <ThankPanel
+            bookingId={bookingId}
+            email={email}
+          />
+        </Col>
+      </SectionWrapper>
       <Footer property={propertyData} />
     </div>
   );

@@ -8,6 +8,11 @@
     "back": "Back",
     "close": "Close"
   },
+  "navigation": {
+    "hotel_page": "Home Page",
+    "payment_page": "Payment Page",
+    "confirmation_page": "Booking Confirmation"
+  },
   "hotel_page": {
     "checkin_label": "Check-in",
     "checkout_label": "Check-out",

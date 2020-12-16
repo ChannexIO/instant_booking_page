@@ -41,7 +41,7 @@ export default function SearchSection() {
   const handleBook = useCallback(() => {
     saveDataToStorage();
 
-    const paymentPagePath = buildPath(history, routes.paymentPage, { channelId });
+    const paymentPagePath = buildPath(history.location.search, routes.paymentPage, { channelId });
 
     history.push(paymentPagePath);
   }, [saveDataToStorage, history, channelId]);

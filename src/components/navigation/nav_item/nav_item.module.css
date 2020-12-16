@@ -1,0 +1,22 @@
+.navItem:not(:last-of-type)::after {
+  content: ">";
+}
+
+.navItem:not(:last-of-type) {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  padding: 4px
+}
+
+.link:global.nav-link.active {
+  color: var(--button-color);
+  font-weight: bold;
+}
+
+.link:global.nav-link.active {
+  color: var(--link-color);
+  background-color: initial;
+}

@@ -1,6 +1,4 @@
-export default (history, route, params) => {
-  const { search } = history.location;
-
+export default (search, route, params) => {
   const updatedRoute = route.replace(/(:[\w]+)/g, (match) => {
     const paramName = match.substr(1);
     const matchedParam = params[paramName];
