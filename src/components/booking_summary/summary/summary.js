@@ -14,6 +14,7 @@ import styles from './summary.module.css';
 export default function Summary({ params, property, selectedRatesByRoom, total }) {
   const { t } = useTranslation();
   const { checkinDate, checkoutDate, currency } = params;
+  const isPhotosPresent = Boolean(property.photos.length);
 
   return (
     <div className={styles.summaryMainWrapper}>
@@ -22,9 +23,11 @@ export default function Summary({ params, property, selectedRatesByRoom, total }
           {t('payment_page:booking_summary:title')}
         </h6>
       </div>
-      <div className={styles.sliderContainer}>
-        <PhotoSlider photos={property.photos}/>
-      </div>
+      {isPhotosPresent && (
+        <div className={styles.sliderContainer}>
+          <PhotoSlider photos={property.photos}/>
+        </div>
+      )}
       <div className={styles.summaryWrapper}>
         <Title property={property} />
         <Dates checkinDate={checkinDate} checkoutDate={checkoutDate} />

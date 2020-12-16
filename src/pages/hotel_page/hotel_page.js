@@ -30,12 +30,16 @@ export default function HotelPage() {
     return <Loading />;
   }
 
+  const isPhotosPresent = Boolean(propertyData.photos.length);
+
   return (
     <div>
       <Header property={propertyData} />
-      <div className={styles.sliderContainer}>
-        <PhotoSlider photos={propertyData.photos} arrowStyle="box" />
-      </div>
+      {isPhotosPresent && (
+        <div className={styles.sliderContainer}>
+          <PhotoSlider photos={propertyData.photos} arrowStyle="box" />
+        </div>
+      )}
       <div className={styles.floatingSearchContainer}>
         <SearchSection property={propertyData} />
         <HotelInfoSection property={propertyData} />

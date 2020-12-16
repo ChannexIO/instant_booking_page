@@ -22,7 +22,7 @@ import styles from './search_section.module.css';
 export default function SearchSection() {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
-  const { channelId, params, roomsInfo } = useContext(BookingDataContext);
+  const { channelId, params, property, roomsInfo } = useContext(BookingDataContext);
   const {
     setParams,
     loadRoomsInfo,
@@ -33,6 +33,7 @@ export default function SearchSection() {
   const history = useHistory();
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
   const { data: propertyRooms, isLoading } = roomsInfo;
+  const { data: propertyData } = property;
   const { ratesOccupancyPerRoom, currency, checkinDate = null, checkoutDate = null } = params;
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
@@ -63,10 +64,15 @@ export default function SearchSection() {
   }, [propertyRooms, ratesOccupancyPerRoom]);
 
   const SummaryComponent = isMobile ? MobileSummary : Summary;
+  const wrapperClasses = [styles.searchPanelWrapper];
+
+  if (!propertyData.photos.length) {
+    wrapperClasses.push(styles.searchPanelNoOffset);
+  }
 
   return (
     <div className={styles.stickyContainer}>
-      <div className={styles.searchPanelWrapper}>
+      <div className={wrapperClasses.join(' ')}>
         <MinPricePanel
           channelId={channelId}
           params={params}
