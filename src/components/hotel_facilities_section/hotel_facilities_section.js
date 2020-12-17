@@ -12,6 +12,10 @@ export default function HotelFacilitiesSection({ property }) {
   const { facilities } = property;
   const { t } = useTranslation();
 
+  if (!facilities.length) {
+    return null;
+  }
+  
   return (
     <SectionWrapper theme="light">
       <Col xs="12" lg="8" >
