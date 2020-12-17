@@ -20,8 +20,8 @@ const getAdditionalSpaces = (spaces, baseAmount) => {
 export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
   const { adults, children } = occupancy;
   const additionalChildSpaces = getAdditionalSpaces(children, CHILD_BASE_NUMBER);
+  const isChildIconShown = children && childrenOccupancy;
   const additionalAdultsSpaces = getAdditionalSpaces(adults, ADULT_BASE_NUMBER);
-
   const adultsOccupancyIcon = adults === 2 ? IconGuestDouble : IconGuestSingle;
 
   return (
@@ -32,7 +32,7 @@ export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
           additionalSpaces={additionalAdultsSpaces}
           icon={adultsOccupancyIcon}
         />
-        {Boolean(childrenOccupancy) && (
+        {Boolean(isChildIconShown) && (
           <OccupancySection
             type="children"
             additionalSpaces={additionalChildSpaces}
