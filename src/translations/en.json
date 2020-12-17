@@ -175,7 +175,8 @@
       "text": "Something went wrong"
     },
     "back_to_hotel_page": "Back to Hotel Page",
-    "agree_and_book": "Agree and Book"
+    "agree_and_book": "Agree and Book",
+    "currency_convertion_alert": "You should be aware that the transaction currency is {{currency}}. You may still be charged a currency conversion fee by your card provider."
   },
   "confirmation_page": {
     "thank_you": "Thank You",

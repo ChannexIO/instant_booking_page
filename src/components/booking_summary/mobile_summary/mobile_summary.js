@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import CurrencyConversionWarning from 'components/currency_conversion_warning';
 import ExpandableContainer from 'components/layout/expandable_container';
 import MobileSummaryContainer from 'components/layout/mobile_summary_container';
 import SubmitBookingButton from 'components/payment_form/submit_booking_button';
@@ -25,6 +26,7 @@ export default function MobileSummary({ params, selectedRatesByRoom, total }) {
         />
         <TotalPrice totalPrice={total} currency={currency} />
       </ExpandableContainer>
+      <CurrencyConversionWarning />
       <SubmitBookingButton />
     </MobileSummaryContainer>
   );
