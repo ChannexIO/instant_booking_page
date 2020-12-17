@@ -15,7 +15,7 @@ export default function HotelFacilitiesSection({ property }) {
   if (!facilities.length) {
     return null;
   }
-  
+
   return (
     <SectionWrapper theme="light">
       <Col xs="12" lg="8" >

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Dropdown, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
@@ -8,6 +8,7 @@ export default function Select({ label, value, options, withSearch = false, onCh
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { t } = useTranslation();
+  const searchInputRef = useRef(null);
 
   const handleSearchInput = (e) => {
     setSearchQuery(e.target.value);
@@ -38,6 +39,12 @@ export default function Select({ label, value, options, withSearch = false, onCh
     setSearchQuery('');
   }, [isOpen]);
 
+  useEffect(function handleVisibilityChange() {
+    if (isOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchInputRef, isOpen]);
+
   // TODO - unify dropdown menus for selects
   return (
     <Dropdown
@@ -51,6 +58,7 @@ export default function Select({ label, value, options, withSearch = false, onCh
       <Dropdown.Menu className={styles.menu}>
           {withSearch && (
             <Form.Control
+              ref={searchInputRef}
               value={searchQuery}
               className={styles.searchInput}
               type="text"
