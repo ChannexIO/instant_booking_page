@@ -19,12 +19,12 @@
 
 .searchPanelWrapper {
   width: 32%;
-  margin-top: -56px;
+  margin-top: 0px;
   background-color: #fff;
 }
 
 .searchPanelNoOffset {
-  margin-top: 0;
+  margin-top: 56px;
 }
 
 .searchSection {
