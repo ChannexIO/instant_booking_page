@@ -59,13 +59,25 @@ export default function RangePicker(props) {
   const isMobile = matchedQueries.xs;
   const numberOfMonths = matchedQueries.xs || matchedQueries.sm ? 1 : 2;
 
-  const getIsClosedToArrival = useCallback((formattedDay) => {
+  const getIsClosedToArrival = useCallback((day, formattedDay) => {
     const { closedToArrival, closed } = closedDates.data;
+
+    const minStayLenghForDate = getMinStayLength(closedDates, day);
+
+    const isClosedInRange = closed.find((closedDate) => {
+      const formattedClosedDate = moment(closedDate, DATE_FORMAT);
+
+      const isAfterCheckIn = formattedClosedDate.isAfter(day);
+      // Closed date could be used for checkout so we reduce offset by 1
+      const isBeforeMinLengh = formattedClosedDate.isSameOrBefore(day.clone().add(minStayLenghForDate - 1, 'days'));
+
+      return isAfterCheckIn && isBeforeMinLengh;
+    });
 
     const isClosed = closed.includes(formattedDay);
     const isClosedToArrival = closedToArrival.includes(formattedDay);
 
-    return isClosed || isClosedToArrival;
+    return isClosed || isClosedToArrival || isClosedInRange;
   }, [closedDates]);
 
   const getIsClosedToDeparture = useCallback((day, formattedDay) => {
@@ -93,7 +105,7 @@ export default function RangePicker(props) {
     const formattedDay = day.format(DATE_FORMAT);
 
     if (focusedInput === 'startDate') {
-      return getIsClosedToArrival(formattedDay);
+      return getIsClosedToArrival(day, formattedDay);
     }
 
     if (focusedInput === 'endDate') {
