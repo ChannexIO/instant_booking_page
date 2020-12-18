@@ -91,7 +91,9 @@
           "by_arrangements": "Pets By Arrangements",
           "assistive_only": "Assistive Animals Only",
           "allowed": "Allowed"
-        }
+        },
+        "non_refundable_fee": "Non refundable pets fee",
+        "refundable_deposit": "Refundable Deposit"
       },
       "smoking": {
         "title": "Smoking policy",

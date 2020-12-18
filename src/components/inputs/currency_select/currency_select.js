@@ -38,11 +38,11 @@ export default function CurrencySelect() {
   }, [history, setParamsAndLoadRoomsInfo, params]);
 
   useEffect(function handlePropertyLoad() {
-    if (params.currency || !propertyData.hotelPolicy) {
+    if (params.currency || !propertyData) {
       return;
     }
 
-    const { currency = DEFAULT_CURRENCY } = propertyData.hotelPolicy;
+    const { currency = DEFAULT_CURRENCY } = propertyData;
     handleCurrencyChange(currency);
   }, [propertyData.hotelPolicy, handleCurrencyChange, params.currency]);
 
