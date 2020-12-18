@@ -181,7 +181,8 @@
   "confirmation_page": {
     "thank_you": "Thank You",
     "your_number": "Your confirmation number is",
-    "confirmation_sent_to": "E-mail confirmation has been sent to"
+    "confirmation_sent_to": "E-mail confirmation has been sent to",
+    "create_new_booking": "Create new booking"
   },
   "footer": {
     "terms_and_conditions": "Terms and Conditions",

@@ -1,4 +1,5 @@
 import {
+  RESET_PARAMS,
   SET_CHANNEL_ID,
   SET_CLOSED_DATES_DATA,
   SET_CLOSED_DATES_LOADING,
@@ -19,7 +20,10 @@ export const INITIAL_STATE = {
   property: EMPTY_ENTITY,
   roomsInfo: EMPTY_ENTITY,
   closedDates: EMPTY_ENTITY,
-  params: {},
+  params: {
+    children: 0,
+    adults: 1,
+  },
 };
 
 const actionHandlers = {
@@ -58,6 +62,9 @@ const actionHandlers = {
   },
   [SET_PARAMS]: (state, action) => {
     return { ...state, params: action.payload };
+  },
+  [RESET_PARAMS]: (state) => {
+    return { ...state, params: INITIAL_STATE.params };
   },
 };
 

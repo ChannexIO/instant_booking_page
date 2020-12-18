@@ -15,6 +15,7 @@ import {
   PaymentFormDataContext,
 } from 'containers/data_context';
 
+import NewBookinLink from './new_booking_link';
 import ThankPanel from './thank_panel';
 
 export default function ConfirmationPage() {
@@ -49,6 +50,7 @@ export default function ConfirmationPage() {
             bookingId={bookingId}
             email={email}
           />
+          <NewBookinLink channelId={channelId} />
         </Col>
       </SectionWrapper>
       <Footer property={propertyData} />

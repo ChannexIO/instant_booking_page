@@ -12,6 +12,10 @@ export default () => {
     return actions.setParams(dispatch, newParams);
   };
 
+  const resetParams = () => {
+    return actions.resetParams(dispatch);
+  };
+
   const setParamsAndLoadRoomsInfo = (newParams) => {
     return actions.setParamsAndLoadRoomsInfo(dispatch, bookingData.channelId, newParams);
   };
@@ -47,6 +51,7 @@ export default () => {
   const bookingActions = {
     initBookingData,
     setParams,
+    resetParams,
     setParamsAndLoadRoomsInfo,
 
     loadProperty,

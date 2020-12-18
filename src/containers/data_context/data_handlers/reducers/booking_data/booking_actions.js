@@ -9,6 +9,7 @@ export const SET_ROOMS_DATA = 'SET_ROOMS_DATA';
 export const SET_CLOSED_DATES_LOADING = 'SET_CLOSED_DATES_LOADING';
 export const SET_CLOSED_DATES_DATA = 'SET_CLOSED_DATES_DATA';
 export const SET_PARAMS = 'SET_PARAMS';
+export const RESET_PARAMS = 'RESET_PARAMS';
 
 const setChannelId = (dispatch, payload) => {
   return dispatch({ type: SET_CHANNEL_ID, payload });
@@ -40,6 +41,10 @@ const setClosedDatesData = (dispatch, payload) => {
 
 const setParams = (dispatch, payload) => {
   return dispatch({ type: SET_PARAMS, payload });
+};
+
+const resetParams = (dispatch) => {
+  return dispatch({ type: RESET_PARAMS });
 };
 
 const getChannelId = (location) => {
@@ -126,6 +131,7 @@ export const actions = {
   loadRoomsInfo,
   loadClosedDates,
   setParams,
+  resetParams,
   setParamsAndLoadRoomsInfo,
   initBookingData,
 };
