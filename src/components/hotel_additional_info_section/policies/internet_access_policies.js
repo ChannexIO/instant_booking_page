@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Currency from "components/currency"
+import Currency from 'components/currency';
 
 import InfoEntry from './info_entry';
 

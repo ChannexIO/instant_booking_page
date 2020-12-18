@@ -10,6 +10,8 @@ import routes from 'routing/routes';
 
 import buildPath from 'utils/build_path';
 
+import styles from './new_booking_link.module.css';
+
 export default function NewBookingLink({ channelId }) {
   const { resetParams, clearDataFromStorage } = useContext(BookingActionsContext);
   const history = useHistory();
@@ -24,8 +26,10 @@ export default function NewBookingLink({ channelId }) {
   };
 
   return (
-    <LinkButton onClick={handleRedirect}>
-      {t('confirmation_page:create_new_booking')}
-    </LinkButton>
+    <div className={styles.container}>
+      <LinkButton onClick={handleRedirect}>
+        {t('confirmation_page:create_new_booking')}
+      </LinkButton>
+    </div>
   );
 }

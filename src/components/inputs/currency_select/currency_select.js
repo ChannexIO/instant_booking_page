@@ -44,7 +44,7 @@ export default function CurrencySelect() {
 
     const { currency = DEFAULT_CURRENCY } = propertyData;
     handleCurrencyChange(currency);
-  }, [propertyData.hotelPolicy, handleCurrencyChange, params.currency]);
+  }, [propertyData.hotelPolicy, handleCurrencyChange, params.currency, propertyData]);
 
   useEffect(function initSelectorState() {
     const options = Object.values(currencies)
