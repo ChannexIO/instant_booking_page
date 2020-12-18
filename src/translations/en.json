@@ -236,11 +236,11 @@
   },
   "payment_policies": {
     "types": {
-      "none": "Non required",
-      "nights_based": "Nights based - prepayment is {{amount}}{{currency}} per night",
-      "percent_based": "Percent based - prepayment is {{amount}}{{currency}}",
-      "fixed_per_booking": "Fixed amount per Booking - prepayment is {{amount}}{{currency}}",
-      "fixed_per_room": "Fixed amount per Booking Room - prepayment is {{amount}}{{currency}}"
+      "none": "Prepayment non required",
+      "nights_based": "Prepayment type is \"Nights based\".  The prepayment is {{amount}} {{currency}} per night",
+      "percent_based": "Prepayment type is \"Percent based\". The prepayment is {{amount}}{{currency}}",
+      "fixed_per_booking": "Prepayment type is \"Fixed amount per booking\". The prepayment is {{amount}} {{currency}}",
+      "fixed_per_room": "Prepayment type is \"Fixed amount per booking room\". The prepayment is {{amount}} {{currency}}"
     }
   },
   "validation_messages": {
