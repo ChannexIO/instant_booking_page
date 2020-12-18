@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import csc from 'country-state-city';
 import * as yup from 'yup';
@@ -26,13 +25,6 @@ export const getSchema = () => (
 export function BillingAddress() {
   const { t } = useTranslation();
   const [countryOptions, setCountryOptions] = useState([]);
-  const [stateOptions, setStateOptions] = useState([]);
-  const { control } = useFormContext();
-  const selectedCountry = useWatch({
-    control,
-    name: 'billingAddress.country',
-    defaultValue: null,
-  });
 
   useEffect(function initCountryOptions() {
     const newCountryOptions = csc.getAllCountries()
@@ -43,20 +35,6 @@ export function BillingAddress() {
 
     setCountryOptions(newCountryOptions);
   }, [setCountryOptions]);
-
-  useEffect(function initStateOptions() {
-    if (selectedCountry) {
-      const selectedCountryData = csc.getCountryByCode(selectedCountry);
-
-      const newStateOptions = csc.getStatesOfCountry(selectedCountryData.id)
-        .map((stateOption) => ({
-          key: stateOption.id,
-          value: stateOption.name,
-        }));
-
-      setStateOptions(newStateOptions);
-    }
-  }, [selectedCountry, setStateOptions]);
 
   return (
     <Panel title={t(`${TRANSLATION_PATH}:title`)}>
@@ -74,6 +52,7 @@ export function BillingAddress() {
       </FieldRow>
       <FieldRow>
         <FormalField
+          withSearch
           name="billingAddress.country"
           options={countryOptions}
           label={t(`${TRANSLATION_PATH}:country`)}
@@ -86,9 +65,8 @@ export function BillingAddress() {
         />
         <FormalField
           name="billingAddress.state"
-          options={stateOptions}
           label={t(`${TRANSLATION_PATH}:state`)}
-          as={MaterialSelect}
+          as={Input}
         />
         <FormalField
           name="billingAddress.zip"
