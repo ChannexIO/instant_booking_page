@@ -29,6 +29,10 @@ export default function Date({ date, type = CHECKIN_DATE }) {
 
   const dateParams = dateConfig[type];
 
+  if (!date) {
+    return null;
+  }
+
   return (
     <div className={styles.datesFromTo}>
       <Label>
