@@ -24,12 +24,18 @@ export default function getBookingParamsFromUrl() {
   const parsedEndDate = moment(checkoutDate, DATE_FORMAT);
 
   if (checkinDate && parsedStartDate.isValid()) {
-    optionalParams.checkinDate = parsedStartDate;
+    const isCheckinAfterCurrent = moment().isBefore(parsedStartDate);
+
+    optionalParams.checkinDate = isCheckinAfterCurrent ? parsedStartDate : null;
   }
 
   if (checkoutDate && parsedEndDate.isValid()) {
-    optionalParams.checkoutDate = parsedEndDate;
+    const { checkinDate: parsedCheckinDate } = optionalParams;
+    const isCheckoutValid = parsedCheckinDate && parsedCheckinDate.isBefore(parsedEndDate);
+
+    optionalParams.checkoutDate = isCheckoutValid ? parsedEndDate : null;
   }
+
   if (childrenAge) {
     const processedChildrenAge = childrenAge.split(',')
       .map((val) => (val ? Number(val) : null));

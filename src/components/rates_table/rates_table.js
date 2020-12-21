@@ -44,12 +44,14 @@ export default function RatesTable() {
     const isCheckoutDateChanged = params.checkoutDate !== prevParams.checkoutDate;
     const isDatesChaged = isCheckinDateChanged || isCheckoutDateChanged;
 
-    const isCheckinDateMatchesLastRequest = moment(roomRequestParams.checkinDate).isSame(params.checkinDate, "day");
-    const isCheckoutDateMatchesLastRequest = moment(roomRequestParams.checkoutDate).isSame(params.checkoutDate, "day");
-    const isDatesMatchLastRequest = isCheckinDateMatchesLastRequest && isCheckoutDateMatchesLastRequest;
+    const isCheckinDateMatchesLast = moment(roomRequestParams.checkinDate)
+      .isSame(params.checkinDate, 'day');
+    const isCheckoutDateMatchesLast = moment(roomRequestParams.checkoutDate)
+      .isSame(params.checkoutDate, 'day');
+    const isDatesMatchLastRequest = isCheckinDateMatchesLast && isCheckoutDateMatchesLast;
 
     if (isStale && isDatesMatchLastRequest) {
-      setIsStale(false)
+      setIsStale(false);
       return;
     }
 

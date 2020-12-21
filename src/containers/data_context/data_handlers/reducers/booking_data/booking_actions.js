@@ -45,8 +45,8 @@ const setParams = (dispatch, payload) => {
 };
 
 const setRoomsRequestParams = (dispatch, payload) => {
-  return dispatch({ type: SET_ROOMS_REQUEST_PARAMS, payload});
-}
+  return dispatch({ type: SET_ROOMS_REQUEST_PARAMS, payload });
+};
 
 const resetParams = (dispatch) => {
   return dispatch({ type: RESET_PARAMS });

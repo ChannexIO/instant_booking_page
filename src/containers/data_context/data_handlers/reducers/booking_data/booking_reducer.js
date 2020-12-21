@@ -70,7 +70,7 @@ const actionHandlers = {
   },
   [SET_ROOMS_REQUEST_PARAMS]: (state, action) => {
     return { ...state, roomRequestParams: action.payload };
-  }
+  },
 };
 
 export const reducer = (state, action) => {
