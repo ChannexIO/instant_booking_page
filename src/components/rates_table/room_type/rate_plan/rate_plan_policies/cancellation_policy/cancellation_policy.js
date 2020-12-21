@@ -28,6 +28,7 @@ const buildDeadlineBasedPoicyMessage = (t, policy, checkinDate, lengthOfStay) =>
 
   const deadlineDate = checkinDate
     .clone()
+    .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
     .subtract(cancellationPolicyDeadline, cancellationPolicyDeadlineType);
 
   const deadlineDay = deadlineDate.format(DATE_UI_FULL_MONTH_FORMAT);
