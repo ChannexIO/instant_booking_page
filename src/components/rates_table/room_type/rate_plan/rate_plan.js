@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
+import { BookingDataContext } from 'containers/data_context';
 
 import RatePlanOccupancy from './rate_plan_occupancy';
 import RatePlanOccupancySelect from './rate_plan_occupancy_select';
@@ -10,6 +12,7 @@ import styles from './rate_plan.module.css';
 const DEFAULT_AVAILABLE_SPACES = 0;
 
 export default function RatePlan(props) {
+  const { property } = useContext(BookingDataContext);
   const {
     ratePlan,
     currency,
@@ -23,6 +26,7 @@ export default function RatePlan(props) {
   } = props;
   const [availableSpaces, setAvailableSpaces] = useState(DEFAULT_AVAILABLE_SPACES);
 
+  const { hotelPolicy = {} } = property.data;
   const { id, availability } = ratePlan;
   const { [id]: rateOccupancy = 0 } = ratesOccupancy;
 
@@ -45,7 +49,11 @@ export default function RatePlan(props) {
       />
       <div className={styles.flexibleContainer}>
         <RatePlanPrice ratePlan={ratePlan} currency={currency} />
-        <RatePlanPolicies ratePlan={ratePlan} checkinDate={checkinDate} currency={currency} />
+        <RatePlanPolicies
+          ratePlan={ratePlan}
+          checkinDate={checkinDate}
+          hotelPolicy={hotelPolicy}
+        />
       </div>
       <RatePlanOccupancySelect
         disabled={disabled}
