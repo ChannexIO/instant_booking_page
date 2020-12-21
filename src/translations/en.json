@@ -41,6 +41,7 @@
     "price_per_night": "per night",
     "rooms": "rooms",
     "nights": "nights",
+    "missing_spaces": "Selected rooms have not enough space for amount of guests you've selected.",
     "hotel_policy": {
       "checkin_time": "Checkin Time",
       "checkout_time": "Checkout Time",

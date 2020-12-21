@@ -7,6 +7,7 @@
 
 .menu {
   background-color: #fff;
+  display: none !important;
   z-index: 6;
   margin-top: 2px;
   margin-left: 0px;
@@ -14,6 +15,10 @@
   align-self: flex-start;
   border-radius: 2px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.menu:global.show {
+  display: flex !important;
 }
 
 .srollableOptions {

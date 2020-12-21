@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ActionButton from '../action_button';
+import MissingSpaces from '../missing_spaces';
 import PriceBreakdown from '../price_breakdown';
 import TotalPrice from '../total_price';
 
@@ -9,6 +10,7 @@ export default function Summary(props) {
     selectedRatesByRoom,
     isDatesSelected,
     isRateSelected,
+    bookingParams,
     totalPrice,
     currency,
     loading,
@@ -22,6 +24,7 @@ export default function Summary(props) {
         <>
           <PriceBreakdown selectedRatesByRoom={selectedRatesByRoom} currency={currency} />
           <TotalPrice totalPrice={totalPrice} currency={currency} />
+          <MissingSpaces selectedRatesByRoom={selectedRatesByRoom} bookingParams={bookingParams}/>
         </>
       )}
       <ActionButton

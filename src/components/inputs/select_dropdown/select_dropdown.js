@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Dropdown, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import styles from './select_dropdown.module.css';
 
-export default function SelectDropdown(props) {
+function SelectDropdown(props, ref) {
   const { activeValue, options, withSearch, searchRef, searchQuery, onChange } = props;
   const { t } = useTranslation();
 
   return (
-    <Dropdown.Menu className={styles.menu}>
+    <Dropdown.Menu
+      renderOnMount
+      ref={ref}
+      className={styles.menu}
+    >
       {withSearch && (
         <Form.Control
           ref={searchRef}
@@ -35,3 +39,5 @@ export default function SelectDropdown(props) {
   </Dropdown.Menu>
   );
 }
+
+export default forwardRef(SelectDropdown);
