@@ -9,6 +9,7 @@ export const SET_ROOMS_DATA = 'SET_ROOMS_DATA';
 export const SET_CLOSED_DATES_LOADING = 'SET_CLOSED_DATES_LOADING';
 export const SET_CLOSED_DATES_DATA = 'SET_CLOSED_DATES_DATA';
 export const SET_PARAMS = 'SET_PARAMS';
+export const SET_ROOMS_REQUEST_PARAMS = 'SET_ROOMS_REQUEST_PARAMS';
 export const RESET_PARAMS = 'RESET_PARAMS';
 
 const setChannelId = (dispatch, payload) => {
@@ -42,6 +43,10 @@ const setClosedDatesData = (dispatch, payload) => {
 const setParams = (dispatch, payload) => {
   return dispatch({ type: SET_PARAMS, payload });
 };
+
+const setRoomsRequestParams = (dispatch, payload) => {
+  return dispatch({ type: SET_ROOMS_REQUEST_PARAMS, payload});
+}
 
 const resetParams = (dispatch) => {
   return dispatch({ type: RESET_PARAMS });
@@ -78,9 +83,10 @@ const loadRoomsInfo = async (dispatch, channelId, params) => {
 
   setRoomsLoading(dispatch);
 
+  setRoomsRequestParams(dispatch, params);
   const data = await ApiActions.getRoomsInfo(channelId, params);
 
-  setRoomsData(dispatch, data);
+  setRoomsData(dispatch, data, params);
 };
 
 const loadClosedDates = async (dispatch, channelId) => {

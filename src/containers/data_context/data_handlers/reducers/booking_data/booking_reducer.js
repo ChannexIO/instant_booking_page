@@ -8,6 +8,7 @@ import {
   SET_PROPERTY_LOADING,
   SET_ROOMS_DATA,
   SET_ROOMS_LOADING,
+  SET_ROOMS_REQUEST_PARAMS,
 } from './booking_actions';
 
 const EMPTY_ENTITY = {
@@ -24,6 +25,7 @@ export const INITIAL_STATE = {
     children: 0,
     adults: 1,
   },
+  roomRequestParams: {},
 };
 
 const actionHandlers = {
@@ -66,6 +68,9 @@ const actionHandlers = {
   [RESET_PARAMS]: (state) => {
     return { ...state, params: INITIAL_STATE.params };
   },
+  [SET_ROOMS_REQUEST_PARAMS]: (state, action) => {
+    return { ...state, roomRequestParams: action.payload };
+  }
 };
 
 export const reducer = (state, action) => {

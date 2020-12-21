@@ -15,7 +15,7 @@ const DEFAULT_OCCUPANCY_PER_ROOM = {};
 
 export default function RatesTable() {
   const [isStale, setIsStale] = useState(false);
-  const { roomsInfo, params } = useContext(BookingDataContext);
+  const { roomsInfo, params, roomRequestParams } = useContext(BookingDataContext);
   const { setParams, loadRoomsInfo } = useContext(BookingActionsContext);
 
   const prevParamsRef = useRef(params);
@@ -42,12 +42,22 @@ export default function RatesTable() {
   useEffect(function handleSearchParamsChange() {
     const isCheckinDateChanged = params.checkinDate !== prevParams.checkinDate;
     const isCheckoutDateChanged = params.checkoutDate !== prevParams.checkoutDate;
+    const isDatesChaged = isCheckinDateChanged || isCheckoutDateChanged;
 
-    if (isCheckinDateChanged || isCheckoutDateChanged) {
+    const isCheckinDateMatchesLastRequest = moment(roomRequestParams.checkinDate).isSame(params.checkinDate, "day");
+    const isCheckoutDateMatchesLastRequest = moment(roomRequestParams.checkoutDate).isSame(params.checkoutDate, "day");
+    const isDatesMatchLastRequest = isCheckinDateMatchesLastRequest && isCheckoutDateMatchesLastRequest;
+
+    if (isStale && isDatesMatchLastRequest) {
+      setIsStale(false)
+      return;
+    }
+
+    if (isDatesChaged) {
       setIsStale(true);
       setParams({ ...params, ratesOccupancyPerRoom: {} });
     }
-  }, [params, prevParams, setParams]);
+  }, [isStale, params, prevParams, roomRequestParams, setParams]);
 
   useEffect(function handleRoomsInfoUpdate() {
     setIsStale(false);
