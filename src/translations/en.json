@@ -231,13 +231,13 @@
     "types": {
       "free": "FREE cancellation",
       "non_refundable": "Cancellation is non-refundable",
-      "deadline": "FREE cancellation before 23.59 on {{deadline}}"
+      "deadline": "FREE cancellation before {{deadlineHour}} on {{deadlineDay}}, {{amount}} fee will be applied after"
     }
   },
   "payment_policies": {
     "types": {
       "none": "Prepayment non required",
-      "nights_based": "Prepayment type is \"Nights based\".  The prepayment is {{amount}} {{currency}} per night",
+      "nights_based": "Prepayment type is \"Night based\".  The prepayment is {{amount}} {{currency}} per night",
       "percent_based": "Prepayment type is \"Percent based\". The prepayment is {{amount}}{{currency}}",
       "fixed_per_booking": "Prepayment type is \"Fixed amount per booking\". The prepayment is {{amount}} {{currency}}",
       "fixed_per_room": "Prepayment type is \"Fixed amount per booking room\". The prepayment is {{amount}} {{currency}}"

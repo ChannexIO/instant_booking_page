@@ -9,35 +9,51 @@ const buildNonRefundablePolicyMessage = (t) => {
   return t('cancellation_policies:types:non_refundable');
 };
 
-const buildDeadlineBasedPoicyMessage = (t, policy, checkinDate) => {
+const getDeadlineAmount = (cancellationPolicy, lengthOfStay) => {
+  const { cancellationPolicyMode, cancellationPolicyPenalty, currency } = cancellationPolicy;
+
+  const amount = cancellationPolicyMode === 'percent'
+    ? `${cancellationPolicyPenalty}%`
+    : `${cancellationPolicyPenalty * lengthOfStay} ${currency}`;
+
+  return amount;
+};
+
+const buildDeadlineBasedPoicyMessage = (t, policy, checkinDate, lengthOfStay) => {
   if (!checkinDate) {
     return null;
   }
+
   const { cancellationPolicyDeadline, cancellationPolicyDeadlineType } = policy;
 
-  const deadline = checkinDate
+  const deadlineDate = checkinDate
     .clone()
-    .subtract(cancellationPolicyDeadline, cancellationPolicyDeadlineType)
-    .format(DATE_UI_FULL_MONTH_FORMAT);
+    .subtract(cancellationPolicyDeadline, cancellationPolicyDeadlineType);
 
-  return t('cancellation_policies:types:deadline', { deadline });
+  const deadlineDay = deadlineDate.format(DATE_UI_FULL_MONTH_FORMAT);
+  const deadlineHour = deadlineDate.clone().subtract(1, 'minute').format('HH:mm');
+  const amount = getDeadlineAmount(policy, lengthOfStay);
+
+  return t('cancellation_policies:types:deadline', { deadlineDay, deadlineHour, amount });
 };
 
 const buildFreePolicyMessage = (t) => {
   return t('cancellation_policies:types:free');
 };
 
-const getPolicyPresentation = (t, policy, checkinDate) => {
+const getPolicyPresentation = (t, policy, checkinDate, lengthOfStay) => {
   const policyPresentationBuilders = {
     deadline: buildDeadlineBasedPoicyMessage,
     non_refundable: buildNonRefundablePolicyMessage,
     free: buildFreePolicyMessage,
   };
 
-  return policyPresentationBuilders[policy.cancellationPolicyLogic](t, policy, checkinDate);
+  const policyHandler = policyPresentationBuilders[policy.cancellationPolicyLogic];
+
+  return policyHandler(t, policy, checkinDate, lengthOfStay);
 };
 
-export default function CancellationPolicy({ cancellationPolicy, checkinDate }) {
+export default function CancellationPolicy({ cancellationPolicy, checkinDate, lengthOfStay }) {
   const { t } = useTranslation();
 
   if (!cancellationPolicy) {
@@ -46,7 +62,7 @@ export default function CancellationPolicy({ cancellationPolicy, checkinDate }) 
 
   return (
     <Alert
-      text={getPolicyPresentation(t, cancellationPolicy, checkinDate)}
+      text={getPolicyPresentation(t, cancellationPolicy, checkinDate, lengthOfStay)}
       variant="success"
     />
   );

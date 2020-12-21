@@ -15,11 +15,12 @@ export default function RatePlanPolicies({ ratePlan, checkinDate }) {
     <Cell className={styles.policyCell}>
       <div className={styles.policyContainer}>
         <div className={styles.mealContainer}>
-          <MealPolicy mealPolicy={ratePlan.mealPolicy} />
+          <MealPolicy mealPolicy={ratePlan.mealType} />
           {/* <PoliciesInfo ratePlan={ratePlan} /> */}
         </div>
         <CancellationPolicy
           cancellationPolicy={ratePlan.cancellationPolicy}
+          lengthOfStay={ratePlan.lengthOfStay}
           checkinDate={checkinDate}
         />
         <PaymentPolicy cancellationPolicy={ratePlan.cancellationPolicy} />
