@@ -24,14 +24,14 @@ export default function getBookingParamsFromUrl() {
   const parsedEndDate = moment(checkoutDate, DATE_FORMAT);
 
   if (checkinDate && parsedStartDate.isValid()) {
-    const isCheckinAfterCurrent = moment().isBefore(parsedStartDate);
+    const isCheckinAfterCurrent = moment().isSameOrBefore(parsedStartDate, 'day');
 
     optionalParams.checkinDate = isCheckinAfterCurrent ? parsedStartDate : null;
   }
 
   if (checkoutDate && parsedEndDate.isValid()) {
     const { checkinDate: parsedCheckinDate } = optionalParams;
-    const isCheckoutValid = parsedCheckinDate && parsedCheckinDate.isBefore(parsedEndDate);
+    const isCheckoutValid = parsedCheckinDate && parsedCheckinDate.isBefore(parsedEndDate, 'day');
 
     optionalParams.checkoutDate = isCheckoutValid ? parsedEndDate : null;
   }

@@ -24,7 +24,7 @@ export default function MissingSpaces({ selectedRatesByRoom, bookingParams }) {
 
     const missingAdults = adults - availableAdultSpaces;
     const missingChild = children - availableChildSpaces;
-    
+
     const newMissingAdultsSpaces = missingAdults > 0 ? missingAdults : 0;
     const newMissingChildSpaces = missingChild > 0 ? missingChild : 0;
 
