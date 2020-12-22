@@ -241,7 +241,7 @@
       "nights_based": "Prepayment type is \"Night based\".  The prepayment is {{amount}} {{currency}} per night",
       "percent_based": "Prepayment type is \"Percent based\". The prepayment is {{amount}}{{currency}}",
       "fixed_per_booking": "Prepayment type is \"Fixed amount per booking\". The prepayment is {{amount}} {{currency}}",
-      "fixed_per_room": "Prepayment type is \"Fixed amount per booking room\". The prepayment is {{amount}} {{currency}}"
+      "fixed_per_room": "Prepayment type is \"Fixed amount per booking room\". The prepayment is {{amount}} {{currency}} per room"
     }
   },
   "validation_messages": {
