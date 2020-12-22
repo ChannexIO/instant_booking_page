@@ -24,14 +24,12 @@ export default function MissingSpaces({ selectedRatesByRoom, bookingParams }) {
 
     const missingAdults = adults - availableAdultSpaces;
     const missingChild = children - availableChildSpaces;
+    
+    const newMissingAdultsSpaces = missingAdults > 0 ? missingAdults : 0;
+    const newMissingChildSpaces = missingChild > 0 ? missingChild : 0;
 
-    if (missingAdults > 0) {
-      setMissingAdultsSpaces(missingAdults);
-    }
-
-    if (missingChild > 0) {
-      setMissingChildSpaces(missingChild);
-    }
+    setMissingAdultsSpaces(newMissingAdultsSpaces);
+    setMissingChildSpaces(newMissingChildSpaces);
   }, [selectedRatesByRoom, adults, children]);
 
   if (!missingChildSpaces && !missingAdultsSpaces) {
