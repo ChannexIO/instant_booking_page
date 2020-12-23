@@ -8,6 +8,7 @@ const routes = {
   hotelPage: composeRoute('/:channelId'),
   paymentPage: composeRoute('/:channelId/payment_page'),
   confirmationPage: composeRoute('/:channelId/confirmation/:bookingId'),
+  default: composeRoute('/hotel_not_found/404'),
 };
 
 export default routes;

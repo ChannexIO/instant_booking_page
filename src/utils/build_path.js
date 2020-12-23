@@ -1,4 +1,4 @@
-export default (search, route, params) => {
+export default (search, route, params = {}) => {
   const updatedRoute = route.replace(/(:[\w]+)/g, (match) => {
     const paramName = match.substr(1);
     const matchedParam = params[paramName];

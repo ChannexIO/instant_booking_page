@@ -1,6 +1,8 @@
 import { matchPath } from 'react-router-dom';
 import ApiActions from 'api_actions';
 
+import routes from 'routing/routes';
+
 export const SET_CHANNEL_ID = 'SET_CHANNEL_ID';
 export const SET_PROPERTY_LOADING = 'SET_PROPERTY_LOADING';
 export const SET_PROPERTY_DATA = 'SET_PROPERTY_DATA';
@@ -53,9 +55,7 @@ const resetParams = (dispatch) => {
 };
 
 const getChannelId = (location) => {
-  const basePath = process.env.REACT_APP_BASE_PATH;
-  // TODO - looks kinda lame, make more reliable
-  const matchedPath = matchPath(location.pathname, { path: `${basePath}/:channelId` });
+  const matchedPath = matchPath(location.pathname, { path: routes.hotelPage });
 
   if (!matchedPath) {
     return null;
@@ -70,10 +70,16 @@ const loadProperty = async (dispatch, channelId) => {
   }
 
   setPropertyLoading(dispatch);
+  try {
+    const data = await ApiActions.getPropertyInfo(channelId);
 
-  const data = await ApiActions.getPropertyInfo(channelId);
-
-  setPropertyData(dispatch, data);
+    setPropertyData(dispatch, data);
+  } catch (error) {
+    if (error.status === 404) {
+      // TODO move exeptions to a separate file (if there will be more than 1-2)
+      throw Error('PROPERY_NOT_FOUND');
+    }
+  }
 };
 
 const loadRoomsInfo = async (dispatch, channelId, params) => {
@@ -104,7 +110,7 @@ const loadClosedDates = async (dispatch, channelId) => {
 const setParamsAndLoadRoomsInfo = (dispatch, channelId, bookingParams) => {
   setParams(dispatch, bookingParams);
 
-  loadRoomsInfo(dispatch, channelId, bookingParams);
+  return loadRoomsInfo(dispatch, channelId, bookingParams);
 };
 
 const mergeBookingParams = (channelId, bookingQueryParams, savedBookingData) => {
@@ -127,9 +133,12 @@ const initBookingData = async (dispatch, location, bookingQueryParams, savedBook
   const bookingParams = mergeBookingParams(channelId, bookingQueryParams, savedBookingData);
 
   setChannelId(dispatch, channelId);
-  loadProperty(dispatch, channelId);
-  loadClosedDates(dispatch, channelId);
-  setParamsAndLoadRoomsInfo(dispatch, channelId, bookingParams);
+
+  await Promise.all([
+    loadProperty(dispatch, channelId),
+    loadClosedDates(dispatch, channelId),
+    setParamsAndLoadRoomsInfo(dispatch, channelId, bookingParams),
+  ]);
 };
 
 export const actions = {
