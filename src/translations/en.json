@@ -6,7 +6,8 @@
     "loading": "Loading...",
     "search": "Search",
     "back": "Back",
-    "close": "Close"
+    "close": "Close",
+    "delete": "Delete"
   },
   "navigation": {
     "hotel_page": "Home Page",
@@ -150,7 +151,9 @@
       "guest_info": {
         "title": "Guest Info",
         "first_name": "First Name",
-        "last_name": "Last Name"
+        "last_name": "Last Name",
+        "add_guest": "Add guest",
+        "use_customer": "Use customer info"
       },
       "billing_address": {
         "title": "Billing Address",

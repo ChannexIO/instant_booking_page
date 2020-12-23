@@ -32,6 +32,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   });
   const captureFormRef = useRef();
   const paymentFormRef = useRef();
+  const maxGuests = params.adults + params.children;
 
   const prevCardInfoRef = useRef(EMPTY_CARD);
   useEffect(() => {
@@ -101,7 +102,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
           onSubmit={paymentFormMethods.handleSubmit(handlePaymentFormSubmitted)}
         >
           <CustomerInfo.Form />
-          <GuestInfo.Form />
+          <GuestInfo.Form maxGuests={maxGuests} />
           <BillingAddress.Form />
         </form>
         <CardCaptureForm

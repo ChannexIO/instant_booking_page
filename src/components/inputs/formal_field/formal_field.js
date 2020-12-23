@@ -7,13 +7,13 @@ import FieldError from './field_error';
 import styles from './formal_field.module.css';
 
 export default function FormalField(props) {
-  const { name } = props;
+  const { name, defaultValue = '' } = props;
 
   return (
     <div className={styles.container}>
       <Controller
         errorClass={styles.error}
-        defaultValue=""
+        defaultValue={defaultValue}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       />
