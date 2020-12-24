@@ -9,7 +9,7 @@ export default function CurrencyConversionWarning() {
   const { property, params } = useContext(BookingDataContext);
   const { t } = useTranslation();
   const { data: propertyData } = property;
-  const originalCurrency = propertyData?.hotelPolicy?.currency;
+  const originalCurrency = propertyData?.currency;
 
   const isCurrencyMatch = params.currency === originalCurrency;
 

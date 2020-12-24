@@ -1,8 +1,5 @@
 import dateFormatter from 'utils/date_formatter';
 
-// TODO - probably should be removed after api fix
-const DEFAULT_CHECKIN_TIME = '12:00';
-
 const formatCardInfo = (cardInfo) => {
   const { expirationMonth, expirationYear, serviceCode, ...rest } = cardInfo;
   const expirationDate = `${expirationMonth}/${expirationYear}`;
@@ -25,8 +22,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { billingAddress, customer, guest } = formData;
   const { state, additionalAddress, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
-  const { hotelPolicy = {} } = property;
-  const { checkinTime: arrivalHour = DEFAULT_CHECKIN_TIME, currency } = hotelPolicy;
+  const { currency } = property;
   const {
     ratesOccupancyPerRoom,
     checkinDate,
@@ -63,7 +59,6 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
     currency,
     arrivalDate,
     departureDate,
-    arrivalHour,
     customer: {
       ...restAddress,
       ...restCustomer,

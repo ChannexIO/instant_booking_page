@@ -19,11 +19,18 @@ export default {
   },
 
   getRoomsInfo: (propertyChannelId, queryParams) => {
-    const formattedQueryParams = {
+    let formattedQueryParams = {
       ...queryParams,
+    };
+
+    const formattedDates = {
       checkinDate: dateFormatter.toApi(queryParams.checkinDate),
       checkoutDate: dateFormatter.toApi(queryParams.checkoutDate),
     };
+
+    if (formattedDates.checkinDate && formattedDates.checkoutDate) {
+      formattedQueryParams = { ...formattedQueryParams, ...formattedDates };
+    }
 
     return transport.get(`${PATH_PREFIX}/${propertyChannelId}/rooms`, formattedQueryParams);
   },
