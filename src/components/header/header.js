@@ -11,7 +11,7 @@ import HotelTitle from './hotel_title';
 
 import styles from './header.module.css';
 
-export default function Header({ property }) {
+export default function Header({ property = {} }) {
   const routeMatch = useRouteMatch({
     path: routes.hotelPage,
     strict: true,

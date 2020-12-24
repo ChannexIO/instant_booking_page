@@ -1,0 +1,10 @@
+.container {
+  text-align: center;
+}
+
+.notFound {
+  font-size: 100px;
+  line-height: 100px;
+  font-weight: bold;
+  margin-bottom: 36px;
+}

@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import ConfirmationPage from 'pages/confirmation_page';
 import HotelPage from 'pages/hotel_page';
+import NotFoundPage from 'pages/not_found_page';
 import PaymentPage from 'pages/payment_page';
 
 import routes from './routes';
@@ -20,7 +21,7 @@ export default function Routing() {
         <ConfirmationPage />
       </Route>
       <Route path={routes.default} exact>
-        404
+        <NotFoundPage />
       </Route>
       <Route path="*">
         <Redirect to={routes.default} />

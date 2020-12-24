@@ -190,6 +190,9 @@
     "confirmation_sent_to": "E-mail confirmation has been sent to",
     "create_new_booking": "Click here to create another booking"
   },
+  "not_found_page": {
+    "not_found": "Page not found"
+  },
   "footer": {
     "terms_and_conditions": "Terms and Conditions",
     "privacy_policy": "Privacy Policy",

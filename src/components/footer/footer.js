@@ -32,16 +32,18 @@ const getFormattedAddress = (address) => {
   );
 };
 
-export default function Footer({ property }) {
+export default function Footer({ property = {} }) {
   const { title, address, email, phone } = property;
 
   const formattedAddress = getFormattedAddress(address);
 
   return (
     <div className={styles.footerWrapper}>
-      <SectionTitle>
-        {title}
-      </SectionTitle>
+      {title && (
+        <SectionTitle>
+          {title}
+        </SectionTitle>
+      )}
       <div className={styles.footer}>
         {formattedAddress && <Link to="#/" type="location">{formattedAddress}</Link>}
         {email && <Link to={email} type="mail">{email}</Link>}
