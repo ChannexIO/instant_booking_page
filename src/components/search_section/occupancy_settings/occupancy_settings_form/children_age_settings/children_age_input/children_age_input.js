@@ -9,8 +9,8 @@ export default function ChildrenAgeInput({ index, value, options, onChange }) {
   const { t } = useTranslation();
 
   const handleChange = useCallback((newValue) => {
-    onChange(Number(newValue));
-  }, [onChange]);
+    onChange(Number(newValue), index);
+  }, [index, onChange]);
 
   return (
     <div className={styles.inputContainer}>
