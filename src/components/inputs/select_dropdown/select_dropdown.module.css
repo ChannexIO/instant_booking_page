@@ -3,6 +3,8 @@
   max-height: 400px;
   display: flex;
   flex-direction: column;
+  min-width: 100%;
+  padding: 12px;
 }
 
 .menu {
