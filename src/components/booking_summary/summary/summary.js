@@ -31,7 +31,7 @@ export default function Summary({ params, property, selectedRatesByRoom, total }
       <div className={styles.summaryWrapper}>
         <Title property={property} />
         <Dates checkinDate={checkinDate} checkoutDate={checkoutDate} />
-        <Guests selectedRatesByRoom={selectedRatesByRoom} />
+        <Guests params={params} />
         <PriceBreakdown
           selectedRatesByRoom={selectedRatesByRoom}
           currency={currency}

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Alert from 'components/alert';
 
 export default function MissingSpaces({ missingSpaces }) {
   const { t } = useTranslation();
-
 
   if (!missingSpaces) {
     return null;

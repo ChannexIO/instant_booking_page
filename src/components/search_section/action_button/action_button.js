@@ -14,11 +14,18 @@ export default function ActionButton(props) {
     loading,
     total,
     onBook,
-    onSearch
+    onSearch,
   } = props;
 
   const buttonComponent = isRateSelected
-    ? <BookButton total={total} currency={currency} disabled={!isDatesSelected || missingSpaces} onClick={onBook} />
+    ? (
+      <BookButton
+        total={total}
+        currency={currency}
+        disabled={!isDatesSelected || missingSpaces}
+        onClick={onBook}
+      />
+    )
     : <SearchButton loading={loading} disabled={!isDatesSelected} onClick={onSearch} />;
 
   return (

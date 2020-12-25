@@ -36,7 +36,14 @@ export default function SearchSection() {
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
   const { data: propertyRooms, isLoading } = roomsInfo;
   const { data: propertyData } = property;
-  const { ratesOccupancyPerRoom, currency, checkinDate = null, checkoutDate = null, adults, children } = params;
+  const {
+    ratesOccupancyPerRoom,
+    currency,
+    checkinDate = null,
+    checkoutDate = null,
+    adults,
+    children,
+  } = params;
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
 

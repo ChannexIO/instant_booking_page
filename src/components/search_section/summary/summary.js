@@ -11,7 +11,6 @@ export default function Summary(props) {
     isDatesSelected,
     isRateSelected,
     missingSpaces,
-    bookingParams,
     totalPrice,
     currency,
     loading,

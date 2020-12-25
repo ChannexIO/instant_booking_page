@@ -15,7 +15,6 @@ export default function MobileSummary(props) {
     selectedRatesByRoom,
     isDatesSelected,
     isRateSelected,
-    bookingParams,
     missingSpaces,
     totalPrice,
     currency,

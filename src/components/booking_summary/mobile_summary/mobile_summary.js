@@ -19,7 +19,7 @@ export default function MobileSummary({ params, selectedRatesByRoom, total }) {
     <MobileSummaryContainer>
       <ExpandableContainer title={t('payment_page:booking_summary:title')}>
         <Dates checkinDate={checkinDate} checkoutDate={checkoutDate} />
-        <Guests selectedRatesByRoom={selectedRatesByRoom} />
+        <Guests params={params} />
         <PriceBreakdown
           selectedRatesByRoom={selectedRatesByRoom}
           currency={currency}
