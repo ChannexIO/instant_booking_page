@@ -2,6 +2,30 @@ import React, { useEffect, useState } from 'react';
 
 import Tax from './tax';
 
+// TODO - update per person tax calculation
+const calculateTaxValue = ({ amount, mode, multiplier }) => {
+  const parsedAmount = Number(amount);
+
+  switch (mode) {
+    case "percent":
+      return parsedAmount * multiplier;
+    case "per_booking":
+      return parsedAmount;
+    case "per_room":
+      return parsedAmount * multiplier;
+    case "per_night":
+      return parsedAmount * multiplier;
+    case "per_person":
+      return parsedAmount;
+    case "per_room_per_night":
+      return parsedAmount * multiplier;
+    case "per_person_per_night":
+      return parsedAmount;
+    default:
+      return 0;
+  }
+}
+
 export default function TaxesBreakdown({ selectedRatesByRoom, currency }) {
   const [combinedTaxes, setCombinedTaxes] = useState({});
 
@@ -9,7 +33,7 @@ export default function TaxesBreakdown({ selectedRatesByRoom, currency }) {
     const newCombinedTaxes = Object.values(selectedRatesByRoom)
       .reduce((acc, selectedRoom) => [...acc, ...selectedRoom.selectedRates], [])
       .reduce((acc, selectedRate) => {
-        const { amount = 0, taxes = [] } = selectedRate;
+        const { amount = 0, taxes = [], occupancy } = selectedRate;
         const updatedTaxes = taxes.map((tax) => ({
           ...tax,
           multiplier: amount,
@@ -18,9 +42,9 @@ export default function TaxesBreakdown({ selectedRatesByRoom, currency }) {
         return [...acc, ...updatedTaxes];
       }, [])
       .reduce((acc, tax) => {
-        const { title, rate, amount, multiplier } = tax;
+        const { title, rate } = tax;
         const taxKey = `${title}_${rate}`;
-        const totalAmount = Number(amount) * multiplier;
+        const totalAmount = calculateTaxValue(tax);
 
         const combinedTax = acc[taxKey];
 
