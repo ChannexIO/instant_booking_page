@@ -7,7 +7,7 @@ import FieldWrapper from 'components/layout/field_wrapper';
 import styles from './input.module.css';
 
 function Input(props, ref) {
-  const { value = '', label, placeholder, type, text, valid = true, onChange } = props;
+  const { value = '', label, placeholder, disabled, type, text, valid = true, onChange } = props;
 
   return (
     <FieldWrapper>
@@ -18,6 +18,7 @@ function Input(props, ref) {
           </Label>
         </Form.Label>
         <Form.Control
+          disabled={disabled}
           className={styles.input}
           as="input"
           ref={ref}

@@ -7,24 +7,24 @@ const calculateTaxValue = ({ amount, mode, multiplier }) => {
   const parsedAmount = Number(amount);
 
   switch (mode) {
-    case "percent":
+    case 'percent':
       return parsedAmount * multiplier;
-    case "per_booking":
+    case 'per_booking':
       return parsedAmount;
-    case "per_room":
+    case 'per_room':
       return parsedAmount * multiplier;
-    case "per_night":
+    case 'per_night':
       return parsedAmount * multiplier;
-    case "per_person":
+    case 'per_person':
       return parsedAmount;
-    case "per_room_per_night":
+    case 'per_room_per_night':
       return parsedAmount * multiplier;
-    case "per_person_per_night":
+    case 'per_person_per_night':
       return parsedAmount;
     default:
       return 0;
   }
-}
+};
 
 export default function TaxesBreakdown({ selectedRatesByRoom, currency }) {
   const [combinedTaxes, setCombinedTaxes] = useState({});
@@ -33,7 +33,7 @@ export default function TaxesBreakdown({ selectedRatesByRoom, currency }) {
     const newCombinedTaxes = Object.values(selectedRatesByRoom)
       .reduce((acc, selectedRoom) => [...acc, ...selectedRoom.selectedRates], [])
       .reduce((acc, selectedRate) => {
-        const { amount = 0, taxes = [], occupancy } = selectedRate;
+        const { amount = 0, taxes = [] } = selectedRate;
         const updatedTaxes = taxes.map((tax) => ({
           ...tax,
           multiplier: amount,

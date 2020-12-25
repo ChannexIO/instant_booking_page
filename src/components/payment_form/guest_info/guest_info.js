@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
@@ -6,7 +6,6 @@ import * as yup from 'yup';
 import LinkButton from 'components/buttons/link_button';
 import Checkbox from 'components/inputs/checkbox';
 import FormalField from 'components/inputs/formal_field';
-import FieldRow from 'components/layout/field_row';
 import Panel from 'components/layout/panel';
 
 import errors from 'constants/errors';
@@ -35,10 +34,12 @@ export function GuestInfo({ maxGuests }) {
   const { t } = useTranslation();
   const { setValue } = useFormContext();
   const useCustomerValue = useWatch({ name: 'guest.useCustomerValue', defaultValue: false });
+  const customerName = useWatch({ name: 'customer.name', defaultValue: '' });
+  const customerSurame = useWatch({ name: 'customer.surname', defaultValue: '' });
+
   const guestList = useWatch({ name: 'guest.list', defaultValue: [] });
   const [guestKeysList, setGuestKeysList] = useState([Date.now()]);
   const isGuestCouldBeAdded = guestKeysList.length !== maxGuests;
-  const isGuestCouldBeDeleted = guestKeysList.length > 1;
 
   const handleAddGuest = useCallback(() => {
     const updatedGuestList = [...guestKeysList, Date.now()];
@@ -61,36 +62,54 @@ export function GuestInfo({ maxGuests }) {
     setGuestKeysList(updatedGuestList);
   }, [guestKeysList, guestList, setValue]);
 
+  useEffect(function handleInfoSourceChange() {
+    if (useCustomerValue) {
+      setValue('guest.list[0].firstName', customerName);
+      setValue('guest.list[0].lastName', customerSurame);
+    }
+  }, [customerName, customerSurame, setValue, useCustomerValue]);
+
+  const [firstGuestKey, ...restGuests] = guestKeysList;
+
   return (
-    <Panel title={t(`${TRANSLATION_PATH}:title`)}>
-      <FieldRow>
+    <Panel
+      title={t(`${TRANSLATION_PATH}:title`)}
+      addOn={
         <FormalField
           name="guest.useCustomerValue"
           defaultValue
           label={t(`${TRANSLATION_PATH}:use_customer`)}
           as={Checkbox}
         />
-      </FieldRow>
+      }
+    >
+      <Guest
+        guestKey={firstGuestKey}
+        index={0}
+        disabled={useCustomerValue}
+        isDeleteEnabled={false}
+        onDelete={handleDeleteGuest}
+      />
       {!useCustomerValue && (
         <>
-          {guestKeysList.map((key, index) => (
+          {restGuests.map((key, index) => (
             <Guest
               key={key}
               guestKey={key}
-              index={index}
-              isDeleteEnabled={isGuestCouldBeDeleted}
+              index={index + 1}
+              isDeleteEnabled
               onDelete={handleDeleteGuest}
             />
           ))}
-          <LinkButton
-            disabled={!isGuestCouldBeAdded}
-            onClick={handleAddGuest}
-          >
-            {t(`${TRANSLATION_PATH}:add_guest`)}
-          </LinkButton>
+          {isGuestCouldBeAdded && (
+            <LinkButton
+              onClick={handleAddGuest}
+            >
+              {t(`${TRANSLATION_PATH}:add_guest`)}
+            </LinkButton>
+          )}
         </>
       )}
-        {/* <ErrorMessage name="guest.list" render={FieldError} /> */}
     </Panel>
   );
 }

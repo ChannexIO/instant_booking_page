@@ -2,14 +2,17 @@ import React from 'react';
 
 import styles from './panel.module.css';
 
-export default function Panel({ title, children }) {
+export default function Panel({ title, addOn, children }) {
   return (
     <div className={styles.panelContainer}>
-      {title && (
-        <div className={styles.panelTitle}>
+      <div className={styles.panelTitle}>
+        <span>
           {title}
-        </div>
-      )}
+        </span>
+        <span>
+          {addOn}
+        </span>
+      </div>
       <div className={styles.children}>
         {children}
       </div>

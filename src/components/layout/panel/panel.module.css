@@ -2,7 +2,7 @@
   display: flex;
   padding-top: 16px;
   padding-bottom: 16px;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid rgba(36, 46, 66, 0.12);
 }

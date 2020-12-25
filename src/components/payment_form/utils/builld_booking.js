@@ -7,17 +7,6 @@ const formatCardInfo = (cardInfo) => {
   return { ...rest, expirationDate, cvv: serviceCode };
 };
 
-const getGuestInfo = (customer, guest) => {
-  if (guest.useCustomerValue) {
-    return [{
-      firstName: customer.name,
-      lastName: customer.surname,
-    }];
-  }
-
-  return guest.list;
-};
-
 const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { billingAddress, customer, guest } = formData;
   const { state, additionalAddress, ...restAddress } = billingAddress;
@@ -31,7 +20,6 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
   const guarantee = formatCardInfo(cardInfo);
-  const guestInfo = getGuestInfo(customer, guest);
 
   const bookedRooms = Object.keys(ratesOccupancyPerRoom).reduce((roomsList, roomTypeCode) => {
     const selectedRates = ratesOccupancyPerRoom[roomTypeCode];
@@ -63,7 +51,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
       ...restAddress,
       ...restCustomer,
       meta: {
-        guest: guestInfo,
+        guest: guest.list,
         state,
         specialRequest,
         additionalAddress,
