@@ -21,6 +21,8 @@ import styles from './search_section.module.css';
 
 export default function SearchSection() {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
+  const [missingAdultsSpaces, setMissingAdultsSpaces] = useState(0);
+  const [missingChildSpaces, setMissingChildSpaces] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const { channelId, params, property, roomsInfo } = useContext(BookingDataContext);
   const {
@@ -34,7 +36,7 @@ export default function SearchSection() {
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
   const { data: propertyRooms, isLoading } = roomsInfo;
   const { data: propertyData } = property;
-  const { ratesOccupancyPerRoom, currency, checkinDate = null, checkoutDate = null } = params;
+  const { ratesOccupancyPerRoom, currency, checkinDate = null, checkoutDate = null, adults, children } = params;
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
 
@@ -63,8 +65,32 @@ export default function SearchSection() {
     setSelectedRatesByRoom(summaryParams.selectedRatesByRoom);
   }, [propertyRooms, ratesOccupancyPerRoom]);
 
+  useEffect(function calculateMissingSpaces() {
+    let availableAdultSpaces = 0;
+    let availableChildSpaces = 0;
+
+    Object.values(selectedRatesByRoom).forEach((room) => {
+      room.selectedRates.forEach((rate) => {
+        const { amount, occupancy } = rate;
+
+        availableAdultSpaces += amount * occupancy.adults;
+        availableChildSpaces += amount * occupancy.children;
+      });
+    });
+
+    const missingAdults = adults - availableAdultSpaces;
+    const missingChild = children - availableChildSpaces;
+
+    const newMissingAdultsSpaces = missingAdults > 0 ? missingAdults : 0;
+    const newMissingChildSpaces = missingChild > 0 ? missingChild : 0;
+
+    setMissingAdultsSpaces(newMissingAdultsSpaces);
+    setMissingChildSpaces(newMissingChildSpaces);
+  }, [selectedRatesByRoom, adults, children]);
+
   const SummaryComponent = isMobile ? MobileSummary : Summary;
   const wrapperClasses = [styles.searchPanelWrapper];
+  const missingSpaces = missingAdultsSpaces + missingChildSpaces;
 
   if (!propertyData.photos.length) {
     wrapperClasses.push(styles.searchPanelNoOffset);
@@ -86,6 +112,7 @@ export default function SearchSection() {
             isDatesSelected={isDatesSelected}
             isRateSelected={isRateSelected}
             totalPrice={totalPrice}
+            missingSpaces={missingSpaces}
             currency={currency}
             loading={isLoading}
             onBook={handleBook}

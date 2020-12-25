@@ -10,6 +10,7 @@ export default function Summary(props) {
     selectedRatesByRoom,
     isDatesSelected,
     isRateSelected,
+    missingSpaces,
     bookingParams,
     totalPrice,
     currency,
@@ -24,12 +25,13 @@ export default function Summary(props) {
         <>
           <PriceBreakdown selectedRatesByRoom={selectedRatesByRoom} currency={currency} />
           <TotalPrice totalPrice={totalPrice} currency={currency} />
-          <MissingSpaces selectedRatesByRoom={selectedRatesByRoom} bookingParams={bookingParams}/>
+          <MissingSpaces missingSpaces={missingSpaces}/>
         </>
       )}
       <ActionButton
         isDatesSelected={isDatesSelected}
         isRateSelected={isRateSelected}
+        missingSpaces={missingSpaces}
         total={totalPrice}
         currency={currency}
         loading={loading}
