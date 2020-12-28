@@ -8,13 +8,18 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 24px;
   max-width: 1140px;
   padding-right: 15px;
   padding-left: 15px;
   justify-content: flex-end;
   align-items: flex-start;
   margin: auto;
+}
+
+.wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .searchPanelWrapper {
@@ -44,6 +49,12 @@
     height: auto;
   }
   
+  .wrapper {
+    position: relative;
+    height: auto;
+    width: auto;
+  }
+
   .searchPanelWrapper {
     width: 100%;
   }

@@ -104,27 +104,29 @@ export default function SearchSection() {
   }
 
   return (
-    <div className={styles.stickyContainer}>
-      <div className={wrapperClasses.join(' ')}>
-        <MinPricePanel
-          channelId={channelId}
-          params={params}
-        />
-        <div className={styles.searchSection}>
-          <DateSelect bookingParams={params} handleSearchChange={setParams} />
-          <OccupancySetting bookingParams={params} handleSearchChange={setParams} />
-          <SummaryComponent
-            selectedRatesByRoom={selectedRatesByRoom}
-            bookingParams={params}
-            isDatesSelected={isDatesSelected}
-            isRateSelected={isRateSelected}
-            totalPrice={totalPrice}
-            missingSpaces={missingSpaces}
-            currency={currency}
-            loading={isLoading}
-            onBook={handleBook}
-            onSearch={handleSearch}
+    <div className={styles.wrapper}>
+      <div className={styles.stickyContainer}>
+        <div className={wrapperClasses.join(' ')}>
+          <MinPricePanel
+            channelId={channelId}
+            params={params}
           />
+          <div className={styles.searchSection}>
+            <DateSelect bookingParams={params} handleSearchChange={setParams} />
+            <OccupancySetting bookingParams={params} handleSearchChange={setParams} />
+            <SummaryComponent
+              selectedRatesByRoom={selectedRatesByRoom}
+              bookingParams={params}
+              isDatesSelected={isDatesSelected}
+              isRateSelected={isRateSelected}
+              totalPrice={totalPrice}
+              missingSpaces={missingSpaces}
+              currency={currency}
+              loading={isLoading}
+              onBook={handleBook}
+              onSearch={handleSearch}
+            />
+          </div>
         </div>
       </div>
     </div>
