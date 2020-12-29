@@ -11,6 +11,7 @@
   max-width: 1140px;
   padding-right: 15px;
   padding-left: 15px;
+  pointer-events: none;
   justify-content: flex-end;
   align-items: flex-start;
   margin: auto;
@@ -24,6 +25,7 @@
 
 .searchPanelWrapper {
   width: 32%;
+  pointer-events: all;
   margin-top: 0px;
   background-color: #fff;
 }
