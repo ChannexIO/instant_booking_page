@@ -92,7 +92,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
   const guarantee = formatCardInfo(cardInfo);
-  const fullAddress = `${address}${additionalAddress ? `, ${additionalAddress}` : ''}`;
+  const fullAddress = [address, additionalAddress].filter(Boolean).join(', ');
 
   let guestPool = getGuestPool(ratesOccupancyPerRoom, adults, children);
 
