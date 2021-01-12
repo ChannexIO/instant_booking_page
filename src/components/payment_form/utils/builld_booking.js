@@ -79,7 +79,7 @@ const getRateOccupancy = (occupancy, guestPool) => {
 
 const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { billingAddress, customer, guest } = formData;
-  const { state, additionalAddress, ...restAddress } = billingAddress;
+  const { state, additionalAddress, address, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
   const { currency } = property;
   const {
@@ -92,6 +92,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
   const guarantee = formatCardInfo(cardInfo);
+  const fullAddress = `${address}${additionalAddress ? `, ${additionalAddress}` : ''}`;
 
   let guestPool = getGuestPool(ratesOccupancyPerRoom, adults, children);
 
@@ -127,13 +128,13 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
     arrivalDate,
     departureDate,
     customer: {
+      address: fullAddress,
       ...restAddress,
       ...restCustomer,
       meta: {
         guest: guest.list,
         state,
         specialRequest,
-        additionalAddress,
       },
     },
     guarantee,
