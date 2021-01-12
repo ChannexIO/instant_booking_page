@@ -103,15 +103,17 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
       const rateSelectedAmount = selectedRates[ratePlanCode];
       const { occupancy } = roomProps.ratePlans.find((rate) => ratePlanCode === rate.id);
 
-      const { rateOccupancy, updatedGuestPool } = getRateOccupancy(occupancy, guestPool);
-      guestPool = updatedGuestPool;
-
       const bookedRoomsPerRate = new Array(rateSelectedAmount).fill(null)
-        .map(() => ({
-          roomTypeCode,
-          ratePlanCode,
-          occupancy: rateOccupancy,
-        }));
+        .map(() => {
+          const { rateOccupancy, updatedGuestPool } = getRateOccupancy(occupancy, guestPool);
+          guestPool = updatedGuestPool;
+
+          return {
+            roomTypeCode,
+            ratePlanCode,
+            occupancy: rateOccupancy,
+          };
+        });
 
       return [...acc, ...bookedRoomsPerRate];
     }, []);
