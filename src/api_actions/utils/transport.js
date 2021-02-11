@@ -4,7 +4,6 @@ import attributesExtractor from './attributes_extractor';
 import stringifyArguments from './stringify_arguments';
 
 const API_URL = process.env.REACT_APP_API_URL;
-const PCI_URL = process.env.REACT_APP_PCI_URL;
 
 const formatApiResponse = async (payload) => {
   const parsedPayload = await payload.json();
@@ -91,8 +90,4 @@ export default {
   put: requestWithBodyParams('PUT', API_URL),
   patch: requestWithBodyParams('PATCH', API_URL),
   options: requestWithBodyParams('OPTIONS', API_URL),
-
-  pciGet: requestWithoutBodyParams('GET', PCI_URL),
-  pciPost: requestWithBodyParams('POST', PCI_URL),
-  pciDelete: requestWithoutBodyParams('DELETE', PCI_URL),
 };

@@ -10,7 +10,7 @@ const PCI_URL = process.env.REACT_APP_PCI_URL;
 const FUNCTION_FALLBACK = () => {};
 
 export default forwardRef(function CardCaptureForm(props, ref) {
-  const [sessionToken, setSessionToken] = useState(null);
+  const [captureFormUrl, setCaptureFormUrl] = useState(null);
   const iframeRef = useRef();
   const {
     onSubmit = FUNCTION_FALLBACK,
@@ -42,14 +42,14 @@ export default forwardRef(function CardCaptureForm(props, ref) {
 
   const getSessionToken = useCallback(async () => {
     try {
-      const response = await ApiActions.getPciSessionToken();
+      const response = await ApiActions.getCaptureFormUrl();
 
-      setSessionToken(response.sessionToken);
+      setCaptureFormUrl(response.cardCaptureFormUrl);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
     }
-  }, [setSessionToken]);
+  }, [setCaptureFormUrl]);
 
   useImperativeHandle(ref, () => ({
     submit: getMessageEmitter('submit'),
@@ -69,7 +69,7 @@ export default forwardRef(function CardCaptureForm(props, ref) {
     };
   }, [eventListener]);
 
-  if (!sessionToken) {
+  if (!captureFormUrl) {
     return null;
   }
 
@@ -83,7 +83,7 @@ export default forwardRef(function CardCaptureForm(props, ref) {
         width="400"
         scrolling="no"
         style={{ border: 'none', maxWidth: '100%' }}
-        src={`${PCI_URL}/api/v1/capture_form?session_token=${sessionToken}`}
+        src={captureFormUrl}
       />
     </Panel>
   );
