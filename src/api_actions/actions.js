@@ -4,7 +4,6 @@ import convertClosedDatesToClientFormat from './utils/convert_closed_dates_to_cl
 import transport from './utils/transport';
 
 const PATH_PREFIX = `/api/v1/meta/${process.env.REACT_APP_CHANNEL_CODE}`;
-const PCI_PATH_PREFIX = '/api/v1';
 
 export default {
   getPropertyInfo: (propertyChannelId) => {
@@ -52,17 +51,7 @@ export default {
     return transport.post(`${PATH_PREFIX}/${propertyChannelId}/push_booking`, { booking });
   },
 
-  getPciSessionToken: () => {
-    const payload = {
-      sessionToken: {
-        scope: 'card',
-      },
-    };
-
-    const queryParams = {
-      apiKey: process.env.REACT_APP_CAPTURE_CARD_API_KEY,
-    };
-
-    return transport.pciPost(`${PCI_PATH_PREFIX}/session_tokens`, payload, queryParams);
+  getCaptureFormUrl: () => {
+    return transport.get(`${PATH_PREFIX}/card_capture_form_url`);
   },
 };
