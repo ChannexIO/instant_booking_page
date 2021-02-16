@@ -8,8 +8,8 @@ const CALENDAR_DAY_STYLE_MODIFICATORS = {
   valid: styles.dayCellValid,
   blocked: styles.dayCellBlocked,
   'blocked-out-of-range': styles.dayCellBlockedOutOfRange,
-  'selected-start': styles.dayCellSelected,
-  'selected-end': styles.dayCellSelected,
+  'selected-start': styles.dayCellSelectedStart,
+  'selected-end': styles.dayCellSelectedEnd,
   'selected-span': styles.dayCellSelectedSpan,
   'hovered-span': styles.dayCellHoveredSpan,
 };

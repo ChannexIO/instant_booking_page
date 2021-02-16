@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useRef, useState } from 'react';
 import { DateRangePicker } from 'react-dates';
 import { useMedia } from 'react-media';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import moment from 'moment';
 
 import Label from 'components/label';
@@ -133,6 +134,10 @@ export default function RangePicker(props) {
     onDatesChange({ startDate: null, endDate: null });
   }, [onDatesChange]);
 
+  const handleClose = useCallback(() => {
+    setFocusedInput(null);
+  }, []);
+
   const renderCalendarDay = useCallback((dayProps) => (
       <DayCell
         /* eslint-disable-next-line react/jsx-props-no-spreading */
@@ -142,8 +147,11 @@ export default function RangePicker(props) {
   ), [minStayLength]);
 
   const renderCalendarInfo = useCallback(() => (
-    <InfoSection onClear={handleDatesReset} />
-  ), [handleDatesReset]);
+    <InfoSection
+      onClear={handleDatesReset}
+      onClose={handleClose}
+    />
+  ), [handleDatesReset, handleClose]);
 
   return (
     <div className={styles.rangepicker} ref={inputRef}>
@@ -166,6 +174,9 @@ export default function RangePicker(props) {
         onDatesChange={onDatesChange}
         focusedInput={focusedInput}
         minimumNights={minStayLength}
+        navPrev={<LeftOutlined className={styles.navPrev} />}
+        navNext={<RightOutlined className={styles.navNext} />}
+        hideKeyboardShortcutsPanel
         renderCalendarDay={renderCalendarDay}
         isDayBlocked={getIsDayBlocked}
         onFocusChange={handleFocusChange}

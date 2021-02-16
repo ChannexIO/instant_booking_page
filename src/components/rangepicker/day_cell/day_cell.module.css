@@ -8,54 +8,56 @@
 }
 
 .dayCellValid {
-  border: 1px solid #e4e7e7;
-  color: #484848;
-  background: #fff;
+
 }
 
 .dayCellValid:hover {
-  background: #e4e7e7;
-  border: 1px solid #e4e7e7;
-  color: inherit;
+  color: var(--main-text-color);
+  background: var(--rangepicker-cell-span);
 }
 
 .dayCellBlocked {
-  text-decoration: line-through;
-  border: 1px solid #cacccd;
-  color: #82888a;
+  color: var(--rangepicker-cell-disabled-text);
+  background: var(--rangepicker-cell-disabled);
 }
 
 .dayCellBlockedOutOfRange {
   background: #fff;
-  border: 1px solid #e4e7e7;
-  color: #cacccd;
+  opacity: 0.5;
 }
 
 .dayCellHoveredSpan,
 .dayCellHoveredSpan:hover {
   background: #b2f1ec;
-  border: 1px double #80e8e0;
   color: #007a87;
 }
 
-.dayCellSelected,
-.dayCellSelected:hover,
-.dayCellSelected:active {
-  background: #00a699;
-  border: 1px double #00a699;
-  color: #fff;
+.dayCellSelectedStart {
+  border-radius: 2px 0 0 2px;
+}
+
+.dayCellSelectedEnd {
+  border-radius: 0 2px 2px 0;
+}
+
+.dayCellSelectedStart,
+.dayCellSelectedStart:hover,
+.dayCellSelectedStart:active,
+.dayCellSelectedEnd,
+.dayCellSelectedEnd:hover,
+.dayCellSelectedEnd:active {
+  color: var(--rangepicker-cell-end-text);
+  background: var(--rangepicker-cell-end);
   text-decoration: none;
 }
 
 .dayCellSelectedSpan {
-  background: #66e2da;
-  border: 1px double #33dacd;
-  color: #fff;
+  color: var(--main-text-color);
+  background: var(--rangepicker-cell-span);
 }
 
 .dayCellSelectedSpan:hover,
 .dayCellSelectedSpan:active {
-  background: #33dacd;
-  border: 1px double #33dacd;
-  color: #fff;
+  color: var(--main-text-color);
+  background: var(--rangepicker-cell-span);
 }

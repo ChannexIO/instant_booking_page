@@ -7,7 +7,8 @@
     "search": "Search",
     "back": "Back",
     "close": "Close",
-    "delete": "Delete"
+    "delete": "Delete",
+    "clear": "Clear"
   },
   "navigation": {
     "hotel_page": "Home Page",
@@ -22,7 +23,6 @@
     "night_minimum": "night minimum",
     "total": "Total",
     "search": "Search",
-    "clear": "Clear",
     "expand": "Expand",
     "booking_summary": "Booking Summary",
     "book_for": "Book for",

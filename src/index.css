@@ -15,12 +15,21 @@
   --icon-color: #4281D1;
   --link-color: #007db5;
   --button-color: #2D74CC;
+  --button-color-light: rgba(0, 0, 0, 0);
+  --button-color-light-hover: #eeeeee;
   --border-color: #e9eaec;
   --input-border-color: #e6e6e6;
   --select-color: #56697A;
   --popover-text-color: #5D687A;
   --background-dark-color: #FCFCFC;
   --background-light-color: #FFFFFF;
+
+  --rangepicker-weekday-caption: #333333;
+  --rangepicker-cell-end: #43a4f1;
+  --rangepicker-cell-end-text: rgba(255, 255, 255, 0.8);
+  --rangepicker-cell-span: rgba(67, 164, 241, 0.21);
+  --rangepicker-cell-disabled: #eeeeee;
+  --rangepicker-cell-disabled-text: #b2b2b2;
 }
 
 code {

@@ -1,20 +1,29 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import LinkButton from 'components/buttons/link_button';
+import Button from 'components/buttons/button';
 
 import styles from './info_section.module.css';
 
-export default function InfoSection({ onClear }) {
+export default function InfoSection({ onClear, onClose }) {
   const { t } = useTranslation();
 
   return (
     <div className={styles.infoContainer}>
-      <LinkButton
+      <Button
+        className={styles.button}
+        variant="light"
         onClick={onClear}
       >
-        {t('hotel_page:clear')}
-      </LinkButton>
+        {t('global:clear')}
+      </Button>
+      <Button
+        className={styles.button}
+        variant="light"
+        onClick={onClose}
+      >
+        {t('global:close')}
+      </Button>
     </div>
   );
 }

@@ -1,4 +1,26 @@
 .infoContainer {
   margin: 0px 22px 0 20px;
   padding-bottom: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.infoContainer:not(:last-child) {
+  margin-right: 8px;
+} 
+
+.button {
+  width: auto;
+  letter-spacing: 1.17px;
+  text-transform: uppercase;
+  padding-right: 16px;
+  padding-left: 16px;
+  font-weight: 500;
+  background-color: var(--button-color-light);
+}
+
+.button:global.btn-light:hover,
+.button:global.btn-light:active,
+.button:global.btn-light:not(:disabled):not(.disabled):active {
+  background-color: var(--button-color-light-hover);
 }

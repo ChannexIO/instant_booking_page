@@ -27,6 +27,28 @@
   align-items: center;
 }
 
+.rangepicker :global .CalendarMonth_table {
+  border-collapse: separate;
+  border-spacing: 0 2px;
+} 
+
+.rangepicker :global .CalendarMonth_caption {
+  margin: 0 0 0 58px;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.15px;
+  text-align: center;
+  padding-top: 27px;
+  padding-bottom: 37px;
+}
+
+.rangepicker :global .DayPicker_weekHeader_li {
+  color: var(--rangepicker-weekday-caption);
+}
+
 .labelContainer {
   width: 100%;
   justify-content: space-between;
@@ -39,4 +61,19 @@
 
 .rangepicker {
   margin-bottom: 8px;
+}
+
+.navPrev, 
+.navNext {
+  position: absolute;
+  font-size: 12px;
+  top: 32px;
+}
+
+.navPrev {
+  left: 32px;
+}
+
+.navNext {
+  right: 32px;
 }
