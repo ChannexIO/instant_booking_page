@@ -25,6 +25,8 @@ const OPEN_DIRECTIONS = {
 };
 
 const MIN_STAY_LENGTH = 1;
+const START_DATE_INPUT = 'startDate';
+const END_DATE_INPUT = 'endDate';
 
 const getMinStayLength = (closedDates, checkinDate) => {
   if (!checkinDate || !moment(checkinDate).isValid() || !closedDates.data) {
@@ -105,11 +107,11 @@ export default function RangePicker(props) {
 
     const formattedDay = day.format(DATE_FORMAT);
 
-    if (focusedInput === 'startDate') {
+    if (focusedInput === START_DATE_INPUT) {
       return getIsClosedToArrival(day, formattedDay);
     }
 
-    if (focusedInput === 'endDate') {
+    if (focusedInput === END_DATE_INPUT) {
       return getIsClosedToDeparture(day, formattedDay);
     }
 
@@ -122,7 +124,7 @@ export default function RangePicker(props) {
 
     const newOpenDirection = isPickerCloserToTop ? OPEN_DIRECTIONS.down : OPEN_DIRECTIONS.up;
 
-    if (newFocusedInput === 'startDate') {
+    if (newFocusedInput === START_DATE_INPUT) {
       onDatesChange({ startDate: checkinDate, endDate: null });
     }
 
@@ -132,6 +134,7 @@ export default function RangePicker(props) {
 
   const handleDatesReset = useCallback(() => {
     onDatesChange({ startDate: null, endDate: null });
+    setFocusedInput(START_DATE_INPUT);
   }, [onDatesChange]);
 
   const handleClose = useCallback(() => {
