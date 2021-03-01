@@ -49,12 +49,20 @@ export default function CurrencySelect() {
   }, [propertyData.hotelPolicy, handleCurrencyChange, params.currency, propertyData]);
 
   useEffect(function initSelectorState() {
+    const { currency = DEFAULT_CURRENCY } = propertyData;
+
     let options = Object.values(currencies)
       .map(({ name, iso }) => ({
         key: iso.code,
         value: `${name} (${iso.code})`,
       }))
       .sort((a, b) => {
+        const priorityByEqualityToDefault = (b.key === currency) - (a.key === currency);
+
+        if (priorityByEqualityToDefault !== 0) {
+          return priorityByEqualityToDefault;
+        }
+
         const aPriorityByCode = CURRENCY_RATE_BY_CODE[a.key] ?? CURRENCY_RATE_BY_CODE.default;
         const bPriorityByCode = CURRENCY_RATE_BY_CODE[b.key] ?? CURRENCY_RATE_BY_CODE.default;
 
@@ -88,7 +96,7 @@ export default function CurrencySelect() {
     options = [PopularCurrenciesSeparator, ...options];
 
     setCurrencyOptions(options);
-  }, [t]);
+  }, [t, propertyData]);
 
   return (
     <Select

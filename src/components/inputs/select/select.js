@@ -16,13 +16,13 @@ export default function Select({ label, value, options, withSearch = false, onCh
 
   const getOptions = useCallback(() => {
     return options
-      .filter(({ value, Component }) => {
-        if (Component) {
+      .filter((option) => {
+        if (option.Component) {
           return !searchQuery;
         }
 
         const formattedSearchQuery = searchQuery.toLowerCase();
-        const optionValueFormatted = value.toLowerCase();
+        const optionValueFormatted = option.value.toLowerCase();
 
         return optionValueFormatted.includes(formattedSearchQuery);
       });
