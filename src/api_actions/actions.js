@@ -14,13 +14,15 @@ export default {
   },
 
   getRoomsInfo: (propertyChannelId, queryParams) => {
+    const { checkinDate, checkoutDate, ...restParams } = queryParams;
+
     let formattedQueryParams = {
-      ...queryParams,
+      ...restParams,
     };
 
     const formattedDates = {
-      checkinDate: dateFormatter.toApi(queryParams.checkinDate),
-      checkoutDate: dateFormatter.toApi(queryParams.checkoutDate),
+      checkinDate: dateFormatter.toApi(checkinDate),
+      checkoutDate: dateFormatter.toApi(checkoutDate),
     };
 
     if (formattedDates.checkinDate && formattedDates.checkoutDate) {
