@@ -1,0 +1,13 @@
+.separator {
+  display: block;
+  width: 100%;
+  clear: both;
+  font-weight: 400;
+  text-align: inherit;
+  white-space: nowrap;
+  border: 0;
+  line-height: 24px;
+  padding: 3px 10px;
+  color: var(--select-color);
+  border-bottom: 2px solid var(--border-color);
+}

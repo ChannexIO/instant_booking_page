@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import { Dropdown, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
@@ -7,6 +7,23 @@ import styles from './select_dropdown.module.css';
 function SelectDropdown(props, ref) {
   const { activeValue, options, withSearch, searchRef, searchQuery, onChange } = props;
   const { t } = useTranslation();
+
+  const getOption = useCallback(({ key, Component, value }) => {
+    if (Component) {
+      return Component;
+    }
+
+    return (
+      <Dropdown.Item
+        className={styles.menuItem}
+        key={key}
+        eventKey={key}
+        active={key === activeValue}
+      >
+        {value}
+      </Dropdown.Item>
+    );
+  }, [activeValue]);
 
   return (
     <Dropdown.Menu
@@ -25,16 +42,7 @@ function SelectDropdown(props, ref) {
         />
       )}
       <div className={styles.srollableOptions}>
-        {options.map((option) => (
-          <Dropdown.Item
-            className={styles.menuItem}
-            key={option.key}
-            eventKey={option.key}
-            active={option.key === activeValue}
-          >
-            {option.value}
-          </Dropdown.Item>
-        ))}
+        {options.map(getOption)}
       </div>
   </Dropdown.Menu>
   );

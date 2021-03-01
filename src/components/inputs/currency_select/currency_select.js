@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import currencies from 'world-currencies';
 
@@ -28,6 +29,7 @@ export default function CurrencySelect() {
   const history = useHistory();
   const { params, property } = useContext(BookingDataContext);
   const { setParamsAndLoadRoomsInfo } = useContext(BookingActionsContext);
+  const { t } = useTranslation();
   const { data: propertyData } = property;
   const currencySign = currencies[params.currency]?.units.major.symbol || '';
   const selectLabel = `${currencySign} (${params.currency})`;
@@ -47,7 +49,7 @@ export default function CurrencySelect() {
   }, [propertyData.hotelPolicy, handleCurrencyChange, params.currency, propertyData]);
 
   useEffect(function initSelectorState() {
-    const options = Object.values(currencies)
+    let options = Object.values(currencies)
       .map(({ name, iso }) => ({
         key: iso.code,
         value: `${name} (${iso.code})`,
@@ -63,8 +65,30 @@ export default function CurrencySelect() {
           : bPriorityByCode - aPriorityByCode;
       });
 
+    const PopularCurrenciesSeparator = {
+      Component: (
+        <Select.Separator>
+          {t('currency_select:popular_currencies_separator')}
+        </Select.Separator>
+      ),
+    };
+
+    const AvailableCurrenciesSeparator = {
+      Component: (
+        <Select.Separator>
+          {t('currency_select:available_currencies_separator')}
+        </Select.Separator>
+      ),
+    };
+
+    const { default: _default, ...topRatedCurrencies } = CURRENCY_RATE_BY_CODE;
+
+    const topCurrenciesListLength = Object.values(topRatedCurrencies).length;
+    options.splice(topCurrenciesListLength - 1, 0, AvailableCurrenciesSeparator);
+    options = [PopularCurrenciesSeparator, ...options];
+
     setCurrencyOptions(options);
-  }, []);
+  }, [t]);
 
   return (
     <Select
