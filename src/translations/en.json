@@ -16,6 +16,7 @@
     "confirmation_page": "Booking Confirmation"
   },
   "currency_select": {
+    "hotel_currency": "Hotel Currency",
     "popular_currencies_separator": "Popular Currencies",
     "available_currencies_separator": "Available Currencies"
   },

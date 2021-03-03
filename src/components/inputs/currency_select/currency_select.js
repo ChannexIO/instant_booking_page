@@ -45,10 +45,14 @@ export default function CurrencySelect() {
     const { currency = DEFAULT_CURRENCY } = propertyData;
 
     let options = Object.values(currencies)
-      .map(({ name, iso }) => ({
-        key: iso.code,
-        value: `${name} (${iso.code})`,
-      }))
+      .map(({ name, iso }) => {
+        const currencyName = iso.code === currency ? `${t('currency_select:hotel_currency')}:` : name;
+
+        return {
+          key: iso.code,
+          value: `${currencyName} (${iso.code})`,
+        };
+      })
       .sort((a, b) => {
         const priorityByEqualityToDefault = (b.key === currency) - (a.key === currency);
 
@@ -83,9 +87,10 @@ export default function CurrencySelect() {
     };
 
     const { default: _default, ...topRatedCurrencies } = CURRENCY_RATE_BY_CODE;
-
     const topCurrenciesListLength = Object.values(topRatedCurrencies).length;
-    options.splice(topCurrenciesListLength, 0, AvailableCurrenciesSeparator);
+    const separatorPosition = topCurrenciesListLength + !topRatedCurrencies[currency];
+
+    options.splice(separatorPosition, 0, AvailableCurrenciesSeparator);
     options = [PopularCurrenciesSeparator, ...options];
 
     setCurrencyOptions(options);
@@ -93,7 +98,6 @@ export default function CurrencySelect() {
 
   return (
     <Select
-      withSearch
       label={selectLabel}
       value={params.currency}
       options={currencyOptions}
