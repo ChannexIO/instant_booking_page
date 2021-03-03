@@ -11,16 +11,9 @@ import { DEFAULT_CURRENCY } from 'constants/defaults';
 import setUrlParams from 'utils/set_url_params';
 
 const CURRENCY_RATE_BY_CODE = {
-  USD: 10,
-  EUR: 9,
-  JPY: 8,
-  GBP: 7,
-  AUD: 6,
-  CAD: 5,
-  CHF: 4,
-  CNH: 3,
-  HKD: 2,
-  NZD: 1,
+  USD: 3,
+  EUR: 2,
+  GBP: 1,
   default: 0,
 };
 
@@ -69,7 +62,7 @@ export default function CurrencySelect() {
         const isPriorityEqual = aPriorityByCode === bPriorityByCode;
 
         return isPriorityEqual
-          ? a.value.localeCompare(b.value)
+          ? a.key.localeCompare(b.key)
           : bPriorityByCode - aPriorityByCode;
       });
 
@@ -92,7 +85,7 @@ export default function CurrencySelect() {
     const { default: _default, ...topRatedCurrencies } = CURRENCY_RATE_BY_CODE;
 
     const topCurrenciesListLength = Object.values(topRatedCurrencies).length;
-    options.splice(topCurrenciesListLength - 1, 0, AvailableCurrenciesSeparator);
+    options.splice(topCurrenciesListLength, 0, AvailableCurrenciesSeparator);
     options = [PopularCurrenciesSeparator, ...options];
 
     setCurrencyOptions(options);
