@@ -6,7 +6,7 @@ import Cell from 'components/layout/cell';
 import styles from './tax.module.css';
 
 export default function Tax({ tax, currency }) {
-  const taxBaseValue = Number(tax.rate / 100).toFixed(2);
+  const taxBaseValue = tax.rate;
   const taxBaseCurrency = tax.mode === 'percent' ? '%' : currency;
 
   return (
