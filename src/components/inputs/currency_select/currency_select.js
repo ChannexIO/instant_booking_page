@@ -98,6 +98,7 @@ export default function CurrencySelect() {
 
   return (
     <Select
+      withSearch
       label={selectLabel}
       value={params.currency}
       options={currencyOptions}
