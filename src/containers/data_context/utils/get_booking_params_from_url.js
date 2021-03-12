@@ -1,5 +1,5 @@
 import moment from 'moment';
-import currencies from "world-currencies";
+import currencies from 'world-currencies';
 
 import { DATE_FORMAT } from 'constants/formats';
 import getUrlParams from 'utils/get_url_params';
