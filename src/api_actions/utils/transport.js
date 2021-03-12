@@ -25,7 +25,7 @@ const handleApiResponse = async (payload) => {
   }
 
   if (errors) {
-    return errors;
+    throw errors;
   }
 
   return formattedPayload;

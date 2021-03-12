@@ -45,25 +45,23 @@ export default function MinPricePanel({ channelId, params }) {
     updateMinPriceParams();
   }, [updateMinPriceParams]);
 
-  if (!minPriceParams) {
-    return null;
-  }
-
   return (
     <a
       className={styles.minPriceContainer}
       onClick={handleClick}
       href="/"
     >
-      <div className={styles.minPriceContent}>
-        {t('hotel_page:price_from')}
-        <Currency
-          className={styles.minPrice}
-          amount={minPriceParams.offer}
-          currency={minPriceParams.currency}
-        />
-        {!hasEnteredDates && t('hotel_page:price_per_night')}
-      </div>
+      {minPriceParams && (
+        <div className={styles.minPriceContent}>
+          {t('hotel_page:price_from')}
+          <Currency
+            className={styles.minPrice}
+            amount={minPriceParams.offer}
+            currency={minPriceParams.currency}
+          />
+          {!hasEnteredDates && t('hotel_page:price_per_night')}
+        </div>
+      )}
     </a>
   );
 }
