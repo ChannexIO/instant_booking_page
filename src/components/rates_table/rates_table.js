@@ -5,6 +5,7 @@ import LoadingContainer from 'components/loading_container';
 
 import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
 
+import Placeholder from './placeholder';
 import RatesTableHeader from './rates_table_header';
 import ReloadContainer from './reload_container';
 import RoomType from './room_type';
@@ -78,7 +79,7 @@ export default function RatesTable() {
             checkinDate={checkinDate}
             checkoutDate={checkoutDate}
           />
-          {roomsData && roomsData.map((roomType, rowIndex) => (
+          {roomsData.length ? roomsData.map((roomType, rowIndex) => (
             <RoomType
               disabled={isStale}
               roomType={roomType}
@@ -91,7 +92,7 @@ export default function RatesTable() {
               ratesOccupancyPerRoom={ratesOccupancyPerRoom}
               onRatesOccupancyChange={setRatesOccupancyPerRoom}
             />
-          ))}
+          )) : <Placeholder />}
         </div>
       </ReloadContainer>
     </LoadingContainer>
