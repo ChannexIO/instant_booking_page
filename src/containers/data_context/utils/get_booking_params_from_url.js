@@ -1,4 +1,5 @@
 import moment from 'moment';
+import currencies from "world-currencies";
 
 import { DATE_FORMAT } from 'constants/formats';
 import getUrlParams from 'utils/get_url_params';
@@ -53,5 +54,10 @@ export default function getBookingParamsFromUrl() {
     optionalParams.adults = Math.max(DEFAULT_PARAMS.adults, parsedAdultsAmount);
   }
 
-  return ({ ...optionalParams, currency });
+  const isValidCurrency = currencies[currency];
+  if (isValidCurrency) {
+    optionalParams.currency = currency;
+  }
+
+  return ({ ...optionalParams });
 }
