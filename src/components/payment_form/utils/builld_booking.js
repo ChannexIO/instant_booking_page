@@ -79,7 +79,7 @@ const getRateOccupancy = (occupancy, guestPool) => {
 
 const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { billingAddress, customer, guest } = formData;
-  const { state, additionalAddress, address, ...restAddress } = billingAddress;
+  const { additionalAddress, address, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
   const { currency } = property;
   const {
@@ -122,6 +122,8 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
     return [...roomsList, ...bookedPerRoomId];
   }, []);
 
+  bookedRooms[0].guests = guest.list;
+
   const booking = {
     status: 'new',
     currency,
@@ -131,12 +133,8 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
       address: fullAddress,
       ...restAddress,
       ...restCustomer,
-      meta: {
-        guest: guest.list,
-        state,
-        specialRequest,
-      },
     },
+    notes: specialRequest,
     guarantee,
     rooms: bookedRooms,
   };
