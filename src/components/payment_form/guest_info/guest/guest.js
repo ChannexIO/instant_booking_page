@@ -22,13 +22,13 @@ export default function Guest({ index, disabled, isDeleteEnabled, onDelete }) {
     <FieldRow>
       <FormalField
         disabled={disabled}
-        name={`guest.list[${index}].firstName`}
+        name={`guest.list[${index}].name`}
         label={t(`${TRANSLATION_PATH}:first_name`)}
         as={Input}
       />
       <FormalField
         disabled={disabled}
-        name={`guest.list[${index}].lastName`}
+        name={`guest.list[${index}].surname`}
         label={t(`${TRANSLATION_PATH}:last_name`)}
         as={Input}
       />

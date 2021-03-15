@@ -19,8 +19,8 @@ export const getSchema = () => (
     useCustomerValues: yup.boolean(),
     list: yup.array().of(
       yup.object().shape({
-        firstName: yup.string().trim().required(errors.required),
-        lastName: yup.string().trim().required(errors.required),
+        name: yup.string().trim().required(errors.required),
+        surname: yup.string().trim().required(errors.required),
       }),
     )
       .when(['useCustomerValues'], {
@@ -64,8 +64,8 @@ export function GuestInfo({ maxGuests }) {
 
   useEffect(function handleInfoSourceChange() {
     if (useCustomerValue) {
-      setValue('guest.list[0].firstName', customerName);
-      setValue('guest.list[0].lastName', customerSurame);
+      setValue('guest.list[0].name', customerName);
+      setValue('guest.list[0].surname', customerSurame);
     }
   }, [customerName, customerSurame, setValue, useCustomerValue]);
 
