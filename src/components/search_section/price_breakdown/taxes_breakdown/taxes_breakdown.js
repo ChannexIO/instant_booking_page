@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 
 import Tax from './tax';
 
-// TODO - update per person tax calculation
 const calculateTaxValue = ({ amount, mode, multiplier }) => {
   const parsedAmount = Number(amount);
 

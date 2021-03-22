@@ -21,8 +21,7 @@ import styles from './search_section.module.css';
 
 export default function SearchSection() {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
-  const [missingAdultsSpaces, setMissingAdultsSpaces] = useState(0);
-  const [missingChildSpaces, setMissingChildSpaces] = useState(0);
+  const [missingSpaces, setMissingSpaces] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const { channelId, params, property, roomsInfo } = useContext(BookingDataContext);
   const {
@@ -47,7 +46,6 @@ export default function SearchSection() {
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
 
-  // TODO update search params onChange handling, set query params here, not in input components;
   const handleBook = useCallback(() => {
     saveDataToStorage();
 
@@ -73,31 +71,25 @@ export default function SearchSection() {
   }, [propertyRooms, ratesOccupancyPerRoom]);
 
   useEffect(function calculateMissingSpaces() {
-    let availableAdultSpaces = 0;
-    let availableChildSpaces = 0;
+    let availableSpaces = 0;
 
     Object.values(selectedRatesByRoom).forEach((room) => {
       room.selectedRates.forEach((rate) => {
         const { amount, occupancy } = rate;
 
-        availableAdultSpaces += amount * occupancy.adults;
-        availableChildSpaces += amount * occupancy.children;
+        availableSpaces += amount * occupancy.adults;
       });
     });
 
-    const missingAdults = adults - availableAdultSpaces;
-    const missingChild = children - availableChildSpaces;
+    const missingAdults = adults - availableSpaces;
 
-    const newMissingAdultsSpaces = missingAdults > 0 ? missingAdults : 0;
-    const newMissingChildSpaces = missingChild > 0 ? missingChild : 0;
+    const newMissingSpaces = missingAdults > 0 ? missingAdults : 0;
 
-    setMissingAdultsSpaces(newMissingAdultsSpaces);
-    setMissingChildSpaces(newMissingChildSpaces);
+    setMissingSpaces(newMissingSpaces);
   }, [selectedRatesByRoom, adults, children]);
 
   const SummaryComponent = isMobile ? MobileSummary : Summary;
   const wrapperClasses = [styles.searchPanelWrapper];
-  const missingSpaces = missingAdultsSpaces + missingChildSpaces;
 
   if (!propertyData.photos.length) {
     wrapperClasses.push(styles.searchPanelNoOffset);
