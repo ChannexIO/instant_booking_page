@@ -1,1 +1,1 @@
-export { default } from './occupancy_section';
+export { default } from "./occupancy_section";

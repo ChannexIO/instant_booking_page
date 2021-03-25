@@ -1,21 +1,19 @@
-import React, { forwardRef } from 'react';
-import { Form } from 'react-bootstrap';
+import React, { forwardRef } from "react";
+import { Form } from "react-bootstrap";
 
-import Label from 'components/label';
-import FieldWrapper from 'components/layout/field_wrapper';
+import Label from "components/label";
+import FieldWrapper from "components/layout/field_wrapper";
 
-import styles from './input.module.css';
+import styles from "./input.module.css";
 
 function Input(props, ref) {
-  const { value = '', label, placeholder, disabled, type, text, valid = true, onChange } = props;
+  const { value = "", label, placeholder, disabled, type, text, valid = true, onChange } = props;
 
   return (
     <FieldWrapper>
       <Form.Group>
         <Form.Label>
-          <Label>
-            {label}
-          </Label>
+          <Label>{label}</Label>
         </Form.Label>
         <Form.Control
           disabled={disabled}
@@ -28,9 +26,7 @@ function Input(props, ref) {
           onChange={onChange}
           isInvalid={!valid}
         />
-        <Form.Text>
-          {text}
-        </Form.Text>
+        <Form.Text>{text}</Form.Text>
       </Form.Group>
     </FieldWrapper>
   );

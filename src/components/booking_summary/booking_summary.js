@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useMedia } from 'react-media';
+import React, { useEffect, useState } from "react";
+import { useMedia } from "react-media";
 
-import MEDIA_QUERIES from 'constants/media_queries';
-import calculateSummaryParams from 'utils/calculate_summary_params';
+import MEDIA_QUERIES from "constants/media_queries";
+import calculateSummaryParams from "utils/calculate_summary_params";
 
-import MobileSummary from './mobile_summary';
-import Summary from './summary';
+import MobileSummary from "./mobile_summary";
+import Summary from "./summary";
 
-import styles from './booking_summary.module.css';
+import styles from "./booking_summary.module.css";
 
 export default function BookingSummary({ property, rooms, params, onBook }) {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
@@ -17,16 +17,19 @@ export default function BookingSummary({ property, rooms, params, onBook }) {
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
   const SummaryComponent = isMobile ? MobileSummary : Summary;
 
-  useEffect(function setSummaryParams() {
-    const summaryParams = calculateSummaryParams(rooms, ratesOccupancyPerRoom);
+  useEffect(
+    function setSummaryParams() {
+      const summaryParams = calculateSummaryParams(rooms, ratesOccupancyPerRoom);
 
-    if (!summaryParams) {
-      return;
-    }
+      if (!summaryParams) {
+        return;
+      }
 
-    setTotal(summaryParams.total);
-    setSelectedRatesByRoom(summaryParams.selectedRatesByRoom);
-  }, [rooms, ratesOccupancyPerRoom]);
+      setTotal(summaryParams.total);
+      setSelectedRatesByRoom(summaryParams.selectedRatesByRoom);
+    },
+    [rooms, ratesOccupancyPerRoom],
+  );
 
   return (
     <>

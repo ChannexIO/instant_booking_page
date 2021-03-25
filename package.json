@@ -32,10 +32,8 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
-    "eslint": "NODE_ENV=development eslint --fix ./src"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "eslint": "NODE_ENV=development eslint --fix ./src",
+    "prettier": "prettier --write  src/**/*.js"
   },
   "browserslist": {
     "production": [
@@ -51,14 +49,17 @@
   },
   "devDependencies": {
     "@babel/eslint-plugin": "^7.12.1",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-import-resolver-webpack": "^0.12.2",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-webpack": "^0.13.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.4",
-    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "eslint-plugin-jest": "^24.2.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "gh-pages": "^3.1.0",
     "prettier": "^2.0.5"
   }

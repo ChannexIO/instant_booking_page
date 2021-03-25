@@ -1,1 +1,1 @@
-export { default } from './min_price_panel';
+export { default } from "./min_price_panel";

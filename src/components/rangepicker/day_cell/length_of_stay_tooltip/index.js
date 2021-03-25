@@ -1,1 +1,1 @@
-export { default } from './length_of_stay_tooltip';
+export { default } from "./length_of_stay_tooltip";

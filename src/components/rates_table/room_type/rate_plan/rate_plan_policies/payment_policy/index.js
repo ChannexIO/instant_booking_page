@@ -1,1 +1,1 @@
-export { default } from './payment_policy';
+export { default } from "./payment_policy";

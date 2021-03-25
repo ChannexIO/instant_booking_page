@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
-import Button from 'components/buttons/button';
+import Button from "components/buttons/button";
 
-import { PaymentFormActionsContext, PaymentFormDataContext } from 'containers/data_context';
+import { PaymentFormActionsContext, PaymentFormDataContext } from "containers/data_context";
 
 export default function SubmitBookingButton() {
   const { startSubmit } = useContext(PaymentFormActionsContext);
@@ -11,12 +11,8 @@ export default function SubmitBookingButton() {
   const { t } = useTranslation();
 
   return (
-    <Button
-      loading={isSubmitting}
-      disabled={isSubmitting}
-      onClick={startSubmit}
-    >
-      {t('payment_page:agree_and_book')}
+    <Button loading={isSubmitting} disabled={isSubmitting} onClick={startSubmit}>
+      {t("payment_page:agree_and_book")}
     </Button>
   );
 }

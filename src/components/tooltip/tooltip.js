@@ -1,11 +1,12 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { Overlay } from 'react-bootstrap';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React, { useCallback, useRef, useState } from "react";
+import { Overlay } from "react-bootstrap";
 
-import styles from './tooltip.module.css';
+import styles from "./tooltip.module.css";
 
 const OVERLAY_POSITIONS = {
-  top: 'top',
-  bottom: 'bottom',
+  top: "top",
+  bottom: "bottom",
 };
 
 export default function PoliciesInfo({ className, children }) {
@@ -16,7 +17,7 @@ export default function PoliciesInfo({ className, children }) {
 
   const getOpenDirection = useCallback(() => {
     const inputCoords = ref.current.getBoundingClientRect();
-    const isTooltipCloserToTop = inputCoords.y < (window.innerHeight / 2);
+    const isTooltipCloserToTop = inputCoords.y < window.innerHeight / 2;
 
     const { top, bottom } = OVERLAY_POSITIONS;
 
@@ -36,7 +37,7 @@ export default function PoliciesInfo({ className, children }) {
   };
 
   return (
-    <div className={[styles.tooltipContainer, className].join(' ')} ref={ref}>
+    <div className={[styles.tooltipContainer, className].join(" ")} ref={ref}>
       <div
         role="button"
         tabIndex="0"

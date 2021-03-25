@@ -1,4 +1,4 @@
-import { BillingAddress, getSchema } from './billing_address';
+import { BillingAddress, getSchema } from "./billing_address";
 
 const BillingAddressForm = {
   Form: BillingAddress,

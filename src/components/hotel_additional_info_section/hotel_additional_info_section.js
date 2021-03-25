@@ -1,15 +1,15 @@
-import React from 'react';
-import { Col } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { Col } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
-import SectionWrapper from 'components/layout/section_wrapper';
-import SectionTitle from 'components/section_title';
+import SectionWrapper from "components/layout/section_wrapper";
+import SectionTitle from "components/section_title";
 
-import GeneralPolicies from './policies/general_policies';
-import InternetAccessPolicies from './policies/internet_access_policies';
-import ParkingPolicies from './policies/parking_policies';
-import PetsPolicies from './policies/pets_policies';
-import SmokingPolicies from './policies/smoking_policies';
+import GeneralPolicies from "./policies/general_policies";
+import InternetAccessPolicies from "./policies/internet_access_policies";
+import ParkingPolicies from "./policies/parking_policies";
+import PetsPolicies from "./policies/pets_policies";
+import SmokingPolicies from "./policies/smoking_policies";
 
 export default function HotelInfoSection({ property }) {
   const { t } = useTranslation();
@@ -21,8 +21,8 @@ export default function HotelInfoSection({ property }) {
 
   return (
     <SectionWrapper theme="dark">
-      <Col xs="12" lg="8" >
-        <SectionTitle>{t('hotel_page:additional_information')}</SectionTitle>
+      <Col xs="12" lg="8">
+        <SectionTitle>{t("hotel_page:additional_information")}</SectionTitle>
         <GeneralPolicies hotelPolicy={hotelPolicy} />
         <InternetAccessPolicies hotelPolicy={hotelPolicy} />
         <ParkingPolicies hotelPolicy={hotelPolicy} />

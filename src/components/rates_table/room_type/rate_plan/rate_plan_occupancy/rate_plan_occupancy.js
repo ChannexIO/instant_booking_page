@@ -1,14 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import Cell from 'components/layout/cell';
+import Cell from "components/layout/cell";
 
-import IconGuestChild from 'static/icons-guest-child.svg';
-import IconGuestDouble from 'static/icons-guest-double.svg';
-import IconGuestSingle from 'static/icons-guest-single.svg';
+import OccupancySection from "./occupancy_section";
 
-import OccupancySection from './occupancy_section';
-
-import styles from './rate_plan_occupancy.module.css';
+import IconGuestChild from "static/icons-guest-child.svg";
+import IconGuestDouble from "static/icons-guest-double.svg";
+import IconGuestSingle from "static/icons-guest-single.svg";
+import styles from "./rate_plan_occupancy.module.css";
 
 const CHILD_BASE_NUMBER = 1;
 const ADULT_BASE_NUMBER = 2;

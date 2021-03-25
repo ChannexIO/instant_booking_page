@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './cell.module.css';
+import styles from "./cell.module.css";
 
 export default function Cell({ children, className, noLine, noPadding }) {
   const classNames = [styles.cell];
@@ -15,9 +15,5 @@ export default function Cell({ children, className, noLine, noPadding }) {
 
   classNames.push(className);
 
-  return (
-    <div className={classNames.join(' ')}>
-      {children}
-    </div>
-  );
+  return <div className={classNames.join(" ")}>{children}</div>;
 }

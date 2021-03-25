@@ -1,5 +1,5 @@
-import Select from './select';
-import SelectSeparator from './select_separator';
+import Select from "./select";
+import SelectSeparator from "./select_separator";
 
 Select.Separator = SelectSeparator;
 

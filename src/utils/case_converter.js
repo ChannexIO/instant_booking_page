@@ -5,7 +5,10 @@ const convertToSnakeCase = (varName) => {
 };
 
 const convertToCamelCase = (varName) => {
-  return varName.replace(/_[a-z]/g, (charWithUnderscore) => `${charWithUnderscore[1].toUpperCase()}`);
+  return varName.replace(
+    /_[a-z]/g,
+    (charWithUnderscore) => `${charWithUnderscore[1].toUpperCase()}`,
+  );
 };
 
 const convertArrayEntries = (array, converter) => {
@@ -13,19 +16,18 @@ const convertArrayEntries = (array, converter) => {
 };
 
 const convertObjectEntries = (object, converter) => {
-  const updatedEntries = Object.entries(object)
-    .map(([name, value]) => {
-      const updatedName = converter(name);
-      const updatedValue = convertDataCase(converter, value);
+  const updatedEntries = Object.entries(object).map(([name, value]) => {
+    const updatedName = converter(name);
+    const updatedValue = convertDataCase(converter, value);
 
-      return [updatedName, updatedValue];
-    });
+    return [updatedName, updatedValue];
+  });
 
   return Object.fromEntries(updatedEntries);
 };
 
 const convertDataCase = (converter, data) => {
-  if (!data || typeof data !== 'object') {
+  if (!data || typeof data !== "object") {
     return data;
   }
 

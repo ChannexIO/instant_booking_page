@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import Currency from 'components/currency';
-import Cell from 'components/layout/cell';
+import Currency from "components/currency";
+import Cell from "components/layout/cell";
 
-import RatePriceBreakdown from './rate_price_breakdown';
+import RatePriceBreakdown from "./rate_price_breakdown";
 
-import styles from './room_price_breakdown.module.css';
+import styles from "./room_price_breakdown.module.css";
 
 export default function RoomPriceBreakdown({ roomWithSelectedRates, currency }) {
   return (

@@ -5,5 +5,5 @@ export default (elementId) => {
     return;
   }
 
-  elementToShow.scrollIntoView({ behavior: 'smooth' });
+  elementToShow.scrollIntoView({ behavior: "smooth" });
 };

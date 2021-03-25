@@ -1,1 +1,1 @@
-export { default } from './rangepicker';
+export { default } from "./rangepicker";

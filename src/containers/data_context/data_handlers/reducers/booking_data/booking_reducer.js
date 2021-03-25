@@ -9,7 +9,7 @@ import {
   SET_ROOMS_DATA,
   SET_ROOMS_LOADING,
   SET_ROOMS_REQUEST_PARAMS,
-} from './booking_actions';
+} from "./booking_actions";
 
 const EMPTY_ENTITY = {
   data: null,

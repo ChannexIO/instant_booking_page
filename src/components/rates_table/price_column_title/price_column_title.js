@@ -1,16 +1,13 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function PriceColumnTitle({ residenceTime }) {
   const { t } = useTranslation();
 
-  const priceColumnTitle = residenceTime > 1
-    ? t('rates_table:price_multiple_nights', { residenceTime })
-    : t('rates_table:price');
+  const priceColumnTitle =
+    residenceTime > 1
+      ? t("rates_table:price_multiple_nights", { residenceTime })
+      : t("rates_table:price");
 
-  return (
-    <>
-      {priceColumnTitle}
-    </>
-  );
+  return <>{priceColumnTitle}</>;
 }

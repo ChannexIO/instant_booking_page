@@ -1,25 +1,24 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { PaymentFormActionsContext } from 'containers/data_context';
+import { PaymentFormActionsContext } from "containers/data_context";
 
-import buildBooking from './utils/builld_booking';
-import BillingAddress from './billing_address';
-import CardCaptureForm from './card_capture_form';
-import CustomerInfo from './customer_info';
-import ErrorModal from './error_modal';
-import GuestInfo from './guest_info';
-import SubmitSection from './submit_section';
+import buildBooking from "./utils/builld_booking";
+import BillingAddress from "./billing_address";
+import CardCaptureForm from "./card_capture_form";
+import CustomerInfo from "./customer_info";
+import ErrorModal from "./error_modal";
+import GuestInfo from "./guest_info";
+import SubmitSection from "./submit_section";
 
-const getSchema = () => (
+const getSchema = () =>
   yup.object({
     customer: CustomerInfo.getSchema(),
     guest: GuestInfo.getSchema(),
     billingAddress: BillingAddress.getSchema(),
-  })
-);
+  });
 
 const EMPTY_CARD = {};
 
@@ -27,7 +26,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   const [cardInfo, setCardInfo] = useState(EMPTY_CARD);
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
   const paymentFormMethods = useForm({
-    mode: 'onChange',
+    mode: "onChange",
     resolver: yupResolver(getSchema()),
   });
   const captureFormRef = useRef();
@@ -66,32 +65,41 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
     setCardInfo(card);
   };
 
-  const handlePaymentFormSubmitted = useCallback(async (formData) => {
-    if (!cardInfo.cardToken) {
-      return;
-    }
+  const handlePaymentFormSubmitted = useCallback(
+    async (formData) => {
+      if (!cardInfo.cardToken) {
+        return;
+      }
 
-    const booking = buildBooking(property, rooms, params, cardInfo, formData);
+      const booking = buildBooking(property, rooms, params, cardInfo, formData);
 
-    try {
-      const bookingParams = await createBooking(channelId, booking);
+      try {
+        const bookingParams = await createBooking(channelId, booking);
 
-      onSuccess(bookingParams);
-    } catch (error) {
-      toggleErrorModal();
-      captureFormRef.current.resetSession();
-    }
-  }, [cardInfo, property, rooms, params, createBooking, channelId, onSuccess, toggleErrorModal]);
+        onSuccess(bookingParams);
+      } catch (error) {
+        toggleErrorModal();
+        captureFormRef.current.resetSession();
+      }
+    },
+    [cardInfo, property, rooms, params, createBooking, channelId, onSuccess, toggleErrorModal],
+  );
 
-  useEffect(function initSubmitHandler() {
-    setSubmitHandler(captureFormRef.current.validate);
-  }, [setSubmitHandler, captureFormRef]);
+  useEffect(
+    function initSubmitHandler() {
+      setSubmitHandler(captureFormRef.current.validate);
+    },
+    [setSubmitHandler, captureFormRef],
+  );
 
-  useEffect(function triggerPaymentFormSubmit() {
-    if (prevCardInfo !== cardInfo) {
-      paymentFormMethods.handleSubmit(handlePaymentFormSubmitted)();
-    }
-  }, [cardInfo, handlePaymentFormSubmitted, paymentFormMethods, prevCardInfo]);
+  useEffect(
+    function triggerPaymentFormSubmit() {
+      if (prevCardInfo !== cardInfo) {
+        paymentFormMethods.handleSubmit(handlePaymentFormSubmitted)();
+      }
+    },
+    [cardInfo, handlePaymentFormSubmitted, paymentFormMethods, prevCardInfo],
+  );
 
   return (
     <>
@@ -112,10 +120,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
         />
         <SubmitSection />
       </FormProvider>
-      <ErrorModal
-        visible={isErrorModalVisible}
-        onClose={toggleErrorModal}
-      />
+      <ErrorModal visible={isErrorModalVisible} onClose={toggleErrorModal} />
     </>
   );
 }
