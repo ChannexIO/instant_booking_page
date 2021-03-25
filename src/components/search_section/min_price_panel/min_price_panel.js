@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import ApiActions from 'api_actions';
+import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import ApiActions from "api_actions";
 
-import Currency from 'components/currency';
+import Currency from "components/currency";
 
-import { HOTEL_INFO_SECTION } from 'constants/element_ids';
-import scrollToElementById from 'utils/scroll_to_element_by_id';
+import { HOTEL_INFO_SECTION } from "constants/element_ids";
+import scrollToElementById from "utils/scroll_to_element_by_id";
 
-import styles from './min_price_panel.module.css';
+import styles from "./min_price_panel.module.css";
 
 const handleClick = (e) => {
   e.preventDefault();
@@ -41,25 +41,24 @@ export default function MinPricePanel({ channelId, params }) {
     }
   }, [channelId, currency, checkinDate, checkoutDate]);
 
-  useEffect(function callMinPriceUpdate() {
-    updateMinPriceParams();
-  }, [updateMinPriceParams]);
+  useEffect(
+    function callMinPriceUpdate() {
+      updateMinPriceParams();
+    },
+    [updateMinPriceParams],
+  );
 
   return (
-    <a
-      className={styles.minPriceContainer}
-      onClick={handleClick}
-      href="/"
-    >
+    <a className={styles.minPriceContainer} onClick={handleClick} href="/">
       {minPriceParams && (
         <div className={styles.minPriceContent}>
-          {t('hotel_page:price_from')}
+          {t("hotel_page:price_from")}
           <Currency
             className={styles.minPrice}
             amount={minPriceParams.offer}
             currency={minPriceParams.currency}
           />
-          {!hasEnteredDates && t('hotel_page:price_per_night')}
+          {!hasEnteredDates && t("hotel_page:price_per_night")}
         </div>
       )}
     </a>

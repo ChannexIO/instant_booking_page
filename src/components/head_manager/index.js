@@ -1,1 +1,1 @@
-export { default } from './head_manager';
+export { default } from "./head_manager";

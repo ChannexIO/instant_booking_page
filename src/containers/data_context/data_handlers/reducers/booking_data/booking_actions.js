@@ -1,18 +1,18 @@
-import { matchPath } from 'react-router-dom';
-import ApiActions from 'api_actions';
+import { matchPath } from "react-router-dom";
+import ApiActions from "api_actions";
 
-import routes from 'routing/routes';
+import routes from "routing/routes";
 
-export const SET_CHANNEL_ID = 'SET_CHANNEL_ID';
-export const SET_PROPERTY_LOADING = 'SET_PROPERTY_LOADING';
-export const SET_PROPERTY_DATA = 'SET_PROPERTY_DATA';
-export const SET_ROOMS_LOADING = 'SET_ROOMS_LOADING';
-export const SET_ROOMS_DATA = 'SET_ROOMS_DATA';
-export const SET_CLOSED_DATES_LOADING = 'SET_CLOSED_DATES_LOADING';
-export const SET_CLOSED_DATES_DATA = 'SET_CLOSED_DATES_DATA';
-export const SET_PARAMS = 'SET_PARAMS';
-export const SET_ROOMS_REQUEST_PARAMS = 'SET_ROOMS_REQUEST_PARAMS';
-export const RESET_PARAMS = 'RESET_PARAMS';
+export const SET_CHANNEL_ID = "SET_CHANNEL_ID";
+export const SET_PROPERTY_LOADING = "SET_PROPERTY_LOADING";
+export const SET_PROPERTY_DATA = "SET_PROPERTY_DATA";
+export const SET_ROOMS_LOADING = "SET_ROOMS_LOADING";
+export const SET_ROOMS_DATA = "SET_ROOMS_DATA";
+export const SET_CLOSED_DATES_LOADING = "SET_CLOSED_DATES_LOADING";
+export const SET_CLOSED_DATES_DATA = "SET_CLOSED_DATES_DATA";
+export const SET_PARAMS = "SET_PARAMS";
+export const SET_ROOMS_REQUEST_PARAMS = "SET_ROOMS_REQUEST_PARAMS";
+export const RESET_PARAMS = "RESET_PARAMS";
 
 const setChannelId = (dispatch, payload) => {
   return dispatch({ type: SET_CHANNEL_ID, payload });
@@ -77,7 +77,7 @@ const loadProperty = async (dispatch, channelId) => {
   } catch (error) {
     if (error.status === 404) {
       // TODO move exeptions to a separate file (if there will be more than 1-2)
-      throw Error('PROPERY_NOT_FOUND');
+      throw Error("PROPERY_NOT_FOUND");
     }
   }
 };

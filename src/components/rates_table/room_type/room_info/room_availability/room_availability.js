@@ -1,7 +1,7 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-import Alert from 'components/alert';
+import Alert from "components/alert";
 
 const MAX_AVAILABILITY_TO_SHOW = 3;
 
@@ -12,9 +12,7 @@ export default function RoomAvailability({ availability }) {
     return null;
   }
 
-  const availabilityAlertText = t('rates_table:room_availability', { availability });
+  const availabilityAlertText = t("rates_table:room_availability", { availability });
 
-  return (
-    <Alert text={availabilityAlertText} variant="error" />
-  );
+  return <Alert text={availabilityAlertText} variant="error" />;
 }

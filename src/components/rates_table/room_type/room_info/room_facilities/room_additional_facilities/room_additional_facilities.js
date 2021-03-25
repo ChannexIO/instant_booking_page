@@ -1,20 +1,20 @@
-import React, { useCallback, useState } from 'react';
-import { Accordion, Button } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import React, { useCallback, useState } from "react";
+import { Accordion, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
-import FacilitiesContainer from '../facilities_container';
+import FacilitiesContainer from "../facilities_container";
 
-import styles from './room_additional_facilities.module.css';
+import styles from "./room_additional_facilities.module.css";
 
 export default function RoomAdditionalFacilities({ facilities }) {
   const [isOpen, setOpenState] = useState(null);
   const { t } = useTranslation();
 
   const toggleOpen = useCallback(() => {
-    setOpenState(!isOpen ? '0' : null);
+    setOpenState(!isOpen ? "0" : null);
   }, [setOpenState, isOpen]);
 
-  const buttonText = isOpen ? t('rates_table:show_less') : t('rates_table:show_more');
+  const buttonText = isOpen ? t("rates_table:show_less") : t("rates_table:show_more");
 
   if (!facilities.length) {
     return null;
@@ -27,11 +27,7 @@ export default function RoomAdditionalFacilities({ facilities }) {
           <FacilitiesContainer facilities={facilities} />
         </Accordion.Collapse>
       </Accordion>
-      <Button
-        variant="link"
-        className={styles.toggleButton}
-        onClick={toggleOpen}
-      >
+      <Button variant="link" className={styles.toggleButton} onClick={toggleOpen}>
         {buttonText}
       </Button>
     </div>

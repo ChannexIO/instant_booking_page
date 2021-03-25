@@ -1,20 +1,24 @@
-import React, { useContext, useEffect } from 'react';
-import { Col } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useEffect } from "react";
+import { Col } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
-import BookinSummary from 'components/booking_summary';
-import Footer from 'components/footer';
-import Header from 'components/header';
-import SectionWrapper from 'components/layout/section_wrapper';
-import Loading from 'components/loading';
-import Navigation from 'components/navigation';
-import PaymentForm from 'components/payment_form';
+import BookinSummary from "components/booking_summary";
+import Footer from "components/footer";
+import Header from "components/header";
+import SectionWrapper from "components/layout/section_wrapper";
+import Loading from "components/loading";
+import Navigation from "components/navigation";
+import PaymentForm from "components/payment_form";
 
-import { AppActionsContext, BookingActionsContext, BookingDataContext } from 'containers/data_context';
+import {
+  AppActionsContext,
+  BookingActionsContext,
+  BookingDataContext,
+} from "containers/data_context";
 
-import routes from 'routing/routes';
+import routes from "routing/routes";
 
-import buildPath from 'utils/build_path';
+import buildPath from "utils/build_path";
 
 export default function PaymentPage() {
   const { property, params, roomsInfo, channelId } = useContext(BookingDataContext);
@@ -35,11 +39,14 @@ export default function PaymentPage() {
     history.push(confirmationPagePath);
   };
 
-  useEffect(function initApp() {
-    const savedBookingParams = bookingActions.getDataFromStorage();
+  useEffect(
+    function initApp() {
+      const savedBookingParams = bookingActions.getDataFromStorage();
 
-    init(channelId, bookingActions, savedBookingParams);
-  }, [bookingActions, channelId, init]);
+      init(channelId, bookingActions, savedBookingParams);
+    },
+    [bookingActions, channelId, init],
+  );
 
   if (!isPropertyPresent || !isRoomsPresent) {
     return <Loading />;
@@ -48,8 +55,8 @@ export default function PaymentPage() {
   return (
     <div>
       <Header property={propertyData} />
-      <SectionWrapper theme="dark" >
-        <Col xs="12" lg="8" >
+      <SectionWrapper theme="dark">
+        <Col xs="12" lg="8">
           <>
             <Navigation />
             <PaymentForm
@@ -61,12 +68,8 @@ export default function PaymentPage() {
             />
           </>
         </Col>
-        <Col xs="12" lg="4" >
-          <BookinSummary
-            property={propertyData}
-            rooms={roomsData}
-            params={params}
-          />
+        <Col xs="12" lg="4">
+          <BookinSummary property={propertyData} rooms={roomsData} params={params} />
         </Col>
       </SectionWrapper>
       <Footer property={propertyData} />

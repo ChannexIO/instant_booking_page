@@ -1,17 +1,17 @@
-import React, { useCallback, useContext } from 'react';
-import { Nav } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import React, { useCallback, useContext } from "react";
+import { Nav } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
-import { BookingDataContext } from 'containers/data_context';
+import { BookingDataContext } from "containers/data_context";
 
-import routes from 'routing/routes';
+import routes from "routing/routes";
 
-import buildPath from 'utils/build_path';
+import buildPath from "utils/build_path";
 
-import NavItem from './nav_item';
+import NavItem from "./nav_item";
 
-import styles from './navigation.module.css';
+import styles from "./navigation.module.css";
 
 export default function Navigation() {
   const { channelId } = useContext(BookingDataContext);
@@ -20,21 +20,21 @@ export default function Navigation() {
 
   const navRoutes = [
     {
-      eventKey: 'hotelPage',
+      eventKey: "hotelPage",
       match: useRouteMatch({ path: routes.hotelPage, strict: true }),
-      title: t('navigation:hotel_page'),
+      title: t("navigation:hotel_page"),
       clickable: true,
     },
     {
-      eventKey: 'paymentPage',
+      eventKey: "paymentPage",
       match: useRouteMatch({ path: routes.paymentPage, strict: true }),
-      title: t('navigation:payment_page'),
+      title: t("navigation:payment_page"),
       clickable: false,
     },
     {
-      eventKey: 'confirmationPage',
+      eventKey: "confirmationPage",
       match: useRouteMatch({ path: routes.confirmationPage, strict: true }),
-      title: t('navigation:confirmation_page'),
+      title: t("navigation:confirmation_page"),
       clickable: false,
     },
   ];
@@ -42,11 +42,14 @@ export default function Navigation() {
   const matchingRouteIndex = navRoutes.findIndex((route) => route.match?.isExact);
   const matchingRoute = navRoutes[matchingRouteIndex];
 
-  const handleSelect = useCallback((routeKey) => {
-    const redirectPath = buildPath(history.location.search, routes[routeKey], { channelId });
+  const handleSelect = useCallback(
+    (routeKey) => {
+      const redirectPath = buildPath(history.location.search, routes[routeKey], { channelId });
 
-    history.push(redirectPath);
-  }, [history, channelId]);
+      history.push(redirectPath);
+    },
+    [history, channelId],
+  );
 
   return (
     <Nav
@@ -57,15 +60,11 @@ export default function Navigation() {
     >
       {navRoutes.map((route, index) => {
         const isAfterActive = index > matchingRouteIndex;
-        const isOnConfirmationPage = matchingRoute.eventKey === 'confirmationPage';
+        const isOnConfirmationPage = matchingRoute.eventKey === "confirmationPage";
         const disabled = isAfterActive || isOnConfirmationPage;
 
         return (
-          <NavItem
-            key={route.eventKey}
-            eventKey={route.eventKey}
-            disabled={disabled}
-          >
+          <NavItem key={route.eventKey} eventKey={route.eventKey} disabled={disabled}>
             {route.title}
           </NavItem>
         );

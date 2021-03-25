@@ -1,1 +1,1 @@
-export { default } from './policies_breakdown';
+export { default } from "./policies_breakdown";

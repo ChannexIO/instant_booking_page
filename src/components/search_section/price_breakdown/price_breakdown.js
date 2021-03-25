@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import RoomPriceBreakdown from './room_price_breakdown';
-import TaxesBreakdown from './taxes_breakdown';
+import RoomPriceBreakdown from "./room_price_breakdown";
+import TaxesBreakdown from "./taxes_breakdown";
 
 export default function PriceBreakdown({ selectedRatesByRoom, currency }) {
   return (

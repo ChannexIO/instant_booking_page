@@ -1,1 +1,1 @@
-export { default } from './occupancy_settings';
+export { default } from "./occupancy_settings";

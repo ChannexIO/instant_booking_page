@@ -1,16 +1,16 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import moment from 'moment';
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import moment from "moment";
 
-import LoadingContainer from 'components/loading_container';
+import LoadingContainer from "components/loading_container";
 
-import { BookingActionsContext, BookingDataContext } from 'containers/data_context';
+import { BookingActionsContext, BookingDataContext } from "containers/data_context";
 
-import Placeholder from './placeholder';
-import RatesTableHeader from './rates_table_header';
-import ReloadContainer from './reload_container';
-import RoomType from './room_type';
+import Placeholder from "./placeholder";
+import RatesTableHeader from "./rates_table_header";
+import ReloadContainer from "./reload_container";
+import RoomType from "./room_type";
 
-import styles from './rates_table.module.css';
+import styles from "./rates_table.module.css";
 
 const DEFAULT_OCCUPANCY_PER_ROOM = {};
 
@@ -36,35 +36,48 @@ export default function RatesTable() {
   const { data: roomsData, isLoading } = roomsInfo;
   const isReloadDisabled = !moment(checkinDate).isValid() || !moment(checkoutDate).isValid();
 
-  const setRatesOccupancyPerRoom = useCallback((updatedOccupancy) => {
-    setParams({ ...params, ratesOccupancyPerRoom: updatedOccupancy });
-  }, [params, setParams]);
+  const setRatesOccupancyPerRoom = useCallback(
+    (updatedOccupancy) => {
+      setParams({ ...params, ratesOccupancyPerRoom: updatedOccupancy });
+    },
+    [params, setParams],
+  );
 
-  useEffect(function handleSearchParamsChange() {
-    const isCheckinDateChanged = params.checkinDate !== prevParams.checkinDate;
-    const isCheckoutDateChanged = params.checkoutDate !== prevParams.checkoutDate;
-    const isDatesChaged = isCheckinDateChanged || isCheckoutDateChanged;
+  useEffect(
+    function handleSearchParamsChange() {
+      const isCheckinDateChanged = params.checkinDate !== prevParams.checkinDate;
+      const isCheckoutDateChanged = params.checkoutDate !== prevParams.checkoutDate;
+      const isDatesChaged = isCheckinDateChanged || isCheckoutDateChanged;
 
-    const isCheckinDateMatchesLast = moment(roomRequestParams.checkinDate)
-      .isSame(params.checkinDate, 'day');
-    const isCheckoutDateMatchesLast = moment(roomRequestParams.checkoutDate)
-      .isSame(params.checkoutDate, 'day');
-    const isDatesMatchLastRequest = isCheckinDateMatchesLast && isCheckoutDateMatchesLast;
+      const isCheckinDateMatchesLast = moment(roomRequestParams.checkinDate).isSame(
+        params.checkinDate,
+        "day",
+      );
+      const isCheckoutDateMatchesLast = moment(roomRequestParams.checkoutDate).isSame(
+        params.checkoutDate,
+        "day",
+      );
+      const isDatesMatchLastRequest = isCheckinDateMatchesLast && isCheckoutDateMatchesLast;
 
-    if (isStale && isDatesMatchLastRequest) {
+      if (isStale && isDatesMatchLastRequest) {
+        setIsStale(false);
+        return;
+      }
+
+      if (isDatesChaged) {
+        setIsStale(true);
+        setParams({ ...params, ratesOccupancyPerRoom: {} });
+      }
+    },
+    [isStale, params, prevParams, roomRequestParams, setParams],
+  );
+
+  useEffect(
+    function handleRoomsInfoUpdate() {
       setIsStale(false);
-      return;
-    }
-
-    if (isDatesChaged) {
-      setIsStale(true);
-      setParams({ ...params, ratesOccupancyPerRoom: {} });
-    }
-  }, [isStale, params, prevParams, roomRequestParams, setParams]);
-
-  useEffect(function handleRoomsInfoUpdate() {
-    setIsStale(false);
-  }, [roomsInfo]);
+    },
+    [roomsInfo],
+  );
 
   if (!Array.isArray(roomsData)) {
     return null;
@@ -79,20 +92,24 @@ export default function RatesTable() {
             checkinDate={checkinDate}
             checkoutDate={checkoutDate}
           />
-          {roomsData.length ? roomsData.map((roomType, rowIndex) => (
-            <RoomType
-              disabled={isStale}
-              roomType={roomType}
-              currency={currency}
-              rowIndex={rowIndex}
-              checkinDate={checkinDate}
-              adultsOccupancy={adults}
-              childrenOccupancy={children}
-              key={roomType.id}
-              ratesOccupancyPerRoom={ratesOccupancyPerRoom}
-              onRatesOccupancyChange={setRatesOccupancyPerRoom}
-            />
-          )) : <Placeholder />}
+          {roomsData.length ? (
+            roomsData.map((roomType, rowIndex) => (
+              <RoomType
+                disabled={isStale}
+                roomType={roomType}
+                currency={currency}
+                rowIndex={rowIndex}
+                checkinDate={checkinDate}
+                adultsOccupancy={adults}
+                childrenOccupancy={children}
+                key={roomType.id}
+                ratesOccupancyPerRoom={ratesOccupancyPerRoom}
+                onRatesOccupancyChange={setRatesOccupancyPerRoom}
+              />
+            ))
+          ) : (
+            <Placeholder />
+          )}
         </div>
       </ReloadContainer>
     </LoadingContainer>

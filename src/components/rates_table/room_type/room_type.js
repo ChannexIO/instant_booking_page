@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import NoRatesPlaceholder from './no_rates_placeholder';
-import RatePlan from './rate_plan';
-import RoomInfo from './room_info';
+import NoRatesPlaceholder from "./no_rates_placeholder";
+import RatePlan from "./rate_plan";
+import RoomInfo from "./room_info";
 
-import styles from './room_type.module.css';
+import styles from "./room_type.module.css";
 
 const DEFAULT_ROOM_RATES = {};
 
@@ -30,29 +30,37 @@ export default function RoomType(props) {
     onRatesOccupancyChange({ ...ratesOccupancyPerRoom, [id]: updatedRatesOccupancy });
   };
 
-  useEffect(function updateAvailability() {
-    const updatedOccupiedSpaces = Object.values(roomRates).reduce((a, b) => a + b, 0);
+  useEffect(
+    function updateAvailability() {
+      const updatedOccupiedSpaces = Object.values(roomRates).reduce((a, b) => a + b, 0);
 
-    setOccupiedSpaces(updatedOccupiedSpaces);
-  }, [roomRates]);
+      setOccupiedSpaces(updatedOccupiedSpaces);
+    },
+    [roomRates],
+  );
 
-  useEffect(function updateRatesPlans() {
-    if (!Array.isArray(ratePlans)) {
-      return;
-    }
+  useEffect(
+    function updateRatesPlans() {
+      if (!Array.isArray(ratePlans)) {
+        return;
+      }
 
-    const ratesByOccupancyMatch = ratePlans.sort((a, b) => {
-      const aOccupancyMatchRating = Number(a.occupancy.children === childrenOccupancy)
-        + Number(a.occupancy.adults === adultsOccupancy);
+      const ratesByOccupancyMatch = ratePlans.sort((a, b) => {
+        const aOccupancyMatchRating =
+          Number(a.occupancy.children === childrenOccupancy) +
+          Number(a.occupancy.adults === adultsOccupancy);
 
-      const bOccupancyMatchRating = Number(b.occupancy.children === childrenOccupancy)
-        + Number(b.occupancy.adults === adultsOccupancy);
+        const bOccupancyMatchRating =
+          Number(b.occupancy.children === childrenOccupancy) +
+          Number(b.occupancy.adults === adultsOccupancy);
 
-      return bOccupancyMatchRating - aOccupancyMatchRating;
-    });
+        return bOccupancyMatchRating - aOccupancyMatchRating;
+      });
 
-    setSortedRates([...ratesByOccupancyMatch]);
-  }, [ratePlans, adultsOccupancy, childrenOccupancy]);
+      setSortedRates([...ratesByOccupancyMatch]);
+    },
+    [ratePlans, adultsOccupancy, childrenOccupancy],
+  );
 
   return (
     <div className={styles.roomContainer}>
@@ -74,10 +82,8 @@ export default function RoomType(props) {
             />
           );
         })}
-        {!sortedRates.length && (
-          <NoRatesPlaceholder />
-        )}
-        </div>
+        {!sortedRates.length && <NoRatesPlaceholder />}
       </div>
+    </div>
   );
 }

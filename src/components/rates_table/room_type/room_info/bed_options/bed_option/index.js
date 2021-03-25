@@ -1,1 +1,1 @@
-export { default } from './bed_option';
+export { default } from "./bed_option";

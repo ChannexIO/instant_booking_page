@@ -1,1 +1,1 @@
-export { default } from './caption';
+export { default } from "./caption";

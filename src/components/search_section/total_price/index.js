@@ -1,1 +1,1 @@
-export { default } from './total_price';
+export { default } from "./total_price";

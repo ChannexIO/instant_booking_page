@@ -1,1 +1,1 @@
-export { default } from './rate_price_breakdown';
+export { default } from "./rate_price_breakdown";

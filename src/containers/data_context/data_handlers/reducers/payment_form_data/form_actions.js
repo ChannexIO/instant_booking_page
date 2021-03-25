@@ -1,11 +1,11 @@
-import ApiActions from 'api_actions';
+import ApiActions from "api_actions";
 
-export const SET_SUBMITTED_VALUE = 'SET_SUBMITTED_VALUE';
-export const SET_ERRORS = 'SET_ERRORS';
-export const SET_FORM_SUBMITTING = 'SET_FORM_SUBMITTING';
-export const SET_FORM_SUBMIT_SUCCESS = 'SET_FORM_SUBMIT_SUCCESS';
-export const SET_FORM_SUBMIT_ERROR = 'SET_FORM_SUBMIT_ERROR';
-export const SET_SUBMIT_HANDLER = 'SET_SUBMIT_HANDLER';
+export const SET_SUBMITTED_VALUE = "SET_SUBMITTED_VALUE";
+export const SET_ERRORS = "SET_ERRORS";
+export const SET_FORM_SUBMITTING = "SET_FORM_SUBMITTING";
+export const SET_FORM_SUBMIT_SUCCESS = "SET_FORM_SUBMIT_SUCCESS";
+export const SET_FORM_SUBMIT_ERROR = "SET_FORM_SUBMIT_ERROR";
+export const SET_SUBMIT_HANDLER = "SET_SUBMIT_HANDLER";
 
 const setSubmittedValue = (dispatch, payload) => {
   return dispatch({ type: SET_SUBMITTED_VALUE, payload });

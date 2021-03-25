@@ -1,8 +1,8 @@
-import React, { createContext } from 'react';
+import React, { createContext } from "react";
 
-import useApp from './data_handlers/app';
-import useBooking from './data_handlers/booking';
-import usePaymentForm from './data_handlers/payment_form';
+import useApp from "./data_handlers/app";
+import useBooking from "./data_handlers/booking";
+import usePaymentForm from "./data_handlers/payment_form";
 
 const AppActionsContext = createContext();
 

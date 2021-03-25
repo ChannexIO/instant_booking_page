@@ -1,16 +1,14 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-import styles from './facility.module.css';
+import styles from "./facility.module.css";
 
 export default function Facility({ code }) {
   const { t } = useTranslation();
 
   return (
     <div className={styles.facility}>
-      <div className={styles.facilityTitle}>
-        {t(`facilities:${code}`)}
-      </div>
+      <div className={styles.facilityTitle}>{t(`facilities:${code}`)}</div>
     </div>
   );
 }

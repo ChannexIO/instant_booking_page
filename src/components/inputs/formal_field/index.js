@@ -1,1 +1,1 @@
-export { default } from './formal_field';
+export { default } from "./formal_field";

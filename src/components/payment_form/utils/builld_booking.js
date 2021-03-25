@@ -1,4 +1,4 @@
-import dateFormatter from 'utils/date_formatter';
+import dateFormatter from "utils/date_formatter";
 
 const formatCardInfo = (cardInfo) => {
   const { expirationMonth, expirationYear, serviceCode, ...rest } = cardInfo;
@@ -8,21 +8,22 @@ const formatCardInfo = (cardInfo) => {
 };
 
 const getGuestPool = (ratesOccupancyPerRoom, adults, children) => {
-  const totalSelectedRateAmount = Object.values(ratesOccupancyPerRoom)
-    .reduce((total, selectedRates) => {
-      const subtotal = Object.values(selectedRates)
-        .reduce((totalPerRoom, selected) => totalPerRoom + selected, 0);
+  const totalSelectedRateAmount = Object.values(ratesOccupancyPerRoom).reduce(
+    (total, selectedRates) => {
+      const subtotal = Object.values(selectedRates).reduce(
+        (totalPerRoom, selected) => totalPerRoom + selected,
+        0,
+      );
 
       return subtotal + total;
-    }, 0);
+    },
+    0,
+  );
 
-  const baseAdultsPool = adults < totalSelectedRateAmount
-    ? adults
-    : totalSelectedRateAmount;
+  const baseAdultsPool = adults < totalSelectedRateAmount ? adults : totalSelectedRateAmount;
 
-  const additionlAdultsPool = adults > totalSelectedRateAmount
-    ? adults - totalSelectedRateAmount
-    : 0;
+  const additionlAdultsPool =
+    adults > totalSelectedRateAmount ? adults - totalSelectedRateAmount : 0;
 
   const childrenPool = children;
 
@@ -47,18 +48,16 @@ const getRateOccupancy = (occupancy, guestPool) => {
   if (additionlAdultsPool > 0) {
     const adultSpacesToFill = occupancy.adults - adultsOccupancy;
 
-    const adultsToSpread = additionlAdultsPool > adultSpacesToFill
-      ? adultSpacesToFill
-      : additionlAdultsPool;
+    const adultsToSpread =
+      additionlAdultsPool > adultSpacesToFill ? adultSpacesToFill : additionlAdultsPool;
 
     adultsOccupancy += adultsToSpread;
     additionlAdultsPool -= adultsToSpread;
   }
 
   if (childrenPool > 0) {
-    const childrenSpacesToFill = childrenPool > occupancy.children
-      ? occupancy.children
-      : childrenPool;
+    const childrenSpacesToFill =
+      childrenPool > occupancy.children ? occupancy.children : childrenPool;
 
     childrenOccupancy += childrenSpacesToFill;
     childrenPool -= childrenSpacesToFill;
@@ -82,17 +81,11 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { additionalAddress, address, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
   const { currency } = property;
-  const {
-    ratesOccupancyPerRoom,
-    checkinDate,
-    checkoutDate,
-    adults,
-    children,
-  } = params;
+  const { ratesOccupancyPerRoom, checkinDate, checkoutDate, adults, children } = params;
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
   const guarantee = formatCardInfo(cardInfo);
-  const fullAddress = [address, additionalAddress].filter(Boolean).join(', ');
+  const fullAddress = [address, additionalAddress].filter(Boolean).join(", ");
 
   let guestPool = getGuestPool(ratesOccupancyPerRoom, adults, children);
 
@@ -104,17 +97,16 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
       const rateSelectedAmount = selectedRates[ratePlanCode];
       const { occupancy } = roomProps.ratePlans.find((rate) => ratePlanCode === rate.id);
 
-      const bookedRoomsPerRate = new Array(rateSelectedAmount).fill(null)
-        .map(() => {
-          const { rateOccupancy, updatedGuestPool } = getRateOccupancy(occupancy, guestPool);
-          guestPool = updatedGuestPool;
+      const bookedRoomsPerRate = new Array(rateSelectedAmount).fill(null).map(() => {
+        const { rateOccupancy, updatedGuestPool } = getRateOccupancy(occupancy, guestPool);
+        guestPool = updatedGuestPool;
 
-          return {
-            roomTypeCode,
-            ratePlanCode,
-            occupancy: rateOccupancy,
-          };
-        });
+        return {
+          roomTypeCode,
+          ratePlanCode,
+          occupancy: rateOccupancy,
+        };
+      });
 
       return [...acc, ...bookedRoomsPerRate];
     }, []);
@@ -125,7 +117,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   bookedRooms[0].guests = guest.list;
 
   const booking = {
-    status: 'new',
+    status: "new",
     currency,
     arrivalDate,
     departureDate,

@@ -1,7 +1,7 @@
-import caseConverter from 'utils/case_converter';
+import caseConverter from "utils/case_converter";
 
-import attributesExtractor from './attributes_extractor';
-import stringifyArguments from './stringify_arguments';
+import attributesExtractor from "./attributes_extractor";
+import stringifyArguments from "./stringify_arguments";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -47,8 +47,8 @@ const getRequestOptions = (method, params) => {
   const requestOptions = {
     method,
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
   };
 
@@ -84,10 +84,10 @@ const requestWithoutBodyParams = (method, apiUrl) => (path, queryParams) => {
 };
 
 export default {
-  get: requestWithoutBodyParams('GET', API_URL),
-  delete: requestWithoutBodyParams('DELETE', API_URL),
-  post: requestWithBodyParams('POST', API_URL),
-  put: requestWithBodyParams('PUT', API_URL),
-  patch: requestWithBodyParams('PATCH', API_URL),
-  options: requestWithBodyParams('OPTIONS', API_URL),
+  get: requestWithoutBodyParams("GET", API_URL),
+  delete: requestWithoutBodyParams("DELETE", API_URL),
+  post: requestWithBodyParams("POST", API_URL),
+  put: requestWithBodyParams("PUT", API_URL),
+  patch: requestWithBodyParams("PATCH", API_URL),
+  options: requestWithBodyParams("OPTIONS", API_URL),
 };

@@ -1,1 +1,1 @@
-export { default } from './new_booking_link';
+export { default } from "./new_booking_link";

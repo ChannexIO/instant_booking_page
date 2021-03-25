@@ -1,8 +1,8 @@
-import moment from 'moment';
-import currencies from 'world-currencies';
+import moment from "moment";
+import currencies from "world-currencies";
 
-import { DATE_FORMAT } from 'constants/formats';
-import getUrlParams from 'utils/get_url_params';
+import { DATE_FORMAT } from "constants/formats";
+import getUrlParams from "utils/get_url_params";
 
 const DEFAULT_PARAMS = {
   children: 0,
@@ -10,14 +10,7 @@ const DEFAULT_PARAMS = {
 };
 
 export default function getBookingParamsFromUrl() {
-  const {
-    currency,
-    checkinDate,
-    checkoutDate,
-    adults,
-    children,
-    childrenAge,
-  } = getUrlParams();
+  const { currency, checkinDate, checkoutDate, adults, children, childrenAge } = getUrlParams();
 
   const optionalParams = DEFAULT_PARAMS;
 
@@ -25,21 +18,20 @@ export default function getBookingParamsFromUrl() {
   const parsedEndDate = moment(checkoutDate, DATE_FORMAT);
 
   if (checkinDate && parsedStartDate.isValid()) {
-    const isCheckinAfterCurrent = moment().isSameOrBefore(parsedStartDate, 'day');
+    const isCheckinAfterCurrent = moment().isSameOrBefore(parsedStartDate, "day");
 
     optionalParams.checkinDate = isCheckinAfterCurrent ? parsedStartDate : null;
   }
 
   if (checkoutDate && parsedEndDate.isValid()) {
     const { checkinDate: parsedCheckinDate } = optionalParams;
-    const isCheckoutValid = parsedCheckinDate && parsedCheckinDate.isBefore(parsedEndDate, 'day');
+    const isCheckoutValid = parsedCheckinDate && parsedCheckinDate.isBefore(parsedEndDate, "day");
 
     optionalParams.checkoutDate = isCheckoutValid ? parsedEndDate : null;
   }
 
   if (childrenAge) {
-    const processedChildrenAge = childrenAge.split(',')
-      .map((val) => (val ? Number(val) : null));
+    const processedChildrenAge = childrenAge.split(",").map((val) => (val ? Number(val) : null));
 
     optionalParams.childrenAge = processedChildrenAge;
   }
@@ -59,5 +51,5 @@ export default function getBookingParamsFromUrl() {
     optionalParams.currency = currency;
   }
 
-  return ({ ...optionalParams });
+  return { ...optionalParams };
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-import Caption from 'components/caption';
-import Currency from 'components/currency';
+import Caption from "components/caption";
+import Currency from "components/currency";
 
 export default function RatePriceBreakdown({ ratePlan, currency }) {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ export default function RatePriceBreakdown({ ratePlan, currency }) {
   return (
     <Caption>
       <Currency amount={pricePerNight} currency={currency} />
-      {` × ${amount} ${t('hotel_page:rooms')} × ${lengthOfStay} ${t('hotel_page:nights')}`}
+      {` × ${amount} ${t("hotel_page:rooms")} × ${lengthOfStay} ${t("hotel_page:nights")}`}
     </Caption>
   );
 }

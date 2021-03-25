@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import ActionButton from '../action_button';
-import MissingSpaces from '../missing_spaces';
-import PriceBreakdown from '../price_breakdown';
-import TotalPrice from '../total_price';
+import ActionButton from "../action_button";
+import MissingSpaces from "../missing_spaces";
+import PriceBreakdown from "../price_breakdown";
+import TotalPrice from "../total_price";
 
 export default function Summary(props) {
   const {
@@ -24,7 +24,7 @@ export default function Summary(props) {
         <>
           <PriceBreakdown selectedRatesByRoom={selectedRatesByRoom} currency={currency} />
           <TotalPrice totalPrice={totalPrice} currency={currency} />
-          <MissingSpaces missingSpaces={missingSpaces}/>
+          <MissingSpaces missingSpaces={missingSpaces} />
         </>
       )}
       <ActionButton

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
-import Alert from 'components/alert';
+import Alert from "components/alert";
 
-import { BookingDataContext } from 'containers/data_context';
+import { BookingDataContext } from "containers/data_context";
 
 export default function CurrencyConversionWarning() {
   const { property, params } = useContext(BookingDataContext);
@@ -18,6 +18,9 @@ export default function CurrencyConversionWarning() {
   }
 
   return (
-    <Alert text={t('payment_page:currency_convertion_alert', { currency: originalCurrency })} variant="error"/>
+    <Alert
+      text={t("payment_page:currency_convertion_alert", { currency: originalCurrency })}
+      variant="error"
+    />
   );
 }

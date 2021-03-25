@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './caption.module.css';
+import styles from "./caption.module.css";
 
 const CAPTION_VARIANTS = {
   right: styles.captionRight,
@@ -16,9 +16,5 @@ export default function Caption({ children, variant }) {
     captionClasses.push(modifierClass);
   }
 
-  return (
-    <div className={captionClasses.join(' ')}>
-      {children}
-    </div>
-  );
+  return <div className={captionClasses.join(" ")}>{children}</div>;
 }

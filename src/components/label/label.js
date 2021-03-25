@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import styles from './label.module.css';
+import styles from "./label.module.css";
 
 export default function Label({ className, children }) {
-  return (
-    <div className={[styles.label, className].join(' ')}>
-      {children}
-    </div>
-  );
+  return <div className={[styles.label, className].join(" ")}>{children}</div>;
 }
