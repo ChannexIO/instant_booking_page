@@ -1,1 +1,1 @@
-export { default } from './occupancy_settings_form';
+export { default } from "./occupancy_settings_form";

@@ -1,13 +1,13 @@
-import React, { forwardRef } from 'react';
-import { Form } from 'react-bootstrap';
+import React, { forwardRef } from "react";
+import { Form } from "react-bootstrap";
 
-import Label from 'components/label';
-import FieldWrapper from 'components/layout/field_wrapper';
+import Label from "components/label";
+import FieldWrapper from "components/layout/field_wrapper";
 
-import styles from './text_area.module.css';
+import styles from "./text_area.module.css";
 
 function TextArea(props, ref) {
-  const { value = '', label, rows, placeholder, text, meta = {}, onChange } = props;
+  const { value = "", label, rows, placeholder, text, meta = {}, onChange } = props;
   const { valid = {} } = meta;
 
   return (
@@ -15,9 +15,7 @@ function TextArea(props, ref) {
       <Form.Group>
         {label && (
           <Form.Label>
-            <Label>
-              {label}
-            </Label>
+            <Label>{label}</Label>
           </Form.Label>
         )}
         <Form.Control
@@ -30,11 +28,7 @@ function TextArea(props, ref) {
           isInvalid={!valid}
           onChange={onChange}
         />
-        {text && (
-          <Form.Text>
-            {text}
-          </Form.Text>
-        )}
+        {text && <Form.Text>{text}</Form.Text>}
       </Form.Group>
     </FieldWrapper>
   );

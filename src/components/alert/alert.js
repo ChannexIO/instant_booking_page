@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './alert.module.css';
+import styles from "./alert.module.css";
 
 const ALERT_VARIANTS = {
   error: styles.error,
@@ -17,10 +17,8 @@ export default function Alert({ text, variant }) {
   }
 
   return (
-    <div className={alertClasses.join(' ')}>
-      <div>
-        {text}
-      </div>
+    <div className={alertClasses.join(" ")}>
+      <div>{text}</div>
     </div>
   );
 }

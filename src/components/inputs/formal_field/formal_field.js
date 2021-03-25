@@ -1,13 +1,13 @@
-import React from 'react';
-import { Controller } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
+import React from "react";
+import { Controller } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
-import FieldError from './field_error';
+import FieldError from "./field_error";
 
-import styles from './formal_field.module.css';
+import styles from "./formal_field.module.css";
 
 export default function FormalField(props) {
-  const { name, defaultValue = '' } = props;
+  const { name, defaultValue = "" } = props;
 
   return (
     <div className={styles.container}>

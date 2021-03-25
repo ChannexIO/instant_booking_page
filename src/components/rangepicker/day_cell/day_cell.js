@@ -1,17 +1,17 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef } from "react";
 
-import LengthOfStayTooltip from './length_of_stay_tooltip';
+import LengthOfStayTooltip from "./length_of_stay_tooltip";
 
-import styles from './day_cell.module.css';
+import styles from "./day_cell.module.css";
 
 const CALENDAR_DAY_STYLE_MODIFICATORS = {
   valid: styles.dayCellValid,
   blocked: styles.dayCellBlocked,
-  'blocked-out-of-range': styles.dayCellBlockedOutOfRange,
-  'selected-start': styles.dayCellSelectedStart,
-  'selected-end': styles.dayCellSelectedEnd,
-  'selected-span': styles.dayCellSelectedSpan,
-  'hovered-span': styles.dayCellHoveredSpan,
+  "blocked-out-of-range": styles.dayCellBlockedOutOfRange,
+  "selected-start": styles.dayCellSelectedStart,
+  "selected-end": styles.dayCellSelectedEnd,
+  "selected-span": styles.dayCellSelectedSpan,
+  "hovered-span": styles.dayCellHoveredSpan,
 };
 
 const DEFAULT_MODIFIERS = new Set();
@@ -31,7 +31,7 @@ export default function DayCell(props) {
 
   const dayStyling = [styles.dayCell];
 
-  const isSelectedStart = modifiers && modifiers.has('selected-start');
+  const isSelectedStart = modifiers && modifiers.has("selected-start");
   const isTooltipShown = isSelectedStart && minStayLength >= MIN_STAY_TO_SHOW;
 
   modifiers.forEach((modifier) => dayStyling.push(CALENDAR_DAY_STYLE_MODIFICATORS[modifier]));
@@ -48,12 +48,12 @@ export default function DayCell(props) {
     <td
       ref={containerRef}
       role="presentation"
-      className={dayStyling.join(' ')}
+      className={dayStyling.join(" ")}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      {day.format('D')}
+      {day.format("D")}
       <LengthOfStayTooltip
         show={isTooltipShown}
         minStayLength={minStayLength}

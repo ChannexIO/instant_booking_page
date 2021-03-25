@@ -1,8 +1,12 @@
-import { useReducer } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useReducer } from "react";
+import { useLocation } from "react-router-dom";
 
-import { actions, INITIAL_STATE, reducer } from './reducers/booking_data';
-import { clearSavedState, getSavedState, setSavedState } from './reducers/booking_data/utils/manage_saved_state';
+import { actions, INITIAL_STATE, reducer } from "./reducers/booking_data";
+import {
+  clearSavedState,
+  getSavedState,
+  setSavedState,
+} from "./reducers/booking_data/utils/manage_saved_state";
 
 export default () => {
   const [bookingData, dispatch] = useReducer(reducer, INITIAL_STATE);

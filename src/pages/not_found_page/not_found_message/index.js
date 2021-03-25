@@ -1,1 +1,1 @@
-export { default } from './not_found_message';
+export { default } from "./not_found_message";

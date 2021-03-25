@@ -1,6 +1,6 @@
-import dateFormatter from 'utils/date_formatter';
+import dateFormatter from "utils/date_formatter";
 
-import transport from './utils/transport';
+import transport from "./utils/transport";
 
 const PATH_PREFIX = `/api/v1/meta/${process.env.REACT_APP_CHANNEL_CODE}`;
 

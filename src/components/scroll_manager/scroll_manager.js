@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ScrollManager() {
   const { pathname } = useLocation();
 
-  useEffect(function handlePageChange() {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useEffect(
+    function handlePageChange() {
+      window.scrollTo(0, 0);
+    },
+    [pathname],
+  );
 
   return null;
 }

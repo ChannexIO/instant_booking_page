@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Map from './map';
+import Map from "./map";
 
-import styles from './map_section.module.css';
+import styles from "./map_section.module.css";
 
 export default function MapSection({ property }) {
   const { location } = property;

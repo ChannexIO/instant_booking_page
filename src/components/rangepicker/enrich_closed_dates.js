@@ -1,6 +1,6 @@
-import moment from 'moment';
+import moment from "moment";
 
-import { DATE_API_FORMAT } from 'constants/formats';
+import { DATE_API_FORMAT } from "constants/formats";
 
 const convertToHashmap = (array) => array.reduce((acc, key) => ({ ...acc, [key]: true }), {});
 
@@ -10,7 +10,9 @@ const buildRangeBlockedHash = (closedHash, rangeRestrictions) => {
 
     const affectedRange = new Array(restrictionValue)
       .fill(null)
-      .map((_value, index) => moment(key, DATE_API_FORMAT).add(index, 'day').format(DATE_API_FORMAT));
+      .map((_value, index) =>
+        moment(key, DATE_API_FORMAT).add(index, "day").format(DATE_API_FORMAT),
+      );
 
     affectedRange.pop(); // reduce range by one because closed date could be used for checkout;
 

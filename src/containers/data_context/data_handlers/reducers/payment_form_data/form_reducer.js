@@ -5,7 +5,7 @@ import {
   SET_FORM_SUBMITTING,
   SET_SUBMIT_HANDLER,
   SET_SUBMITTED_VALUE,
-} from './form_actions';
+} from "./form_actions";
 
 const DEFAULT_ERRORS = {};
 

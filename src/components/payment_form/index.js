@@ -1,1 +1,1 @@
-export { default } from './payment_form';
+export { default } from "./payment_form";

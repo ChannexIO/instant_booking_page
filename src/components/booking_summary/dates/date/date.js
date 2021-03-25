@@ -1,27 +1,26 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-import Label from 'components/label';
+import Label from "components/label";
 
-import IconCheckIn from 'static/icons-checkin.svg';
-import IconCheckOut from 'static/icons-checkout.svg';
+import IconCheckIn from "static/icons-checkin.svg";
+import IconCheckOut from "static/icons-checkout.svg";
+import styles from "./date.module.css";
 
-import styles from './date.module.css';
-
-const DATE_FORMAT = 'DD MMM';
-const CHECKIN_DATE = 'checkin';
+const DATE_FORMAT = "DD MMM";
+const CHECKIN_DATE = "checkin";
 
 export default function Date({ date, type = CHECKIN_DATE }) {
   const { t } = useTranslation();
 
   const dateConfig = {
     checkin: {
-      label: t('payment_page:booking_summary:check_in'),
+      label: t("payment_page:booking_summary:check_in"),
       className: styles.dateFrom,
       iconSrc: IconCheckIn,
     },
     checkout: {
-      label: t('payment_page:booking_summary:check_out'),
+      label: t("payment_page:booking_summary:check_out"),
       className: styles.dateTo,
       iconSrc: IconCheckOut,
     },
@@ -35,19 +34,11 @@ export default function Date({ date, type = CHECKIN_DATE }) {
 
   return (
     <div className={styles.datesFromTo}>
-      <Label>
-        {dateParams.label}
-      </Label>
+      <Label>{dateParams.label}</Label>
       <div className={dateParams.className}>
-        <img
-          className={styles.icon}
-          src={dateParams.iconSrc}
-          alt={type}
-        />
+        <img className={styles.icon} src={dateParams.iconSrc} alt={type} />
         <div>
-          <strong>
-            {date.format(DATE_FORMAT)}
-          </strong>
+          <strong>{date.format(DATE_FORMAT)}</strong>
         </div>
       </div>
     </div>

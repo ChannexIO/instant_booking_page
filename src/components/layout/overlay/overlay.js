@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './overlay.module.css';
+import styles from "./overlay.module.css";
 
 export default function Overlay({ active, children }) {
   const overlayStyle = [styles.overlay];
@@ -10,10 +10,8 @@ export default function Overlay({ active, children }) {
   }
 
   return (
-    <div className={overlayStyle.join(' ')}>
-      <div className={styles.overlayContent}>
-        {children}
-      </div>
+    <div className={overlayStyle.join(" ")}>
+      <div className={styles.overlayContent}>{children}</div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import React from "react";
+import { Button } from "react-bootstrap";
+import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
-import styles from './integer_input.module.css';
+import styles from "./integer_input.module.css";
 
 export default function IntegerInput(props) {
   const { label, value, name, maxValue = null, minValue = null, onChange } = props;
@@ -14,9 +14,7 @@ export default function IntegerInput(props) {
 
   return (
     <div className={styles.container}>
-      {label && (
-        <div className={styles.label}>{label}</div>
-      )}
+      {label && <div className={styles.label}>{label}</div>}
       <div className={styles.input}>
         <Button
           className={styles.decreaseButton}

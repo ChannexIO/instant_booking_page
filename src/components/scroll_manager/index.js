@@ -1,1 +1,1 @@
-export { default } from './scroll_manager';
+export { default } from "./scroll_manager";

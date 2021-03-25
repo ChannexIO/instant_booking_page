@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import FacilitiesContainer from './facilities_container';
-import AdditionalFacilities from './room_additional_facilities';
+import FacilitiesContainer from "./facilities_container";
+import AdditionalFacilities from "./room_additional_facilities";
 
 const FACILITIES_SHOWN_BY_DEFAULT = 4;
 

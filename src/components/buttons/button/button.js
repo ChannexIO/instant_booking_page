@@ -1,9 +1,16 @@
-import React from 'react';
-import { Button as BootstrapButton, Spinner } from 'react-bootstrap';
+import React from "react";
+import { Button as BootstrapButton, Spinner } from "react-bootstrap";
 
-import styles from './button.module.css';
+import styles from "./button.module.css";
 
-export default function Button({ children, variant = 'primary', loading, disabled, className, onClick }) {
+export default function Button({
+  children,
+  variant = "primary",
+  loading,
+  disabled,
+  className,
+  onClick,
+}) {
   const buttonStyles = [styles.button];
 
   if (className) {
@@ -13,12 +20,12 @@ export default function Button({ children, variant = 'primary', loading, disable
   return (
     <BootstrapButton
       variant={variant}
-      className={buttonStyles.join(' ')}
+      className={buttonStyles.join(" ")}
       disabled={loading || disabled}
       onClick={onClick}
     >
       <>
-        {loading && <Spinner animation="border" size="sm" className={styles.spinner}/>}
+        {loading && <Spinner animation="border" size="sm" className={styles.spinner} />}
         {children}
       </>
     </BootstrapButton>

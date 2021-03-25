@@ -13,18 +13,17 @@ const prepareKey = (key, prefix) => {
 };
 
 const convertArgsToString = (args, prefix = null) => {
-  return Object
-    .keys(args)
+  return Object.keys(args)
     .reduce((acc, key) => {
       acc.push(prepareArgument(args, key, prefix));
       return acc;
     }, [])
-    .join('&');
+    .join("&");
 };
 
 const stringifyArgumentValue = (argValue) => {
   if (Array.isArray(argValue)) {
-    return argValue.map(encodeURIComponent).join(',');
+    return argValue.map(encodeURIComponent).join(",");
   }
 
   return encodeURIComponent(argValue);
@@ -44,7 +43,7 @@ const prepareArgument = (args, key, prefix) => {
 };
 
 const checkIsPlainObject = (value) => {
-  return value && typeof value === 'object' && !Array.isArray(value);
+  return value && typeof value === "object" && !Array.isArray(value);
 };
 
 const stringifyArguments = (args) => {
@@ -54,9 +53,9 @@ const stringifyArguments = (args) => {
   if (isArgsPlainObject) {
     const stringifiedArgs = convertArgsToString(args);
 
-    query = stringifiedArgs.length > 1 ? `?${convertArgsToString(args)}` : '';
+    query = stringifiedArgs.length > 1 ? `?${convertArgsToString(args)}` : "";
   } else {
-    query = '';
+    query = "";
   }
 
   return query;

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import React from "react";
+import { Button } from "react-bootstrap";
 
-import styles from './link_button.module.css';
+import styles from "./link_button.module.css";
 
 export default function LinkButton({ children, disabled, className, onClick }) {
   const buttonStyles = [styles.button];
@@ -11,12 +11,7 @@ export default function LinkButton({ children, disabled, className, onClick }) {
   }
 
   return (
-    <Button
-      className={buttonStyles.join(' ')}
-      variant="link"
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <Button className={buttonStyles.join(" ")} variant="link" disabled={disabled} onClick={onClick}>
       {children}
     </Button>
   );

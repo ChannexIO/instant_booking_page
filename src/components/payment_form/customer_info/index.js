@@ -1,4 +1,4 @@
-import { CustomerInfo, getSchema } from './customer_info';
+import { CustomerInfo, getSchema } from "./customer_info";
 
 const CustomerInfoForm = {
   Form: CustomerInfo,

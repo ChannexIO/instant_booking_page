@@ -1,1 +1,1 @@
-export { default } from './price_column_title';
+export { default } from "./price_column_title";

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './policy_section.module.css';
+import styles from "./policy_section.module.css";
 
 export default function PolicySection({ title, text }) {
   return (

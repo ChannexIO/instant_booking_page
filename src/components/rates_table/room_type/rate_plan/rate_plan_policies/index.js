@@ -1,1 +1,1 @@
-export { default } from './rate_plan_policies';
+export { default } from "./rate_plan_policies";

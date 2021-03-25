@@ -1,8 +1,12 @@
-import moment from 'moment';
+import moment from "moment";
 
-import { getFromStorage, removeFromStorage, setToStorage } from 'containers/data_context/utils/session_storage_manager';
+import {
+  getFromStorage,
+  removeFromStorage,
+  setToStorage,
+} from "containers/data_context/utils/session_storage_manager";
 
-import { BOOKING_PARAMS } from 'constants/storage_keys';
+import { BOOKING_PARAMS } from "constants/storage_keys";
 
 export function getSavedState() {
   const savedState = getFromStorage(BOOKING_PARAMS);

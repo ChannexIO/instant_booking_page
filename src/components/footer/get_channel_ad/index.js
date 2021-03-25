@@ -1,1 +1,1 @@
-export { default } from './get_channel_ad';
+export { default } from "./get_channel_ad";

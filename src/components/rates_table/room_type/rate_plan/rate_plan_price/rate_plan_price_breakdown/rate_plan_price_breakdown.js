@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
-import { Popover } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import React, { forwardRef } from "react";
+import { Popover } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
-import Currency from 'components/currency';
+import Currency from "components/currency";
 
-import styles from './rate_plan_price_breakdown.module.css';
+import styles from "./rate_plan_price_breakdown.module.css";
 
 const DECIMAL_PLACES = 2;
 
@@ -13,7 +13,7 @@ function RatePlanPriceBreakdown({ ratePlan, currency, className, ...popoverProps
   const { totalPrice, netPrice, lengthOfStay, taxes } = ratePlan;
 
   const perNightPrice = (Number(netPrice) / lengthOfStay).toFixed(DECIMAL_PLACES);
-  const popoverClassName = [className, styles.popover].join(' ');
+  const popoverClassName = [className, styles.popover].join(" ");
 
   return (
     <Popover
@@ -37,12 +37,8 @@ function RatePlanPriceBreakdown({ ratePlan, currency, className, ...popoverProps
             <Currency currency={currency} amount={tax.amount} />
           </div>
         ))}
-        <span className={styles.totalLabel}>{t('rates_table:total_price')}</span>
-        <Currency
-          className={styles.totalPrice}
-          currency={currency}
-          amount={totalPrice}
-        />
+        <span className={styles.totalLabel}>{t("rates_table:total_price")}</span>
+        <Currency className={styles.totalPrice} currency={currency} amount={totalPrice} />
       </Popover.Content>
     </Popover>
   );

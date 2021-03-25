@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import BedOption from './bed_option';
+import BedOption from "./bed_option";
 
-import styles from './bed_options.module.css';
+import styles from "./bed_options.module.css";
 
 export default function BedOptions({ bedOptions }) {
   if (!Array.isArray(bedOptions)) {
@@ -12,12 +12,7 @@ export default function BedOptions({ bedOptions }) {
   return (
     <div className={styles.bedOptionsContainer}>
       {bedOptions.map(({ title, count, size }) => (
-        <BedOption
-          key={`${title}_${size}`}
-          title={title}
-          count={count}
-          size={size}
-        />
+        <BedOption key={`${title}_${size}`} title={title} count={count} size={size} />
       ))}
     </div>
   );

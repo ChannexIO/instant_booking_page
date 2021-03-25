@@ -1,1 +1,1 @@
-export { default } from './room_price_breakdown';
+export { default } from "./room_price_breakdown";

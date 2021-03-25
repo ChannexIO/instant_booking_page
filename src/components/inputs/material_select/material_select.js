@@ -1,12 +1,12 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
-import { Dropdown, Form } from 'react-bootstrap';
+import React, { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import { Dropdown, Form } from "react-bootstrap";
 
-import Label from 'components/label';
-import FieldWrapper from 'components/layout/field_wrapper';
+import Label from "components/label";
+import FieldWrapper from "components/layout/field_wrapper";
 
-import SelectDropdown from '../select_dropdown';
+import SelectDropdown from "../select_dropdown";
 
-import styles from './material_select.module.css';
+import styles from "./material_select.module.css";
 
 const DEFAULT_OPTIONS = [];
 
@@ -25,7 +25,7 @@ const MaterialSelect = forwardRef((props, ref) => {
   } = props;
   const { valid = true } = meta;
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [valueToDisplay, setValueToDisplay] = useState(null);
   const searchInputRef = useRef(null);
 
@@ -36,38 +36,46 @@ const MaterialSelect = forwardRef((props, ref) => {
   }
 
   const getOptions = useCallback(() => {
-    return options
-      .filter((option) => {
-        const formattedSearchQuery = searchQuery.toLowerCase();
-        const optionValueFormatted = String(option.value).toLowerCase();
+    return options.filter((option) => {
+      const formattedSearchQuery = searchQuery.toLowerCase();
+      const optionValueFormatted = String(option.value).toLowerCase();
 
-        return optionValueFormatted.includes(formattedSearchQuery);
-      });
+      return optionValueFormatted.includes(formattedSearchQuery);
+    });
   }, [searchQuery, options]);
 
-  useEffect(function updateActiveValueToDisplay() {
-    const newActiveOption = options.find((option) => option.key === value) || {};
-    const { value: newValueToDisplay = placeholder } = newActiveOption;
+  useEffect(
+    function updateActiveValueToDisplay() {
+      const newActiveOption = options.find((option) => option.key === value) || {};
+      const { value: newValueToDisplay = placeholder } = newActiveOption;
 
-    setValueToDisplay(newValueToDisplay);
-  }, [value, options, placeholder]);
+      setValueToDisplay(newValueToDisplay);
+    },
+    [value, options, placeholder],
+  );
 
-  const handleChange = useCallback((newValue, event) => {
-    setValueToDisplay(event.target.text);
-    onChange(newValue, name);
-  }, [onChange, name]);
+  const handleChange = useCallback(
+    (newValue, event) => {
+      setValueToDisplay(event.target.text);
+      onChange(newValue, name);
+    },
+    [onChange, name],
+  );
   // TODO - fix height change when active
 
   const handleSelectToggle = useCallback(() => {
     setIsOpen(!isOpen);
-    setSearchQuery('');
+    setSearchQuery("");
   }, [isOpen]);
 
-  useEffect(function handleVisibilityChange() {
-    if (isOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [searchInputRef, isOpen]);
+  useEffect(
+    function handleVisibilityChange() {
+      if (isOpen && searchInputRef.current) {
+        searchInputRef.current.focus();
+      }
+    },
+    [searchInputRef, isOpen],
+  );
 
   const handleSearchInput = (e) => {
     setSearchQuery(e.target.value);
@@ -77,9 +85,7 @@ const MaterialSelect = forwardRef((props, ref) => {
     <FieldWrapper>
       <Form.Group>
         <Form.Label>
-          <Label>
-            {label}
-          </Label>
+          <Label>{label}</Label>
         </Form.Label>
         <Dropdown
           show={isOpen}
@@ -88,7 +94,7 @@ const MaterialSelect = forwardRef((props, ref) => {
           onSelect={handleChange}
           onToggle={handleSelectToggle}
         >
-          <Dropdown.Toggle disabled={disabled} className={toggleClasses.join(' ')}>
+          <Dropdown.Toggle disabled={disabled} className={toggleClasses.join(" ")}>
             {valueToDisplay}
           </Dropdown.Toggle>
           <SelectDropdown
@@ -100,9 +106,7 @@ const MaterialSelect = forwardRef((props, ref) => {
             onChange={handleSearchInput}
           />
         </Dropdown>
-        <Form.Text>
-          {text}
-        </Form.Text>
+        <Form.Text>{text}</Form.Text>
       </Form.Group>
     </FieldWrapper>
   );

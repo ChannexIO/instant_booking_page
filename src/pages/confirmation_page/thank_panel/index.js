@@ -1,1 +1,1 @@
-export { default } from './thank_panel';
+export { default } from "./thank_panel";

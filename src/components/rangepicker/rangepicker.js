@@ -1,33 +1,33 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { DateRangePicker } from 'react-dates';
-import { useMedia } from 'react-media';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import moment from 'moment';
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { DateRangePicker } from "react-dates";
+import { useMedia } from "react-media";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import moment from "moment";
 
-import Label from 'components/label';
+import Label from "components/label";
 
-import { BookingDataContext } from 'containers/data_context';
+import { BookingDataContext } from "containers/data_context";
 
-import { DATE_API_FORMAT, DATE_UI_FORMAT } from 'constants/formats';
-import MEDIA_QUERIES from 'constants/media_queries';
+import { DATE_API_FORMAT, DATE_UI_FORMAT } from "constants/formats";
+import MEDIA_QUERIES from "constants/media_queries";
 
-import DayCell from './day_cell';
-import enrichClosedDates from './enrich_closed_dates';
-import InfoSection from './info_section';
+import DayCell from "./day_cell";
+import enrichClosedDates from "./enrich_closed_dates";
+import InfoSection from "./info_section";
 
-import 'react-dates/lib/css/_datepicker.css';
-import styles from './rangepicker.module.css';
+import "react-dates/lib/css/_datepicker.css";
+import styles from "./rangepicker.module.css";
 
-import 'react-dates/initialize';
+import "react-dates/initialize";
 
 const OPEN_DIRECTIONS = {
-  up: 'up',
-  down: 'down',
+  up: "up",
+  down: "down",
 };
 
 const MIN_STAY_LENGTH = 1;
-const START_DATE_INPUT = 'startDate';
-const END_DATE_INPUT = 'endDate';
+const START_DATE_INPUT = "startDate";
+const END_DATE_INPUT = "endDate";
 
 const getMinStayLength = (closedDates, checkinDate) => {
   if (!checkinDate || !closedDates.data) {
@@ -46,7 +46,7 @@ export default function RangePicker(props) {
   const {
     checkinDate,
     checkoutDate,
-    name = '',
+    name = "",
     checkinDatePlaceholder,
     checkinDateLabel,
     checkoutDatePlaceholder,
@@ -64,63 +64,78 @@ export default function RangePicker(props) {
   const isMobile = matchedQueries.xs;
   const numberOfMonths = matchedQueries.xs || matchedQueries.sm ? 1 : 2;
 
-  const getIsClosedToArrival = useCallback((day, formattedDay) => {
-    const { closedToArrivalHash } = hashedClosedDates;
+  const getIsClosedToArrival = useCallback(
+    (day, formattedDay) => {
+      const { closedToArrivalHash } = hashedClosedDates;
 
-    return closedToArrivalHash[formattedDay];
-  }, [hashedClosedDates]);
+      return closedToArrivalHash[formattedDay];
+    },
+    [hashedClosedDates],
+  );
 
-  const getIsClosedToDeparture = useCallback((day, formattedDay) => {
-    const { closedToDepartureHash, closed } = hashedClosedDates;
+  const getIsClosedToDeparture = useCallback(
+    (day, formattedDay) => {
+      const { closedToDepartureHash, closed } = hashedClosedDates;
 
-    const isDateBeforeArrival = formattedDay <= formattedCheckinDate;
-    const isClosedToDeparture = closedToDepartureHash[formattedDay];
+      const isDateBeforeArrival = formattedDay <= formattedCheckinDate;
+      const isClosedToDeparture = closedToDepartureHash[formattedDay];
 
-    if (isDateBeforeArrival || isClosedToDeparture) {
-      return true;
-    }
+      if (isDateBeforeArrival || isClosedToDeparture) {
+        return true;
+      }
 
-    const closestClosed = formattedCheckinDate && closed.find((closedDate) => {
-      return formattedCheckinDate < closedDate;
-    });
+      const closestClosed =
+        formattedCheckinDate &&
+        closed.find((closedDate) => {
+          return formattedCheckinDate < closedDate;
+        });
 
-    // Closed date could be selected as departure date, but shouldnt be in range
-    const isAfterClosed = closestClosed && day.isAfter(moment(closestClosed, DATE_API_FORMAT), 'day');
+      // Closed date could be selected as departure date, but shouldnt be in range
+      const isAfterClosed =
+        closestClosed && day.isAfter(moment(closestClosed, DATE_API_FORMAT), "day");
 
-    return isAfterClosed;
-  }, [hashedClosedDates, formattedCheckinDate]);
+      return isAfterClosed;
+    },
+    [hashedClosedDates, formattedCheckinDate],
+  );
 
-  const getIsDayBlocked = useCallback((day) => {
-    if (!hashedClosedDates) {
+  const getIsDayBlocked = useCallback(
+    (day) => {
+      if (!hashedClosedDates) {
+        return false;
+      }
+
+      const formattedDay = day.format(DATE_API_FORMAT);
+
+      if (focusedInput === START_DATE_INPUT) {
+        return getIsClosedToArrival(day, formattedDay);
+      }
+
+      if (focusedInput === END_DATE_INPUT) {
+        return getIsClosedToDeparture(day, formattedDay);
+      }
+
       return false;
-    }
+    },
+    [hashedClosedDates, focusedInput, getIsClosedToArrival, getIsClosedToDeparture],
+  );
 
-    const formattedDay = day.format(DATE_API_FORMAT);
+  const handleFocusChange = useCallback(
+    (newFocusedInput) => {
+      const inputCoords = inputRef.current.getBoundingClientRect();
+      const isPickerCloserToTop = inputCoords.y < window.innerHeight / 2;
 
-    if (focusedInput === START_DATE_INPUT) {
-      return getIsClosedToArrival(day, formattedDay);
-    }
+      const newOpenDirection = isPickerCloserToTop ? OPEN_DIRECTIONS.down : OPEN_DIRECTIONS.up;
 
-    if (focusedInput === END_DATE_INPUT) {
-      return getIsClosedToDeparture(day, formattedDay);
-    }
+      if (newFocusedInput === START_DATE_INPUT) {
+        onDatesChange({ startDate: checkinDate, endDate: null });
+      }
 
-    return false;
-  }, [hashedClosedDates, focusedInput, getIsClosedToArrival, getIsClosedToDeparture]);
-
-  const handleFocusChange = useCallback((newFocusedInput) => {
-    const inputCoords = inputRef.current.getBoundingClientRect();
-    const isPickerCloserToTop = inputCoords.y < (window.innerHeight / 2);
-
-    const newOpenDirection = isPickerCloserToTop ? OPEN_DIRECTIONS.down : OPEN_DIRECTIONS.up;
-
-    if (newFocusedInput === START_DATE_INPUT) {
-      onDatesChange({ startDate: checkinDate, endDate: null });
-    }
-
-    setOpenDirection(newOpenDirection);
-    setFocusedInput(newFocusedInput);
-  }, [inputRef, checkinDate, setOpenDirection, setFocusedInput, onDatesChange]);
+      setOpenDirection(newOpenDirection);
+      setFocusedInput(newFocusedInput);
+    },
+    [inputRef, checkinDate, setOpenDirection, setFocusedInput, onDatesChange],
+  );
 
   const handleDatesReset = useCallback(() => {
     onDatesChange({ startDate: null, endDate: null });
@@ -131,30 +146,34 @@ export default function RangePicker(props) {
     setFocusedInput(null);
   }, []);
 
-  useEffect(function handleClosedDateChanged() {
-    if (!closedDates.data) {
-      setHashedClosedDates(null);
-      return;
-    }
+  useEffect(
+    function handleClosedDateChanged() {
+      if (!closedDates.data) {
+        setHashedClosedDates(null);
+        return;
+      }
 
-    const newHashedClosedDates = enrichClosedDates(closedDates.data);
-    setHashedClosedDates(newHashedClosedDates);
-  }, [closedDates]);
+      const newHashedClosedDates = enrichClosedDates(closedDates.data);
+      setHashedClosedDates(newHashedClosedDates);
+    },
+    [closedDates],
+  );
 
-  const renderCalendarDay = useCallback((dayProps) => (
+  const renderCalendarDay = useCallback(
+    (dayProps) => (
       <DayCell
         /* eslint-disable-next-line react/jsx-props-no-spreading */
         {...dayProps}
         minStayLength={minStayLength}
       />
-  ), [minStayLength]);
+    ),
+    [minStayLength],
+  );
 
-  const renderCalendarInfo = useCallback(() => (
-    <InfoSection
-      onClear={handleDatesReset}
-      onClose={handleClose}
-    />
-  ), [handleDatesReset, handleClose]);
+  const renderCalendarInfo = useCallback(
+    () => <InfoSection onClear={handleDatesReset} onClose={handleClose} />,
+    [handleDatesReset, handleClose],
+  );
 
   return (
     <div className={styles.rangepicker} ref={inputRef}>

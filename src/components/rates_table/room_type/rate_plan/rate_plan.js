@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 
-import { BookingDataContext } from 'containers/data_context';
+import { BookingDataContext } from "containers/data_context";
 
-import RatePlanOccupancy from './rate_plan_occupancy';
-import RatePlanOccupancySelect from './rate_plan_occupancy_select';
-import RatePlanPolicies from './rate_plan_policies';
-import RatePlanPrice from './rate_plan_price';
+import RatePlanOccupancy from "./rate_plan_occupancy";
+import RatePlanOccupancySelect from "./rate_plan_occupancy_select";
+import RatePlanPolicies from "./rate_plan_policies";
+import RatePlanPrice from "./rate_plan_price";
 
-import styles from './rate_plan.module.css';
+import styles from "./rate_plan.module.css";
 
 const DEFAULT_AVAILABLE_SPACES = 0;
 
@@ -34,11 +34,14 @@ export default function RatePlan(props) {
     onOccupancyChange({ ...ratesOccupancy, [id]: updatedOccupancy });
   };
 
-  useEffect(function updateAvailableSpaces() {
-    const updatedAvailableSpaces = availability - occupiedSpaces;
+  useEffect(
+    function updateAvailableSpaces() {
+      const updatedAvailableSpaces = availability - occupiedSpaces;
 
-    setAvailableSpaces(updatedAvailableSpaces);
-  }, [occupiedSpaces, availability]);
+      setAvailableSpaces(updatedAvailableSpaces);
+    },
+    [occupiedSpaces, availability],
+  );
 
   return (
     <div className={styles.rate}>
@@ -49,11 +52,7 @@ export default function RatePlan(props) {
       />
       <div className={styles.flexibleContainer}>
         <RatePlanPrice ratePlan={ratePlan} currency={currency} />
-        <RatePlanPolicies
-          ratePlan={ratePlan}
-          checkinDate={checkinDate}
-          hotelPolicy={hotelPolicy}
-        />
+        <RatePlanPolicies ratePlan={ratePlan} checkinDate={checkinDate} hotelPolicy={hotelPolicy} />
       </div>
       <RatePlanOccupancySelect
         disabled={disabled}

@@ -1,1 +1,1 @@
-export { default } from './policy_section';
+export { default } from "./policy_section";
