@@ -17,7 +17,7 @@ export default function Header({ property = {} }) {
     strict: true,
   });
 
-  const isCurrencySelectShown = routeMatch.isExact;
+  const isCurrencySelectShown = routeMatch?.isExact;
   const { title, logo } = property;
 
   return (
