@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useEffect, useRef, useState } from "rea
 import { DateRangePicker } from "react-dates";
 import { useMedia } from "react-media";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import classNames from "classnames";
 import moment from "moment";
 
 import Label from "components/label";
@@ -47,11 +48,14 @@ export default function RangePicker(props) {
     checkinDate,
     checkoutDate,
     name = "",
+    isVisible = false,
     checkinDatePlaceholder,
     checkinDateLabel,
     checkoutDatePlaceholder,
     checkoutDateLabel,
     onDatesChange,
+    className,
+    closeCallback,
   } = props;
   const [focusedInput, setFocusedInput] = useState(null);
   const [openDirection, setOpenDirection] = useState(OPEN_DIRECTIONS.up);
@@ -159,6 +163,12 @@ export default function RangePicker(props) {
     [closedDates],
   );
 
+  useEffect(() => {
+    if (isVisible) {
+      handleFocusChange(START_DATE_INPUT);
+    }
+  }, [isVisible]);
+
   const renderCalendarDay = useCallback(
     (dayProps) => (
       <DayCell
@@ -175,8 +185,12 @@ export default function RangePicker(props) {
     [handleDatesReset, handleClose],
   );
 
+  const wrapperClassName = classNames(styles.rangepicker, {
+    [`${className}`]: className,
+  });
+
   return (
-    <div className={styles.rangepicker} ref={inputRef}>
+    <div className={wrapperClassName} ref={inputRef}>
       <div className={styles.labelContainer}>
         <Label>{checkinDateLabel}</Label>
         <Label>{checkoutDateLabel}</Label>
@@ -203,6 +217,7 @@ export default function RangePicker(props) {
         renderCalendarInfo={renderCalendarInfo}
         onFocusChange={handleFocusChange}
         onDatesChange={onDatesChange}
+        onClose={closeCallback}
       />
     </div>
   );

@@ -1,0 +1,38 @@
+.container {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: 50%;
+  background-image: url("~static/main-bg.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family: Helvetica;
+  font-size: 48px;
+  color: #ffffff;
+  margin-bottom: 38px;
+  text-align: center;
+}
+
+.subTitle {
+  font-family: Helvetica;
+  font-size: 20px;
+  color: #ffffff;
+  line-height: 30px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    background-image: url("~static/main-bg@2x.jpg");
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 3) {
+  .container {
+    background-image: url("~static/main-bg@3x.jpg");
+  }
+}
