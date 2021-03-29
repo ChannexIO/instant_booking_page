@@ -7,8 +7,6 @@ import i18nInit from "utils/i18n_init";
 
 import App from "./app";
 
-import "./index.css";
-
 i18nInit().then(() => {
   return render(
     <I18nextProvider i18n={i18next}>

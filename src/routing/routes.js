@@ -5,10 +5,12 @@ const composeRoute = (route) => {
 };
 
 const routes = {
-  hotelPage: composeRoute("/:channelId"),
-  paymentPage: composeRoute("/:channelId/payment_page"),
-  confirmationPage: composeRoute("/:channelId/confirmation/:bookingId"),
-  default: composeRoute("/hotel_not_found/404"),
+  homePage: composeRoute("/"),
+  searchPage: composeRoute("/search"),
+  hotelPage: composeRoute("/hotel/:channelId"),
+  paymentPage: composeRoute("/hotel/:channelId/payment_page"),
+  confirmationPage: composeRoute("/hotel/:channelId/confirmation/:bookingId"),
+  default: composeRoute("/hotel/404"),
 };
 
 export default routes;

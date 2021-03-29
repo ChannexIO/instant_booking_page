@@ -20,6 +20,9 @@
     "popular_currencies_separator": "Popular Currencies",
     "available_currencies_separator": "Available Currencies"
   },
+  "main_page": {
+    "search_btn": "Search"
+  },
   "hotel_page": {
     "checkin_label": "Check-in",
     "checkout_label": "Check-out",
