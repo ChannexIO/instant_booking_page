@@ -7,15 +7,21 @@ const TRANSLATION_PATH = "hotel_page:hotel_policy";
 
 export default function GeneralPolicies({ hotelPolicy }) {
   const { t } = useTranslation();
-  const { checkinTime, checkoutTime } = hotelPolicy;
+  const { checkinFromTime, checkinToTime, checkoutFromTime, checkoutToTime } = hotelPolicy;
 
   return (
     <>
-      {checkinTime && (
-        <InfoEntry title={t(`${TRANSLATION_PATH}:checkin_time`)} text={checkinTime} />
+      {checkinFromTime && checkinToTime && (
+        <InfoEntry
+          title={t(`${TRANSLATION_PATH}:checkin_time`)}
+          text={`${checkinFromTime} - ${checkinToTime}`}
+        />
       )}
-      {checkoutTime && (
-        <InfoEntry title={t(`${TRANSLATION_PATH}:checkout_time`)} text={checkoutTime} />
+      {checkoutFromTime && checkoutToTime && (
+        <InfoEntry
+          title={t(`${TRANSLATION_PATH}:checkout_time`)}
+          text={`${checkoutFromTime} - ${checkoutToTime}`}
+        />
       )}
     </>
   );
