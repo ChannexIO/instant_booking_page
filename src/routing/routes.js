@@ -10,7 +10,7 @@ const routes = {
   hotelPage: composeRoute("/hotel/:channelId"),
   paymentPage: composeRoute("/hotel/:channelId/payment_page"),
   confirmationPage: composeRoute("/hotel/:channelId/confirmation/:bookingId"),
-  default: composeRoute("/hotel/404"),
+  default: composeRoute("/404"),
 };
 
 export default routes;
