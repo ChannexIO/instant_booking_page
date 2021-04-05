@@ -23,7 +23,8 @@ export default function SearchSection() {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
   const [missingSpaces, setMissingSpaces] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const { channelId, params, property, roomsInfo } = useContext(BookingDataContext);
+  const bookingData = useContext(BookingDataContext);
+  const { channelId, params, property, roomsInfo } = bookingData;
   const { setParams, loadRoomsInfo, saveDataToStorage, clearDataFromStorage } = useContext(
     BookingActionsContext,
   );
@@ -44,17 +45,17 @@ export default function SearchSection() {
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
 
   const handleBook = useCallback(() => {
-    saveDataToStorage();
+    saveDataToStorage(bookingData);
 
     const paymentPagePath = buildPath(history.location.search, routes.paymentPage, { channelId });
 
     history.push(paymentPagePath);
-  }, [saveDataToStorage, history, channelId]);
+  }, [bookingData, saveDataToStorage, history, channelId]);
 
   const handleSearch = useCallback(() => {
     clearDataFromStorage();
-    loadRoomsInfo();
-  }, [loadRoomsInfo, clearDataFromStorage]);
+    loadRoomsInfo(channelId, params);
+  }, [channelId, params, loadRoomsInfo, clearDataFromStorage]);
 
   useEffect(
     function setSummaryParams() {

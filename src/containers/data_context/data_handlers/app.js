@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import routes from "routing/routes";
 
@@ -9,13 +9,14 @@ import getBookingParamsFromUrl from "../utils/get_booking_params_from_url";
 
 export default () => {
   const history = useHistory();
+  const location = useLocation();
 
   const init = useCallback(
     async (channelId, bookingActions, savedState) => {
       if (!channelId) {
         const bookingQueryParams = getBookingParamsFromUrl();
         try {
-          await bookingActions.initBookingData(bookingQueryParams, savedState);
+          await bookingActions.initBookingData(location, bookingQueryParams, savedState);
         } catch (e) {
           if (e.message === "PROPERY_NOT_FOUND") {
             const redirectRoute = buildPath("", routes.default);
@@ -25,7 +26,7 @@ export default () => {
         }
       }
     },
-    [history],
+    [location, history],
   );
 
   const appActions = {

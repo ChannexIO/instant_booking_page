@@ -167,7 +167,7 @@ export default function RangePicker(props) {
     if (isVisible) {
       handleFocusChange(START_DATE_INPUT);
     }
-  }, [isVisible]);
+  }, [handleFocusChange, isVisible]);
 
   const renderCalendarDay = useCallback(
     (dayProps) => (

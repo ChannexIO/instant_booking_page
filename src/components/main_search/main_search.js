@@ -50,7 +50,7 @@ export default function MainSearch() {
     ${occupancyParams.children} ${t("hotel_page:children")}`;
 
     return title;
-  }, [occupancyParams]);
+  }, [t, occupancyParams]);
 
   const dropdownTitle = getDropdownTitle();
 

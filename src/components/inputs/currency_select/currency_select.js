@@ -20,7 +20,7 @@ const CURRENCY_RATE_BY_CODE = {
 export default function CurrencySelect() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const history = useHistory();
-  const { params, property } = useContext(BookingDataContext);
+  const { params, property, channelId } = useContext(BookingDataContext);
   const { setParamsAndLoadRoomsInfo } = useContext(BookingActionsContext);
   const { t } = useTranslation();
   const { data: propertyData } = property;
@@ -30,9 +30,11 @@ export default function CurrencySelect() {
   const handleCurrencyChange = useCallback(
     (currency) => {
       setUrlParams({ currency }, history);
-      setParamsAndLoadRoomsInfo({ ...params, currency });
+
+      const roomParams = { ...params, currency };
+      setParamsAndLoadRoomsInfo(channelId, roomParams);
     },
-    [history, setParamsAndLoadRoomsInfo, params],
+    [history, setParamsAndLoadRoomsInfo, params, channelId],
   );
 
   useEffect(
