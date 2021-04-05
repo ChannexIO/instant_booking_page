@@ -16,7 +16,7 @@ const DEFAULT_OCCUPANCY_PER_ROOM = {};
 
 export default function RatesTable() {
   const [isStale, setIsStale] = useState(false);
-  const { roomsInfo, params, roomRequestParams } = useContext(BookingDataContext);
+  const { roomsInfo, params, roomRequestParams, channelId } = useContext(BookingDataContext);
   const { setParams, loadRoomsInfo } = useContext(BookingActionsContext);
 
   const prevParamsRef = useRef(params);
@@ -42,6 +42,10 @@ export default function RatesTable() {
     },
     [params, setParams],
   );
+
+  const handleReload = useCallback(() => {
+    loadRoomsInfo(channelId, params);
+  }, [channelId, params, loadRoomsInfo]);
 
   useEffect(
     function handleSearchParamsChange() {
@@ -85,7 +89,7 @@ export default function RatesTable() {
 
   return (
     <LoadingContainer loading={isLoading}>
-      <ReloadContainer disabled={isReloadDisabled} active={isStale} onRefresh={loadRoomsInfo}>
+      <ReloadContainer disabled={isReloadDisabled} active={isStale} onRefresh={handleReload}>
         <div className={styles.tableContainer}>
           <RatesTableHeader
             propertyRooms={roomsData}
