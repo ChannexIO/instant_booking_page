@@ -136,7 +136,6 @@ const initBookingData = async (dispatch, location, bookingQueryParams, savedBook
 
   await Promise.all([
     loadProperty(dispatch, channelId),
-    loadClosedDates(dispatch, channelId),
     setParamsAndLoadRoomsInfo(dispatch, channelId, bookingParams),
   ]);
 };

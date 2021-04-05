@@ -1,5 +1,4 @@
-import { useReducer } from "react";
-import { useLocation } from "react-router-dom";
+import { useCallback, useMemo, useReducer } from "react";
 
 import { actions, INITIAL_STATE, reducer } from "./reducers/booking_data";
 import {
@@ -10,62 +9,77 @@ import {
 
 export default () => {
   const [bookingData, dispatch] = useReducer(reducer, INITIAL_STATE);
-  const location = useLocation();
 
-  const setParams = (newParams) => {
+  const setParams = useCallback((newParams) => {
     return actions.setParams(dispatch, newParams);
-  };
+  }, []);
 
-  const resetParams = () => {
+  const resetParams = useCallback(() => {
     return actions.resetParams(dispatch);
-  };
+  }, []);
 
-  const setParamsAndLoadRoomsInfo = (newParams) => {
-    return actions.setParamsAndLoadRoomsInfo(dispatch, bookingData.channelId, newParams);
-  };
+  const setParamsAndLoadRoomsInfo = useCallback((channelId, newParams) => {
+    return actions.setParamsAndLoadRoomsInfo(dispatch, channelId, newParams);
+  }, []);
 
-  const loadProperty = () => {
-    return actions.loadProperty(dispatch, bookingData.channelId);
-  };
+  const loadProperty = useCallback((channelId) => {
+    return actions.loadProperty(dispatch, channelId);
+  }, []);
 
-  const loadRoomsInfo = () => {
-    return actions.loadRoomsInfo(dispatch, bookingData.channelId, bookingData.params);
-  };
+  const loadRoomsInfo = useCallback((channelId, params) => {
+    return actions.loadRoomsInfo(dispatch, channelId, params);
+  }, []);
 
-  const loadClosedDates = () => {
-    return actions.loadClosedDates(dispatch, bookingData.channelId);
-  };
+  const loadClosedDates = useCallback((channelId) => {
+    return actions.loadClosedDates(dispatch, channelId);
+  }, []);
 
-  const initBookingData = (bookingQueryParams, savedBookingData) => {
+  const initBookingData = useCallback((location, bookingQueryParams, savedBookingData) => {
     return actions.initBookingData(dispatch, location, bookingQueryParams, savedBookingData);
-  };
+  }, []);
 
-  const saveDataToStorage = () => {
-    setSavedState(bookingData);
-  };
+  const saveDataToStorage = useCallback((bookingDataToSave) => {
+    setSavedState(bookingDataToSave);
+  }, []);
 
-  const getDataFromStorage = () => {
+  const getDataFromStorage = useCallback(() => {
     return getSavedState();
-  };
+  }, []);
 
-  const clearDataFromStorage = () => {
+  const clearDataFromStorage = useCallback(() => {
     clearSavedState();
-  };
+  }, []);
 
-  const bookingActions = {
-    initBookingData,
-    setParams,
-    resetParams,
-    setParamsAndLoadRoomsInfo,
+  const bookingActions = useMemo(
+    () => ({
+      initBookingData,
+      setParams,
+      resetParams,
+      setParamsAndLoadRoomsInfo,
 
-    loadProperty,
-    loadRoomsInfo,
-    loadClosedDates,
+      loadProperty,
+      loadRoomsInfo,
+      loadClosedDates,
 
-    saveDataToStorage,
-    getDataFromStorage,
-    clearDataFromStorage,
-  };
+      saveDataToStorage,
+      getDataFromStorage,
+      clearDataFromStorage,
+    }),
+    [
+      initBookingData,
+      setParams,
+      resetParams,
+      setParamsAndLoadRoomsInfo,
 
-  return { bookingData, bookingActions };
+      loadProperty,
+      loadRoomsInfo,
+      loadClosedDates,
+
+      saveDataToStorage,
+      getDataFromStorage,
+      clearDataFromStorage,
+    ],
+  );
+
+  return useMemo(() => ({ bookingData, bookingActions }), [bookingData, bookingActions]);
 };
