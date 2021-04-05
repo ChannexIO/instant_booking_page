@@ -33,6 +33,13 @@ export default function HotelPage() {
     [bookingActions, channelId, init],
   );
 
+  useEffect(
+    function loadClosedDates() {
+      bookingActions.loadClosedDates(channelId);
+    },
+    [channelId, bookingActions],
+  );
+
   if (!isPropertyPresent) {
     return <Loading />;
   }
