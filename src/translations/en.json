@@ -8,7 +8,9 @@
     "back": "Back",
     "close": "Close",
     "delete": "Delete",
-    "clear": "Clear"
+    "clear": "Clear",
+    "search_page_doc_title": "Search",
+    "main_page_doc_title": "IBE"
   },
   "navigation": {
     "hotel_page": "Home Page",
@@ -264,5 +266,11 @@
     "number": "must be a number",
     "phone": "must be a valid phone number",
     "email": "must be a valid email"
+  },
+  "properties": {
+    "preview": "Preview",
+    "see_more": "See More",
+    "no_info": "No information",
+    "no_search_results": "No search results"
   }
 }

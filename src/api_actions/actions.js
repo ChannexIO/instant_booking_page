@@ -52,4 +52,11 @@ export default {
   getCaptureFormUrl: () => {
     return transport.get(`${PATH_PREFIX}/card_capture_form_url`);
   },
+
+  getPropertiesList: (queryParams, filter = {}) => {
+    // eslint-disable-next-line no-unused-vars
+    const { nw, se, sw, ne, ...paramsWithoutFilter } = queryParams;
+
+    return transport.get(`${PATH_PREFIX}/property_list`, { filter, ...paramsWithoutFilter });
+  },
 };
