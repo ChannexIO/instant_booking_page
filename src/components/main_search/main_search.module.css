@@ -54,12 +54,18 @@
   border: none;
 }
 
+.occupancyDropDown :global .btn-primary.dropdown-toggle {
+  width: 195px;
+}
+
 .occupancyDropDown :global .show > .btn-primary.dropdown-toggle {
   border: none;
 }
 
 .occupancyDropDown :global .dropdown-menu.show {
   width: 305px;
+  max-height: 305px;
+  overflow: auto;
 }
 
 .searchBtn {

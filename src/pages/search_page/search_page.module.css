@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  min-width: 1080px;
+}
+
+.right {
+  width: 100%;
+  max-width: 690px;
+  position: relative;
+}
