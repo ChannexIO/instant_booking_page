@@ -1,0 +1,11 @@
+.marker {
+  color: #fff;
+  background: #06bb24;
+  border-radius: 4px;
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #ffffff;
+  min-width: 40px;
+  padding: 7px 4px;
+  text-align: center;
+}
