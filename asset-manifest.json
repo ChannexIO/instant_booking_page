@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/instant_booking_page/static/css/main.236b9db6.chunk.css",
-    "main.js": "/instant_booking_page/static/js/main.edbe8c12.chunk.js",
-    "main.js.map": "/instant_booking_page/static/js/main.edbe8c12.chunk.js.map",
-    "runtime-main.js": "/instant_booking_page/static/js/runtime-main.22929162.js",
-    "runtime-main.js.map": "/instant_booking_page/static/js/runtime-main.22929162.js.map",
-    "static/css/2.abb78336.chunk.css": "/instant_booking_page/static/css/2.abb78336.chunk.css",
-    "static/js/2.59039dca.chunk.js": "/instant_booking_page/static/js/2.59039dca.chunk.js",
-    "static/js/2.59039dca.chunk.js.map": "/instant_booking_page/static/js/2.59039dca.chunk.js.map",
+    "main.css": "/instant_booking_page/static/css/main.65481b78.chunk.css",
+    "main.js": "/instant_booking_page/static/js/main.f0653174.chunk.js",
+    "main.js.map": "/instant_booking_page/static/js/main.f0653174.chunk.js.map",
+    "runtime-main.js": "/instant_booking_page/static/js/runtime-main.1e85cf77.js",
+    "runtime-main.js.map": "/instant_booking_page/static/js/runtime-main.1e85cf77.js.map",
+    "static/css/2.c8271910.chunk.css": "/instant_booking_page/static/css/2.c8271910.chunk.css",
+    "static/js/2.78620a00.chunk.js": "/instant_booking_page/static/js/2.78620a00.chunk.js",
+    "static/js/2.78620a00.chunk.js.map": "/instant_booking_page/static/js/2.78620a00.chunk.js.map",
     "index.html": "/instant_booking_page/index.html",
-    "precache-manifest.22ea3e8f3ffe2a152e2f84a6b4d2f5bf.js": "/instant_booking_page/precache-manifest.22ea3e8f3ffe2a152e2f84a6b4d2f5bf.js",
+    "precache-manifest.821a56523974fc9d32b82ef45df4d3c6.js": "/instant_booking_page/precache-manifest.821a56523974fc9d32b82ef45df4d3c6.js",
     "service-worker.js": "/instant_booking_page/service-worker.js",
-    "static/css/2.abb78336.chunk.css.map": "/instant_booking_page/static/css/2.abb78336.chunk.css.map",
-    "static/css/main.236b9db6.chunk.css.map": "/instant_booking_page/static/css/main.236b9db6.chunk.css.map",
-    "static/js/2.59039dca.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.59039dca.chunk.js.LICENSE.txt",
+    "static/css/2.c8271910.chunk.css.map": "/instant_booking_page/static/css/2.c8271910.chunk.css.map",
+    "static/css/main.65481b78.chunk.css.map": "/instant_booking_page/static/css/main.65481b78.chunk.css.map",
+    "static/js/2.78620a00.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.78620a00.chunk.js.LICENSE.txt",
+    "static/media/close-icon.svg": "/instant_booking_page/static/media/close-icon.77b8cccc.svg",
+    "static/media/empty-property.svg": "/instant_booking_page/static/media/empty-property.1d072e07.svg",
     "static/media/photo_slider.module.css": "/instant_booking_page/static/media/icons-arrowright.fe7a7322.svg",
     "static/media/icons-checkin.svg": "/instant_booking_page/static/media/icons-checkin.f9e0660d.svg",
     "static/media/icons-checkout.svg": "/instant_booking_page/static/media/icons-checkout.4341dde0.svg",
@@ -28,13 +30,14 @@
     "static/media/icons-mail.svg": "/instant_booking_page/static/media/icons-mail.3b41e1b3.svg",
     "static/media/icons-maps-pin.svg": "/instant_booking_page/static/media/icons-maps-pin.d948b70c.svg",
     "static/media/icons-navigation-down.svg": "/instant_booking_page/static/media/icons-navigation-down.2c0ecc28.svg",
-    "static/media/icons-phone.svg": "/instant_booking_page/static/media/icons-phone.491d26a2.svg"
+    "static/media/icons-phone.svg": "/instant_booking_page/static/media/icons-phone.491d26a2.svg",
+    "static/media/home_page.module.css": "/instant_booking_page/static/media/main-bg@3x.bc56d6dd.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.22929162.js",
-    "static/css/2.abb78336.chunk.css",
-    "static/js/2.59039dca.chunk.js",
-    "static/css/main.236b9db6.chunk.css",
-    "static/js/main.edbe8c12.chunk.js"
+    "static/js/runtime-main.1e85cf77.js",
+    "static/css/2.c8271910.chunk.css",
+    "static/js/2.78620a00.chunk.js",
+    "static/css/main.65481b78.chunk.css",
+    "static/js/main.f0653174.chunk.js"
   ]
 }
