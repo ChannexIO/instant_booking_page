@@ -5,7 +5,7 @@ modify and host this app yourself, create a booking engine channel on Channex an
 to create a bookings at the following URL `app-location.com/{channel_id}`
 
 Example of booking engine:
-https://channexio.github.io/instant_booking_page/hotel/91dd90ed-826f-40c6-bdbf-fe7390bcc142?currency=USD
+https://channexio.github.io/instant_booking_page/hotel/8f3610c2-ec33-49a8-80ce-a3082375df34?currency=GBP&checkinDate=21-04-2021&checkoutDate=24-04-2021&childrenAge=&adults=2
 
 ## How to use it:
 
