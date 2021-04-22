@@ -4,15 +4,23 @@ import { useHistory } from "react-router-dom";
 
 import Dropdown from "components/dropdown";
 
+import getUrlParams from "utils/get_url_params";
 import setUrlParams from "utils/set_url_params";
 
 import OccupancySettingsForm from "./occupancy_settings_form";
 
 export default function OccupancySettings({ bookingParams, handleSearchChange }) {
   const { t } = useTranslation();
+  const urlParams = getUrlParams();
   const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
-  const { children, adults } = bookingParams;
+  const newBookingParams = {
+    children: bookingParams.children || urlParams.children,
+    adults: bookingParams.adults || urlParams.adults,
+  };
+
+  const { children, adults } = newBookingParams;
+
   const isGuestsPresent = children || adults;
   const dropdownTitle = isGuestsPresent
     ? `${adults} ${t("hotel_page:adults")} · ${children} ${t("hotel_page:children")}`
@@ -39,7 +47,7 @@ export default function OccupancySettings({ bookingParams, handleSearchChange })
       layout="vertical"
     >
       <OccupancySettingsForm
-        bookingParams={bookingParams}
+        bookingParams={newBookingParams}
         onClose={handleToggle}
         onChange={handleChange}
       />

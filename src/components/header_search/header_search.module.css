@@ -1,0 +1,108 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.wrapper :global .DateRangePicker_picker {
+  z-index: 999;
+}
+
+.inner {
+  display: flex;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.wrapper :global .DateRangePickerInput {
+  height: 100%;
+  border: 0;
+  border-radius: 28px 0 0 28px;
+  overflow: hidden;
+}
+
+.wrapper :global .DateRangePicker {
+  height: 100%;
+}
+
+.wrapper :global .DateRangePicker > div {
+  height: 100%;
+}
+
+.wrapper :global .DateInput_input {
+  height: 54px;
+  padding: 11px 24px 9px;
+}
+
+.wrapper :global .DateInput_input__focused {
+  border-color: transparent;
+}
+
+.rangePicker {
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.wrapper .rangePicker__error :global .DateInput_input::placeholder {
+  color: #ff4d4f;
+}
+
+.occupancyDropDown {
+  margin-bottom: 0;
+}
+
+.occupancyDropDown :global .dropdown {
+  height: 100%;
+}
+
+.occupancyDropDown :global .dropdown-toggle {
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  padding-right: 16px;
+}
+
+.occupancyDropDown :global .btn-primary:not(:disabled):not(.disabled):focus {
+  border: none;
+}
+
+.occupancyDropDown :global .btn-primary.dropdown-toggle {
+  width: 195px;
+}
+
+.occupancyDropDown :global .show > .btn-primary.dropdown-toggle {
+  border: none;
+}
+
+.occupancyDropDown :global .dropdown-menu.show {
+  width: 305px;
+  max-height: 535px;
+  overflow: auto;
+  z-index: 999;
+}
+
+.searchBtn {
+  background: #00be0a;
+  border-radius: 0 28px 28px 0;
+  font-family: Helvetica;
+  font-size: 18px;
+  color: #ffffff;
+  padding: 27px 8px;
+  transition: all 200ms ease;
+}
+
+.searchBtn:global.btn-primary:hover,
+.searchBtn:global.btn-primary:focus,
+.searchBtn:global.btn-primary:active {
+  transition: all 200ms ease;
+  background: rgb(0 190 10 / 90%);
+}
+
+.searchBtn:global.btn-primary:not(:disabled):not(.disabled):active {
+  background: rgb(0 190 10 / 90%);
+}

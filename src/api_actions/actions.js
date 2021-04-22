@@ -54,8 +54,12 @@ export default {
   },
 
   getPropertiesList: (queryParams, filter = {}) => {
-    const { _nw, _se, _sw, _ne, ...paramsWithoutFilter } = queryParams;
+    const { nw: _nw, se: _se, sw: _sw, ne: _ne, ...paramsWithoutFilter } = queryParams;
 
-    return transport.get(`${PATH_PREFIX}/property_list`, { filter, ...paramsWithoutFilter });
+    return transport.get(`${PATH_PREFIX}/property_list`, {
+      is_available: true,
+      filter,
+      ...paramsWithoutFilter,
+    });
   },
 };
