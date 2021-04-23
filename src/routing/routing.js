@@ -7,6 +7,7 @@ import HotelPage from "pages/hotel_page";
 import NotFoundPage from "pages/not_found_page";
 import PaymentPage from "pages/payment_page";
 import SearchPage from "pages/search_page";
+import UnActiveSearchPage from "pages/unactive_search_page";
 
 import routes from "./routes";
 
@@ -30,6 +31,9 @@ export default function Routing() {
       </Route>
       <Route path={routes.default} exact>
         <NotFoundPage />
+      </Route>
+      <Route path={routes.unActiveSearchPage} exact>
+        <UnActiveSearchPage />
       </Route>
       <Route path="*">
         <Redirect to={routes.default} />

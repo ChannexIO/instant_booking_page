@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import classNames from "classnames";
@@ -8,19 +8,30 @@ import Dropdown from "components/dropdown";
 import RangePicker from "components/rangepicker";
 import OccupancySettingsForm from "components/search_section/occupancy_settings/occupancy_settings_form";
 
+import { AppDataContext } from "containers/data_context";
+
 import routes from "routing/routes";
 
+import DEFAULT_OCCUPANCY_PARAMS from "constants/default_occopancy_params";
 import buildPath from "utils/build_path";
 import dateFormatter from "utils/date_formatter";
 import setUrlParams from "utils/set_url_params";
 
 import styles from "./main_search.module.css";
 
-const DEFAULT_OCCUPANCY_PARAMS = { adults: 1, children: 0 };
-
 export default function MainSearch() {
   const { t } = useTranslation();
   const history = useHistory();
+  const { featureFlags } = useContext(AppDataContext);
+
+  useEffect(() => {
+    if (!featureFlags.searchPageIsActive) {
+      const inActiveSearchPath = buildPath(history.location.search, routes.unActiveSearchPage);
+
+      history.push(inActiveSearchPath);
+    }
+  }, [featureFlags, history]);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const [checkinDate, setCheckinDate] = useState(null);

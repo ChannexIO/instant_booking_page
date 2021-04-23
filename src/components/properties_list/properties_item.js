@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import routes from "routing/routes";
 
@@ -12,43 +12,47 @@ import styles from "./properties.module.css";
 
 export default function PropertiesItem({ property, onSelectProperty }) {
   const { t } = useTranslation();
+  const history = useHistory();
 
   const { description, photos, title, id } = property;
 
-  const getUrlPhoto = useCallback(
-    (arr) => {
-      if (arr?.length > 0) {
-        return <div className={styles.image} style={{ backgroundImage: `url(${arr[0].url})` }} />;
-      }
+  const handleSelectProperty = useCallback(() => {
+    onSelectProperty(property);
+  }, [property, onSelectProperty]);
 
-      return (
-        <div className={styles.emptyImage}>
-          <img src={EmptyIcon} alt={title} />
-        </div>
-      );
-    },
-    [title],
-  );
+  const selectRoomPath = buildPath(history.location.search, routes.hotelPage, { channelId: id });
 
-  const selectRoomPath = buildPath("", routes.hotelPage, { channelId: id });
+  const photo = useMemo(() => {
+    if (photos?.length > 0) {
+      return <div className={styles.image} style={{ backgroundImage: `url(${photos[0].url})` }} />;
+    }
+
+    return (
+      <div className={styles.emptyImage}>
+        <img src={EmptyIcon} alt={title} />
+      </div>
+    );
+  }, [photos, title]);
 
   return (
-    <div className={styles.item}>
-      <div className={styles.imageWrapper}>
-        {getUrlPhoto(photos)}
-        <div className={styles.previewBtnWrapper}>
-          <Button onClick={() => onSelectProperty(property)}>{t("properties:preview")}</Button>
+    <div className={styles.item} onClick={handleSelectProperty}>
+      <div>
+        <div className={styles.imageWrapper}>
+          {photo}
+          <div className={styles.previewBtnWrapper}>
+            <Button>{t("properties:preview")}</Button>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.info}>
-        <p className={styles.title}>{title}</p>
-        <p className={styles.description}>{description || t("properties:no_info")}</p>
+        <div className={styles.info}>
+          <p className={styles.title}>{title}</p>
+          <p className={styles.description}>{description || t("properties:no_info")}</p>
+        </div>
       </div>
 
       <div className={styles.footer}>
         <Link to={selectRoomPath} className={styles.seeMoreLink}>
-          {t("properties:see_more")}
+          {t("properties:book_now")}
         </Link>
       </div>
     </div>

@@ -5,7 +5,8 @@
   font-family: Helvetica;
   font-size: 14px;
   color: #ffffff;
-  min-width: 40px;
+  min-width: 80px;
   padding: 7px 4px;
   text-align: center;
+  cursor: pointer;
 }

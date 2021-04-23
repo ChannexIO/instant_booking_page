@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from "react";
+import { useCallback, useMemo, useReducer } from "react";
 
 import { actions, INITIAL_STATE, reducer } from "./reducers/payment_form_data";
 
@@ -23,11 +23,17 @@ export default () => {
     return paymentFormData.submitHandler();
   }, [paymentFormData]);
 
-  const paymentFormActions = {
-    setSubmitHandler,
-    createBooking,
-    startSubmit,
-  };
+  const paymentFormActions = useMemo(
+    () => ({
+      setSubmitHandler,
+      createBooking,
+      startSubmit,
+    }),
+    [setSubmitHandler, createBooking, startSubmit],
+  );
 
-  return { paymentFormData, paymentFormActions };
+  return useMemo(() => ({ paymentFormData, paymentFormActions }), [
+    paymentFormData,
+    paymentFormActions,
+  ]);
 };

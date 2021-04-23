@@ -3,6 +3,10 @@
   min-width: 1080px;
 }
 
+.left {
+  flex: 1;
+}
+
 .right {
   width: 100%;
   max-width: 690px;

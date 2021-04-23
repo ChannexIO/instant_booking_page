@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { Spinner } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import classNames from "classnames";
 
 import PropertiesItem from "./properties_item";
 
@@ -10,9 +11,13 @@ export default function PropertiesList({ properties, loading, onSelectProperty }
   const { t } = useTranslation();
   const isPropertiesPresent = properties && !loading;
 
+  const listClassName = classNames(styles.list, {
+    [`${styles.listGrid}`]: isPropertiesPresent && properties.length > 0,
+  });
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.list}>
+      <div className={listClassName}>
         {useMemo(() => {
           if (!isPropertiesPresent) {
             return (
