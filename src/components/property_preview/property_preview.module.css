@@ -28,14 +28,32 @@
 }
 
 .closeWrapper {
+  display: flex;
   position: absolute;
   top: 20px;
-  right: 20px;
+  left: 20px;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 6px 14px;
+  border-radius: 0.25rem;
+  align-items: center;
+}
+
+.closeWrapper:hover {
+  background-color: #0069d9;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
-  background-size: 1000%;
-  background-position: 50%;
+}
+
+.closeIcon {
+  transform: rotate(180deg);
+}
+
+.closeLabel {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  margin: 0 0 0 5px;
+  font-weight: 400;
 }
 
 .header {

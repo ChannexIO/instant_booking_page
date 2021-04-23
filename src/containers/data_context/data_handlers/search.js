@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from "react";
+import { useCallback, useMemo, useReducer } from "react";
 
 import { actions, INITIAL_STATE, reducer } from "./reducers/search_data";
 
@@ -12,9 +12,12 @@ export default () => {
     [dispatch],
   );
 
-  const searchActions = {
-    loadPropertiesList,
-  };
+  const searchActions = useMemo(
+    () => ({
+      loadPropertiesList,
+    }),
+    [loadPropertiesList],
+  );
 
-  return { searchData, searchActions };
+  return useMemo(() => ({ searchData, searchActions }), [searchData, searchActions]);
 };

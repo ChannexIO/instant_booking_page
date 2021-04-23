@@ -5,6 +5,7 @@ import useBooking from "./data_handlers/booking";
 import usePaymentForm from "./data_handlers/payment_form";
 import useSearch from "./data_handlers/search";
 
+const AppDataContext = createContext();
 const AppActionsContext = createContext();
 
 const BookingDataContext = createContext();
@@ -19,24 +20,26 @@ const SearchActionsContext = createContext();
 const DataContextProvider = ({ children }) => {
   const { bookingData, bookingActions } = useBooking();
   const { paymentFormData, paymentFormActions } = usePaymentForm();
-  const { appActions } = useApp();
+  const { appData, appActions } = useApp();
   const { searchData, searchActions } = useSearch();
 
   return (
     <AppActionsContext.Provider value={appActions}>
-      <BookingActionsContext.Provider value={bookingActions}>
-        <BookingDataContext.Provider value={bookingData}>
-          <PaymentFormActionsContext.Provider value={paymentFormActions}>
-            <PaymentFormDataContext.Provider value={paymentFormData}>
-              <SearchActionsContext.Provider value={searchActions}>
-                <SearchDataContext.Provider value={searchData}>
-                  {children}
-                </SearchDataContext.Provider>
-              </SearchActionsContext.Provider>
-            </PaymentFormDataContext.Provider>
-          </PaymentFormActionsContext.Provider>
-        </BookingDataContext.Provider>
-      </BookingActionsContext.Provider>
+      <AppDataContext.Provider value={appData}>
+        <BookingActionsContext.Provider value={bookingActions}>
+          <BookingDataContext.Provider value={bookingData}>
+            <PaymentFormActionsContext.Provider value={paymentFormActions}>
+              <PaymentFormDataContext.Provider value={paymentFormData}>
+                <SearchActionsContext.Provider value={searchActions}>
+                  <SearchDataContext.Provider value={searchData}>
+                    {children}
+                  </SearchDataContext.Provider>
+                </SearchActionsContext.Provider>
+              </PaymentFormDataContext.Provider>
+            </PaymentFormActionsContext.Provider>
+          </BookingDataContext.Provider>
+        </BookingActionsContext.Provider>
+      </AppDataContext.Provider>
     </AppActionsContext.Provider>
   );
 };
@@ -44,6 +47,7 @@ const DataContextProvider = ({ children }) => {
 export {
   DataContextProvider,
   AppActionsContext,
+  AppDataContext,
   BookingDataContext,
   BookingActionsContext,
   PaymentFormDataContext,

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 import GoogleMapReact from "google-map-react";
 
-import styles from "./properties_search_map.module.css";
+import Marker from "./marker";
 
 const BOOTSTRAP_URL_KEYS = { key: process.env.REACT_APP_GOOGLE_MAP_KEY };
 const DEFAULT_ZOOM = 1;
@@ -37,9 +37,7 @@ const apiIsLoaded = (map, maps, places) => {
   bindResizeListener(map, maps, bounds);
 };
 
-const Marker = ({ item }) => <div className={styles.marker}>{item.best_offer}</div>;
-
-export default function PropertiesSearchMap({ properties, onChangeCallback }) {
+export default function PropertiesSearchMap({ properties, onChangeCallback, onSelectProperty }) {
   const onGoogleApiLoaded = useCallback(
     ({ map, maps }) => {
       if (!properties || properties.length === 0) {
@@ -66,10 +64,16 @@ export default function PropertiesSearchMap({ properties, onChangeCallback }) {
             properties?.map((item, index) => {
               const { latitude, longitude } = item;
               return (
-                <Marker key={index} lat={Number(latitude)} lng={Number(longitude)} item={item} />
+                <Marker
+                  key={index}
+                  lat={Number(latitude)}
+                  lng={Number(longitude)}
+                  item={item}
+                  handleSelectProperty={onSelectProperty}
+                />
               );
             }),
-          [properties],
+          [properties, onSelectProperty],
         )}
       </GoogleMapReact>
     </div>

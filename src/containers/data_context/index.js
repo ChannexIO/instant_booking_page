@@ -4,6 +4,7 @@ export {
   PaymentFormActionsContext,
   PaymentFormDataContext,
   AppActionsContext,
+  AppDataContext,
   DataContextProvider,
   SearchActionsContext,
   SearchDataContext,

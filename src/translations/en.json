@@ -268,9 +268,12 @@
     "email": "must be a valid email"
   },
   "properties": {
+    "header": "Booking Site",
+    "unActiveSearchPage":"un active search page",
     "preview": "Preview",
-    "see_more": "See More",
+    "book_now": "Book now",
     "no_info": "No information",
-    "no_search_results": "No search results"
+    "no_search_results": "No search results",
+    "back_to_map": "Back to map"
   }
 }
