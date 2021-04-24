@@ -10,11 +10,13 @@ export default function PaymentPolicy({ cancellationPolicy }) {
     return null;
   }
 
-  const { guaranteePaymentPolicy, currency, guaranteePaymentAmount } = cancellationPolicy;
+  const { guaranteePaymentPolicy } = cancellationPolicy;
+  const hasPrepayment = guaranteePaymentPolicy !== "none";
 
-  const currencyUnit = guaranteePaymentPolicy === "percent_based" ? "%" : currency;
-  const policyTextParams = { amount: guaranteePaymentAmount, currency: currencyUnit };
-  const policyText = t(`payment_policies:types:${guaranteePaymentPolicy}`, policyTextParams);
+  const policyText = hasPrepayment
+    ? t("payment_policies:types:in_advance")
+    : t("payment_policies:types:none");
+  const alertType = hasPrepayment ? "info" : "success";
 
-  return <Alert text={policyText} variant="success" />;
+  return <Alert text={policyText} variant={alertType} />;
 }

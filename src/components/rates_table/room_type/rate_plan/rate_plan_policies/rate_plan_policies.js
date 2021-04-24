@@ -5,9 +5,8 @@ import Cell from "components/layout/cell";
 import CancellationPolicy from "./cancellation_policy";
 import MealPolicy from "./meal_policy";
 import PaymentPolicy from "./payment_policy";
+import PoliciesInfo from "./policies_info";
 
-// TODO - update one day and make it work
-// import PoliciesInfo from './policies_info';
 import styles from "./rate_plan_policies.module.css";
 
 export default function RatePlanPolicies({ ratePlan, hotelPolicy, checkinDate }) {
@@ -16,7 +15,7 @@ export default function RatePlanPolicies({ ratePlan, hotelPolicy, checkinDate })
       <div className={styles.policyContainer}>
         <div className={styles.mealContainer}>
           <MealPolicy mealPolicy={ratePlan.mealType} />
-          {/* <PoliciesInfo ratePlan={ratePlan} /> */}
+          <PoliciesInfo ratePlan={ratePlan} />
         </div>
         <CancellationPolicy
           cancellationPolicy={ratePlan.cancellationPolicy}
