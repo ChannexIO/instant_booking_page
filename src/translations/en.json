@@ -249,16 +249,19 @@
     "types": {
       "free": "FREE cancellation",
       "non_refundable": "Cancellation is non-refundable",
-      "deadline": "FREE cancellation before {{deadlineHour}} on {{deadlineDay}}, {{amount}} fee will be applied after"
+      "deadline": "FREE cancellation before {{deadlineHour}} and {{deadlineDay}}",
+      "free_detailed": "Booking can be cancelled at any time",
+      "non_refundable_detailed": "Booking is non-refundable",
+      "deadline_detailed": "Free cancellation up to {{time}} {{timeUnit}} before arrival. After this time there will be a {{amount}} {{unit}} fee"
     }
   },
   "payment_policies": {
     "types": {
-      "none": "Prepayment non required",
-      "nights_based": "Prepayment type is \"Night based\".  The prepayment is {{amount}} {{currency}} per night",
-      "percent_based": "Prepayment type is \"Percent based\". The prepayment is {{amount}}{{currency}}",
-      "fixed_per_booking": "Prepayment type is \"Fixed amount per booking\". The prepayment is {{amount}} {{currency}}",
-      "fixed_per_room": "Prepayment type is \"Fixed amount per booking room\". The prepayment is {{amount}} {{currency}} per room"
+      "none": "No Prepayment",
+      "in_advance": "Pay in advance",
+      "not_required":"No pre payment required",
+      "full": "You will be charged a pre payment of the total price",
+      "partial": "Payment of {{amount}} {{currency}} is required at the time of booking"
     }
   },
   "validation_messages": {
