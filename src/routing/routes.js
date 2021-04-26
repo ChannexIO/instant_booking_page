@@ -1,15 +1,15 @@
 const composeRoute = (route) => {
-  const path = process.env.REACT_APP_BASE_PATH;
+  const { REACT_APP_BASE_PATH: basePath = "" } = process.env;
 
-  return `${path}${route}`;
+  return `${basePath}${route}`;
 };
 
 const routes = {
   homePage: composeRoute("/"),
   searchPage: composeRoute("/search"),
-  hotelPage: composeRoute("/hotel/:channelId"),
-  paymentPage: composeRoute("/hotel/:channelId/payment_page"),
-  confirmationPage: composeRoute("/hotel/:channelId/confirmation/:bookingId"),
+  hotelPage: composeRoute("/:channelId"),
+  paymentPage: composeRoute("/:channelId/payment_page"),
+  confirmationPage: composeRoute("/:channelId/confirmation/:bookingId"),
   default: composeRoute("/404"),
 };
 
