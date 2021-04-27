@@ -11,19 +11,8 @@ const buildNonRefundablePolicyMessage = (t) => {
   return t("cancellation_policies:types:non_refundable");
 };
 
-const getDeadlineAmount = (cancellationPolicy, lengthOfStay) => {
-  const { cancellationPolicyMode, cancellationPolicyPenalty, currency } = cancellationPolicy;
-
-  const amount =
-    cancellationPolicyMode === "percent"
-      ? `${cancellationPolicyPenalty}%`
-      : `${cancellationPolicyPenalty * lengthOfStay} ${currency}`;
-
-  return amount;
-};
-
 const buildDeadlineBasedPoicyMessage = (t, props) => {
-  const { cancellationPolicy, checkinDate, lengthOfStay, hotelPolicy } = props;
+  const { cancellationPolicy, checkinDate, hotelPolicy } = props;
   if (!checkinDate) {
     return null;
   }
@@ -39,9 +28,8 @@ const buildDeadlineBasedPoicyMessage = (t, props) => {
 
   const deadlineDay = deadlineDate.format(DATE_UI_FULL_MONTH_FORMAT);
   const deadlineHour = deadlineDate.clone().subtract(1, "minute").format("HH:mm");
-  const amount = getDeadlineAmount(cancellationPolicy, lengthOfStay);
 
-  return t("cancellation_policies:types:deadline", { deadlineDay, deadlineHour, amount });
+  return t("cancellation_policies:types:deadline", { deadlineDay, deadlineHour });
 };
 
 const buildFreePolicyMessage = (t) => {
@@ -62,6 +50,16 @@ const getPolicyPresentation = (t, props) => {
   return policyHandler(t, props);
 };
 
+const getAlertVariant = (cancellationPolicy) => {
+  const { cancellationPolicyLogic } = cancellationPolicy;
+
+  if (cancellationPolicyLogic === "non_refundable") {
+    return "info";
+  }
+
+  return "success";
+};
+
 export default function CancellationPolicy(props) {
   const { cancellationPolicy } = props;
   const { t } = useTranslation();
@@ -70,5 +68,7 @@ export default function CancellationPolicy(props) {
     return null;
   }
 
-  return <Alert text={getPolicyPresentation(t, props)} variant="success" />;
+  return (
+    <Alert text={getPolicyPresentation(t, props)} variant={getAlertVariant(cancellationPolicy)} />
+  );
 }
