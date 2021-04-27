@@ -13,4 +13,5 @@ Based on create-react-app so set required params in `.env`, build by running `ya
 directory and then deploy wherewer you want. Use `yarn start` to run in dev mode.
 
 Note on .env: `REACT_APP_BASE_PATH` is required if you want to host the app on url like
-`your-host.com/path/{channel_id}`, in this case `/path` should be set as a base path in config.
+`your-host.com/path/{channel_id}`, in this case `/path` should be set as a base path in config, otherwise it can be ommitted.
+`REACT_APP_PUBLIC_URL` - should point to directory static assets will be served from'
