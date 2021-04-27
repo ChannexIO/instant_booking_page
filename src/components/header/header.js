@@ -12,12 +12,17 @@ import HotelTitle from "./hotel_title";
 import styles from "./header.module.css";
 
 export default function Header({ property = {} }) {
-  const routeMatch = useRouteMatch({
+  const matchHotelPage = useRouteMatch({
     path: routes.hotelPage,
     strict: true,
   });
 
-  const isCurrencySelectShown = routeMatch?.isExact;
+  const matchNotFoundPage = useRouteMatch({
+    path: routes.default,
+    strict: true,
+  });
+
+  const isCurrencySelectShown = matchHotelPage?.isExact && !matchNotFoundPage;
   const { title, logo } = property;
 
   return (

@@ -127,7 +127,7 @@ const initBookingData = async (dispatch, location, bookingQueryParams, savedBook
   const channelId = getChannelId(location);
 
   if (!channelId) {
-    return;
+    throw Error("PROPERY_NOT_FOUND");
   }
 
   const bookingParams = mergeBookingParams(channelId, bookingQueryParams, savedBookingData);
