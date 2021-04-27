@@ -33,6 +33,9 @@ export default function Routing() {
 
   return (
     <Switch>
+      <Route path={routes.default} exact>
+        <NotFoundPage />
+      </Route>
       <Route path={routes.homePage} exact>
         <HomePage />
       </Route>
@@ -47,9 +50,6 @@ export default function Routing() {
       </Route>
       <Route path={routes.confirmationPage} exact>
         <ConfirmationPage />
-      </Route>
-      <Route path={routes.default} exact>
-        <NotFoundPage />
       </Route>
 
       <Route path="*">
