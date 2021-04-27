@@ -52,7 +52,7 @@
     "price_per_night": "per night",
     "rooms": "rooms",
     "nights": "nights",
-    "missing_spaces": "Selected rooms have not enough space for amount of guests you've selected.",
+    "missing_spaces": "Selected rooms have not enough space for amount of guests you have selected.",
     "hotel_policy": {
       "checkin_time": "Checkin Time",
       "checkout_time": "Checkout Time",
@@ -82,7 +82,7 @@
         "type_options": {
           "none": "None",
           "on_site": "On Site",
-          "location_nearby": "Location Nearby"
+          "nearby": "Location Nearby"
         },
         "reservation_title": "Parking reservation",
         "reservation_options": {
