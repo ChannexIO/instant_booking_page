@@ -14,8 +14,8 @@ export default function DateSelect({ bookingParams, handleSearchChange }) {
   const handleDatesChange = useCallback(
     ({ startDate, endDate }) => {
       const formattedDates = {
-        checkinDate: dateFormatter.toClient(startDate),
-        checkoutDate: dateFormatter.toClient(endDate),
+        checkinDate: dateFormatter.toApi(startDate),
+        checkoutDate: dateFormatter.toApi(endDate),
       };
       setUrlParams(formattedDates, history);
       handleSearchChange({ ...bookingParams, checkinDate: startDate, checkoutDate: endDate });
