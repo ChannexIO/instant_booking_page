@@ -137,34 +137,36 @@ export default function SearchPage() {
   );
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.left}>
-        <HeaderSearch
-          checkinDate={checkinDate}
-          checkoutDate={checkoutDate}
-          handleDatesChange={handleDatesChange}
-          occupancyParams={occupancyParams}
-          handleChangeOccupancy={handleChangeOccupancy}
-        />
-        <PropertiesList
-          loading={isLoading}
-          properties={propertiesData}
-          onSelectProperty={setSelectProperty}
-        />
-      </div>
-      <div className={styles.right}>
-        {selectProperty && (
-          <PropertyPreview
-            property={selectProperty}
-            onClearSelectProperty={onClearSelectProperty}
+    <div>
+      <HeaderSearch
+        checkinDate={checkinDate}
+        checkoutDate={checkoutDate}
+        handleDatesChange={handleDatesChange}
+        occupancyParams={occupancyParams}
+        handleChangeOccupancy={handleChangeOccupancy}
+      />
+      <div className={styles.wrapper}>
+        <div className={styles.left}>
+          <PropertiesList
+            loading={isLoading}
+            properties={propertiesData}
+            onSelectProperty={setSelectProperty}
           />
-        )}
+        </div>
+        <div className={styles.right}>
+          {selectProperty && (
+            <PropertyPreview
+              property={selectProperty}
+              onClearSelectProperty={onClearSelectProperty}
+            />
+          )}
 
-        <PropertiesSearchMap
-          properties={propertiesData}
-          onChangeCallback={updateCoordinates}
-          onSelectProperty={setSelectProperty}
-        />
+          <PropertiesSearchMap
+            properties={propertiesData}
+            onChangeCallback={updateCoordinates}
+            onSelectProperty={setSelectProperty}
+          />
+        </div>
       </div>
     </div>
   );
