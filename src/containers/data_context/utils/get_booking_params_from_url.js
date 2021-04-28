@@ -1,7 +1,7 @@
 import moment from "moment";
 import currencies from "world-currencies";
 
-import { DATE_FORMAT } from "constants/formats";
+import { DATE_API_FORMAT } from "constants/formats";
 import getUrlParams from "utils/get_url_params";
 
 const DEFAULT_PARAMS = {
@@ -14,8 +14,8 @@ export default function getBookingParamsFromUrl() {
 
   const optionalParams = DEFAULT_PARAMS;
 
-  const parsedStartDate = moment(checkinDate, DATE_FORMAT);
-  const parsedEndDate = moment(checkoutDate, DATE_FORMAT);
+  const parsedStartDate = moment(checkinDate, DATE_API_FORMAT);
+  const parsedEndDate = moment(checkoutDate, DATE_API_FORMAT);
 
   if (checkinDate && parsedStartDate.isValid()) {
     const isCheckinAfterCurrent = moment().isSameOrBefore(parsedStartDate, "day");

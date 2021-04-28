@@ -57,8 +57,8 @@ export default function MainSearch() {
   const onSearch = () => {
     if (checkinDate && checkoutDate) {
       const formattedDates = {
-        checkinDate: dateFormatter.toClient(checkinDate),
-        checkoutDate: dateFormatter.toClient(checkoutDate),
+        checkinDate: dateFormatter.toApi(checkinDate),
+        checkoutDate: dateFormatter.toApi(checkoutDate),
       };
 
       const params = { ...formattedDates, ...occupancyParams };

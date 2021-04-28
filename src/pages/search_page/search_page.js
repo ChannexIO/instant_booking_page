@@ -11,7 +11,7 @@ import PropertyPreview from "components/property_preview";
 import { SearchActionsContext, SearchDataContext } from "containers/data_context";
 
 import DEFAULT_OCCUPANCY_PARAMS from "constants/default_occopancy_params";
-import { DATE_FORMAT } from "constants/formats";
+import { DATE_API_FORMAT } from "constants/formats";
 import dateFormatter from "utils/date_formatter";
 import getUrlParams from "utils/get_url_params";
 import setUrlParams from "utils/set_url_params";
@@ -52,8 +52,8 @@ export default function SearchPage() {
     }
 
     const formattedDates = {
-      checkin_date: dateFormatter.toApi(moment(urlParams.checkinDate, DATE_FORMAT)),
-      checkout_date: dateFormatter.toApi(moment(urlParams.checkoutDate, DATE_FORMAT)),
+      checkin_date: dateFormatter.toApi(moment(urlParams.checkinDate, DATE_API_FORMAT)),
+      checkout_date: dateFormatter.toApi(moment(urlParams.checkoutDate, DATE_API_FORMAT)),
     };
 
     loadPropertiesList({ ...urlParams, ...formattedDates }, filter);
@@ -85,10 +85,10 @@ export default function SearchPage() {
       });
     }
     if (checkinDateFromUrl) {
-      setCheckinDate(moment(checkinDateFromUrl, DATE_FORMAT));
+      setCheckinDate(moment(checkinDateFromUrl, DATE_API_FORMAT));
     }
     if (checkoutDateFromUrl) {
-      setCheckoutDate(moment(checkoutDateFromUrl, DATE_FORMAT));
+      setCheckoutDate(moment(checkoutDateFromUrl, DATE_API_FORMAT));
     }
     // eslint-disable-next-line
   }, [
@@ -113,8 +113,8 @@ export default function SearchPage() {
       setCheckoutDate(endDate);
       if (startDate && endDate) {
         const formattedDates = {
-          checkinDate: dateFormatter.toClient(startDate),
-          checkoutDate: dateFormatter.toClient(endDate),
+          checkinDate: dateFormatter.toApi(startDate),
+          checkoutDate: dateFormatter.toApi(endDate),
         };
         setUrlParams({ ...urlParams, ...formattedDates }, history);
       }
