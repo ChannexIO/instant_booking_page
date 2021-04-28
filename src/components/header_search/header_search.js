@@ -43,6 +43,7 @@ export default function HeaderSearch({
     <div className={styles.wrapper}>
       <p className={styles.title}>{t("properties:header")}</p>
       <div className={styles.inner}>
+        <p className={styles.title}>{t("global:search")}</p>
         <RangePicker
           checkinDatePlaceholder={t("hotel_page:checkin_placeholder")}
           checkoutDatePlaceholder={t("hotel_page:checkout_placeholder")}

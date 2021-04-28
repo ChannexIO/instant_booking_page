@@ -9,7 +9,7 @@ const DEFAULT_CENTER = { lat: 51.496644, lng: -0.147614 };
 
 const mapSize = {
   width: "100%",
-  height: "100vh",
+  height: "100%",
 };
 
 const getMapBounds = (map, maps, places) => {
