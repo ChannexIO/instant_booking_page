@@ -4,8 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import routes from "routing/routes";
 
 import buildPath from "utils/build_path";
-
-import getBookingParamsFromUrl from "../utils/get_booking_params_from_url";
+import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
 
 import { INITIAL_STATE, reducer } from "./reducers/app_data";
 
