@@ -10,7 +10,15 @@ const DEFAULT_PARAMS = {
 };
 
 export default function getBookingParamsFromUrl() {
-  const { currency, checkinDate, checkoutDate, adults, children, childrenAge } = getUrlParams();
+  const {
+    currency,
+    checkinDate,
+    checkoutDate,
+    adults,
+    children,
+    childrenAge,
+    mapCoordinates,
+  } = getUrlParams();
 
   const optionalParams = DEFAULT_PARAMS;
 
@@ -49,6 +57,14 @@ export default function getBookingParamsFromUrl() {
   const isValidCurrency = currencies[currency];
   if (isValidCurrency) {
     optionalParams.currency = currency;
+  }
+
+  try {
+    const parsedCoordinates = JSON.parse(mapCoordinates);
+
+    optionalParams.mapCoordinates = parsedCoordinates;
+  } catch (_error) {
+    optionalParams.mapCoordinates = null;
   }
 
   return { ...optionalParams };

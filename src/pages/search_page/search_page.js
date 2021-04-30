@@ -8,9 +8,9 @@ import PropertiesSearchMap from "components/properties_search_map";
 import PropertyPreview from "components/property_preview";
 
 import { SearchActionsContext, SearchDataContext } from "containers/data_context";
-import getBookingParamsFromUrl from "containers/data_context/utils/get_booking_params_from_url";
 
 import dateFormatter from "utils/date_formatter";
+import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
 import setUrlParams from "utils/set_url_params";
 
 import styles from "./search_page.module.css";
@@ -26,7 +26,7 @@ export default function SearchPage() {
   const { data: propertiesData, isLoading } = properties;
 
   const onSearch = useCallback(
-    (requestParams) => {
+    _.debounce((requestParams) => {
       const { mapCoordinates, ...restParams } = requestParams;
 
       let filter = {};
@@ -38,7 +38,7 @@ export default function SearchPage() {
             gte: mapCoordinates.sw.lat,
           },
           longitude: {
-            lte: mapCoordinates.se.lng,
+            lte: mapCoordinates.ne.lng,
             gte: mapCoordinates.sw.lng,
           },
         };
@@ -50,7 +50,7 @@ export default function SearchPage() {
       };
 
       loadPropertiesList({ ...restParams, ...formattedDates }, filter);
-    },
+    }, DEBOUNCE_MAP_TIME),
     [loadPropertiesList],
   );
 
@@ -68,18 +68,20 @@ export default function SearchPage() {
     [searchParams, onSearch],
   );
 
-  const handleCoordinatesChange = _.debounce(({ marginBounds }) => {
+  const handleCoordinatesChange = (marginBounds) => {
+    const isSameLocation = _.isEqual(marginBounds, searchParams.mapCoordinates);
     const newSearchParams = { ...searchParams, mapCoordinates: marginBounds };
+    const mapCoordinates = JSON.stringify(marginBounds);
 
     setSearchParams(newSearchParams);
-    setUrlParams({ mapCoordinates: marginBounds }, history);
+    setUrlParams({ mapCoordinates }, history);
 
-    if (!searchParams.mapCoordinates) {
+    if (isSameLocation) {
       return;
     }
 
     onSearch(newSearchParams);
-  }, DEBOUNCE_MAP_TIME);
+  };
 
   const onClearSelectProperty = useCallback(() => {
     setSelectProperty(null);
@@ -108,7 +110,7 @@ export default function SearchPage() {
         onSearch(newSearchParams);
       }
     },
-    [history, onSearch],
+    [searchParams, history, onSearch],
   );
 
   const handleChangeOccupancy = useCallback(
@@ -116,11 +118,10 @@ export default function SearchPage() {
       const newSearchParams = { ...searchParams, [name]: value };
 
       setUrlParams({ [name]: value }, history);
-
       setSearchParams(newSearchParams);
       onSearch(newSearchParams);
     },
-    [onSearch, history],
+    [searchParams, onSearch, history],
   );
 
   if (!searchParams) {
@@ -151,6 +152,7 @@ export default function SearchPage() {
           )}
 
           <PropertiesSearchMap
+            defaultBounds={searchParams.mapCoordinates}
             properties={propertiesData}
             onChangeCallback={handleCoordinatesChange}
             onSelectProperty={setSelectProperty}
