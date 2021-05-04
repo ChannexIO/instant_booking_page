@@ -106,6 +106,24 @@ export default function PropertiesSearchMap({
     onChangeCallback(coords);
   }, [mapInstance, defaultBounds, onChangeCallback]);
 
+  const markers = useMemo(
+    () =>
+      properties?.map((item, index) => {
+        const { latitude, longitude } = item;
+
+        return (
+          <Marker
+            key={index}
+            lat={Number(latitude)}
+            lng={Number(longitude)}
+            item={item}
+            handleSelectProperty={onSelectProperty}
+          />
+        );
+      }),
+    [properties, onSelectProperty],
+  );
+
   return (
     <div style={{ height: MAP_SIZE.height, width: MAP_SIZE.width }}>
       <GoogleMapReact
@@ -117,22 +135,7 @@ export default function PropertiesSearchMap({
         onDragEnd={handleDragEnd}
         onZoomAnimationEnd={handleZoomChanged}
       >
-        {useMemo(
-          () =>
-            properties?.map((item, index) => {
-              const { latitude, longitude } = item;
-              return (
-                <Marker
-                  key={index}
-                  lat={Number(latitude)}
-                  lng={Number(longitude)}
-                  item={item}
-                  handleSelectProperty={onSelectProperty}
-                />
-              );
-            }),
-          [properties, onSelectProperty],
-        )}
+        {markers}
       </GoogleMapReact>
     </div>
   );
