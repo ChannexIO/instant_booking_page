@@ -1,6 +1,7 @@
 .marker {
   color: #fff;
   background: #06bb24;
+  border: 1px solid #45d45d;
   border-radius: 4px;
   font-family: Helvetica;
   font-size: 14px;
@@ -9,4 +10,21 @@
   padding: 7px 4px;
   text-align: center;
   cursor: pointer;
+}
+
+.marker:hover {
+  background: #45d45d;
+  border: 1px solid #62dd77;
+}
+
+.marker:hover .markerContent {
+  display: none;
+}
+
+.marker:hover .markerOverlay {
+  display: initial;
+}
+
+.markerOverlay {
+  display: none;
 }
