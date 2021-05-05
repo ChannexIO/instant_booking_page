@@ -36,7 +36,7 @@ const createBooking = async (dispatch, channelId, formParams) => {
   setSubmittedValue(dispatch, formParams);
 
   try {
-    const [newBookingInfo] = await ApiActions.createBooking(channelId, formParams);
+    const newBookingInfo = await ApiActions.createBooking(channelId, formParams);
 
     setFormSubmitSuccess(dispatch);
 
