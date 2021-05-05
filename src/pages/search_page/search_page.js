@@ -73,12 +73,12 @@ export default function SearchPage() {
     const newSearchParams = { ...searchParams, mapCoordinates: marginBounds };
     const mapCoordinates = JSON.stringify(marginBounds);
 
-    setSearchParams(newSearchParams);
-    setUrlParams({ mapCoordinates }, history);
-
     if (isSameLocation) {
       return;
     }
+
+    setSearchParams(newSearchParams);
+    setUrlParams({ mapCoordinates }, history);
 
     onSearch(newSearchParams);
   };

@@ -40,22 +40,6 @@ const getDefaultBounds = (maps, bounds) => {
   return getMapBounds(maps, points);
 };
 
-const getCoords = (map) => {
-  const bounds = map.getBounds();
-  const coords = {
-    ne: {
-      lat: bounds.getNorthEast().lat(),
-      lng: bounds.getNorthEast().lng(),
-    },
-    sw: {
-      lat: bounds.getSouthWest().lat(),
-      lng: bounds.getSouthWest().lng(),
-    },
-  };
-
-  return coords;
-};
-
 export default function PropertiesSearchMap({
   properties,
   defaultBounds,
@@ -87,25 +71,6 @@ export default function PropertiesSearchMap({
     mapInstance.map.fitBounds(bounds, BOUND_PADDING);
   }, [mapInstance, defaultBounds, properties]);
 
-  const handleDragEnd = useCallback(
-    (map) => {
-      const coords = getCoords(map);
-
-      onChangeCallback(coords);
-    },
-    [onChangeCallback],
-  );
-
-  const handleZoomChanged = useCallback(() => {
-    if (!mapInstance || !defaultBounds) {
-      return;
-    }
-
-    const coords = getCoords(mapInstance.map);
-
-    onChangeCallback(coords);
-  }, [mapInstance, defaultBounds, onChangeCallback]);
-
   const markers = useMemo(
     () =>
       properties?.map((item, index) => {
@@ -124,6 +89,14 @@ export default function PropertiesSearchMap({
     [properties, onSelectProperty],
   );
 
+  const handleChange = ({ bounds }) => {
+    if (!mapInstance) {
+      return;
+    }
+
+    onChangeCallback(bounds);
+  };
+
   return (
     <div style={{ height: MAP_SIZE.height, width: MAP_SIZE.width }}>
       <GoogleMapReact
@@ -131,9 +104,8 @@ export default function PropertiesSearchMap({
         onGoogleApiLoaded={onGoogleApiLoaded}
         center={DEFAULT_CENTER}
         zoom={DEFAULT_ZOOM}
+        onChange={handleChange}
         yesIWantToUseGoogleMapApiInternals
-        onDragEnd={handleDragEnd}
-        onZoomAnimationEnd={handleZoomChanged}
       >
         {markers}
       </GoogleMapReact>
