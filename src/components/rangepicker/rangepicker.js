@@ -69,7 +69,7 @@ export default function RangePicker(props) {
   const numberOfMonths = matchedQueries.xs || matchedQueries.sm ? 1 : 2;
 
   const getIsClosedToArrival = useCallback(
-    (day, formattedDay) => {
+    (_day, formattedDay) => {
       const { closedToArrivalHash } = hashedClosedDates;
 
       return closedToArrivalHash[formattedDay];
@@ -165,9 +165,9 @@ export default function RangePicker(props) {
 
   useEffect(() => {
     if (isVisible) {
-      handleFocusChange(START_DATE_INPUT);
+      setFocusedInput(START_DATE_INPUT);
     }
-  }, [handleFocusChange, isVisible]);
+  }, [setFocusedInput, isVisible]);
 
   const renderCalendarDay = useCallback(
     (dayProps) => (
