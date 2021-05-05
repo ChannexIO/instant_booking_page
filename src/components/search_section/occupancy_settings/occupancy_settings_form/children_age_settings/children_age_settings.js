@@ -29,8 +29,8 @@ export default function ChildrenAgeSettings({ name, bookingParams, onChange }) {
 
   useEffect(
     function handleChildrenAmountChange() {
-      const { children, childrenAge } = bookingParams;
-      const isChildrenArrayUpToDate = Array.isArray(childrenAge) && children === childrenAge.length;
+      const { children, childrenAge = [] } = bookingParams;
+      const isChildrenArrayUpToDate = children === childrenAge.length;
       const isChildrenAmountUnset = children === undefined;
 
       if (isChildrenAmountUnset || isChildrenArrayUpToDate) {
