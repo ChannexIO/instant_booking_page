@@ -18,3 +18,13 @@
   margin: 0 auto;
   padding: 56px 16px;
 }
+
+@media screen and (max-width: 991px) {
+  .footer {
+    display: block;
+  }
+
+  .footerWrapper {
+    margin-bottom: 80px;
+  }
+}
