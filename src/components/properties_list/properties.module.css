@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   background: #ffffff;
   box-shadow: 0 5px 20px 0 rgba(231, 238, 245, 0.77);
   border-radius: 4px;
@@ -28,33 +29,41 @@
   align-self: center;
   flex: 1;
   min-height: 458px;
+
 }
 
-.imageWrapper {
-  height: 220px;
-  position: relative;
-  border-bottom: 1px solid #f1f8fe;
-  box-sizing: border-box;
+.item:hover .overlay {
+  display: block;
 }
 
-.imageWrapper:hover .previewBtnWrapper {
-  display: flex;
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: #0d70cd93;
   transition: all 200ms ease;
+
+  z-index: 1;
 }
 
 .previewBtnWrapper {
-  display: none;
+  height: 220px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #0d70cd93;
-  transition: all 200ms ease;
 }
 
-.previewBtnWrapper :global .btn {
+.imageWrapper {
+  border-bottom: 1px solid #f1f8fe;
+  height: 220px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.previewButton:global.btn {
   font-family: Helvetica;
   font-size: 14px;
   color: #ffffff;
@@ -64,9 +73,9 @@
   padding: 6px 27px;
 }
 
-.previewBtnWrapper :global .btn:focus,
-.previewBtnWrapper :global .btn:active,
-.previewBtnWrapper :global .btn-primary:not(:disabled):not(.disabled):active {
+.previewButton:global.btn:focus,
+.previewButton:global.btn:active,
+.previewButton:global.btn-primary:not(:disabled):not(.disabled):active {
   box-shadow: none;
   background-color: transparent;
   border-color: #fff;
