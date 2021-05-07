@@ -34,8 +34,8 @@ export default () => {
     return actions.loadClosedDates(dispatch, channelId);
   }, []);
 
-  const initBookingData = useCallback((location, bookingQueryParams, savedBookingData) => {
-    return actions.initBookingData(dispatch, location, bookingQueryParams, savedBookingData);
+  const initBookingData = useCallback((bookingQueryParams, savedBookingData) => {
+    return actions.initBookingData(dispatch, bookingQueryParams, savedBookingData);
   }, []);
 
   const saveDataToStorage = useCallback((bookingDataToSave) => {

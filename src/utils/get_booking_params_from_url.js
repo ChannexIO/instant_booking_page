@@ -20,7 +20,7 @@ export default function getBookingParamsFromUrl() {
     mapCoordinates,
   } = getUrlParams();
 
-  const optionalParams = DEFAULT_PARAMS;
+  const optionalParams = { ...DEFAULT_PARAMS };
 
   const parsedStartDate = moment(checkinDate, DATE_API_FORMAT);
   const parsedEndDate = moment(checkoutDate, DATE_API_FORMAT);
@@ -67,5 +67,5 @@ export default function getBookingParamsFromUrl() {
     optionalParams.mapCoordinates = null;
   }
 
-  return { ...optionalParams };
+  return optionalParams;
 }

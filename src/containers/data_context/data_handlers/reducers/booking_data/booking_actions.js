@@ -1,7 +1,6 @@
-import { matchPath } from "react-router-dom";
 import ApiActions from "api_actions";
 
-import routes from "routing/routes";
+import getChannelId from "utils/get_channel_id";
 
 export const SET_CHANNEL_ID = "SET_CHANNEL_ID";
 export const SET_PROPERTY_LOADING = "SET_PROPERTY_LOADING";
@@ -52,16 +51,6 @@ const setRoomsRequestParams = (dispatch, payload) => {
 
 const resetParams = (dispatch) => {
   return dispatch({ type: RESET_PARAMS });
-};
-
-const getChannelId = (location) => {
-  const matchedPath = matchPath(location.pathname, { path: routes.hotelPage });
-
-  if (!matchedPath) {
-    return null;
-  }
-
-  return matchedPath.params.channelId;
 };
 
 const loadProperty = async (dispatch, channelId) => {
@@ -123,8 +112,8 @@ const mergeBookingParams = (channelId, bookingQueryParams, savedBookingData) => 
   return { ...params, ...bookingQueryParams };
 };
 
-const initBookingData = async (dispatch, location, bookingQueryParams, savedBookingData) => {
-  const channelId = getChannelId(location);
+const initBookingData = async (dispatch, bookingQueryParams, savedBookingData) => {
+  const channelId = getChannelId();
 
   if (!channelId) {
     throw Error("PROPERY_NOT_FOUND");
