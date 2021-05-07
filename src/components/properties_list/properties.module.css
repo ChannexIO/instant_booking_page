@@ -43,7 +43,7 @@
   display: none;
   background-color: #0d70cd93;
   transition: all 200ms ease;
-
+  pointer-events: none;
   z-index: 1;
 }
 

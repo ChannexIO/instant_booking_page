@@ -43,9 +43,9 @@ export default function PaymentPage() {
     function initApp() {
       const savedBookingParams = bookingActions.getDataFromStorage();
 
-      init(channelId, bookingActions, savedBookingParams);
+      init(bookingActions, savedBookingParams);
     },
-    [bookingActions, channelId, init],
+    [bookingActions, init],
   );
 
   if (!isPropertyPresent || !isRoomsPresent) {
