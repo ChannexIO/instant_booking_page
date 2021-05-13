@@ -8,7 +8,7 @@ const routes = {
   homePage: composeRoute("/"),
   searchPage: composeRoute("/search"),
   hotelPage: composeRoute("/:channelId"),
-  paymentPage: composeRoute("/:channelId/payment_page"),
+  paymentPage: composeRoute("/:channelId/booking_info"),
   confirmationPage: composeRoute("/:channelId/confirmation/:bookingId"),
   default: composeRoute("/404"),
 };

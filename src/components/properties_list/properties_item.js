@@ -36,13 +36,14 @@ export default function PropertiesItem({ property, onSelectProperty }) {
 
   return (
     <div className={styles.item} onClick={handleSelectProperty}>
-      <div>
-        <div className={styles.imageWrapper}>
-          {photo}
-          <div className={styles.previewBtnWrapper}>
-            <Button>{t("properties:preview")}</Button>
-          </div>
+      <div className={styles.overlay}>
+        <div className={styles.previewBtnWrapper}>
+          <Button className={styles.previewButton}>{t("properties:preview")}</Button>
         </div>
+      </div>
+
+      <div>
+        <div className={styles.imageWrapper}>{photo}</div>
 
         <div className={styles.info}>
           <p className={styles.title}>{title}</p>

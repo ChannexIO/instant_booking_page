@@ -28,9 +28,9 @@ export default function HotelPage() {
 
   useEffect(
     function initApp() {
-      init(channelId, bookingActions);
+      init(bookingActions);
     },
-    [bookingActions, channelId, init],
+    [bookingActions, init],
   );
 
   useEffect(

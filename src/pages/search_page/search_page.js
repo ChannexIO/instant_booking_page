@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import _ from "lodash";
-import moment from "moment";
 
 import HeaderSearch from "components/header_search";
 import PropertiesList from "components/properties_list";
@@ -10,10 +9,8 @@ import PropertyPreview from "components/property_preview";
 
 import { SearchActionsContext, SearchDataContext } from "containers/data_context";
 
-import DEFAULT_OCCUPANCY_PARAMS from "constants/default_occopancy_params";
-import { DATE_API_FORMAT } from "constants/formats";
 import dateFormatter from "utils/date_formatter";
-import getUrlParams from "utils/get_url_params";
+import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
 import setUrlParams from "utils/set_url_params";
 
 import styles from "./search_page.module.css";
@@ -21,87 +18,70 @@ import styles from "./search_page.module.css";
 const DEBOUNCE_MAP_TIME = 1000;
 
 export default function SearchPage() {
-  const urlParams = getUrlParams();
-  const history = useHistory();
-  const [mapCoordinates, setMapCoordinates] = useState(null);
   const [selectProperty, setSelectProperty] = useState(null);
-
-  const [checkinDate, setCheckinDate] = useState(null);
-  const [checkoutDate, setCheckoutDate] = useState(null);
-  const [occupancyParams, setOccupancyParams] = useState(DEFAULT_OCCUPANCY_PARAMS);
-
-  const { properties } = useContext(SearchDataContext);
+  const [searchParams, setSearchParams] = useState(null);
+  const history = useHistory();
   const { loadPropertiesList } = useContext(SearchActionsContext);
-
+  const { properties } = useContext(SearchDataContext);
   const { data: propertiesData, isLoading } = properties;
 
-  const onSearch = useCallback(() => {
-    let filter = {};
+  const onSearch = useCallback(
+    _.debounce((requestParams) => {
+      const { mapCoordinates, ...restParams } = requestParams;
 
-    if (mapCoordinates) {
-      filter = {
-        latitude: {
-          lte: mapCoordinates.ne.lat,
-          gte: mapCoordinates.sw.lat,
-        },
-        longitude: {
-          lte: mapCoordinates.se.lng,
-          gte: mapCoordinates.sw.lng,
-        },
+      let filter = {};
+
+      if (mapCoordinates) {
+        filter = {
+          latitude: {
+            lte: mapCoordinates.ne.lat,
+            gte: mapCoordinates.sw.lat,
+          },
+          longitude: {
+            lte: mapCoordinates.ne.lng,
+            gte: mapCoordinates.sw.lng,
+          },
+        };
+      }
+
+      const formattedDates = {
+        checkinDate: dateFormatter.toApi(restParams.checkinDate),
+        checkoutDate: dateFormatter.toApi(restParams.checkoutDate),
       };
+
+      loadPropertiesList({ ...restParams, ...formattedDates }, filter);
+    }, DEBOUNCE_MAP_TIME),
+    [loadPropertiesList],
+  );
+
+  useEffect(
+    function initParamsFromUrl() {
+      if (searchParams) {
+        return;
+      }
+
+      const newSearchParams = getBookingParamsFromUrl();
+
+      setSearchParams(newSearchParams);
+      onSearch(newSearchParams);
+    },
+    [searchParams, onSearch],
+  );
+
+  const handleCoordinatesChange = (marginBounds) => {
+    const isSameLocation = _.isEqual(marginBounds, searchParams.mapCoordinates);
+    const newSearchParams = { ...searchParams, mapCoordinates: marginBounds };
+    const mapCoordinates = JSON.stringify(marginBounds);
+
+    if (isSameLocation) {
+      return;
     }
 
-    const formattedDates = {
-      checkin_date: dateFormatter.toApi(moment(urlParams.checkinDate, DATE_API_FORMAT)),
-      checkout_date: dateFormatter.toApi(moment(urlParams.checkoutDate, DATE_API_FORMAT)),
-    };
+    setSearchParams(newSearchParams);
+    setUrlParams({ mapCoordinates }, history);
 
-    loadPropertiesList({ ...urlParams, ...formattedDates }, filter);
-  }, [mapCoordinates, loadPropertiesList, urlParams]);
-
-  useEffect(() => {
-    onSearch();
-    // eslint-disable-next-line
-  }, [mapCoordinates]);
-
-  useEffect(() => {
-    setUrlParams({ ...urlParams, ...mapCoordinates }, history);
-  }, [mapCoordinates, history, urlParams]);
-
-  useEffect(() => {
-    const {
-      checkinDate: checkinDateFromUrl,
-      checkoutDate: checkoutDateFromUrl,
-      adults: adultsFromUrl,
-      children: childrenFromUrl,
-      childrenAge: childrenAgeFromUrl,
-    } = urlParams;
-
-    if (adultsFromUrl || childrenFromUrl || childrenAgeFromUrl) {
-      setOccupancyParams({
-        adults: Number(adultsFromUrl),
-        children: Number(childrenFromUrl),
-        childrenAge: childrenAgeFromUrl ? childrenAgeFromUrl.split(",").map((i) => Number(i)) : [],
-      });
-    }
-    if (checkinDateFromUrl) {
-      setCheckinDate(moment(checkinDateFromUrl, DATE_API_FORMAT));
-    }
-    if (checkoutDateFromUrl) {
-      setCheckoutDate(moment(checkoutDateFromUrl, DATE_API_FORMAT));
-    }
-    // eslint-disable-next-line
-  }, [
-    urlParams.checkinDate,
-    urlParams.checkoutDate,
-    urlParams.adults,
-    urlParams.children,
-    urlParams.childrenAge,
-  ]);
-
-  const updateCoordinates = _.debounce(({ marginBounds }) => {
-    setMapCoordinates(marginBounds);
-  }, DEBOUNCE_MAP_TIME);
+    onSearch(newSearchParams);
+  };
 
   const onClearSelectProperty = useCallback(() => {
     setSelectProperty(null);
@@ -109,62 +89,75 @@ export default function SearchPage() {
 
   const handleDatesChange = useCallback(
     ({ startDate, endDate }) => {
-      setCheckinDate(startDate);
-      setCheckoutDate(endDate);
+      const newSearchParams = {
+        ...searchParams,
+        checkinDate: startDate,
+        checkoutDate: endDate,
+      };
+
+      setSearchParams(newSearchParams);
+
       if (startDate && endDate) {
         const formattedDates = {
           checkinDate: dateFormatter.toApi(startDate),
           checkoutDate: dateFormatter.toApi(endDate),
         };
-        setUrlParams({ ...urlParams, ...formattedDates }, history);
+
+        setUrlParams(formattedDates, history);
       }
+
       if (endDate) {
-        onSearch();
+        onSearch(newSearchParams);
       }
     },
-    [history, onSearch, urlParams],
+    [searchParams, history, onSearch],
   );
 
   const handleChangeOccupancy = useCallback(
     (value, name) => {
-      const params = { ...occupancyParams, [name]: value };
-      setOccupancyParams(params);
+      const newSearchParams = { ...searchParams, [name]: value };
 
-      setUrlParams({ ...urlParams, ...params }, history);
-      onSearch();
+      setUrlParams({ [name]: value }, history);
+      setSearchParams(newSearchParams);
+      onSearch(newSearchParams);
     },
-    [occupancyParams, onSearch, history, urlParams],
+    [searchParams, onSearch, history],
   );
 
-  return (
-    <div className={styles.wrapper}>
-      <div className={styles.left}>
-        <HeaderSearch
-          checkinDate={checkinDate}
-          checkoutDate={checkoutDate}
-          handleDatesChange={handleDatesChange}
-          occupancyParams={occupancyParams}
-          handleChangeOccupancy={handleChangeOccupancy}
-        />
-        <PropertiesList
-          loading={isLoading}
-          properties={propertiesData}
-          onSelectProperty={setSelectProperty}
-        />
-      </div>
-      <div className={styles.right}>
-        {selectProperty && (
-          <PropertyPreview
-            property={selectProperty}
-            onClearSelectProperty={onClearSelectProperty}
-          />
-        )}
+  if (!searchParams) {
+    return null;
+  }
 
-        <PropertiesSearchMap
-          properties={propertiesData}
-          onChangeCallback={updateCoordinates}
-          onSelectProperty={setSelectProperty}
-        />
+  return (
+    <div>
+      <HeaderSearch
+        searchParams={searchParams}
+        handleDatesChange={handleDatesChange}
+        handleChangeOccupancy={handleChangeOccupancy}
+      />
+      <div className={styles.wrapper}>
+        <div className={styles.left}>
+          <PropertiesList
+            loading={isLoading}
+            properties={propertiesData}
+            onSelectProperty={setSelectProperty}
+          />
+        </div>
+        <div className={styles.right}>
+          {selectProperty && (
+            <PropertyPreview
+              property={selectProperty}
+              onClearSelectProperty={onClearSelectProperty}
+            />
+          )}
+
+          <PropertiesSearchMap
+            defaultBounds={searchParams.mapCoordinates}
+            properties={propertiesData}
+            onChangeCallback={handleCoordinatesChange}
+            onSelectProperty={setSelectProperty}
+          />
+        </div>
       </div>
     </div>
   );

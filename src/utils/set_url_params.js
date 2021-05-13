@@ -11,5 +11,5 @@ export default (params, history) => {
     updatedUrl.searchParams.set(key, value);
   });
 
-  history.push(`${updatedUrl.pathname}${updatedUrl.search}`);
+  history.replace(`${updatedUrl.pathname}${updatedUrl.search}`);
 };

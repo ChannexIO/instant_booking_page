@@ -8,13 +8,7 @@ import OccupancySettingsForm from "components/search_section/occupancy_settings/
 
 import styles from "./header_search.module.css";
 
-export default function HeaderSearch({
-  checkinDate,
-  checkoutDate,
-  occupancyParams,
-  handleDatesChange,
-  handleChangeOccupancy,
-}) {
+export default function HeaderSearch({ searchParams, handleDatesChange, handleChangeOccupancy }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [rangePickerVisible, setRangePickerVisible] = useState(false);
@@ -28,8 +22,8 @@ export default function HeaderSearch({
   }, []);
 
   const getDropdownTitle = () => {
-    const title = `${occupancyParams.adults} ${t("hotel_page:adults")} ·
-    ${occupancyParams.children} ${t("hotel_page:children")}`;
+    const title = `${searchParams.adults} ${t("hotel_page:adults")} ·
+    ${searchParams.children} ${t("hotel_page:children")}`;
 
     return title;
   };
@@ -43,11 +37,12 @@ export default function HeaderSearch({
     <div className={styles.wrapper}>
       <p className={styles.title}>{t("properties:header")}</p>
       <div className={styles.inner}>
+        <p className={styles.title}>{t("global:search")}</p>
         <RangePicker
           checkinDatePlaceholder={t("hotel_page:checkin_placeholder")}
           checkoutDatePlaceholder={t("hotel_page:checkout_placeholder")}
-          checkinDate={checkinDate}
-          checkoutDate={checkoutDate}
+          checkinDate={searchParams.checkinDate}
+          checkoutDate={searchParams.checkoutDate}
           name="search_dates"
           className={rangePickerClassName}
           onDatesChange={handleDatesChange}
@@ -63,7 +58,7 @@ export default function HeaderSearch({
           layout="vertical"
         >
           <OccupancySettingsForm
-            bookingParams={occupancyParams}
+            bookingParams={searchParams}
             onClose={handleToggleDropdown}
             onChange={handleChangeOccupancy}
           />
