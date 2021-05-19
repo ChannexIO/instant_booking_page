@@ -2,7 +2,7 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
-import Facility from "components/faclitily";
+import FacilityGroup from "components/facility_group";
 import SectionWrapper from "components/layout/section_wrapper";
 import SectionTitle from "components/section_title";
 
@@ -21,9 +21,9 @@ export default function HotelFacilitiesSection({ property }) {
       <Col xs="12" lg="8">
         <SectionTitle>{t("hotel_page:hotel_facilities")}</SectionTitle>
         <div className={styles.hotelFacilitiesContainer}>
-          {facilities.map((facility) => (
-            <div className={styles.hotelFacility} key={facility}>
-              <Facility code={facility} />
+          {facilities.map((facilityGroup) => (
+            <div className={styles.hotelFacility} key={facilityGroup.categoryCode}>
+              <FacilityGroup facilityGroup={facilityGroup} />
             </div>
           ))}
         </div>
