@@ -52,10 +52,10 @@
     "price_per_night": "per night",
     "rooms": "rooms",
     "nights": "nights",
-    "missing_spaces": "Selected rooms have not enough space for amount of guests you have selected.",
+    "missing_spaces": "Selected rooms does not have enough space for the amount of guests selected.",
     "hotel_policy": {
-      "checkin_time": "Checkin Time",
-      "checkout_time": "Checkout Time",
+      "checkin_time": "Check-in Time",
+      "checkout_time": "Check-out Time",
       "internet": {
         "coverage_title": "Internet access coverage",
         "coverage_options": {
@@ -220,6 +220,23 @@
   "facilities": {
     "0": "Demo facility"
   },
+  "facility_categories": {
+    "view" : "View",
+    "in_room" : "In room",
+    "bathroom" : "Bathroom",
+    "kitchen" : "Kitchen",
+    "outside" : "Outside",
+    "security" : "Security",
+    "outdoors" : "Outdoors",
+    "pets" : "Pets",
+    "activites" : "Activites",
+    "food_and_drink": "Food and drink",
+    "parking" : "Parking",
+    "services" : "Services",
+    "safety_and_security" : "Safety and security",
+    "general" : "General",
+    "sustainable_practice" : "Sustainable practice"
+  },
   "meal_types": {
     "none": "No meal",
     "all_inclusive": "All inclusive",
@@ -249,7 +266,7 @@
     "types": {
       "free": "FREE cancellation",
       "non_refundable": "Cancellation is non-refundable",
-      "deadline": "FREE cancellation before {{deadlineHour}} and {{deadlineDay}}",
+      "deadline": "FREE cancellation before {{deadlineHour}} on {{deadlineDay}}",
       "free_detailed": "Booking can be cancelled at any time",
       "non_refundable_detailed": "Booking is non-refundable",
       "deadline_detailed": "Free cancellation up to {{time}} {{timeUnit}} before arrival. After this time there will be a {{amount}} {{unit}} fee"
