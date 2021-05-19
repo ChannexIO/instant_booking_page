@@ -208,8 +208,8 @@
     "terms_and_conditions": "Terms and Conditions",
     "privacy_policy": "Privacy Policy",
     "copyright_info": "Copyright Info",
-    "get_free_channel": "Get your FREE Channel Manager at",
-    "channex_io": "Channex.io"
+    "get_free_channel": "Powered by",
+    "channex_io": "Channex"
   },
   "room_types": {
     "0": "Demo room"
