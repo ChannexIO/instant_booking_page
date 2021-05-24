@@ -13,16 +13,16 @@
   display: flex;
 }
 
+.modalHeader h6 {
+  line-height: 20px;
+}
+
 .modalFooter {
   justify-content: start;
 }
 
-.roomDescriptionHeader {
-  margin: 0 0.25rem;
-}
-
 @media screen and (max-width: 575px) {
-  .modal :global .modal-dialog {
+  .modal {
     margin: 0;
   }
 
@@ -32,5 +32,6 @@
 
   .modal :global .modal-content {
     border-radius: 0;
+    min-height: 100vh;
   }
 }

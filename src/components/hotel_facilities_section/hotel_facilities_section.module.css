@@ -2,13 +2,3 @@
   display: flex;
   flex-wrap: wrap;
 }
-
-.hotelFacility {
-  width: 25%;
-}
-
-@media screen and (max-width: 767px) {
-  .hotelFacility {
-    width: 50%;
-  }
-}

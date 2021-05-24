@@ -1,11 +1,13 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FrownOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 import LoadingContainer from "components/loading_container";
+import Placeholder from "components/placeholder";
 
 import { BookingActionsContext, BookingDataContext } from "containers/data_context";
 
-import Placeholder from "./placeholder";
 import RatesTableHeader from "./rates_table_header";
 import ReloadContainer from "./reload_container";
 import RoomType from "./room_type";
@@ -16,6 +18,7 @@ const DEFAULT_OCCUPANCY_PER_ROOM = {};
 
 export default function RatesTable() {
   const [isStale, setIsStale] = useState(false);
+  const { t } = useTranslation();
   const { roomsInfo, params, roomRequestParams, channelId } = useContext(BookingDataContext);
   const { setParams, loadRoomsInfo } = useContext(BookingActionsContext);
 
@@ -112,7 +115,10 @@ export default function RatesTable() {
               />
             ))
           ) : (
-            <Placeholder />
+            <Placeholder
+              icon={<FrownOutlined />}
+              text={t("rates_table:no_available_rates_placeholder")}
+            />
           )}
         </div>
       </ReloadContainer>

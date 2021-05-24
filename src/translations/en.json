@@ -135,7 +135,7 @@
     "taxes_and_charges": "taxes and charges",
     "reserve": "Reserve",
     "show_prices": "Show prices",
-    "room_description": "Room Description",
+    "room_facilities": "Facilities",
     "included": "included",
     "meals": "Meals",
     "cancellation": "Cancellation",
@@ -147,7 +147,8 @@
     "missing_spaces_description": "Check how many guests the available options can sleep",
     "price_for_up_to": "Price for up to",
     "no_rates_placeholder": "Select Check-In and Check-Out dates to get available rates",
-    "no_available_rates_placeholder": "No available rooms for selected dates"
+    "no_available_rates_placeholder": "No available rooms for selected dates",
+    "no_room_description": "No description here yet"
   },
   "payment_page": {
     "payment_form": {
