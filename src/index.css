@@ -167,6 +167,9 @@ blockquote {
   font-weight: 600;
 }
 
+.modal-open .modal {
+  padding: 0 !important;
+}
 
 @media screen and (max-width: 767px) {
   h1 {

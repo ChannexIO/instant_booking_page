@@ -22,9 +22,7 @@ export default function HotelFacilitiesSection({ property }) {
         <SectionTitle>{t("hotel_page:hotel_facilities")}</SectionTitle>
         <div className={styles.hotelFacilitiesContainer}>
           {facilities.map((facilityGroup) => (
-            <div className={styles.hotelFacility} key={facilityGroup.categoryCode}>
-              <FacilityGroup facilityGroup={facilityGroup} />
-            </div>
+            <FacilityGroup key={facilityGroup.categoryCode} facilityGroup={facilityGroup} />
           ))}
         </div>
       </Col>
