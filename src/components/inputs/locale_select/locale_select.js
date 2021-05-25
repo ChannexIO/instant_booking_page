@@ -8,10 +8,6 @@ const AVAILABLE_LANGUAGES = [
     key: "en",
     value: "ENG",
   },
-  {
-    key: "test",
-    value: "TEST",
-  },
 ];
 
 export default function LocaleSelect() {
