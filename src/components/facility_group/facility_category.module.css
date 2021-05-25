@@ -1,0 +1,10 @@
+.facilityCategory {
+  padding-bottom: 8px;
+  width: 25%;
+}
+
+@media screen and (max-width: 767px) {
+  .facilityCategory {
+    width: 50%;
+  }
+}
