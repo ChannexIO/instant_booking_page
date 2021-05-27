@@ -14,17 +14,13 @@ const buildRangeBlockedHash = (closedHash, rangeRestrictions) => {
         moment(key, DATE_API_FORMAT).add(index, "day").format(DATE_API_FORMAT),
       );
 
-    affectedRange.pop(); // reduce range by one because closed date could be used for checkout;
-
     const isRangeIncludesClosed = affectedRange.some((val) => closedHash[val]);
 
     if (!isRangeIncludesClosed) {
       return acc;
     }
 
-    const rangeBlockedHash = convertToHashmap(affectedRange);
-
-    return { ...acc, ...rangeBlockedHash };
+    return { ...acc, [key]: true };
   }, {});
 };
 
