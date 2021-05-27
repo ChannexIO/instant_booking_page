@@ -8,6 +8,14 @@ const AVAILABLE_LANGUAGES = [
     key: "en",
     value: "ENG",
   },
+  {
+    key: "tr",
+    value: "TUR",
+  },
+  {
+    key: "es",
+    value: "ESP",
+  },
 ];
 
 export default function LocaleSelect() {

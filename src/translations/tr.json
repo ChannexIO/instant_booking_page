@@ -1,0 +1,299 @@
+{
+  "general": {
+    "locale": "Türkçe"
+  },
+  "global": {
+    "loading": "Yükleniyor...",
+    "search": "Ara",
+    "back": "Geri",
+    "close": "Kapat",
+    "delete": "Sil",
+    "clear": "Temizle",
+    "search_page_doc_title": "Ara",
+    "main_page_doc_title": "IBE"
+  },
+  "navigation": {
+    "hotel_page": "Ana Sayfa",
+    "payment_page": "Ödeme Sayfası",
+    "confirmation_page": "Rezervasyon Onayı"
+  },
+  "currency_select": {
+    "hotel_currency": "Otel Para Birimi",
+    "popular_currencies_separator": "Popüler Para Birimleri",
+    "available_currencies_separator": "Geçerli Para Birimleri"
+  },
+  "main_page": {
+    "search_btn": "Ara"
+  },
+  "hotel_page": {
+    "checkin_label": "Giriş",
+    "checkout_label": "Çıkış",
+    "checkin_placeholder": "Giriş",
+    "checkout_placeholder": "Çıkış",
+    "night_minimum": "minimum gece",
+    "total": "Toplam",
+    "search": "Ara",
+    "expand": "Genişlet",
+    "booking_summary": "Rezervasyon Özeti",
+    "book_for": "için rezervasyon",
+    "hotel_info": "Otel Bilgisi",
+    "hotel_facilities": "Olanaklar",
+    "contact_information": "İletişim Bilgileri",
+    "contact_information_message": "Soru ve talepleriniz için bizi arayabilir ya da eposta gönderebilirsiniz.",
+    "additional_information": "Ek bilgiler",
+    "adults_label": "Yetişkin",
+    "guests_placeholder": "Misafir seçin",
+    "adults": "yetişkin",
+    "children_section_label": "Birlikte seyahat edeceğiniz çocuklar kaç yaşında?",
+    "children_label": "Çocuk",
+    "children": "çocuk",
+    "children_age_placeholder": "Çocuk yaşı",
+    "price_from": "den",
+    "price_per_night": "gecelik",
+    "rooms": "odalar",
+    "nights": "gece",
+    "missing_spaces": "Seçili odalarda seçtiğiniz misafir sayısı için yeterli alan bulunmuyor.",
+    "hotel_policy": {
+      "checkin_time": "Giriş Saati",
+      "checkout_time": "Çıkış Saati",
+      "internet": {
+        "coverage_title": "Internet erişimi",
+        "coverage_options": {
+          "entire_property": "Tesis",
+          "public_areas": "Açık Alanlar",
+          "all_rooms": "Bütün Odalar",
+          "some_rooms": "Bazı odalar",
+          "business_centre": "İş Merkezi"
+        },
+        "type_title": "İnternet erişim tipi",
+        "type_options": {
+          "none": "Yok",
+          "wired": "Kablolu",
+          "wifi": "Kablosuz"
+        },
+        "cost_title": "İnternet erişim ücreti",
+        "cost_options": {
+          "free": "Ücretsiz",
+          "paid": "Ücretli"
+        }
+      },
+      "parking": {
+        "type_title": "Otopark alanı",
+        "type_options": {
+          "none": "Yok",
+          "on_site": "Tesis İçinde",
+          "nearby": "Tesis Yakınında"
+        },
+        "reservation_title": "Otopark rezervasyonu",
+        "reservation_options": {
+          "not_available": "Müsait değil",
+          "not_needed":"Gerekmiyor",
+          "needed": "Gerekli"
+        },
+        "property_title": "Otopark yeri",
+        "property_options": {
+          "public": "Açık",
+          "private": "Özel"
+        }
+      },
+      "pets": {
+        "title": "Evcil hayvan politikası",
+        "options": {
+          "not_allowed": "Evcil hayvana izin verilmiyor",
+          "by_arrangements": "Düzenlemeye göre evcil hayvan",
+          "assistive_only": "Sadece rehber hayvan",
+          "allowed": "Uygun"
+        },
+        "non_refundable_fee": "İade edilmeyen evcil hayvan ücreti",
+        "refundable_deposit": "İade edilebilir depozito"
+      },
+      "smoking": {
+        "title": "Sigara politikası",
+        "options": {
+          "no_smoking": "Sigara içilmez",
+          "permitted_areas_only": "Sadece izin verilen alanlarda sigara içilebilir",
+          "allowed": "Sigara içilebilir"
+        }
+      }
+    }
+  },
+  "rates_table": {
+    "title": "Odalar & ücretler",
+    "room_type": "Oda Tipi",
+    "sleeps": "Kapasite",
+    "price": "Konaklama ücreti",
+    "price_multiple_nights": "{{residenceTime}} gecelik Ücret",
+    "room_availability": "Sadece {{availability}} oda kaldı",
+    "your_choises": "Seçiminiz",
+    "rooms": "Odalar",
+    "show_more": "Daha fazla göster",
+    "show_less": "Daha az göster",
+    "includes_taxes": "Vergiler ve ücretler dahil",
+    "total_price": "Toplam fiyat",
+    "night": "Gece",
+    "room_for": "için oda",
+    "taxes_and_charges": "vergiler ve harcamalar",
+    "reserve": "Rezerve Et",
+    "show_prices": "Fiyatları göster",
+    "room_description": "Oda açıklaması",
+    "included": "dahil",
+    "meals": "Yemek",
+    "cancellation": "İptal",
+    "prepayment": "Ön Ödeme",
+    "missing_spaces_message": "Eksik alanları doldurun",
+    "missing_adults": "{{amount}} daha fazla yetişkin",
+    "missing_children": "{{amount}} daha fazla çocuk",
+    "missing_infants": "{{amount}} daha fazla bebek",
+    "missing_spaces_description": "Mevcut seçeneklerle kaç misafirin konaklayabileceğini kontrol edin.",
+    "price_for_up_to": "En yüksek fiyat",
+    "no_rates_placeholder": "Fiyatları görebilmek için Giriş ve Çıkış tarihlerini seçin",
+    "no_available_rates_placeholder": "Seçilen tarihler için müsait oda yok"
+  },
+  "payment_page": {
+    "payment_form": {
+      "customer_info": {
+        "title": "Müşteri Bilgisi",
+        "first_name": "İsim",
+        "last_name": "Soyisim",
+        "email": "email",
+        "phone": "telefon",
+        "special_request": "Özel İstekler"
+      },
+      "guest_info": {
+        "title": "Misafir Bilgisi",
+        "first_name": "İsim",
+        "last_name": "Soyisim",
+        "add_guest": "Misafir ekle",
+        "use_customer": "Müşteri bilgilerini kullan"
+      },
+      "billing_address": {
+        "title": "Fatura Adresi",
+        "address_1": "Adres Satırı 1",
+        "address_2": "Adres Satırı 2",
+        "country": "Ülke",
+        "city": "Şehir",
+        "state": "Eyalet",
+        "zip": "Posta Kodu"
+      },
+      "card_info": {
+        "title": "Kart Bilgileri"
+      }
+    },
+    "booking_summary": {
+      "title": "Rezervasyon Özeri",
+      "check_in": "Check In",
+      "check_out": "Check Out",
+      "guests_label": "Misafir",
+      "adults": "Yetişkin",
+      "children":"Çocuk"
+    },
+    "error_modal": {
+      "header": "Hata",
+      "text": "Bir şeyler yanlış gitti"
+    },
+    "back_to_hotel_page": "Otel sayfasına geri dön",
+    "agree_and_book": "Kabul et ve rezerve et",
+    "currency_convertion_alert": "İşleme ait para biriminin {{currency}} olduğuna dikkat edin. Para birimi farkından dolayı bankanızın uygulayacağı kur farklı olabilir."
+  },
+  "confirmation_page": {
+    "thank_you": "Teşekkürler",
+    "your_number": "Onay numaranız",
+    "confirmation_sent_to": "E-posta onayı gönderildi",
+    "create_new_booking": "Başka bir rezervasyon oluşturmak için buraya tıklayın"
+  },
+  "not_found_page": {
+    "not_found": "Sayfa bulunamadı"
+  },
+  "footer": {
+    "terms_and_conditions": "Şartlar ve Koşullar",
+    "privacy_policy": "Gizlilik Politikası",
+    "copyright_info": "Telif Bilgileri",
+    "get_free_channel": "Powered by ",
+    "channex_io": "Channex"
+  },
+  "room_types": {
+    "0": "Demo oda"
+  },
+  "bed_types": {
+    "0": "Demo yatak"
+  },
+  "facilities": {
+    "0": "Demo olanak"
+  },
+  "facility_categories": {
+    "view": "Görüntüle",
+    "in_room": "Odada",
+    "bathroom": "Banyo",
+    "kitchen": "Mutfak",
+    "outside": "Dışarıda",
+    "security": "Güvenlik",
+    "outdoors": "Outdoor",
+    "pets": "Evcil Hayvanlar",
+    "activites": "Aktiviteler",
+    "food_and_drink": "Yiyecek ve içecek",
+    "parking": "Park etme",
+    "services": "Hizmetler",
+    "safety_and_security": "Güvenlik ve güvenlik",
+    "general": "Genel",
+    "sustainable_practice": "Sürdürülebilir uygulama"
+  },
+  "meal_types": {
+    "none": "Yemek yok",
+    "all_inclusive": "Her şey dahil",
+    "breakfast": "Kahvaltı",
+    "lunch": "Öğle yemeği",
+    "dinner": "Akşam yemeği",
+    "american": "Amerikan",
+    "bed_and_breakfast": "Oda kahvaltı",
+    "buffet_breakfast": "Açık büfe kahvaltı",
+    "carribean_breakfast": "Karayipler kahvaltısı",
+    "continental_breakfast": "Continental breakfast",
+    "english_breakfast": "İngiliz kahvaltısı",
+    "european_plan": "Avrupa planı",
+    "family_plan": "Aile planı",
+    "full_board": "Tam pansiyon",
+    "full_breakfast": "Tam kahvaltı",
+    "half_board": "Yarım pansiyon",
+    "room_only": "Yalnızca oda",
+    "self_catering": "Self servis",
+    "bermuda": "Bermuda",
+    "dinner_bed_and_breakfast_plan": "Akşam yemeği ve kahvaltı planı",
+    "family_american": "Amerikan aile",
+    "breakfast_and_lunch": "Kahvaltı ve öğle yemeği",
+    "lunch_and_dinner": "Öğle ve akşam yemeği"
+  },
+  "cancellation_policies": {
+    "types": {
+      "free": "Ücretsiz iptal",
+      "non_refundable": "İade edilmez",
+      "deadline": "{{deadlineDay}} tarihi, saat {{deadlineHour}} önce ücretsiz iptal ",
+      "free_detailed": "Rezervasyon herhangi bir tarihte iptal edilebilir.",
+      "non_refundable_detailed": "İade edilmez rezervasyon",
+      "deadline_detailed": "Giriş tarihinden önce {{time}} {{timeUnit}} zamanına kadar ücretsiz iptal. Daha sonrasında {{amount}} {{unit}} ücreti olacaktır."
+    }
+  },
+  "payment_policies": {
+    "types": {
+      "none": "Ön ödemesiz",
+      "in_advance": "Peşin ödeme",
+      "not_required":"Ön ödeme yok",
+      "full": "Toplam fiyatın ön ödemesi alınır.",
+      "partial": "Rezervasyon sırasında {{amount}} {{currency}} tutarı kadar ödeme gerekir"
+    }
+  },
+  "validation_messages": {
+    "required": "zorunlu",
+    "number": "bir sayı olmalı",
+    "phone": "geçerli bir telefon numarası olmalı",
+    "email": "geçerli bir eposta adresi olmalı"
+  },
+  "properties": {
+    "header": "Rezervasyon sayfası",
+    "unActiveSearchPage":"Aktif olmayan arama sayfası",
+    "preview": "Ön izleme",
+    "book_now": "Rezervasyon yap",
+    "no_info": "Bilgi yok",
+    "no_search_results": "Arama sonucu bulunamadı",
+    "back_to_map": "Haritaya don"
+  }
+}
