@@ -1,0 +1,299 @@
+{
+  "general": {
+    "locale": "Español"
+  },
+  "global": {
+    "loading": "Cargando...",
+    "search": "Buscar",
+    "back": "Regresar",
+    "close": "Cerrar",
+    "delete": "Borrar",
+    "clear": "Limpiar",
+    "search_page_doc_title": "Buscar",
+    "main_page_doc_title": "IBE"
+  },
+  "navigation": {
+    "hotel_page": "Página del Hotel",
+    "payment_page": "Página Pagos",
+    "confirmation_page": "Confirmación Reserva"
+  },
+  "currency_select": {
+    "hotel_currency": "Moneda del Hotel",
+    "popular_currencies_separator": "Monedas Populares",
+    "available_currencies_separator": "Monedas Disponibles"
+  },
+  "main_page": {
+    "search_btn": "´Buscar"
+  },
+  "hotel_page": {
+    "checkin_label": "Check-in",
+    "checkout_label": "Check-out",
+    "checkin_placeholder": "Check-in",
+    "checkout_placeholder": "Check-out",
+    "night_minimum": "minimo de noches",
+    "total": "Total",
+    "search": "Buscar",
+    "expand": "Expandir",
+    "booking_summary": "Resúmen de Reserva",
+    "book_for": "Reserva desde",
+    "hotel_info": "Información Hotel",
+    "hotel_facilities": "Instalaciones",
+    "contact_information": "Información de Contacto",
+    "contact_information_message": "Cualquier pregunta o consulta por favor llámenos o envíenos un correo electrónico",
+    "additional_information": "Información adicional",
+    "adults_label": "Adultos",
+    "guests_placeholder": "Seleccionar Invitado",
+    "adults": "adultos",
+    "children_section_label": "¿QUÉ EDAD TIENEN LOS NIÑOS CON LOS QUE VIAJA?",
+    "children_label": "Niños",
+    "children": "niños",
+    "children_age_placeholder": "Edad de los niños",
+    "price_from": "Desde",
+    "price_per_night": "Por noche",
+    "rooms": "habitaciones",
+    "nights": "noches",
+    "missing_spaces": "Las habitaciones seleccionadas no tienen espacio suficiente para la cantidad de huéspedes seleccionados.",
+    "hotel_policy": {
+      "checkin_time": "Hora de Check-in",
+      "checkout_time": "Hora de Check-out",
+      "internet": {
+        "coverage_title": "Cobertura de acceso a Internet",
+        "coverage_options": {
+          "entire_property": "Propiedad entera",
+          "public_areas": "Areas públicas",
+          "all_rooms": "Todas las habitaciones",
+          "some_rooms": "Algunas habitaciones",
+          "business_centre": "Business Centre"
+        },
+        "type_title": "Tipo de acceso a Internet",
+        "type_options": {
+          "none": "Ninguno",
+          "wired": "Cableado",
+          "wifi": "Wifi"
+        },
+        "cost_title": "Coste de acceso a Internet",
+        "cost_options": {
+          "free": "Gratis",
+          "paid": "De pago"
+        }
+      },
+      "parking": {
+        "type_title": "tipo de Parking",
+        "type_options": {
+          "none": "ninguno",
+          "on_site": "En el sitio",
+          "nearby": "Ubicación cercana"
+        },
+        "reservation_title": "reserva de Parking",
+        "reservation_options": {
+          "not_available": "No disponible",
+          "not_needed":"No necesito",
+          "needed": "Necesito"
+        },
+        "property_title": "Parking de la propiedad",
+        "property_options": {
+          "public": "Público",
+          "private": "Privado"
+        }
+      },
+      "pets": {
+        "title": "Política sobre mascotas",
+        "options": {
+          "not_allowed": "No permite mascotas",
+          "by_arrangements": "Mascota bajo previo aviso",
+          "assistive_only": "Solo animales guia",
+          "allowed": "Permitido"
+        },
+        "non_refundable_fee": "Tarifa por mascota no reembolsable",
+        "refundable_deposit": "Depósito Reembolsable"
+      },
+      "smoking": {
+        "title": "Smoking policy",
+        "options": {
+          "no_smoking": "Prohibido fumar",
+          "permitted_areas_only": "Se permite fumar en ciertas áreas",
+          "allowed": "Permitido"
+        }
+      }
+    }
+  },
+  "rates_table": {
+    "title": "Habitaciones y Tarifas",
+    "room_type": "Tipo de Habitación",
+    "sleeps": "Sleeps",
+    "price": "Precio de estancia",
+    "price_multiple_nights": "Precio por {{residenceTime}} noches",
+    "room_availability": "Solo {{availability}} disponible en nuestra web",
+    "your_choises": "Sus opciones",
+    "rooms": "Habitaciones",
+    "show_more": "Mostrar más",
+    "show_less": "Mostrar menos",
+    "includes_taxes": "incluye impuestos y cargos",
+    "total_price": "Precio total",
+    "night": "noche",
+    "room_for": "Habitación para",
+    "taxes_and_charges": "impuestos y cargos",
+    "reserve": "Reservar",
+    "show_prices": "Mostrar precios",
+    "room_description": "Descripción de la habitación",
+    "included": "incluido",
+    "meals": "Comidas",
+    "cancellation": "Cancelación",
+    "prepayment": "Prepago",
+    "missing_spaces_message": "Todavía necesita rellenarlo",
+    "missing_adults": "{{amount}} más adultos",
+    "missing_children": "{{amount}} más niños",
+    "missing_infants": "{{amount}} más bebés",
+    "missing_spaces_description": "Compruebe cuántos invitados pueden dormir con las opciones disponibles",
+    "price_for_up_to": "Precio hasta",
+    "no_rates_placeholder": "Seleccionar fechas de Check-In y Check-Out para visualizar las tarifas disponibles",
+    "no_available_rates_placeholder": "Habitación no disponible para la fecha escogida"
+  },
+  "payment_page": {
+    "payment_form": {
+      "customer_info": {
+        "title": "Información del cliente",
+        "first_name": "Nombre",
+        "last_name": "Apellido",
+        "email": "email",
+        "phone": "teléfono",
+        "special_request": "Invitado Especial"
+      },
+      "guest_info": {
+        "title": "Información del invitado",
+        "first_name": "Nombre",
+        "last_name": "Apellido",
+        "add_guest": "Añadir invitado",
+        "use_customer": "Utilizar información del cliente"
+      },
+      "billing_address": {
+        "title": "Dirección de facturación",
+        "address_1": "Dirección linea 1",
+        "address_2": "Dirección linea 2",
+        "country": "País",
+        "city": "Ciudad",
+        "state": "Estado",
+        "zip": "Código Postal"
+      },
+      "card_info": {
+        "title": "Información de la tarjeta"
+      }
+    },
+    "booking_summary": {
+      "title": "Resúmen de la Reserva",
+      "check_in": "Check In",
+      "check_out": "Check Out",
+      "guests_label": "Invitados",
+      "adults": "adultos",
+      "children":"niños"
+    },
+    "error_modal": {
+      "header": "Error",
+      "text": "Algo no fué bien"
+    },
+    "back_to_hotel_page": "Regresar a la página del Hotel",
+    "agree_and_book": "Aceptar y Reservar",
+    "currency_convertion_alert": "Debe tener en cuenta que la moneda de la transacción es {{currency}}. Es posible que el proveedor de su tarjeta le cobre una tarifa de conversión de moneda."
+  },
+  "confirmation_page": {
+    "thank_you": "Gracias",
+    "your_number": "El número de confirmación de su reserva es",
+    "confirmation_sent_to": "Se le ha enviado un e-mail de confirmación",
+    "create_new_booking": "Acceda aqui para realizar una nueva reserva"
+  },
+  "not_found_page": {
+    "not_found": "Página no encontrada"
+  },
+  "footer": {
+    "terms_and_conditions": "Términos y Condiciones",
+    "privacy_policy": "Política de Privacidad",
+    "copyright_info": "Información Copyright",
+    "get_free_channel": "Powered by ",
+    "channex_io": "Channex"
+  },
+  "room_types": {
+    "0": "Demostración habitación"
+  },
+  "bed_types": {
+    "0": "Demostración cama"
+  },
+  "facilities": {
+    "0": "Demostración instalaciones"
+  },
+  "facility_categories": {
+    "view": "Ver",
+    "in_room": "En la habitación",
+    "bathroom": "Baño",
+    "kitchen": "Cocina",
+    "outside": "Afuera",
+    "security": "Seguridad",
+    "outdoors": "Al aire libre",
+    "pets": "Mascotas",
+    "activites": "Actividades",
+    "food_and_drink": "Comida y bebida",
+    "parking": "Aparcamiento",
+    "services": "Servicios",
+    "safety_and_security": "Seguridad y protección",
+    "general": "General",
+    "sustainable_practice": "Práctica sostenible"
+  },
+  "meal_types": {
+    "none": "No comida",
+    "all_inclusive": "Todo incluido",
+    "breakfast": "Desayuno",
+    "lunch": "Comida",
+    "dinner": "Cena",
+    "american": "Americano",
+    "bed_and_breakfast": "Bed and breakfast",
+    "buffet_breakfast": "Desayuno Buffet",
+    "carribean_breakfast": "Desayuno Caribeño",
+    "continental_breakfast": "Desayuno Continental",
+    "english_breakfast": "English breakfast",
+    "european_plan": " Plan Europeo",
+    "family_plan": "Plan Familiar",
+    "full_board": "Pensión completa",
+    "full_breakfast": "Desayuno completo",
+    "half_board": "Media pensión",
+    "room_only": "Sólo habitación",
+    "self_catering": "Self catering",
+    "bermuda": "Bermuda",
+    "dinner_bed_and_breakfast_plan": "Plan de cena y bed and breakfast",
+    "family_american": "Family american",
+    "breakfast_and_lunch": "Desayuno y comida",
+    "lunch_and_dinner": "Comida y cena"
+  },
+  "cancellation_policies": {
+    "types": {
+      "free": "Cancelación gratuita",
+      "non_refundable": "Cancelación no reembolsable",
+      "deadline": "Cancelación gratuíta de {{deadlineHour}} a {{deadlineDay}}",
+      "free_detailed": "La reserva puede cancelarse a cualquier momento",
+      "non_refundable_detailed": "Reserva no reembolsable",
+      "deadline_detailed": "Cancelación gratuita hasta {{time}} {{timeUnit}} antes de la llegada. Después de este tiempo habrá un {{amount}} {{unit}} tarifa"
+    }
+  },
+  "payment_policies": {
+    "types": {
+      "none": "Sin prepago",
+      "in_advance": "Pagar por adelantado",
+      "not_required":"No requiere prepago",
+      "full": "Se le cobrará un prepago del precio total",
+      "partial": "Pago de {{amount}} {{currency}} se requiere en el momento de la reserva"
+    }
+  },
+  "validation_messages": {
+    "required": "requerido",
+    "number": "debe ser un número",
+    "phone": "debe ser un número de teléfono válido",
+    "email": "debe ser un e-mail válido"
+  },
+  "properties": {
+    "header": "Página de reserva",
+    "unActiveSearchPage":"Página de búsqueda inactiva",
+    "preview": "Vista previa",
+    "book_now": "Reserve ahora",
+    "no_info": "No información",
+    "no_search_results": "No resultados de búsqueda",
+    "back_to_map": "Volver al mapa"
+  }
+}

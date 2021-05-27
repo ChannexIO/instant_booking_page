@@ -1,6 +1,7 @@
 import i18next from "i18next";
 import en from "translations/en.json";
-import test from "translations/test.json";
+import es from "translations/es.json";
+import tr from "translations/tr.json";
 
 const i18nInit = () =>
   i18next.init({
@@ -9,7 +10,8 @@ const i18nInit = () =>
     lng: "en",
     resources: {
       en,
-      test,
+      tr,
+      es,
     },
   });
 
