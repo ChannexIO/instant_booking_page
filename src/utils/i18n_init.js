@@ -1,6 +1,7 @@
 import i18next from "i18next";
 import en from "translations/en.json";
 import es from "translations/es.json";
+import pt from "translations/pt.json";
 import tr from "translations/tr.json";
 
 const i18nInit = () =>
@@ -12,6 +13,7 @@ const i18nInit = () =>
       en,
       tr,
       es,
+      pt,
     },
   });
 

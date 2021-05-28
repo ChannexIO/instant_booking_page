@@ -120,7 +120,7 @@
   "rates_table": {
     "title": "Habitaciones y Tarifas",
     "room_type": "Tipo de Habitación",
-    "sleeps": "Sleeps",
+    "sleeps": "Capacidad",
     "price": "Precio de estancia",
     "price_multiple_nights": "Precio por {{residenceTime}} noches",
     "room_availability": "Solo {{availability}} disponible en nuestra web",
@@ -208,7 +208,7 @@
     "terms_and_conditions": "Términos y Condiciones",
     "privacy_policy": "Política de Privacidad",
     "copyright_info": "Información Copyright",
-    "get_free_channel": "Powered by ",
+    "get_free_channel": "Creado por",
     "channex_io": "Channex"
   },
   "room_types": {
