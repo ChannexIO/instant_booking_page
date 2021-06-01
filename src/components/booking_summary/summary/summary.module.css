@@ -20,10 +20,6 @@
   padding: 0 24px;
 }
 
-.sliderContainer {
-  height: 200px;
-}
-
 @media screen and (max-width: 991px) {
   .summaryMainWrapper {
       display: none;
