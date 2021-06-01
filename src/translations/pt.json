@@ -240,7 +240,7 @@
   "meal_types": {
     "none": "Sem comida",
     "all_inclusive": "Tudo incluso",
-    "breakfast": "Café da manhã",
+    "breakfast": "Café da manhã incluso",
     "lunch": "Almoço",
     "dinner": "Janta",
     "american": "Americano",

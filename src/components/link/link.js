@@ -33,13 +33,13 @@ const LINK_PROPS_BY_TYPE = {
   },
 };
 
-export default function Link({ type = "url", to = "", children }) {
+export default function Link({ type = "url", to = "", children, target }) {
   const { [type]: linkAttrs = LINK_PROPS_BY_TYPE.default } = LINK_PROPS_BY_TYPE;
   const { icon, prefix, interactive } = linkAttrs;
 
   return (
     <span>
-      <a className={styles.link} href={`${prefix}${to}`} disabled={!interactive}>
+      <a className={styles.link} href={`${prefix}${to}`} disabled={!interactive} target={target}>
         {icon && <img className={styles.icon} src={icon} alt={type} />}
         <pre className={styles.linkContent}>{children}</pre>
       </a>

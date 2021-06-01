@@ -1,0 +1,5 @@
+.container {
+  width: fit-content;
+  display: flex;
+  margin: auto;
+}
