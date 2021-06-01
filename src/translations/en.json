@@ -174,7 +174,7 @@
         "country": "Country",
         "city": "City",
         "state": "State",
-        "zip": "zip"
+        "zip": "Postal Code"
       },
       "card_info": {
         "title": "Card Info"
@@ -212,15 +212,6 @@
     "get_free_channel": "Powered by",
     "channex_io": "Channex"
   },
-  "room_types": {
-    "0": "Demo room"
-  },
-  "bed_types": {
-    "0": "Demo bed"
-  },
-  "facilities": {
-    "0": "Demo facility"
-  },
   "facility_categories": {
     "view" : "View",
     "in_room" : "In room",
@@ -241,7 +232,7 @@
   "meal_types": {
     "none": "No meal",
     "all_inclusive": "All inclusive",
-    "breakfast": "Breakfast",
+    "breakfast": "Breakfast Included",
     "lunch": "Lunch",
     "dinner": "Dinner",
     "american": "American",

@@ -240,7 +240,7 @@
   "meal_types": {
     "none": "No comida",
     "all_inclusive": "Todo incluido",
-    "breakfast": "Desayuno",
+    "breakfast": "Desayuno incluido",
     "lunch": "Comida",
     "dinner": "Cena",
     "american": "Americano",
