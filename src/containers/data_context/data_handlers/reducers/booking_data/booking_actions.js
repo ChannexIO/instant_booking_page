@@ -64,6 +64,8 @@ const loadProperty = async (dispatch, channelId) => {
 
     setPropertyData(dispatch, data);
   } catch (error) {
+    setPropertyData(dispatch, null);
+
     if (error.status === 404) {
       // TODO move exeptions to a separate file (if there will be more than 1-2)
       throw Error("PROPERY_NOT_FOUND");
@@ -79,9 +81,14 @@ const loadRoomsInfo = async (dispatch, channelId, params) => {
   setRoomsLoading(dispatch);
 
   setRoomsRequestParams(dispatch, params);
-  const data = await ApiActions.getRoomsInfo(channelId, params);
 
-  setRoomsData(dispatch, data, params);
+  try {
+    const data = await ApiActions.getRoomsInfo(channelId, params);
+
+    setRoomsData(dispatch, data, params);
+  } catch (error) {
+    setRoomsData(dispatch, null, params);
+  }
 };
 
 const loadClosedDates = async (dispatch, channelId) => {
@@ -91,9 +98,13 @@ const loadClosedDates = async (dispatch, channelId) => {
 
   setClosedDatesLoading(dispatch);
 
-  const data = await ApiActions.getClosedDates(channelId);
+  try {
+    const data = await ApiActions.getClosedDates(channelId);
 
-  setClosedDatesData(dispatch, data);
+    setClosedDatesData(dispatch, data);
+  } catch (error) {
+    setClosedDatesData(dispatch, null);
+  }
 };
 
 const setParamsAndLoadRoomsInfo = (dispatch, channelId, bookingParams) => {
@@ -112,7 +123,7 @@ const mergeBookingParams = (channelId, bookingQueryParams, savedBookingData) => 
   return { ...params, ...bookingQueryParams };
 };
 
-const initBookingData = async (dispatch, bookingQueryParams, savedBookingData) => {
+const initBookingData = (dispatch, bookingQueryParams, savedBookingData) => {
   const channelId = getChannelId();
 
   if (!channelId) {
@@ -123,10 +134,9 @@ const initBookingData = async (dispatch, bookingQueryParams, savedBookingData) =
 
   setChannelId(dispatch, channelId);
 
-  await Promise.all([
-    loadProperty(dispatch, channelId),
+  return loadProperty(dispatch, channelId).then(() =>
     setParamsAndLoadRoomsInfo(dispatch, channelId, bookingParams),
-  ]);
+  );
 };
 
 export const actions = {
