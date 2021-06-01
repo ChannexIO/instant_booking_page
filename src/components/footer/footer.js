@@ -4,6 +4,7 @@ import Link from "components/link";
 import SectionTitle from "components/section_title";
 
 import GetChannelAd from "./get_channel_ad";
+import PolicyLink from "./policy_link";
 
 import styles from "./footer.module.css";
 
@@ -58,6 +59,7 @@ export default function Footer({ property = {} }) {
         )}
       </div>
       <GetChannelAd />
+      <PolicyLink />
     </div>
   );
 }

@@ -240,7 +240,7 @@
   "meal_types": {
     "none": "Yemek yok",
     "all_inclusive": "Her şey dahil",
-    "breakfast": "Kahvaltı",
+    "breakfast": "Kahvaltı dahil",
     "lunch": "Öğle yemeği",
     "dinner": "Akşam yemeği",
     "american": "Amerikan",
