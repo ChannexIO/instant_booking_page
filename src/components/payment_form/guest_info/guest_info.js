@@ -87,7 +87,7 @@ export function GuestInfo({ maxGuests }) {
           name="guest.useCustomerValue"
           defaultValue
           label={t(`${TRANSLATION_PATH}:use_customer`)}
-          as={Checkbox}
+          Component={Checkbox}
         />
       }
     >

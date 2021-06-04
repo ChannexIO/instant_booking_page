@@ -32,6 +32,10 @@
   --rangepicker-cell-disabled-text: #b2b2b2;
 }
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
