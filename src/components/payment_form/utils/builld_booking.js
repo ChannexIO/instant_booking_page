@@ -80,11 +80,11 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { billingAddress, customer, guest } = formData;
   const { additionalAddress, address, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
-  const { currency } = property;
+  const { currency, requestCreditCard = true } = property;
   const { ratesOccupancyPerRoom, checkinDate, checkoutDate, adults, children } = params;
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
-  const guarantee = formatCardInfo(cardInfo);
+  const guarantee = requestCreditCard ? formatCardInfo(cardInfo) : null;
   const fullAddress = [address, additionalAddress].filter(Boolean).join(", ");
 
   let guestPool = getGuestPool(ratesOccupancyPerRoom, adults, children);
