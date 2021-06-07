@@ -32,6 +32,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   const captureFormRef = useRef();
   const paymentFormRef = useRef();
   const maxGuests = params.adults + params.children;
+  const { requestCreditCard = true } = property;
 
   const prevCardInfoRef = useRef(EMPTY_CARD);
   useEffect(() => {
@@ -67,7 +68,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
 
   const handlePaymentFormSubmitted = useCallback(
     async (formData) => {
-      if (!cardInfo.cardToken) {
+      if (!cardInfo.cardToken && requestCreditCard) {
         return;
       }
 
@@ -87,9 +88,13 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
 
   useEffect(
     function initSubmitHandler() {
-      setSubmitHandler(captureFormRef.current.validate);
+      const paymentFormSubmit = paymentFormMethods.handleSubmit(handlePaymentFormSubmitted);
+      const captureFormSubmit = captureFormRef.current.validate;
+      const submitHandler = requestCreditCard ? captureFormSubmit : paymentFormSubmit;
+
+      setSubmitHandler(submitHandler);
     },
-    [setSubmitHandler, captureFormRef],
+    [requestCreditCard, setSubmitHandler, captureFormRef],
   );
 
   useEffect(
@@ -114,6 +119,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
           <BillingAddress.Form />
         </form>
         <CardCaptureForm
+          visible={requestCreditCard}
           ref={captureFormRef}
           onSubmit={handleCaptureFormSubmitted}
           onValidate={handleCaptureFormValidated}
