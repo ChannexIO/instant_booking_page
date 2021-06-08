@@ -38,11 +38,9 @@ export default function Link({ type = "url", to = "", children, target }) {
   const { icon, prefix, interactive } = linkAttrs;
 
   return (
-    <span>
-      <a className={styles.link} href={`${prefix}${to}`} disabled={!interactive} target={target}>
-        {icon && <img className={styles.icon} src={icon} alt={type} />}
-        <pre className={styles.linkContent}>{children}</pre>
-      </a>
-    </span>
+    <a className={styles.link} href={`${prefix}${to}`} disabled={!interactive} target={target}>
+      {icon && <img className={styles.icon} src={icon} alt={type} />}
+      <pre className={styles.linkContent}>{children}</pre>
+    </a>
   );
 }
