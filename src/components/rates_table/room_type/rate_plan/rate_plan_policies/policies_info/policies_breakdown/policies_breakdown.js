@@ -2,6 +2,9 @@ import React, { forwardRef, useMemo } from "react";
 import { Popover } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
+import getCancellationPorlicyText from "utils/get_cancellation_policy_text";
+import getPaymentPolicyText from "utils/get_payment_policy_text";
+
 import PolicySection from "./policy_section";
 
 import styles from "./policies_breakdown.module.css";
@@ -12,61 +15,13 @@ function PoliciesBreakdown({ ratePlan, className, ...popoverProps }, ref) {
 
   const popoverClassName = [className, styles.popover].join(" ");
 
-  const paymentPolicyText = useMemo(() => {
-    if (!cancellationPolicy) {
-      return null;
-    }
+  const paymentPolicyText = useMemo(() => getPaymentPolicyText(cancellationPolicy), [
+    cancellationPolicy,
+  ]);
 
-    const { guaranteePaymentPolicy, currency, guaranteePaymentAmount } = cancellationPolicy;
-
-    if (guaranteePaymentPolicy === "none") {
-      return t("payment_policies:types:not_required");
-    }
-
-    const isPercentBased = guaranteePaymentPolicy === "percent_based";
-    if (isPercentBased && guaranteePaymentAmount === 100) {
-      return t("payment_policies:types:full");
-    }
-
-    const currencyUnit = isPercentBased ? "%" : currency;
-    const policyTextParams = { amount: guaranteePaymentAmount, currency: currencyUnit };
-
-    return t("payment_policies:types:partial", policyTextParams);
-  }, [t, cancellationPolicy]);
-
-  const cancellationPolicyText = useMemo(() => {
-    if (!cancellationPolicy) {
-      return null;
-    }
-
-    const {
-      cancellationPolicyLogic,
-      cancellationPolicyDeadline,
-      cancellationPolicyDeadlineType,
-      cancellationPolicyPenalty,
-      currency,
-      cancellationPolicyMode,
-    } = cancellationPolicy;
-
-    if (cancellationPolicyLogic === "non_refundable") {
-      return t("cancellation_policies:types:non_refundable_detailed");
-    }
-
-    if (cancellationPolicyLogic === "free") {
-      return t("cancellation_policies:types:free_detailed");
-    }
-
-    const unit = cancellationPolicyMode === "percent" ? "%" : currency;
-
-    const cancellationParams = {
-      time: cancellationPolicyDeadline,
-      timeUnit: cancellationPolicyDeadlineType,
-      amount: cancellationPolicyPenalty,
-      unit,
-    };
-
-    return t("cancellation_policies:types:deadline_detailed", cancellationParams);
-  }, [t, cancellationPolicy]);
+  const cancellationPolicyText = useMemo(() => getCancellationPorlicyText(cancellationPolicy), [
+    cancellationPolicy,
+  ]);
 
   return (
     <Popover
