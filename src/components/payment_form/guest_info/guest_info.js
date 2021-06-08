@@ -35,7 +35,7 @@ export const getSchema = () =>
 export function GuestInfo({ maxGuests }) {
   const { t } = useTranslation();
   const { setValue } = useFormContext();
-  const useCustomerValue = useWatch({ name: "guest.useCustomerValue", defaultValue: false });
+  const useCustomerValue = useWatch({ name: "guest.useCustomerValue", defaultValue: true });
   const customerName = useWatch({ name: "customer.name", defaultValue: "" });
   const customerSurame = useWatch({ name: "customer.surname", defaultValue: "" });
 
