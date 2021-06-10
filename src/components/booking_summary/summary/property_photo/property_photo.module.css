@@ -1,0 +1,15 @@
+.photoContainer {
+  height: 200px;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.picture img {
+  object-fit: cover; 
+  height: auto;
+  width:100%;
+}

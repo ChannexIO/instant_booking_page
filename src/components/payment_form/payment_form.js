@@ -20,11 +20,13 @@ const getSchema = () =>
     billingAddress: BillingAddress.getSchema(),
   });
 
-const EMPTY_CARD = {};
+const EMPTY_FORM = {};
 
 export default function PaymentForm({ channelId, property, rooms, params, onSuccess }) {
-  const [cardInfo, setCardInfo] = useState(EMPTY_CARD);
+  const { setSubmitHandler, createBooking } = useContext(PaymentFormActionsContext);
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
+  const [isCaptureFormValid, setIsCaptureFormValid] = useState(false);
+  const [formData, setFormData] = useState(EMPTY_FORM);
   const paymentFormMethods = useForm({
     mode: "onChange",
     resolver: yupResolver(getSchema()),
@@ -32,46 +34,21 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   const captureFormRef = useRef();
   const paymentFormRef = useRef();
   const maxGuests = params.adults + params.children;
-
-  const prevCardInfoRef = useRef(EMPTY_CARD);
-  useEffect(() => {
-    prevCardInfoRef.current = cardInfo;
-  });
-  const prevCardInfo = prevCardInfoRef.current;
-
-  // TODO - add api errors handling
-  const { setSubmitHandler, createBooking } = useContext(PaymentFormActionsContext);
-
-  const handleCaptureFormValidated = async ({ valid: isCaptureFormValid }) => {
-    const isPaymentFormValid = await paymentFormMethods.trigger();
-
-    if (isPaymentFormValid && isCaptureFormValid) {
-      captureFormRef.current.submit();
-    }
-  };
+  const { requestCreditCard = true } = property;
+  const { handleSubmit } = paymentFormMethods;
 
   const toggleErrorModal = useCallback(() => {
     setErrorModalVisibility(!isErrorModalVisible);
   }, [isErrorModalVisible]);
 
-  const handleCaptureFormSubmitted = (submitEvent) => {
-    const { card } = submitEvent;
-
-    if (!card) {
-      toggleErrorModal();
-      return;
-    }
-
-    setCardInfo(card);
-  };
-
-  const handlePaymentFormSubmitted = useCallback(
-    async (formData) => {
-      if (!cardInfo.cardToken) {
+  const handleCreateBooking = useCallback(
+    async (formParams, cardParams) => {
+      if ((requestCreditCard && !cardParams) || !formParams) {
+        toggleErrorModal();
         return;
       }
 
-      const booking = buildBooking(property, rooms, params, cardInfo, formData);
+      const booking = buildBooking(property, rooms, params, cardParams, formParams);
 
       try {
         const bookingParams = await createBooking(channelId, booking);
@@ -81,39 +58,74 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
         toggleErrorModal();
         captureFormRef.current.resetSession();
       }
+
+      setFormData(EMPTY_FORM);
     },
-    [cardInfo, property, rooms, params, createBooking, channelId, onSuccess, toggleErrorModal],
+    [
+      channelId,
+      createBooking,
+      requestCreditCard,
+      captureFormRef,
+      property,
+      rooms,
+      params,
+      toggleErrorModal,
+      onSuccess,
+    ],
+  );
+
+  const handlePaymentFormSubmitted = useCallback(
+    (newFormData) => {
+      if (requestCreditCard && !isCaptureFormValid) {
+        return;
+      }
+
+      const submitHandler = requestCreditCard ? captureFormRef.current.submit : handleCreateBooking;
+      setFormData(newFormData);
+      submitHandler(newFormData, null);
+    },
+    [isCaptureFormValid, captureFormRef, requestCreditCard, handleCreateBooking],
+  );
+
+  const handleCaptureFormValidated = useCallback(
+    async ({ valid }) => {
+      setIsCaptureFormValid(valid);
+      handleSubmit(handlePaymentFormSubmitted)();
+    },
+    [handleSubmit, handlePaymentFormSubmitted],
+  );
+
+  const handleCaptureFormSubmitted = useCallback(
+    (submitEvent) => {
+      const { card } = submitEvent;
+
+      handleCreateBooking(formData, card);
+    },
+    [handleCreateBooking, formData],
   );
 
   useEffect(
     function initSubmitHandler() {
-      setSubmitHandler(captureFormRef.current.validate);
-    },
-    [setSubmitHandler, captureFormRef],
-  );
+      const paymentFormSubmit = handleSubmit(handlePaymentFormSubmitted);
+      const captureFormSubmit = captureFormRef.current.validate;
+      const submitHandler = requestCreditCard ? captureFormSubmit : paymentFormSubmit;
 
-  useEffect(
-    function triggerPaymentFormSubmit() {
-      if (prevCardInfo !== cardInfo) {
-        paymentFormMethods.handleSubmit(handlePaymentFormSubmitted)();
-      }
+      setSubmitHandler(submitHandler);
     },
-    [cardInfo, handlePaymentFormSubmitted, paymentFormMethods, prevCardInfo],
+    [requestCreditCard, setSubmitHandler, captureFormRef, handlePaymentFormSubmitted, handleSubmit],
   );
 
   return (
     <>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <FormProvider {...paymentFormMethods}>
-        <form
-          ref={paymentFormRef}
-          onSubmit={paymentFormMethods.handleSubmit(handlePaymentFormSubmitted)}
-        >
+        <form ref={paymentFormRef} onSubmit={handleSubmit(handlePaymentFormSubmitted)}>
           <CustomerInfo.Form />
           <GuestInfo.Form maxGuests={maxGuests} />
           <BillingAddress.Form />
         </form>
         <CardCaptureForm
+          visible={requestCreditCard}
           ref={captureFormRef}
           onSubmit={handleCaptureFormSubmitted}
           onValidate={handleCaptureFormValidated}

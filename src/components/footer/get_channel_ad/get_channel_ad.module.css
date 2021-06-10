@@ -1,8 +1,6 @@
 .container {
-  display: flex;
-  width: fit-content;
-  margin: auto;
   padding-top: 32px;
+  display: flex;
 }
 
 .text {

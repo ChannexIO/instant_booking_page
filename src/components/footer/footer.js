@@ -1,10 +1,11 @@
 import React from "react";
 
 import Link from "components/link";
+import PolicyLink from "components/policy_link";
 import SectionTitle from "components/section_title";
 
+import FooterLinkContainer from "./footer_link_container";
 import GetChannelAd from "./get_channel_ad";
-import PolicyLink from "./policy_link";
 
 import styles from "./footer.module.css";
 
@@ -58,8 +59,12 @@ export default function Footer({ property = {} }) {
           </Link>
         )}
       </div>
-      <GetChannelAd />
-      <PolicyLink />
+      <FooterLinkContainer>
+        <GetChannelAd />
+      </FooterLinkContainer>
+      <FooterLinkContainer>
+        <PolicyLink />
+      </FooterLinkContainer>
     </div>
   );
 }

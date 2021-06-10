@@ -19,7 +19,7 @@ const FUNCTION_FALLBACK = () => {};
 export default forwardRef(function CardCaptureForm(props, ref) {
   const [captureFormUrl, setCaptureFormUrl] = useState(null);
   const iframeRef = useRef();
-  const { onSubmit = FUNCTION_FALLBACK, onValidate = FUNCTION_FALLBACK } = props;
+  const { visible, onSubmit = FUNCTION_FALLBACK, onValidate = FUNCTION_FALLBACK } = props;
 
   const getMessageEmitter = useCallback(
     (type) => () => {
@@ -85,7 +85,7 @@ export default forwardRef(function CardCaptureForm(props, ref) {
     [eventListener],
   );
 
-  if (!captureFormUrl) {
+  if (!captureFormUrl || !visible) {
     return null;
   }
 

@@ -1,0 +1,18 @@
+.checkboxContainer {
+  margin: 8px 0;
+}
+
+.policyText a {
+  text-decoration: underline;
+}
+
+.policyText * {
+  text-transform: uppercase;
+  line-height: inherit;
+  font-size: inherit;
+}
+
+.policyText > * {
+  display: inline-flex;
+  margin-left: 4px;
+}

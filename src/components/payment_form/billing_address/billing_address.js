@@ -43,12 +43,12 @@ export function BillingAddress() {
         <FormalField
           name="billingAddress.address"
           label={t(`${TRANSLATION_PATH}:address_1`)}
-          as={Input}
+          Component={Input}
         />
         <FormalField
           name="billingAddress.additionalAddress"
           label={t(`${TRANSLATION_PATH}:address_2`)}
-          as={Input}
+          Component={Input}
         />
       </FieldRow>
       <FieldRow>
@@ -57,15 +57,23 @@ export function BillingAddress() {
           name="billingAddress.country"
           options={countryOptions}
           label={t(`${TRANSLATION_PATH}:country`)}
-          as={MaterialSelect}
+          Component={MaterialSelect}
         />
-        <FormalField name="billingAddress.city" label={t(`${TRANSLATION_PATH}:city`)} as={Input} />
+        <FormalField
+          name="billingAddress.city"
+          label={t(`${TRANSLATION_PATH}:city`)}
+          Component={Input}
+        />
         <FormalField
           name="billingAddress.state"
           label={t(`${TRANSLATION_PATH}:state`)}
-          as={Input}
+          Component={Input}
         />
-        <FormalField name="billingAddress.zip" label={t(`${TRANSLATION_PATH}:zip`)} as={Input} />
+        <FormalField
+          name="billingAddress.zip"
+          label={t(`${TRANSLATION_PATH}:zip`)}
+          Component={Input}
+        />
       </FieldRow>
     </Panel>
   );

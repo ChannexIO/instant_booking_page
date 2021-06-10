@@ -4,16 +4,19 @@ import { DATE_API_FORMAT } from "constants/formats";
 
 const convertToHashmap = (array) => array.reduce((acc, key) => ({ ...acc, [key]: true }), {});
 
+const buildAffectedRange = (startDay, length) => {
+  return new Array(length)
+    .fill(null)
+    .map((_value, index) =>
+      moment(startDay, DATE_API_FORMAT).add(index, "day").format(DATE_API_FORMAT),
+    );
+};
+
 const buildRangeBlockedHash = (closedHash, rangeRestrictions) => {
   return Object.keys(rangeRestrictions).reduce((acc, key) => {
     const restrictionValue = rangeRestrictions[key];
 
-    const affectedRange = new Array(restrictionValue)
-      .fill(null)
-      .map((_value, index) =>
-        moment(key, DATE_API_FORMAT).add(index, "day").format(DATE_API_FORMAT),
-      );
-
+    const affectedRange = buildAffectedRange(key, restrictionValue);
     const isRangeIncludesClosed = affectedRange.some((val) => closedHash[val]);
 
     if (!isRangeIncludesClosed) {
@@ -35,24 +38,28 @@ export default (data) => {
   const CTAHash = convertToHashmap(closedToArrival);
   const CTDHash = convertToHashmap(closedToDeparture);
 
+  const closedToArrivalHash = {
+    ...closedHash,
+    ...CTAHash,
+  };
+
   const rangeBlockedByMinStayArrival = buildRangeBlockedHash(closedHash, minStayArrival);
   const rangeBlockedByMinStayThrough = buildRangeBlockedHash(closedHash, minStayThrough);
 
-  const enrichedCTAHash = {
-    ...closedHash,
-    ...CTAHash,
-    ...rangeBlockedByMinStayArrival,
+  const closedToArrivalByMinStayHash = {
     ...rangeBlockedByMinStayThrough,
+    ...rangeBlockedByMinStayArrival,
   };
 
-  const enrichCTDHash = {
+  const closedToDepartureHash = {
     ...CTDHash,
   };
 
   return {
     ...data,
     closedHash,
-    closedToArrivalHash: enrichedCTAHash,
-    closedToDepartureHash: enrichCTDHash,
+    closedToArrivalHash,
+    closedToArrivalByMinStayHash,
+    closedToDepartureHash,
   };
 };

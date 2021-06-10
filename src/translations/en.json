@@ -10,7 +10,11 @@
     "delete": "Delete",
     "clear": "Clear",
     "search_page_doc_title": "Search",
-    "main_page_doc_title": "IBE"
+    "main_page_doc_title": "IBE",
+    "is": "is",
+    "and": "and",
+    "in": "in",
+    "for": "for"
   },
   "navigation": {
     "hotel_page": "Home Page",
@@ -56,7 +60,10 @@
     "hotel_policy": {
       "checkin_time": "Check-in Time",
       "checkout_time": "Check-out Time",
+      "adults_only": "Adults only",
+      "all_ages": "All ages welcome",
       "internet": {
+        "not_available": "Internet access is not available",
         "coverage_title": "Internet access coverage",
         "coverage_options": {
           "entire_property": "Entire Property",
@@ -78,6 +85,7 @@
         }
       },
       "parking": {
+        "not_available": "Parking is not available",
         "type_title": "Parking type",
         "type_options": {
           "none": "None",
@@ -102,7 +110,7 @@
           "not_allowed": "Pets Not Allowed",
           "by_arrangements": "Pets By Arrangements",
           "assistive_only": "Assistive Animals Only",
-          "allowed": "Allowed"
+          "allowed": "Pets Allowed"
         },
         "non_refundable_fee": "Non refundable pets fee",
         "refundable_deposit": "Refundable Deposit"
@@ -112,7 +120,7 @@
         "options": {
           "no_smoking": "Strictly no smoking",
           "permitted_areas_only": "Smoking in permitted areas only",
-          "allowed": "Allowed"
+          "allowed": "Smoking Allowed"
         }
       }
     }
@@ -192,9 +200,17 @@
       "header": "Error",
       "text": "Something went wrong"
     },
+    "policy_info": {
+      "modal_header": "Booking Policies",
+      "hotel_policy": "Hotel Policy",
+      "policy": "Policy",
+      "no_policy_message": "No policy description yet"
+    },
     "back_to_hotel_page": "Back to Hotel Page",
     "agree_and_book": "Agree and Book",
-    "currency_convertion_alert": "You should be aware that the transaction currency is {{currency}}. You may still be charged a currency conversion fee by your card provider."
+    "currency_convertion_alert": "You should be aware that the transaction currency is {{currency}}. You may still be charged a currency conversion fee by your card provider.",
+    "policy_agreement": "Check here to indicate that you read and agree with",
+    "booking_policy": "Booking Policies"
   },
   "confirmation_page": {
     "thank_you": "Thank You",

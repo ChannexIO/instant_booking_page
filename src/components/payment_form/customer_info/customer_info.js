@@ -34,20 +34,28 @@ export function CustomerInfo() {
   return (
     <Panel title={t(`${TRANSLATION_PATH}:title`)}>
       <FieldRow>
-        <FormalField name="customer.name" label={t(`${TRANSLATION_PATH}:first_name`)} as={Input} />
+        <FormalField
+          name="customer.name"
+          label={t(`${TRANSLATION_PATH}:first_name`)}
+          Component={Input}
+        />
         <FormalField
           name="customer.surname"
           label={t(`${TRANSLATION_PATH}:last_name`)}
-          as={Input}
+          Component={Input}
         />
       </FieldRow>
       <FieldRow>
-        <FormalField name="customer.mail" label={t(`${TRANSLATION_PATH}:email`)} as={Input} />
+        <FormalField
+          name="customer.mail"
+          label={t(`${TRANSLATION_PATH}:email`)}
+          Component={Input}
+        />
         <FormalField
           name="customer.phone"
           type="number"
           label={t(`${TRANSLATION_PATH}:phone`)}
-          as={Input}
+          Component={Input}
         />
       </FieldRow>
       <FieldRow>
@@ -55,7 +63,7 @@ export function CustomerInfo() {
           name="customer.specialRequest"
           label={t(`${TRANSLATION_PATH}:special_request`)}
           rows={3}
-          as={TextArea}
+          Component={TextArea}
         />
       </FieldRow>
     </Panel>

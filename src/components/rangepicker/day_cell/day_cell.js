@@ -8,6 +8,7 @@ const CALENDAR_DAY_STYLE_MODIFICATORS = {
   valid: styles.dayCellValid,
   blocked: styles.dayCellBlocked,
   "blocked-out-of-range": styles.dayCellBlockedOutOfRange,
+  "blocked-minimum-nights": styles.dayCellMinNightsRestricted,
   "selected-start": styles.dayCellSelectedStart,
   "selected-end": styles.dayCellSelectedEnd,
   "selected-span": styles.dayCellSelectedSpan,
@@ -24,6 +25,7 @@ export default function DayCell(props) {
     minStayLength,
     modifiers = DEFAULT_MODIFIERS,
     day,
+    isMinStayRestricted,
     onDayClick,
     onDayMouseEnter,
     onDayMouseLeave,
@@ -35,6 +37,10 @@ export default function DayCell(props) {
   const isTooltipShown = isSelectedStart && minStayLength >= MIN_STAY_TO_SHOW;
 
   modifiers.forEach((modifier) => dayStyling.push(CALENDAR_DAY_STYLE_MODIFICATORS[modifier]));
+
+  if (isMinStayRestricted) {
+    dayStyling.push(styles.dayCellMinStayRestricted);
+  }
 
   const handleMouseEnter = useCallback(() => onDayMouseEnter(day), [day, onDayMouseEnter]);
   const handleMouseLeave = useCallback(() => onDayMouseLeave(day), [day, onDayMouseLeave]);
