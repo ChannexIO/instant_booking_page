@@ -14,6 +14,8 @@ import Guest from "./guest";
 
 const TRANSLATION_PATH = "payment_page:payment_form:guest_info";
 
+const DEFAULT_GUEST_LIST = [{ name: "", surname: "" }];
+
 export const getSchema = () =>
   yup.object({
     useCustomerValues: yup.boolean(),
@@ -38,16 +40,15 @@ export function GuestInfo({ maxGuests }) {
   const useCustomerValue = useWatch({ name: "guest.useCustomerValue", defaultValue: true });
   const customerName = useWatch({ name: "customer.name", defaultValue: "" });
   const customerSurame = useWatch({ name: "customer.surname", defaultValue: "" });
-
-  const guestList = useWatch({ name: "guest.list", defaultValue: [] });
+  const guestList = useWatch({ name: "guest.list", defaultValue: DEFAULT_GUEST_LIST });
   const [guestKeysList, setGuestKeysList] = useState([Date.now()]);
-  const isGuestCouldBeAdded = guestKeysList.length !== maxGuests;
+
+  const isGuestCouldBeAdded = !useCustomerValue && guestList.length !== maxGuests;
 
   const handleAddGuest = useCallback(() => {
-    const updatedGuestList = [...guestKeysList, Date.now()];
-
-    setGuestKeysList(updatedGuestList);
-  }, [guestKeysList]);
+    setValue("guest.list", [...guestList, ...DEFAULT_GUEST_LIST]);
+    setGuestKeysList([...guestKeysList, Date.now()]);
+  }, [guestKeysList, guestList, setValue]);
 
   const handleDeleteGuest = useCallback(
     (guestIndex) => {
@@ -61,23 +62,26 @@ export function GuestInfo({ maxGuests }) {
         ...guestList.slice(guestIndex + 1),
       ];
 
-      setValue("guest.list", updatedGuestListValue);
       setGuestKeysList(updatedGuestList);
+      setValue("guest.list", updatedGuestListValue);
     },
     [guestKeysList, guestList, setValue],
   );
 
   useEffect(
     function handleInfoSourceChange() {
-      if (useCustomerValue) {
-        setValue("guest.list[0].name", customerName);
-        setValue("guest.list[0].surname", customerSurame);
+      if (!useCustomerValue) {
+        return;
+      }
+
+      setValue("guest.list", [{ name: customerName, surname: customerSurame }]);
+
+      if (guestKeysList.length > 1) {
+        setGuestKeysList([guestKeysList[0]]);
       }
     },
-    [customerName, customerSurame, setValue, useCustomerValue],
+    [guestKeysList, customerName, customerSurame, setValue, useCustomerValue],
   );
-
-  const [firstGuestKey, ...restGuests] = guestKeysList;
 
   return (
     <Panel
@@ -91,29 +95,21 @@ export function GuestInfo({ maxGuests }) {
         />
       }
     >
-      <Guest
-        guestKey={firstGuestKey}
-        index={0}
-        disabled={useCustomerValue}
-        isDeleteEnabled={false}
-        onDelete={handleDeleteGuest}
-      />
-      {!useCustomerValue && (
-        <>
-          {restGuests.map((key, index) => (
-            <Guest
-              key={key}
-              guestKey={key}
-              index={index + 1}
-              isDeleteEnabled
-              onDelete={handleDeleteGuest}
-            />
-          ))}
-          {isGuestCouldBeAdded && (
-            <LinkButton onClick={handleAddGuest}>{t(`${TRANSLATION_PATH}:add_guest`)}</LinkButton>
-          )}
-        </>
-      )}
+      <>
+        {guestKeysList.map((key, index) => (
+          <Guest
+            key={key}
+            isDeleteEnabled={Boolean(index)}
+            readOnly={useCustomerValue}
+            index={index}
+            onDelete={handleDeleteGuest}
+          />
+        ))}
+        {isGuestCouldBeAdded && (
+          <LinkButton onClick={handleAddGuest}>{t(`${TRANSLATION_PATH}:add_guest`)}</LinkButton>
+        )}
+      </>
+      {/* )} */}
     </Panel>
   );
 }
