@@ -16,9 +16,20 @@
   background: var(--rangepicker-cell-span);
 }
 
+.dayCellMinStayRestricted {
+  color: var(--rangepicker-cell-disabled-text);
+  background: #fff;
+}
+
 .dayCellBlocked {
   color: var(--rangepicker-cell-disabled-text);
   background: var(--rangepicker-cell-disabled);
+}
+
+.dayCellMinNightsRestricted,
+.onDatesChange.dayCellMinNightsRestricted {
+  color: var(--rangepicker-cell-disabled-text);
+  background: #fff;
 }
 
 .dayCellBlockedOutOfRange {

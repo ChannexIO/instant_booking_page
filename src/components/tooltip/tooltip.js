@@ -2,12 +2,11 @@
 import React, { useCallback, useRef, useState } from "react";
 import { Overlay } from "react-bootstrap";
 
+import getOpenDirection from "utils/get_open_direction";
+
 import styles from "./tooltip.module.css";
 
-const OVERLAY_POSITIONS = {
-  top: "top",
-  bottom: "bottom",
-};
+const OVERLAY_POSITIONS = ["top", "bottom"];
 
 export default function PoliciesInfo({ className, children }) {
   const [isShown, setIsShown] = useState(false);
@@ -15,22 +14,16 @@ export default function PoliciesInfo({ className, children }) {
   const [overlayPlacement, setOverlayPlacement] = useState(OVERLAY_POSITIONS.top);
   const ref = useRef();
 
-  const getOpenDirection = useCallback(() => {
-    const inputCoords = ref.current.getBoundingClientRect();
-    const isTooltipCloserToTop = inputCoords.y < window.innerHeight / 2;
+  const handleShow = useCallback(
+    (event) => {
+      const openDirection = getOpenDirection(ref, OVERLAY_POSITIONS);
 
-    const { top, bottom } = OVERLAY_POSITIONS;
-
-    return isTooltipCloserToTop ? bottom : top;
-  }, [ref]);
-
-  const handleShow = (event) => {
-    const openDirection = getOpenDirection();
-
-    setIsShown(!isShown);
-    setTarget(event.target);
-    setOverlayPlacement(openDirection);
-  };
+      setIsShown(!isShown);
+      setTarget(event.target);
+      setOverlayPlacement(openDirection);
+    },
+    [ref, isShown],
+  );
 
   const handleHide = () => {
     setIsShown(false);
