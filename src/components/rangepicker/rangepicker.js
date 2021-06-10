@@ -11,6 +11,7 @@ import { BookingDataContext } from "containers/data_context";
 
 import { DATE_API_FORMAT, DATE_UI_FORMAT } from "constants/formats";
 import MEDIA_QUERIES from "constants/media_queries";
+import getOpenDirection from "utils/get_open_direction";
 
 import DayCell from "./day_cell";
 import enrichClosedDates from "./enrich_closed_dates";
@@ -21,10 +22,7 @@ import styles from "./rangepicker.module.css";
 
 import "react-dates/initialize";
 
-const OPEN_DIRECTIONS = {
-  up: "up",
-  down: "down",
-};
+const OPEN_DIRECTIONS = ["up", "down"];
 
 const MIN_STAY_LENGTH = 1;
 const START_DATE_INPUT = "startDate";
@@ -124,21 +122,31 @@ export default function RangePicker(props) {
     [hashedClosedDates, focusedInput, getIsClosedToArrival, getIsClosedToDeparture],
   );
 
+  const getIsDayBlockedByMinStay = useCallback(
+    (day) => {
+      if (!hashedClosedDates || !day) {
+        return false;
+      }
+
+      const formattedDay = day.format(DATE_API_FORMAT);
+      const { closedToArrivalByMinStayHash } = hashedClosedDates;
+
+      return closedToArrivalByMinStayHash[formattedDay];
+    },
+    [hashedClosedDates],
+  );
+
   const handleFocusChange = useCallback(
     (newFocusedInput) => {
-      const inputCoords = inputRef.current.getBoundingClientRect();
-      const isPickerCloserToTop = inputCoords.y < window.innerHeight / 2;
-
-      const newOpenDirection = isPickerCloserToTop ? OPEN_DIRECTIONS.down : OPEN_DIRECTIONS.up;
-
-      if (newFocusedInput === START_DATE_INPUT) {
+      if (newFocusedInput === START_DATE_INPUT && checkoutDate) {
         onDatesChange({ startDate: checkinDate, endDate: null });
       }
 
+      const newOpenDirection = getOpenDirection(inputRef, OPEN_DIRECTIONS);
       setOpenDirection(newOpenDirection);
       setFocusedInput(newFocusedInput);
     },
-    [inputRef, checkinDate, setOpenDirection, setFocusedInput, onDatesChange],
+    [inputRef, checkinDate, checkoutDate, onDatesChange, setOpenDirection, setFocusedInput],
   );
 
   const handleDatesReset = useCallback(() => {
@@ -163,6 +171,17 @@ export default function RangePicker(props) {
     [closedDates],
   );
 
+  useEffect(
+    function handleInputParamsChanged() {
+      const isMinStayRestricted = getIsDayBlockedByMinStay(checkinDate);
+
+      if (focusedInput === END_DATE_INPUT && isMinStayRestricted) {
+        setFocusedInput(START_DATE_INPUT);
+      }
+    },
+    [checkinDate, focusedInput, getIsDayBlockedByMinStay, setFocusedInput],
+  );
+
   useEffect(() => {
     if (isVisible) {
       setFocusedInput(START_DATE_INPUT);
@@ -170,14 +189,20 @@ export default function RangePicker(props) {
   }, [setFocusedInput, isVisible]);
 
   const renderCalendarDay = useCallback(
-    (dayProps) => (
-      <DayCell
-        /* eslint-disable-next-line react/jsx-props-no-spreading */
-        {...dayProps}
-        minStayLength={minStayLength}
-      />
-    ),
-    [minStayLength],
+    (dayProps) => {
+      const { day } = dayProps;
+      const isMinStayRestricted =
+        focusedInput === START_DATE_INPUT && getIsDayBlockedByMinStay(day);
+
+      return (
+        <DayCell
+          {...dayProps}
+          isMinStayRestricted={isMinStayRestricted}
+          minStayLength={minStayLength}
+        />
+      );
+    },
+    [focusedInput, minStayLength, getIsDayBlockedByMinStay],
   );
 
   const renderCalendarInfo = useCallback(
