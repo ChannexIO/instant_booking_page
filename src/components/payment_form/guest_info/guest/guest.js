@@ -11,7 +11,7 @@ import styles from "./guest.module.css";
 
 const TRANSLATION_PATH = "payment_page:payment_form:guest_info";
 
-export default function Guest({ index, disabled, isDeleteEnabled, onDelete }) {
+export default function Guest({ index, readOnly, isDeleteEnabled, onDelete }) {
   const { t } = useTranslation();
 
   const handleDeleteClick = () => {
@@ -21,15 +21,17 @@ export default function Guest({ index, disabled, isDeleteEnabled, onDelete }) {
   return (
     <FieldRow>
       <FormalField
-        disabled={disabled}
-        name={`guest.list[${index}].name`}
+        readOnly={readOnly}
+        name={`guest.list.${index}.name`}
         label={t(`${TRANSLATION_PATH}:first_name`)}
+        shouldUnregister
         Component={Input}
       />
       <FormalField
-        disabled={disabled}
-        name={`guest.list[${index}].surname`}
+        readOnly={readOnly}
+        name={`guest.list.${index}.surname`}
         label={t(`${TRANSLATION_PATH}:last_name`)}
+        shouldUnregister
         Component={Input}
       />
       <LinkButton className={styles.button} disabled={!isDeleteEnabled} onClick={handleDeleteClick}>

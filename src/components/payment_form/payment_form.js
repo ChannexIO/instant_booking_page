@@ -76,7 +76,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
 
   const handlePaymentFormSubmitted = useCallback(
     (newFormData) => {
-      if (!isCaptureFormValid) {
+      if (requestCreditCard && !isCaptureFormValid) {
         return;
       }
 
