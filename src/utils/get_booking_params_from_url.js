@@ -10,15 +10,8 @@ const DEFAULT_PARAMS = {
 };
 
 export default function getBookingParamsFromUrl() {
-  const {
-    currency,
-    checkinDate,
-    checkoutDate,
-    adults,
-    children,
-    childrenAge,
-    mapCoordinates,
-  } = getUrlParams();
+  const { currency, checkinDate, checkoutDate, adults, children, childrenAge, mapCoordinates } =
+    getUrlParams();
 
   const optionalParams = { ...DEFAULT_PARAMS };
 
