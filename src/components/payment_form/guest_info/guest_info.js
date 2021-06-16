@@ -17,21 +17,25 @@ const TRANSLATION_PATH = "payment_page:payment_form:guest_info";
 const DEFAULT_GUEST_LIST = [{ name: "", surname: "" }];
 
 export const getSchema = () =>
-  yup.object({
-    useCustomerValues: yup.boolean(),
-    list: yup
-      .array()
-      .of(
-        yup.object().shape({
-          name: yup.string().trim().required(errors.required),
-          surname: yup.string().trim().required(errors.required),
-        }),
-      )
-      .when(["useCustomerValues"], {
-        is: false,
-        then: yup.array().min(1),
-        otherwise: yup.array().nullable(),
-      }),
+  yup.lazy(({ useCustomerValue }) => {
+    const schema = {
+      useCustomerValues: yup.boolean(),
+      list: yup.array().notRequired(),
+    };
+
+    if (!useCustomerValue) {
+      schema.list = yup
+        .array()
+        .of(
+          yup.object().shape({
+            name: yup.string().trim().required(errors.required),
+            surname: yup.string().trim().required(errors.required),
+          }),
+        )
+        .required();
+    }
+
+    return yup.object(schema);
   });
 
 export function GuestInfo({ maxGuests }) {
