@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import _ from "lodash";
 
 import HeaderSearch from "components/header_search";
@@ -7,7 +7,9 @@ import PropertiesList from "components/properties_list";
 import PropertiesSearchMap from "components/properties_search_map";
 import PropertyPreview from "components/property_preview";
 
-import { SearchActionsContext, SearchDataContext } from "containers/data_context";
+import { AppDataContext, SearchActionsContext, SearchDataContext } from "containers/data_context";
+
+import routes from "routing/routes";
 
 import dateFormatter from "utils/date_formatter";
 import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
@@ -18,6 +20,7 @@ import styles from "./search_page.module.css";
 const DEBOUNCE_MAP_TIME = 1000;
 
 export default function SearchPage() {
+  const { featureFlags } = useContext(AppDataContext);
   const [selectProperty, setSelectProperty] = useState(null);
   const [searchParams, setSearchParams] = useState(null);
   const history = useHistory();
@@ -126,6 +129,10 @@ export default function SearchPage() {
 
   if (!searchParams) {
     return null;
+  }
+
+  if (!featureFlags.searchPageIsActive) {
+    return <Redirect to={routes.homePage} />;
   }
 
   return (
