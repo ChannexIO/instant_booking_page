@@ -14,6 +14,7 @@ const TRANSLATION_PATH = "payment_page:payment_form:customer_info";
 
 //  eslint-disable-next-line
 const phoneRegExp = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+const MAX_PHONE_LENGTH = 15;
 
 export const getSchema = () =>
   yup.object({
@@ -23,7 +24,7 @@ export const getSchema = () =>
     phone: yup
       .string()
       .matches(phoneRegExp, errors.phone())
-      .max(11, errors.phone())
+      .max(MAX_PHONE_LENGTH, errors.phone())
       .required(errors.required()),
     specialRequest: yup.string(),
   });
