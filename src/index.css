@@ -7,22 +7,22 @@
   --main-text-active: rgba(255, 255, 255, 1);
   --main-text-active-background: rgba(37, 34, 49, 0.9);
   --label-text-color: rgba(51, 51, 51, 0.87);
-  --hightlight-text-color: #363B3D;
-  --info-text-color: #939EA8;
+  --hightlight-text-color: #363b3d;
+  --info-text-color: #939ea8;
   --additional-info-color: #566879;
   --cta-color: #007db5;
   --cta-color-active: #00aff5;
-  --icon-color: #4281D1;
+  --icon-color: #4281d1;
   --link-color: #007db5;
-  --button-color: #2D74CC;
+  --button-color: #2d74cc;
   --button-color-light: rgba(0, 0, 0, 0);
   --button-color-light-hover: #eeeeee;
   --border-color: #e9eaec;
   --input-border-color: #e6e6e6;
-  --select-color: #56697A;
-  --popover-text-color: #5D687A;
-  --background-dark-color: #FCFCFC;
-  --background-light-color: #FFFFFF;
+  --select-color: #56697a;
+  --popover-text-color: #5d687a;
+  --background-dark-color: #fcfcfc;
+  --background-light-color: #ffffff;
 
   --rangepicker-weekday-caption: #333333;
   --rangepicker-cell-end: #43a4f1;
@@ -37,8 +37,7 @@ html:focus-within {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 body {
@@ -173,6 +172,15 @@ blockquote {
 
 .modal-open .modal {
   padding: 0 !important;
+}
+
+.gallery-figcaption
+  .gallery-figcaption--thumbnails
+  .caption-thumbnails
+  ul.thumbnails-list
+  li
+  button.thumbnail-button {
+  border: 0;
 }
 
 @media screen and (max-width: 767px) {

@@ -8,7 +8,7 @@ import HotelInfoSection from "components/hotel_info_section";
 import HotelRatesSection from "components/hotel_rates_section";
 import Loading from "components/loading";
 import MapSection from "components/map_section";
-import PhotoSlider from "components/photo_slider";
+import PhotoGallery from "components/photo_gallery";
 import SearchSection from "components/search_section";
 
 import {
@@ -49,11 +49,8 @@ export default function HotelPage() {
   return (
     <div>
       <Header property={propertyData} />
-      {isPhotosPresent && (
-        <div className={styles.sliderContainer}>
-          <PhotoSlider photos={propertyData.photos} arrowStyle="box" />
-        </div>
-      )}
+      {isPhotosPresent && <PhotoGallery photos={propertyData.photos} />}
+
       <div className={styles.floatingSearchContainer}>
         <SearchSection property={propertyData} />
         <HotelInfoSection property={propertyData} />
