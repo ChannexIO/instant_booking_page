@@ -1,0 +1,29 @@
+# We wanna see IBE at http://your-domain.com/
+# app is builded as root version (see .env.example) and located at /opt/www-files/ibe folder
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /opt/www-files/ibe;
+
+    location / {
+        index index.html;
+        try_files $uri /index.html =404;
+    }
+}
+
+# We wanna see IBE at http://your-domain.com/ibe
+# app is builded as subfolder version (see .env.example) and located at /opt/www-files/ibe folder
+server {
+    listen 81;
+    server_name your-domain.com;
+    root /opt/www-files/;
+
+    location / {
+        # ....
+    }
+
+    location /ibe/ {
+        index index.html;
+        try_files $uri /index.html =404;
+    }
+}

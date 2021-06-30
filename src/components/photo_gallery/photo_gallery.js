@@ -56,13 +56,15 @@ export default function PhotoGallery({ photos }) {
           const itemClassName = classNames(styles.item, styles[`item--${index + 1}`]);
           const width = getPhotoWidth(index);
           const onOpenGallery = () => setActivePhotoIndex(index);
+          const set = `
+          ${photo.url}-/resize/${width}x/.jpg,
+          ${photo.url}-/resize/${width * 2}x/.jpg 2x,
+          ${photo.url}-/resize/${width * 3}x/.jpg 3x,
+          ${photo.url}-/resize/${width * 4}x/.jpg 4x`;
 
           return (
             <div className={itemClassName} key={photo.url} onClick={onOpenGallery}>
-              <picture>
-                <source srcSet={`${photo.url}-/resize/${width}x/.jpg 1x`} />
-                <img className="d-block w-100" src={photo.url} alt={photo.description} />
-              </picture>
+              <img className="d-block w-100" srcSet={set} src={photo.url} alt={photo.description} />
             </div>
           );
         })}
