@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Col } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 import BookinSummary from "components/booking_summary";
 import Footer from "components/footer";
@@ -29,6 +29,8 @@ export default function PaymentPage() {
   const { data: roomsData, isLoading: isRoomsLoading } = roomsInfo;
   const isPropertyPresent = propertyData && !isPropertyLoading;
   const isRoomsPresent = roomsData && !isRoomsLoading;
+  const { ratesOccupancyPerRoom, checkinDate, checkoutDate } = params;
+  const isReqiredDataPresent = ratesOccupancyPerRoom && checkinDate && checkoutDate;
 
   const onSuccess = (bookingParams) => {
     const { uniqueId: bookingId } = bookingParams;
@@ -50,6 +52,12 @@ export default function PaymentPage() {
 
   if (!isPropertyPresent || !isRoomsPresent) {
     return <Loading />;
+  }
+
+  if (!isReqiredDataPresent) {
+    const redirectPath = buildPath("", routes.hotelPage, { channelId });
+
+    return <Redirect to={redirectPath} />;
   }
 
   return (
