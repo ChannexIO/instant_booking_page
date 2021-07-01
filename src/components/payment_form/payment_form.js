@@ -25,7 +25,6 @@ const EMPTY_FORM = {};
 export default function PaymentForm({ channelId, property, rooms, params, onSuccess }) {
   const { setSubmitHandler, createBooking } = useContext(PaymentFormActionsContext);
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
-  const [isCaptureFormValid, setIsCaptureFormValid] = useState(false);
   const [formData, setFormData] = useState(EMPTY_FORM);
   const paymentFormMethods = useForm({
     mode: "onChange",
@@ -76,20 +75,22 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
 
   const handlePaymentFormSubmitted = useCallback(
     (newFormData) => {
-      if (requestCreditCard && !isCaptureFormValid) {
-        return;
-      }
-
       const submitHandler = requestCreditCard ? captureFormRef.current.submit : handleCreateBooking;
+
       setFormData(newFormData);
       submitHandler(newFormData, null);
     },
-    [isCaptureFormValid, captureFormRef, requestCreditCard, handleCreateBooking],
+    [captureFormRef, requestCreditCard, handleCreateBooking],
   );
 
   const handleCaptureFormValidated = useCallback(
     async ({ valid }) => {
-      setIsCaptureFormValid(valid);
+      if (!valid) {
+        //trigger submit only for validation (explicit call for validation wont scroll to field with error)
+        handleSubmit(() => {})();
+        return;
+      }
+
       handleSubmit(handlePaymentFormSubmitted)();
     },
     [handleSubmit, handlePaymentFormSubmitted],
