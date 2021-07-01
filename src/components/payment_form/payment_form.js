@@ -86,7 +86,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   const handleCaptureFormValidated = useCallback(
     async ({ valid }) => {
       if (!valid) {
-        //trigger submit only for validation (explicit call for validation wont scroll to field with error)
+        // trigger submit only for validation (explicit call for validation wont scroll to field with error)
         handleSubmit(() => {})();
         return;
       }
