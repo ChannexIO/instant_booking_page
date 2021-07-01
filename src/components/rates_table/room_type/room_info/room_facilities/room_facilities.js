@@ -14,10 +14,9 @@ export default function RoomFacilities({ facilities }) {
     return facilities.map((facilityGroup) => facilityGroup.facilities).flat();
   }, [facilities]);
 
-  const shownFacilities = useMemo(
-    () => availableFacilities.slice(0, FACILITIES_SHOWN_BY_DEFAULT),
-    [availableFacilities],
-  );
+  const shownFacilities = useMemo(() => availableFacilities.slice(0, FACILITIES_SHOWN_BY_DEFAULT), [
+    availableFacilities,
+  ]);
   const collapsedFacilities = useMemo(
     () => availableFacilities.slice(FACILITIES_SHOWN_BY_DEFAULT),
     [availableFacilities],

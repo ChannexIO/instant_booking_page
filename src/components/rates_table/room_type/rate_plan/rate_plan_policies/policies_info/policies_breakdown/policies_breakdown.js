@@ -15,15 +15,13 @@ function PoliciesBreakdown({ ratePlan, className, ...popoverProps }, ref) {
 
   const popoverClassName = [className, styles.popover].join(" ");
 
-  const paymentPolicyText = useMemo(
-    () => getPaymentPolicyText(cancellationPolicy),
-    [cancellationPolicy],
-  );
+  const paymentPolicyText = useMemo(() => getPaymentPolicyText(cancellationPolicy), [
+    cancellationPolicy,
+  ]);
 
-  const cancellationPolicyText = useMemo(
-    () => getCancellationPorlicyText(cancellationPolicy),
-    [cancellationPolicy],
-  );
+  const cancellationPolicyText = useMemo(() => getCancellationPorlicyText(cancellationPolicy), [
+    cancellationPolicy,
+  ]);
 
   return (
     <Popover

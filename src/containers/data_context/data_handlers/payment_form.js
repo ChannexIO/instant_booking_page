@@ -32,8 +32,8 @@ export default () => {
     [setSubmitHandler, createBooking, startSubmit],
   );
 
-  return useMemo(
-    () => ({ paymentFormData, paymentFormActions }),
-    [paymentFormData, paymentFormActions],
-  );
+  return useMemo(() => ({ paymentFormData, paymentFormActions }), [
+    paymentFormData,
+    paymentFormActions,
+  ]);
 };
