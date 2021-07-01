@@ -20,6 +20,10 @@ const AVAILABLE_LANGUAGES = [
     key: "pt",
     value: "PRT",
   },
+  {
+    key: "it",
+    value: "ITA",
+  },
 ];
 
 export default function LocaleSelect() {
