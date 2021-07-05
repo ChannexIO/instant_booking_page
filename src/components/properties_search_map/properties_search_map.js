@@ -32,8 +32,27 @@ const getPropertiesBounds = (maps, properties) => {
   return getMapBounds(maps, points);
 };
 
-const getDefaultBounds = (maps, bounds) => {
-  const points = Object.values(bounds).map(({ lat, lng }) => {
+const getDefaultBounds = (maps, defaultBounds) => {
+  const formattedBounds = {
+    ne: {
+      lat: defaultBounds.latitude.lte,
+      lng: defaultBounds.longitude.lte,
+    },
+    nw: {
+      lat: defaultBounds.latitude.gte,
+      lng: defaultBounds.longitude.lte,
+    },
+    se: {
+      lat: defaultBounds.latitude.lte,
+      lng: defaultBounds.longitude.gte,
+    },
+    sw: {
+      lat: defaultBounds.latitude.gte,
+      lng: defaultBounds.longitude.gte,
+    },
+  };
+
+  const points = Object.values(formattedBounds).map(({ lat, lng }) => {
     return [lat, lng];
   });
 
@@ -94,7 +113,18 @@ export default function PropertiesSearchMap({
       return;
     }
 
-    onChangeCallback(bounds);
+    const formattedCoordinates = {
+      latitude: {
+        lte: bounds.ne.lat,
+        gte: bounds.sw.lat,
+      },
+      longitude: {
+        lte: bounds.ne.lng,
+        gte: bounds.sw.lng,
+      },
+    };
+
+    onChangeCallback(formattedCoordinates);
   };
 
   return (

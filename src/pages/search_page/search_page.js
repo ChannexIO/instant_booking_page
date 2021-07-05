@@ -32,20 +32,7 @@ export default function SearchPage() {
     _.debounce((requestParams) => {
       const { mapCoordinates, ...restParams } = requestParams;
 
-      let filter = {};
-
-      if (mapCoordinates) {
-        filter = {
-          latitude: {
-            lte: mapCoordinates.ne.lat,
-            gte: mapCoordinates.sw.lat,
-          },
-          longitude: {
-            lte: mapCoordinates.ne.lng,
-            gte: mapCoordinates.sw.lng,
-          },
-        };
-      }
+      const filter = { ...mapCoordinates };
 
       const formattedDates = {
         checkinDate: dateFormatter.toApi(restParams.checkinDate),

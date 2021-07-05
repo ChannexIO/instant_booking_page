@@ -43,15 +43,18 @@ export default function LocaleSelect() {
     [i18n, history],
   );
 
-  useEffect(function setSelectedLanguage() {
-    const { lang } = getUrlParams();
+  useEffect(
+    function setSelectedLanguage() {
+      const { lang } = getUrlParams();
 
-    if (!lang) {
-      return;
-    }
+      if (!lang) {
+        return;
+      }
 
-    i18n.changeLanguage(lang);
-  }, []);
+      i18n.changeLanguage(lang);
+    },
+    [i18n],
+  );
 
   return (
     <Select
