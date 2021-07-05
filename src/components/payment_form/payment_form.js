@@ -23,7 +23,9 @@ const getSchema = () =>
 const EMPTY_FORM = {};
 
 export default function PaymentForm({ channelId, property, rooms, params, onSuccess }) {
-  const { setSubmitHandler, createBooking } = useContext(PaymentFormActionsContext);
+  const { setSubmitHandler, createBooking, setFormSubmitComplete } = useContext(
+    PaymentFormActionsContext,
+  );
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
   const [formData, setFormData] = useState(EMPTY_FORM);
   const paymentFormMethods = useForm({
@@ -36,9 +38,14 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   const { requestCreditCard = true } = property;
   const { handleSubmit } = paymentFormMethods;
 
+  const handleSubmitError = useCallback(() => {
+    setFormSubmitComplete();
+  }, [setFormSubmitComplete]);
+
   const toggleErrorModal = useCallback(() => {
+    handleSubmitError();
     setErrorModalVisibility(!isErrorModalVisible);
-  }, [isErrorModalVisible]);
+  }, [isErrorModalVisible, handleSubmitError]);
 
   const handleCreateBooking = useCallback(
     async (formParams, cardParams) => {
@@ -87,13 +94,13 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
     async ({ valid }) => {
       if (!valid) {
         // trigger submit only for validation (explicit call for validation wont scroll to field with error)
-        handleSubmit(() => {})();
+        handleSubmit(handleSubmitError, handleSubmitError)();
         return;
       }
 
-      handleSubmit(handlePaymentFormSubmitted)();
+      handleSubmit(handlePaymentFormSubmitted, handleSubmitError)();
     },
-    [handleSubmit, handlePaymentFormSubmitted],
+    [handleSubmit, handlePaymentFormSubmitted, handleSubmitError],
   );
 
   const handleCaptureFormSubmitted = useCallback(
@@ -107,13 +114,20 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
 
   useEffect(
     function initSubmitHandler() {
-      const paymentFormSubmit = handleSubmit(handlePaymentFormSubmitted);
+      const paymentFormSubmit = handleSubmit(handlePaymentFormSubmitted, handleSubmitError);
       const captureFormSubmit = captureFormRef.current.validate;
       const submitHandler = requestCreditCard ? captureFormSubmit : paymentFormSubmit;
 
       setSubmitHandler(submitHandler);
     },
-    [requestCreditCard, setSubmitHandler, captureFormRef, handlePaymentFormSubmitted, handleSubmit],
+    [
+      requestCreditCard,
+      setSubmitHandler,
+      captureFormRef,
+      handleSubmitError,
+      handlePaymentFormSubmitted,
+      handleSubmit,
+    ],
   );
 
   return (

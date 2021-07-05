@@ -20,16 +20,23 @@ export default () => {
   );
 
   const startSubmit = useCallback(() => {
+    actions.setFormSubmitting(dispatch);
+
     return paymentFormData.submitHandler();
-  }, [paymentFormData]);
+  }, [dispatch, paymentFormData]);
+
+  const setFormSubmitComplete = useCallback(() => {
+    return actions.setFormSubmitComplete(dispatch);
+  }, [dispatch]);
 
   const paymentFormActions = useMemo(
     () => ({
       setSubmitHandler,
       createBooking,
       startSubmit,
+      setFormSubmitComplete,
     }),
-    [setSubmitHandler, createBooking, startSubmit],
+    [setSubmitHandler, createBooking, startSubmit, setFormSubmitComplete],
   );
 
   return useMemo(() => ({ paymentFormData, paymentFormActions }), [
