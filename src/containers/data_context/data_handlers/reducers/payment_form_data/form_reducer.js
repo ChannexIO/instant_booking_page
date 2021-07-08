@@ -1,7 +1,7 @@
 import {
   SET_ERRORS,
+  SET_FORM_SUBMIT_COMPLETE,
   SET_FORM_SUBMIT_ERROR,
-  SET_FORM_SUBMIT_SUCCESS,
   SET_FORM_SUBMITTING,
   SET_SUBMIT_HANDLER,
   SET_SUBMITTED_VALUE,
@@ -26,7 +26,7 @@ const actionHandlers = {
   [SET_FORM_SUBMITTING]: (state) => {
     return { ...state, isSubmitting: true };
   },
-  [SET_FORM_SUBMIT_SUCCESS]: (state) => {
+  [SET_FORM_SUBMIT_COMPLETE]: (state) => {
     return { ...state, errors: DEFAULT_ERRORS, isSubmitting: false };
   },
   [SET_FORM_SUBMIT_ERROR]: (state, action) => {

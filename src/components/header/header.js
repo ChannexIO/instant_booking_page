@@ -23,13 +23,13 @@ export default function Header({ property = {} }) {
   });
 
   const isCurrencySelectShown = matchHotelPage?.isExact && !matchNotFoundPage;
-  const { title, logo } = property;
+  const { title, logo, hideLogo, hideTitle } = property;
 
   return (
     <div className={styles.header}>
       <div className={styles.titleSection}>
-        {logo && <HotelLogo logo={logo} title={title} />}
-        <HotelTitle title={title} />
+        <HotelLogo logo={logo} title={title} hideLogo={hideLogo} />
+        <HotelTitle title={title} hideTitle={hideTitle} />
       </div>
       <div className={styles.selectSection}>
         {isCurrencySelectShown && <CurrencySelect />}

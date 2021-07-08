@@ -1,0 +1,307 @@
+{
+  "general": {
+    "locale": "Italiano"
+  },
+  "global": {
+    "loading": "Caricando…",
+    "search": "Ricerca",
+    "back": "Indietro",
+    "close": "Chiudi",
+    "delete": "Cancella",
+    "clear": "Cancella",
+    "search_page_doc_title": "Ricerca",
+    "main_page_doc_title": "IBE",
+    "is": "é",
+    "and": "e",
+    "in": "in",
+    "for": "per"
+  },
+  "navigation": {
+    "hotel_page": "Home Page",
+    "payment_page": "Pagina dettaglio pagamenti",
+    "confirmation_page": "Conferma Prenotazione"
+  },
+  "currency_select": {
+    "hotel_currency": "valuta",
+    "popular_currencies_separator": "Valute più cliccate",
+    "available_currencies_separator": "Valute disponibili"
+  },
+  "main_page": {
+    "search_btn": "Ricerca"
+  },
+  "hotel_page": {
+    "checkin_label": "Check-in",
+    "checkout_label": "Check-out",
+    "checkin_placeholder": "Check-in",
+    "checkout_placeholder": "Check-out",
+    "night_minimum": "soggiorno minimo",
+    "total": "Totale",
+    "search": "Ricerca",
+    "expand": "Espandi",
+    "booking_summary": "Dettaglio Prenotazione",
+    "book_for": "Prenota Per",
+    "hotel_info": "Hotel Info",
+    "hotel_facilities": "Servizi",
+    "contact_information": "Informazione di Contatto",
+    "contact_information_message": "Per favore inserisci la tua email",
+    "additional_information": "Informazione addizionale",
+    "adults_label": "Adulti",
+    "guests_placeholder": "Seleziona ospiti",
+    "adults": "adulti",
+    "children_section_label": "CHE ETÀ HANNO I BAMBINI?",
+    "children_label": "Bambini",
+    "children": "Bambini",
+    "children_age_placeholder": "età dei bambini",
+    "price_from": "Da",
+    "price_per_night": "per notte",
+    "rooms": "alloggi",
+    "nights": "notti",
+    "missing_spaces": "Gli alloggi selezionati sono insufficienti per ospitare il totale del tuo gruppo",
+    "hotel_policy": {
+      "checkin_time": "Orario Check-in",
+      "checkout_time": "Orario Check-out",
+      "adults_only": "Solo Adulti",
+      "all_ages": "Senza restrizioni di età",
+      "internet": {
+        "not_available": "Internet non disponibile",
+        "coverage_title": "accesso ad internet",
+        "coverage_options": {
+          "entire_property": "Tutta la proprietà",
+          "public_areas": "Aree Comuni",
+          "all_rooms": "Tutti gli alloggi",
+          "some_rooms": "Alcuni Alloggi",
+          "business_centre": "Business Centre"
+        },
+        "type_title": "Tipo di accesso ad internet",
+        "type_options": {
+          "none": "No disponibile",
+          "wired": "Wired",
+          "wifi": "Wifi"
+        },
+        "cost_title": "Accesso ad internet",
+        "cost_options": {
+          "free": "Gratuito",
+          "paid": "A pagamento"
+        }
+      },
+      "parking": {
+        "not_available": "Parking non disponibile",
+        "type_title": "Tipo di Parking",
+        "type_options": {
+          "none": "Non Disponibile",
+          "on_site": "Sul Luogo",
+          "nearby": "Nelle Prossimità"
+        },
+        "reservation_title": "Parking prenotatile su richiesta",
+        "reservation_options": {
+          "not_available": "Non disponibile",
+          "not_needed":"Non necessario",
+          "needed": "Necessario"
+        },
+        "property_title": "Parking nella proprietà",
+        "property_options": {
+          "public": "Pubblico",
+          "private": "Privato"
+        }
+      },
+      "pets": {
+        "title": "Animali da compagnia",
+        "options": {
+          "not_allowed": "Animali da compagnia non ammessi",
+          "by_arrangements": "Animali da compagnia ammessi su richiesta",
+          "assistive_only": "Solamente animali da compagnie per persone con invalidità",
+          "allowed": "Animali da compagnia ammessi"
+        },
+        "non_refundable_fee": "Non rimborsabile",
+        "refundable_deposit": "Deposito rimborsabile"
+      },
+      "smoking": {
+        "title": "Smoking policy",
+        "options": {
+          "no_smoking": "Proibito fumare",
+          "permitted_areas_only": "Fumare è permesso solamente in aree specifiche",
+          "allowed": "è permesso fumare"
+        }
+      }
+    }
+  },
+  "rates_table": {
+    "title": "Tariffe degli alloggi",
+    "room_type": "Tipo di alloggio",
+    "sleeps": "Persone",
+    "price": "Prezzo del soggiorno",
+    "price_multiple_nights": "Prezzo per {{residenceTime}} notti",
+    "room_availability": "Solamente {{availability}} ancora disponibile",
+    "your_choises": "La tua selezione",
+    "rooms": "Camere",
+    "show_more": "Mostrami di più",
+    "show_less": "Mostrami di meno",
+    "includes_taxes": "Include spese e tasse",
+    "total_price": "Prezzo Totale",
+    "night": "notte",
+    "room_for": "camera per",
+    "taxes_and_charges": "Tasse e spese",
+    "reserve": "Prenota",
+    "show_prices": "Mostra prezzi",
+    "room_facilities": "Servizi",
+    "included": "incluso",
+    "meals": "Pasti",
+    "cancellation": "Cancellazione",
+    "prepayment": "Prepagamento",
+    "missing_spaces_message": "per favore completa questo campo",
+    "missing_adults": "{{amount}} più adulti",
+    "missing_children": "{{amount}} più bambini",
+    "missing_infants": "{{amount}} più bebè",
+    "missing_spaces_description": "seleziona il numero di persone",
+    "price_for_up_to": "Prezzo a partire da",
+    "no_rates_placeholder": "Seleziona il Check-In e il Check-Out per favore",
+    "no_available_rates_placeholder": "Non ci sono alloggi disponibili in queste date",
+    "no_room_description": "Descrizione mancante"
+  },
+  "payment_page": {
+    "payment_form": {
+      "customer_info": {
+        "title": "Dati Cliente",
+        "first_name": "Nome",
+        "last_name": "Cognome",
+        "email": "email",
+        "phone": "telefono",
+        "special_request": "Richieste Speciali"
+      },
+      "guest_info": {
+        "title": "Informazioni del cliente",
+        "first_name": "Nome",
+        "last_name": "Cognome",
+        "add_guest": "Aggiungi Ospite",
+        "use_customer": "Informazione sul cliente"
+      },
+      "billing_address": {
+        "title": "Indirizzo Aziendale",
+        "address_1": "Indirizzo linea 1",
+        "address_2": "Indirizzo linea 2",
+        "country": "Paese",
+        "city": "Città",
+        "state": "Stato",
+        "zip": "Codice Postale"
+      },
+      "card_info": {
+        "title": "Carta di Credito"
+      }
+    },
+    "booking_summary": {
+      "title": "Dettaglio Prenotazione",
+      "check_in": "Check In",
+      "check_out": "Check Out",
+      "guests_label": "Ospiti",
+      "adults": "adulti",
+      "children":"bambini"
+    },
+    "error_modal": {
+      "header": "Errore",
+      "text": "Opsss… qualcosa non ha funzionato"
+    },
+    "policy_info": {
+      "modal_header": "Dettagli Prenotazione",
+      "hotel_policy": "Termini e Condizioni della Struttura",
+      "policy": "Termini e Condizioni",
+      "no_policy_message": "Non ci sono termini e condizioni dettagliati ancora"
+    },
+    "back_to_hotel_page": "Torna indietro alla pagina della struttura",
+    "agree_and_book": "Sono d’accordo e voglio procedere con la prenotazione",
+    "currency_convertion_alert": "La transazione verrà effettuata in {{currency}}. Ci potrebbero essere delle conversioni di cambio se la tua valuta è differente.",
+    "policy_agreement": "Clicca qui per indicare che accetti i seguenti termini e condizioni",
+    "booking_policy": "Termini e Condizioni di prenotazione"
+  },
+  "confirmation_page": {
+    "thank_you": "Grazie",
+    "your_number": "Il tuo numero di prenotazione è",
+    "confirmation_sent_to": "Un email di conferma ti è stato inviato",
+    "create_new_booking": "Clicca qui per fare un altra prenotazione"
+  },
+  "not_found_page": {
+    "not_found": "Pagina non Trovata"
+  },
+  "footer": {
+    "terms_and_conditions": "Termini e Condizione",
+    "privacy_policy": "Privacy Policy",
+    "copyright_info": "Copyright Info",
+    "get_free_channel": "Powered by",
+    "channex_io": "Channex"
+  },
+  "facility_categories": {
+    "view": "Vedi",
+    "in_room": "In camera",
+    "bathroom": "Bagno",
+    "kitchen": "Cucina",
+    "outside": "Esterni",
+    "security": "Sicurezza",
+    "outdoors": "Esterni",
+    "pets": "Animali da compagnia",
+    "activites": "Attività",
+    "food_and_drink": "Servizi di erogazione cibi e bevande",
+    "parking": "Parking",
+    "services": "Servizi",
+    "safety_and_security": "Sicurezza",
+    "general": "Generale",
+    "sustainable_practice": "Sostenibilità"
+  },
+  "meal_types": {
+    "none": "No meal",
+    "all_inclusive": "Tutto incluso",
+    "breakfast": "Colazione inclusa",
+    "lunch": "Pranzo",
+    "dinner": "Cena",
+    "american": "Colazione Americana",
+    "bed_and_breakfast": "Bed and breakfast",
+    "buffet_breakfast": "Colazione a Buffet",
+    "carribean_breakfast": "Colazione Carrica",
+    "continental_breakfast": "Colazione Continentale",
+    "english_breakfast": "English breakfast",
+    "european_plan": "European plan",
+    "family_plan": "Family plan",
+    "full_board": "Tutto incluso",
+    "full_breakfast": "Colazione",
+    "half_board": "Mezza Penzione",
+    "room_only": "Colazione non inclusa",
+    "self_catering": "Fai da te",
+    "bermuda": "Bermuda",
+    "dinner_bed_and_breakfast_plan": "Mezza Pensione (cena)",
+    "family_american": "Family american",
+    "breakfast_and_lunch": "Mezza Pensione (pranzo)",
+    "lunch_and_dinner": "Pranzo e Cena"
+  },
+  "cancellation_policies": {
+    "types": {
+      "free": "CANCELLA GRATIS",
+      "non_refundable": "Cancellazione non rimborsabile",
+      "deadline": "Cancellazione gratuita prima del {{deadlineHour}} on {{deadlineDay}}",
+      "free_detailed": "La prenotazione può essere cancellata in qualsiasi momento",
+      "non_refundable_detailed": "La prenotazione non è rimborsabile",
+      "deadline_detailed": "Cancellazione gratuita fino a {{time}} {{timeUnit}} prima dell’arrivo. Dopo questa data la penale sarà di {{amount}} {{unit}} "
+    }
+  },
+  "payment_policies": {
+    "types": {
+      "none": "Senza pre-pago",
+      "in_advance": "Pagamento anticipato richiesto",
+      "not_required":"Pre-pago non necessario",
+      "full": "Ti sará addebbitato un pre pagamento",
+      "partial": "Il Pagamento di {{amount}} {{currency}} è richiesto al momento della prenotazione"
+    }
+  },
+  "validation_messages": {
+    "required": "campo richiesto",
+    "number": "deve essere un numero",
+    "phone": "deve essere un numero corretto",
+    "email": "deve essere un email valido"
+  },
+  "properties": {
+    "header": "Sito",
+    "unActiveSearchPage":"pagina di ricerca",
+    "preview": "Vista previa",
+    "book_now": "Prenota ora",
+    "no_info": "Senza informazione",
+    "no_search_results": "Non ci sono risultati",
+    "back_to_map": "Ritorna alla mappa"
+  }
+}

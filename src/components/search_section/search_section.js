@@ -25,8 +25,9 @@ export default function SearchSection() {
   const [totalPrice, setTotalPrice] = useState(0);
   const bookingData = useContext(BookingDataContext);
   const { channelId, params, property, roomsInfo } = bookingData;
-  const { setParams, loadRoomsInfo, saveDataToStorage, clearDataFromStorage } =
-    useContext(BookingActionsContext);
+  const { setParams, loadRoomsInfo, saveDataToStorage, clearDataFromStorage } = useContext(
+    BookingActionsContext,
+  );
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
   const history = useHistory();
   const isMobile = matchedQueries.xs || matchedQueries.sm || matchedQueries.md;
