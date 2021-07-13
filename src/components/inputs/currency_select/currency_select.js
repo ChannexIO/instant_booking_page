@@ -38,18 +38,6 @@ export default function CurrencySelect() {
   );
 
   useEffect(
-    function handlePropertyLoad() {
-      if (params.currency || !propertyData) {
-        return;
-      }
-
-      const { currency = DEFAULT_CURRENCY } = propertyData;
-      handleCurrencyChange(currency);
-    },
-    [propertyData.hotelPolicy, handleCurrencyChange, params.currency, propertyData],
-  );
-
-  useEffect(
     function initSelectorState() {
       const { currency = DEFAULT_CURRENCY } = propertyData;
 
