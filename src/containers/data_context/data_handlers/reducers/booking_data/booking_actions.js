@@ -1,5 +1,6 @@
 import ApiActions from "api_actions";
 
+import { DEFAULT_CURRENCY } from "constants/defaults";
 import getChannelId from "utils/get_channel_id";
 
 export const SET_CHANNEL_ID = "SET_CHANNEL_ID";
@@ -55,7 +56,7 @@ const resetParams = (dispatch) => {
 
 const loadProperty = async (dispatch, channelId) => {
   if (!channelId) {
-    return;
+    return {};
   }
 
   setPropertyLoading(dispatch);
@@ -63,6 +64,8 @@ const loadProperty = async (dispatch, channelId) => {
     const data = await ApiActions.getPropertyInfo(channelId);
 
     setPropertyData(dispatch, data);
+
+    return data;
   } catch (error) {
     setPropertyData(dispatch, null);
 
@@ -70,6 +73,8 @@ const loadProperty = async (dispatch, channelId) => {
       // TODO move exeptions to a separate file (if there will be more than 1-2)
       throw Error("PROPERY_NOT_FOUND");
     }
+
+    return {};
   }
 };
 
@@ -134,9 +139,13 @@ const initBookingData = (dispatch, bookingQueryParams, savedBookingData) => {
 
   setChannelId(dispatch, channelId);
 
-  return loadProperty(dispatch, channelId).then(() =>
-    setParamsAndLoadRoomsInfo(dispatch, channelId, bookingParams),
-  );
+  return loadProperty(dispatch, channelId).then((property) => {
+    const { currency: propertyCurrency = DEFAULT_CURRENCY } = property;
+    const { currency = propertyCurrency } = bookingParams;
+    const updatedParams = { ...bookingParams, currency };
+
+    return setParamsAndLoadRoomsInfo(dispatch, channelId, updatedParams);
+  });
 };
 
 export const actions = {
