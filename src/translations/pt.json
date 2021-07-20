@@ -46,7 +46,7 @@
     "adults": "adultos",
     "children_section_label": "EDADE DAS CRIANÇAS QUE ESTÃO VIAJANDO COM VOCÊ",
     "children_label": "Crianças",
-    "children": "Crianças",
+    "children": "crianças",
     "children_age_placeholder": "Edades das crianças",
     "price_from": "Desde",
     "price_per_night": "Por noite",
@@ -80,7 +80,7 @@
       "parking": {
         "type_title": "tipo de estacionamento",
         "type_options": {
-          "none": "nenhum",
+          "none": "Nenhum",
           "on_site": "No site",
           "nearby": "Localização próxima"
         },

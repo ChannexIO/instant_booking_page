@@ -26,10 +26,10 @@
     "search_btn": "´Buscar"
   },
   "hotel_page": {
-    "checkin_label": "Check-in",
-    "checkout_label": "Check-out",
-    "checkin_placeholder": "Check-in",
-    "checkout_placeholder": "Check-out",
+    "checkin_label": "Llegada",
+    "checkout_label": "Salida",
+    "checkin_placeholder": "Llegada",
+    "checkout_placeholder": "Salida",
     "night_minimum": "minimo de noches",
     "total": "Total",
     "search": "Buscar",
@@ -80,7 +80,7 @@
       "parking": {
         "type_title": "tipo de Parking",
         "type_options": {
-          "none": "ninguno",
+          "none": "Ninguno",
           "on_site": "En el sitio",
           "nearby": "Ubicación cercana"
         },
