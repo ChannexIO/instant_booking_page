@@ -4,31 +4,9 @@ import { useHistory } from "react-router-dom";
 
 import Select from "components/inputs/select";
 
+import SUPPORTED_LANGUAGES from "constants/supported_languages";
 import getUrlParams from "utils/get_url_params";
 import setUrlParams from "utils/set_url_params";
-
-const AVAILABLE_LANGUAGES = [
-  {
-    key: "en",
-    value: "ENG",
-  },
-  {
-    key: "tr",
-    value: "TUR",
-  },
-  {
-    key: "es",
-    value: "ESP",
-  },
-  {
-    key: "pt",
-    value: "PRT",
-  },
-  {
-    key: "it",
-    value: "ITA",
-  },
-];
 
 export default function LocaleSelect() {
   const { t, i18n } = useTranslation();
@@ -60,7 +38,7 @@ export default function LocaleSelect() {
     <Select
       label={t("general:locale")}
       value={i18n.language}
-      options={AVAILABLE_LANGUAGES}
+      options={SUPPORTED_LANGUAGES}
       onChange={handleLocaleChange}
     />
   );
