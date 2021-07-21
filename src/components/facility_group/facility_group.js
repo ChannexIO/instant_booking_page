@@ -15,7 +15,9 @@ export default function FacilityGroup({ facilityGroup }) {
 
   return (
     <div className={styles.facilityCategory}>
-      {t(`facility_categories:${categoryCode}`)}
+      <span className={styles.facilityCategoryTitle}>
+        {t(`facility_categories:${categoryCode}`)}
+      </span>
       <div>{groupFacilities}</div>
     </div>
   );

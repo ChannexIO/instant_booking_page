@@ -3,6 +3,16 @@
   width: 25%;
 }
 
+.facilityCategoryTitle {
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: 0.44px;
+  color: #494949;
+}
+
 @media screen and (max-width: 767px) {
   .facilityCategory {
     width: 50%;
