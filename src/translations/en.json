@@ -27,7 +27,9 @@
     "available_currencies_separator": "Available Currencies"
   },
   "main_page": {
-    "search_btn": "Search"
+    "search_btn": "Search",
+    "title": "The Best Family Booking Site",
+    "sub_title": " We have curated and pre selected the top family friendly hotels in central\nLondon.\nAll hotels have a lift, breakfast and family rooms."
   },
   "hotel_page": {
     "checkin_label": "Check-in",

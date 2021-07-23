@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 
 import Dropdown from "components/dropdown";
+import LocaleSelect from "components/inputs/locale_select";
 import RangePicker from "components/rangepicker";
 import OccupancySettingsForm from "components/search_section/occupancy_settings/occupancy_settings_form";
 
@@ -63,6 +64,7 @@ export default function HeaderSearch({ searchParams, handleDatesChange, handleCh
             onChange={handleChangeOccupancy}
           />
         </Dropdown>
+        <LocaleSelect />
       </div>
     </div>
   );
