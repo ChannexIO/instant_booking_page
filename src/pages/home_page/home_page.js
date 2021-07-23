@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
+import Header from "components/header";
 import MainSearch from "components/main_search";
 
 import { AppDataContext } from "containers/data_context";
@@ -20,17 +21,17 @@ export default function HomePage() {
   }
 
   return (
-    <div className={styles.container}>
-      <div>
-        <p className={styles.title}>The Best Family Booking Site</p>
-        <p className={styles.subTitle}>
-          We have curated and pre selected the top family friendly hotels in central <br /> London.
-          <br />
-          All hotels have a lift, breakfast and family rooms.
-        </p>
-
-        <MainSearch />
+    <>
+      <div className={styles.headerContainer}>
+        <Header />
       </div>
-    </div>
+      <div className={styles.container}>
+        <div>
+          <p className={styles.title}>{t("main_page:title")}</p>
+          <pre className={styles.subTitle}>{t("main_page:sub_title")}</pre>
+          <MainSearch />
+        </div>
+      </div>
+    </>
   );
 }

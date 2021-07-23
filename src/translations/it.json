@@ -27,7 +27,9 @@
     "available_currencies_separator": "Valute disponibili"
   },
   "main_page": {
-    "search_btn": "Ricerca"
+    "search_btn": "Ricerca",
+    "title": "Il Miglior Sito Di Prenotazione Per Famiglie",
+    "sub_title": "Abbiamo curato e preselezionato i migliori hotel per famiglie nel centro\ndi Londra.\nTutti gli hotel dispongono di ascensore, colazione e camere familiari."
   },
   "hotel_page": {
     "checkin_label": "Check-in",

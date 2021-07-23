@@ -1,5 +1,6 @@
 .wrapper {
   display: flex;
+  justify-content: center;
 }
 
 .wrapper :global .DateRangePickerInput {
@@ -74,7 +75,8 @@
   font-family: Helvetica;
   font-size: 18px;
   color: #ffffff;
-  padding: 27px 8px;
+  padding: 27px 28px;
+  width: auto;
   transition: all 200ms ease;
 }
 

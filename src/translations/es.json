@@ -23,7 +23,9 @@
     "available_currencies_separator": "Monedas Disponibles"
   },
   "main_page": {
-    "search_btn": "´Buscar"
+    "search_btn": "´Buscar",
+    "title": "El Mejor Sitio De Reservas Familiares",
+    "sub_title": "Hemos seleccionado y preseleccionado los mejores hoteles para familias en el centro\nde Londres.\nTodos los hoteles cuentan con ascensor, desayuno y habitaciones familiares."
   },
   "hotel_page": {
     "checkin_label": "Llegada",
