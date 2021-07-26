@@ -23,6 +23,7 @@ export default function SearchPage() {
   const { featureFlags } = useContext(AppDataContext);
   const [selectProperty, setSelectProperty] = useState(null);
   const [searchParams, setSearchParams] = useState(null);
+  const [highlightedProperties, setHighlightedProperties] = useState({});
   const history = useHistory();
   const { loadPropertiesList } = useContext(SearchActionsContext);
   const { properties } = useContext(SearchDataContext);
@@ -114,6 +115,20 @@ export default function SearchPage() {
     [searchParams, onSearch, history],
   );
 
+  const handlePropertyHighlight = useCallback(
+    (item) => {
+      setHighlightedProperties({ ...highlightedProperties, [item.id]: true });
+    },
+    [highlightedProperties],
+  );
+
+  const handlePropertyShadow = useCallback(
+    (item) => {
+      setHighlightedProperties({ ...highlightedProperties, [item.id]: false });
+    },
+    [highlightedProperties],
+  );
+
   if (!searchParams) {
     return null;
   }
@@ -135,6 +150,9 @@ export default function SearchPage() {
             loading={isLoading}
             properties={propertiesData}
             onSelectProperty={setSelectProperty}
+            highlightedProperties={highlightedProperties}
+            onPropertyMouseOver={handlePropertyHighlight}
+            onPropertyMouseOut={handlePropertyShadow}
           />
         </div>
         <div className={styles.right}>
@@ -150,6 +168,9 @@ export default function SearchPage() {
             properties={propertiesData}
             onChangeCallback={handleCoordinatesChange}
             onSelectProperty={setSelectProperty}
+            highlightedProperties={highlightedProperties}
+            onMarkerMouseOver={handlePropertyHighlight}
+            onMarkerMouseOut={handlePropertyShadow}
           />
         </div>
       </div>
