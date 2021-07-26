@@ -8,6 +8,8 @@ import routes from "routing/routes";
 
 import buildPath from "utils/build_path";
 
+import BestOffer from "./best_offer";
+
 import EmptyIcon from "static/empty-property.svg";
 import styles from "./properties.module.css";
 
@@ -16,7 +18,7 @@ export default function PropertiesItem(props) {
   const { t } = useTranslation();
   const history = useHistory();
 
-  const { description, photos, title, id } = property;
+  const { description, photos, title, id, bestOffer, currency } = property;
 
   const handleMouseOver = () => {
     onMouseOver(property);
@@ -71,6 +73,7 @@ export default function PropertiesItem(props) {
       </div>
 
       <div className={styles.footer}>
+        <BestOffer amount={bestOffer} currency={currency} />
         <Link to={selectRoomPath} className={styles.seeMoreLink}>
           {t("properties:book_now")}
         </Link>
