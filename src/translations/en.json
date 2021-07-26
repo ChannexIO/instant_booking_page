@@ -304,6 +304,7 @@
     "book_now": "Book now",
     "no_info": "No information",
     "no_search_results": "No search results",
-    "back_to_map": "Back to map"
+    "back_to_map": "Back to map",
+    "price_from": "From"
   }
 }
