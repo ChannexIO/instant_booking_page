@@ -10,9 +10,12 @@
   padding: 7px 4px;
   text-align: center;
   cursor: pointer;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
 
-.marker:hover {
+.marker:hover,
+.markerHighlited {
   background: #45d45d;
   border: 1px solid #62dd77;
 }

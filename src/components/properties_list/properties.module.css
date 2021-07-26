@@ -32,7 +32,8 @@
 
 }
 
-.item:hover .overlay {
+.item:hover .overlay,
+.itemHighlighted .overlay {
   display: block;
 }
 

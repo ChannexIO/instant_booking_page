@@ -64,6 +64,9 @@ export default function PropertiesSearchMap({
   defaultBounds,
   onChangeCallback,
   onSelectProperty,
+  highlightedProperties,
+  onMarkerMouseOver,
+  onMarkerMouseOut,
 }) {
   const [mapInstance, setMapInstance] = useState(null);
 
@@ -93,19 +96,22 @@ export default function PropertiesSearchMap({
   const markers = useMemo(
     () =>
       properties?.map((item, index) => {
-        const { latitude, longitude } = item;
+        const { id, latitude, longitude } = item;
 
         return (
           <Marker
+            isHighlighted={highlightedProperties[id]}
             key={index}
             lat={Number(latitude)}
             lng={Number(longitude)}
             item={item}
-            handleSelectProperty={onSelectProperty}
+            onMouseOver={onMarkerMouseOver}
+            onMouseOut={onMarkerMouseOut}
+            onSelect={onSelectProperty}
           />
         );
       }),
-    [properties, onSelectProperty],
+    [properties, onSelectProperty, onMarkerMouseOver, onMarkerMouseOut, highlightedProperties],
   );
 
   const handleChange = ({ bounds }) => {
