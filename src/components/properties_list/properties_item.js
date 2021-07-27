@@ -14,11 +14,11 @@ import EmptyIcon from "static/empty-property.svg";
 import styles from "./properties.module.css";
 
 export default function PropertiesItem(props) {
-  const { property, isHighlighted, onSelectProperty, onMouseOver, onMouseOut } = props;
+  const { property, currency, isHighlighted, onSelectProperty, onMouseOver, onMouseOut } = props;
   const { t } = useTranslation();
   const history = useHistory();
 
-  const { description, photos, title, id, bestOffer, currency } = property;
+  const { description, photos, title, id, bestOffer } = property;
 
   const handleMouseOver = () => {
     onMouseOver(property);

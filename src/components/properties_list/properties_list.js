@@ -11,6 +11,7 @@ export default function PropertiesList(props) {
   const {
     properties,
     loading,
+    currency,
     highlightedProperties,
     onSelectProperty,
     onPropertyMouseOver,
@@ -40,6 +41,7 @@ export default function PropertiesList(props) {
           <PropertiesItem
             key={item.id}
             property={item}
+            currency={currency}
             isHighlighted={isHighlighted}
             onSelectProperty={onSelectProperty}
             onMouseOver={onPropertyMouseOver}
