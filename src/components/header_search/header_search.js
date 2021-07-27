@@ -3,13 +3,19 @@ import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 
 import Dropdown from "components/dropdown";
+import CurrencySelectControlled from "components/inputs/currency_select_controlled";
 import LocaleSelect from "components/inputs/locale_select";
 import RangePicker from "components/rangepicker";
 import OccupancySettingsForm from "components/search_section/occupancy_settings/occupancy_settings_form";
 
 import styles from "./header_search.module.css";
 
-export default function HeaderSearch({ searchParams, handleDatesChange, handleChangeOccupancy }) {
+export default function HeaderSearch({
+  searchParams,
+  handleDatesChange,
+  handleChangeOccupancy,
+  handleCurrencyChange,
+}) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [rangePickerVisible, setRangePickerVisible] = useState(false);
@@ -64,6 +70,7 @@ export default function HeaderSearch({ searchParams, handleDatesChange, handleCh
             onChange={handleChangeOccupancy}
           />
         </Dropdown>
+        <CurrencySelectControlled value={searchParams.currency} onChange={handleCurrencyChange} />
         <LocaleSelect />
       </div>
     </div>

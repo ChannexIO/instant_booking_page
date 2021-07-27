@@ -14,3 +14,7 @@
 .toggle:global.btn:focus {
   box-shadow: none;
 }
+
+.dropdown :global .dropdown-menu {
+  z-index: 999;
+}

@@ -1,3 +1,5 @@
+import { DEFAULT_CURRENCY } from "constants/defaults";
+
 import {
   RESET_PARAMS,
   SET_CHANNEL_ID,
@@ -24,6 +26,7 @@ export const INITIAL_STATE = {
   params: {
     children: 0,
     adults: 1,
+    currency: DEFAULT_CURRENCY,
   },
   roomRequestParams: {},
 };

@@ -11,6 +11,7 @@ import { AppDataContext, SearchActionsContext, SearchDataContext } from "contain
 
 import routes from "routing/routes";
 
+import { DEFAULT_CURRENCY } from "constants/defaults";
 import dateFormatter from "utils/date_formatter";
 import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
 import { encodeMapParams } from "utils/map_params";
@@ -52,8 +53,10 @@ export default function SearchPage() {
         return;
       }
 
-      const newSearchParams = getBookingParamsFromUrl();
+      const parsedParams = getBookingParamsFromUrl();
+      const activeCurrency = parsedParams.currency || DEFAULT_CURRENCY;
 
+      const newSearchParams = { ...parsedParams, currency: activeCurrency };
       setSearchParams(newSearchParams);
       onSearch(newSearchParams);
     },
@@ -116,6 +119,17 @@ export default function SearchPage() {
     [searchParams, onSearch, history],
   );
 
+  const handleCurrencyChange = useCallback(
+    (currency) => {
+      const newSearchParams = { ...searchParams, currency };
+
+      setUrlParams({ currency }, history);
+      setSearchParams(newSearchParams);
+      onSearch(newSearchParams);
+    },
+    [searchParams, onSearch, history],
+  );
+
   const handlePropertyHighlight = useCallback(
     (item) => {
       setHighlightedProperties({ ...highlightedProperties, [item.id]: true });
@@ -143,12 +157,14 @@ export default function SearchPage() {
       <HeaderSearch
         searchParams={searchParams}
         handleDatesChange={handleDatesChange}
+        handleCurrencyChange={handleCurrencyChange}
         handleChangeOccupancy={handleChangeOccupancy}
       />
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <PropertiesList
             loading={isLoading}
+            currency={searchParams.currency}
             properties={propertiesData}
             onSelectProperty={setSelectProperty}
             highlightedProperties={highlightedProperties}
@@ -159,6 +175,7 @@ export default function SearchPage() {
         <div className={styles.right}>
           {selectProperty && (
             <PropertyPreview
+              currency={searchParams.currency}
               property={selectProperty}
               onClearSelectProperty={onClearSelectProperty}
             />

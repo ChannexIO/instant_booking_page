@@ -13,10 +13,10 @@ import EmptyIcon from "static/empty-property.svg";
 import BackIcon from "static/icons-arrowright.svg";
 import styles from "./property_preview.module.css";
 
-export default function PropertyPreview({ property, onClearSelectProperty }) {
+export default function PropertyPreview({ currency, property, onClearSelectProperty }) {
   const { t } = useTranslation();
   const history = useHistory();
-  const { photos, title, description, address, id, currency, bestOffer } = property;
+  const { photos, title, description, address, id, bestOffer } = property;
 
   const onBookNow = useCallback(() => {
     const redirectPath = buildPath(history.location.search, routes.hotelPage, { channelId: id });
