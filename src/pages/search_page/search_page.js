@@ -13,6 +13,7 @@ import routes from "routing/routes";
 
 import dateFormatter from "utils/date_formatter";
 import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
+import { encodeMapParams } from "utils/map_params";
 import setUrlParams from "utils/set_url_params";
 
 import styles from "./search_page.module.css";
@@ -62,7 +63,7 @@ export default function SearchPage() {
   const handleCoordinatesChange = (marginBounds) => {
     const isSameLocation = _.isEqual(marginBounds, searchParams.mapCoordinates);
     const newSearchParams = { ...searchParams, mapCoordinates: marginBounds };
-    const mapCoordinates = JSON.stringify(marginBounds);
+    const mapCoordinates = encodeMapParams(marginBounds);
 
     if (isSameLocation) {
       return;

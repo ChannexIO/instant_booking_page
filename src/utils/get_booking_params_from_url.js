@@ -4,6 +4,8 @@ import currencies from "world-currencies";
 import { DATE_API_FORMAT } from "constants/formats";
 import getUrlParams from "utils/get_url_params";
 
+import { decodeMapParams } from "./map_params";
+
 const DEFAULT_PARAMS = {
   children: 0,
   adults: 1,
@@ -60,9 +62,7 @@ export default function getBookingParamsFromUrl() {
   }
 
   try {
-    const parsedCoordinates = JSON.parse(mapCoordinates);
-
-    optionalParams.mapCoordinates = parsedCoordinates;
+    optionalParams.mapCoordinates = decodeMapParams(mapCoordinates);
   } catch (_error) {
     optionalParams.mapCoordinates = null;
   }
