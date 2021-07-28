@@ -145,7 +145,7 @@
     "taxes_and_charges": "taxes and charges",
     "reserve": "Reserve",
     "show_prices": "Show prices",
-    "room_facilities": "Facilities",
+    "room_facilities": "Amenities",
     "included": "included",
     "meals": "Meals",
     "cancellation": "Cancellation",
@@ -158,7 +158,10 @@
     "price_for_up_to": "Price for up to",
     "no_rates_placeholder": "Select Check-In and Check-Out dates to get available rates",
     "no_available_rates_placeholder": "No available rooms for selected dates",
-    "no_room_description": "No description here yet"
+    "no_room_photos": "No photos there yet",
+    "price_from": "From",
+    "taxes_note": "Includes taxes and charges",
+    "per_night": "per night"
   },
   "payment_page": {
     "payment_form": {

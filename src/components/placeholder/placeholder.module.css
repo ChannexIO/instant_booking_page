@@ -1,6 +1,7 @@
 .container {
   text-align: center;
-  margin: 32px auto;
+  padding: 32px;
+  margin: auto;
 }
 
 .icon {

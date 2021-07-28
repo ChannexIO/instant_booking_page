@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import Facility from "./faclitily";
+import Facility from "./facility";
 
 import styles from "./facility_category.module.css";
 
