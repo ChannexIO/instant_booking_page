@@ -9,9 +9,9 @@ function SelectDropdown(props, ref) {
   const { t } = useTranslation();
 
   const getOption = useCallback(
-    ({ key, Component, value }) => {
+    ({ key, Component, value }, index) => {
       if (Component) {
-        return Component;
+        return React.cloneElement(Component, { key: index.toString() });
       }
 
       return (

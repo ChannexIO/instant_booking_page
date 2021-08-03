@@ -10,7 +10,7 @@ export default function TotalPrice({ totalPrice, currency }) {
   const { t } = useTranslation();
 
   return (
-    <Cell>
+    <Cell noLine>
       <h6 className={styles.total}>
         {t("hotel_page:total")}
         <Currency amount={totalPrice} currency={currency} />
