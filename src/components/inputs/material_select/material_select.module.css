@@ -13,6 +13,11 @@
   color: var(--main-text-color);
 }
 
+.hiddenSelect {
+  visibility: hidden;
+  display: none;
+}
+
 
 .dropdownButton {
   border: none;

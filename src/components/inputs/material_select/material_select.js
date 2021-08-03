@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import { Dropdown, Form } from "react-bootstrap";
 
 import Label from "components/label";
@@ -35,7 +35,7 @@ const MaterialSelect = forwardRef((props, ref) => {
     toggleClasses.push(styles.dropdownToggleInvalid);
   }
 
-  const getOptions = useCallback(() => {
+  const optionsList = useMemo(() => {
     return options.filter((option) => {
       const formattedSearchQuery = searchQuery.toLowerCase();
       const optionValueFormatted = String(option.value).toLowerCase();
@@ -54,19 +54,16 @@ const MaterialSelect = forwardRef((props, ref) => {
     [value, options, placeholder],
   );
 
-  const handleChange = useCallback(
-    (newValue, event) => {
-      setValueToDisplay(event.target.text);
-      onChange(newValue, name);
-    },
-    [onChange, name],
-  );
+  const handleChange = (newValue, event) => {
+    setValueToDisplay(event.target.text);
+    onChange(newValue, name);
+  };
   // TODO - fix height change when active
 
-  const handleSelectToggle = useCallback(() => {
+  const handleSelectToggle = () => {
     setIsOpen(!isOpen);
     setSearchQuery("");
-  }, [isOpen]);
+  };
 
   useEffect(
     function handleVisibilityChange() {
@@ -81,6 +78,18 @@ const MaterialSelect = forwardRef((props, ref) => {
     setSearchQuery(e.target.value);
   };
 
+  const renderedOptions = useMemo(
+    () =>
+      options.map((option) => (
+        <option key={option.key} value={option.key}>
+          {option.value}
+        </option>
+      )),
+    [options],
+  );
+
+  const handleAutofill = (e) => onChange(e.target.value);
+
   return (
     <FieldWrapper>
       <Form.Group>
@@ -94,13 +103,23 @@ const MaterialSelect = forwardRef((props, ref) => {
           onSelect={handleChange}
           onToggle={handleSelectToggle}
         >
+          <Form.Control
+            name={name}
+            as="select"
+            value={value}
+            disabled={disabled}
+            className={styles.hiddenSelect}
+            onChange={handleAutofill}
+          >
+            {renderedOptions}
+          </Form.Control>
           <Dropdown.Toggle disabled={disabled} className={toggleClasses.join(" ")}>
             {valueToDisplay}
           </Dropdown.Toggle>
           <SelectDropdown
             withSearch={withSearch}
             activeValue={value}
-            options={getOptions()}
+            options={optionsList}
             searchRef={searchInputRef}
             searchQuery={searchQuery}
             onChange={handleSearchInput}
