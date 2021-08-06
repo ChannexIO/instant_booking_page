@@ -14,6 +14,10 @@ import styles from "./room_details_modal.module.css";
 const FACILITY_DIVIDER = " · ";
 
 const getMinPrice = (ratePlans) => {
+  if (!ratePlans.length) {
+    return null;
+  }
+
   const prices = ratePlans.map((rate) => rate.totalPrice);
 
   return Math.min(...prices);
@@ -38,20 +42,22 @@ export default function RoomDetailsModal({ room, show, onHide }) {
   return (
     <Modal dialogClassName={styles.modal} show={show} onHide={onHide}>
       <Modal.Body className={styles.modalBody}>
-        <RoomPhotosSection photos={photos} />
+        <RoomPhotosSection className={styles.photosDesktop} photos={photos} />
         <div className={styles.contentContainer}>
           <Modal.Header className={styles.modalHeader} closeButton>
             <h5>{title}</h5>
           </Modal.Header>
-
-          <div>
-            <Label className={styles.priceLabel}>{t("rates_table:price_from")}</Label>
+          <RoomPhotosSection className={styles.photosMobile} photos={photos} />
+          {minPrice && (
             <div>
-              <Currency className={styles.roomPrice} amount={minPrice} currency={currency} />
-              <span className={styles.pricePostfix}>{t("rates_table:per_night")}</span>
+              <Label className={styles.priceLabel}>{t("rates_table:price_from")}</Label>
+              <div>
+                <Currency className={styles.roomPrice} amount={minPrice} currency={currency} />
+                <span className={styles.pricePostfix}>{t("rates_table:per_night")}</span>
+              </div>
+              <Caption>{t("rates_table:taxes_note")}</Caption>
             </div>
-            <Caption>{t("rates_table:taxes_note")}</Caption>
-          </div>
+          )}
           {description && (
             <RoomDetailsSection>
               <div className={styles.description}>{description}</div>

@@ -17,6 +17,11 @@
   border: none;
 }
 
+.modalHeader h5 {
+  line-height: 30px;
+  margin-bottom: 8px;
+}
+
 .contentContainer {
   width: 100%;
 }
@@ -53,6 +58,14 @@
   letter-spacing: 0.27px;
 }
 
+.photosDesktop {
+  display: block;
+}
+
+.photosMobile {
+  display: none;
+}
+
 @media screen and (max-width: 575px) {
   .modal {
     margin: 0;
@@ -65,5 +78,19 @@
   .modal :global .modal-content {
     border-radius: 0;
     min-height: 100vh;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .modalBody {
+    flex-direction: column;
+  }
+
+  .photosDesktop {
+    display: none;
+  }
+
+  .photosMobile {
+    display: block;
   }
 }

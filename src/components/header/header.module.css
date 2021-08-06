@@ -9,8 +9,9 @@
 
 .titleSection {
   display: flex;
-  height: 80px;
+  min-height: 80px;
   align-items: center;
+  max-width: 100%;
 }
 
 .selectSection {

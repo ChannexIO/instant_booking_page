@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 
@@ -29,6 +29,17 @@ export default function Marker({ item, isHighlighted, onMouseOver, onMouseOut, o
     onMouseOut(item);
     containerRef.current.parentNode.style.zIndex = 0;
   };
+
+  useEffect(
+    function handleMarkerHighlighted() {
+      if (!containerRef?.current) {
+        return;
+      }
+
+      containerRef.current.parentNode.style.zIndex = Number(isHighlighted);
+    },
+    [containerRef, isHighlighted],
+  );
 
   const markerClassName = classNames(styles.marker, isHighlighted && styles.markerHighlited);
 

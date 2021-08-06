@@ -1,7 +1,14 @@
-.roomAdditionalFacilitiesContainer {
+.container {
   border-top: 1px solid #dee2e6;
-  margin-top: 4px;
 }
+
+.containerExpanded {
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.facilities > div {
+  margin: 0;
+} 
 
 .toggleButton {
   padding: 0;
@@ -11,3 +18,4 @@
 .toggleButton:active, .toggleButton:focus {
   box-shadow: none;
 }
+

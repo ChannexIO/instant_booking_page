@@ -24,7 +24,7 @@ export default function SearchSection() {
   const [missingSpaces, setMissingSpaces] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const bookingData = useContext(BookingDataContext);
-  const { channelId, params, property, roomsInfo } = bookingData;
+  const { channelId, params, property, roomsInfo, bestOffer } = bookingData;
   const { setParams, loadRoomsInfo, saveDataToStorage, clearDataFromStorage } = useContext(
     BookingActionsContext,
   );
@@ -98,7 +98,7 @@ export default function SearchSection() {
     <div className={styles.wrapper}>
       <div className={styles.stickyContainer}>
         <div className={wrapperClasses.join(" ")}>
-          <MinPricePanel channelId={channelId} params={params} />
+          <MinPricePanel bestOffer={bestOffer} params={params} />
           <div className={styles.searchSection}>
             <DateSelect bookingParams={params} handleSearchChange={setParams} />
             <OccupancySetting bookingParams={params} handleSearchChange={setParams} />
