@@ -95,13 +95,13 @@ export default function PropertiesSearchMap({
 
   const markers = useMemo(
     () =>
-      properties?.map((item, index) => {
+      properties?.map((item) => {
         const { id, latitude, longitude } = item;
 
         return (
           <Marker
             isHighlighted={highlightedProperties[id]}
-            key={index}
+            key={id}
             lat={Number(latitude)}
             lng={Number(longitude)}
             item={item}

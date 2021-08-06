@@ -6,6 +6,7 @@
   border: none;
   line-height: 20px;
   font-size: 14px;
+  text-align: left;
 }
 
 .title:global.btn.btn-link:active,

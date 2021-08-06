@@ -4,3 +4,10 @@
   display: flex;
   margin-right: 16px;
 }
+
+@media screen and (max-width: 991px) {
+  .container {
+    height: 40vh;
+    margin-bottom: 8px;
+  }
+}

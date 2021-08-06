@@ -38,6 +38,10 @@ export default () => {
     return actions.initBookingData(dispatch, bookingQueryParams, savedBookingData);
   }, []);
 
+  const loadBestOffer = useCallback((channelId, params) => {
+    return actions.loadBestOffer(dispatch, channelId, params);
+  }, []);
+
   const saveDataToStorage = useCallback((bookingDataToSave) => {
     setSavedState(bookingDataToSave);
   }, []);
@@ -60,6 +64,7 @@ export default () => {
       loadProperty,
       loadRoomsInfo,
       loadClosedDates,
+      loadBestOffer,
 
       saveDataToStorage,
       getDataFromStorage,
@@ -74,6 +79,7 @@ export default () => {
       loadProperty,
       loadRoomsInfo,
       loadClosedDates,
+      loadBestOffer,
 
       saveDataToStorage,
       getDataFromStorage,
