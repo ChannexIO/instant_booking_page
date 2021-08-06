@@ -8,6 +8,10 @@
 
 .containerDark,
 .containerLight {
+  padding: 0 0;
+}
+
+.containerPadded {
   padding: 56px 0;
 }
 

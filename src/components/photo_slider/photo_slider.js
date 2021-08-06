@@ -9,7 +9,7 @@ const ARROW_STYLES = {
 };
 
 export default function PhotoSlider({ photos, arrowStyle = "default" }) {
-  if (!photos || !photos.length) {
+  if (!photos?.length) {
     return null;
   }
 

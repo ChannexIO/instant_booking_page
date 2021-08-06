@@ -1,5 +1,8 @@
+import { DEFAULT_CURRENCY } from "constants/defaults";
+
 import {
   RESET_PARAMS,
+  SET_BEST_OFFER,
   SET_CHANNEL_ID,
   SET_CLOSED_DATES_DATA,
   SET_CLOSED_DATES_LOADING,
@@ -24,6 +27,7 @@ export const INITIAL_STATE = {
   params: {
     children: 0,
     adults: 1,
+    currency: DEFAULT_CURRENCY,
   },
   roomRequestParams: {},
 };
@@ -70,6 +74,9 @@ const actionHandlers = {
   },
   [SET_ROOMS_REQUEST_PARAMS]: (state, action) => {
     return { ...state, roomRequestParams: action.payload };
+  },
+  [SET_BEST_OFFER]: (state, action) => {
+    return { ...state, bestOffer: action.payload };
   },
 };
 

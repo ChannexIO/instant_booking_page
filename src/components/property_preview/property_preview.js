@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
+import BestOffer from "components/properties_list/best_offer";
+
 import routes from "routing/routes";
 
 import buildPath from "utils/build_path";
@@ -11,10 +13,10 @@ import EmptyIcon from "static/empty-property.svg";
 import BackIcon from "static/icons-arrowright.svg";
 import styles from "./property_preview.module.css";
 
-export default function PropertyPreview({ property, onClearSelectProperty }) {
+export default function PropertyPreview({ currency, property, onClearSelectProperty }) {
   const { t } = useTranslation();
   const history = useHistory();
-  const { photos, title, description, address, id } = property;
+  const { photos, title, description, address, id, bestOffer } = property;
 
   const onBookNow = useCallback(() => {
     const redirectPath = buildPath(history.location.search, routes.hotelPage, { channelId: id });
@@ -49,6 +51,7 @@ export default function PropertyPreview({ property, onClearSelectProperty }) {
           <p className={styles.address}>{address}</p>
         </div>
         <div className={styles.seeMoreBtnWrapper}>
+          <BestOffer amount={bestOffer} currency={currency} />
           <Button onClick={onBookNow}>{t("properties:book_now")}</Button>
         </div>
       </div>

@@ -23,7 +23,9 @@
     "available_currencies_separator": "Geçerli Para Birimleri"
   },
   "main_page": {
-    "search_btn": "Ara"
+    "search_btn": "Ara",
+    "title": "En İyi Aile Rezervasyon Sitesi",
+    "sub_title": "Londra'nın merkezindeki en iyi aile dostu otelleri seçtik ve önceden seçtik.\nTüm otellerde asansör, kahvaltı ve aile odaları bulunmaktadır."
   },
   "hotel_page": {
     "checkin_label": "Giriş",

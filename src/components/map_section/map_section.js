@@ -1,4 +1,7 @@
 import React from "react";
+import { Col } from "react-bootstrap";
+
+import SectionWrapper from "components/layout/section_wrapper";
 
 import Map from "./map";
 
@@ -8,8 +11,12 @@ export default function MapSection({ property }) {
   const { location } = property;
 
   return (
-    <div className={styles.contactsSection}>
-      <Map location={location} />
-    </div>
+    <SectionWrapper theme="dark" padded={false}>
+      <Col xs="12">
+        <div className={styles.contactsSection}>
+          <Map location={location} />
+        </div>
+      </Col>
+    </SectionWrapper>
   );
 }

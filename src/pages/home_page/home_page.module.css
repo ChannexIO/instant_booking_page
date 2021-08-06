@@ -34,6 +34,15 @@
   text-align: center;
 }
 
+.headerContainer {
+  position: absolute;
+  width: 100%;
+}
+
+.headerContainer :global .btn-link {
+  color: white;
+}
+
 @media (-webkit-min-device-pixel-ratio: 2) {
   .container {
     background-image: url("~static/main-bg@2x.jpg");

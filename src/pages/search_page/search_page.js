@@ -11,8 +11,10 @@ import { AppDataContext, SearchActionsContext, SearchDataContext } from "contain
 
 import routes from "routing/routes";
 
+import { DEFAULT_CURRENCY } from "constants/defaults";
 import dateFormatter from "utils/date_formatter";
 import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
+import { encodeMapParams } from "utils/map_params";
 import setUrlParams from "utils/set_url_params";
 
 import styles from "./search_page.module.css";
@@ -23,6 +25,7 @@ export default function SearchPage() {
   const { featureFlags } = useContext(AppDataContext);
   const [selectProperty, setSelectProperty] = useState(null);
   const [searchParams, setSearchParams] = useState(null);
+  const [highlightedProperties, setHighlightedProperties] = useState({});
   const history = useHistory();
   const { loadPropertiesList } = useContext(SearchActionsContext);
   const { properties } = useContext(SearchDataContext);
@@ -50,8 +53,10 @@ export default function SearchPage() {
         return;
       }
 
-      const newSearchParams = getBookingParamsFromUrl();
+      const parsedParams = getBookingParamsFromUrl();
+      const activeCurrency = parsedParams.currency || DEFAULT_CURRENCY;
 
+      const newSearchParams = { ...parsedParams, currency: activeCurrency };
       setSearchParams(newSearchParams);
       onSearch(newSearchParams);
     },
@@ -61,7 +66,7 @@ export default function SearchPage() {
   const handleCoordinatesChange = (marginBounds) => {
     const isSameLocation = _.isEqual(marginBounds, searchParams.mapCoordinates);
     const newSearchParams = { ...searchParams, mapCoordinates: marginBounds };
-    const mapCoordinates = JSON.stringify(marginBounds);
+    const mapCoordinates = encodeMapParams(marginBounds);
 
     if (isSameLocation) {
       return;
@@ -114,6 +119,31 @@ export default function SearchPage() {
     [searchParams, onSearch, history],
   );
 
+  const handleCurrencyChange = useCallback(
+    (currency) => {
+      const newSearchParams = { ...searchParams, currency };
+
+      setUrlParams({ currency }, history);
+      setSearchParams(newSearchParams);
+      onSearch(newSearchParams);
+    },
+    [searchParams, onSearch, history],
+  );
+
+  const handlePropertyHighlight = useCallback(
+    (item) => {
+      setHighlightedProperties({ ...highlightedProperties, [item.id]: true });
+    },
+    [highlightedProperties],
+  );
+
+  const handlePropertyShadow = useCallback(
+    (item) => {
+      setHighlightedProperties({ ...highlightedProperties, [item.id]: false });
+    },
+    [highlightedProperties],
+  );
+
   if (!searchParams) {
     return null;
   }
@@ -127,19 +157,25 @@ export default function SearchPage() {
       <HeaderSearch
         searchParams={searchParams}
         handleDatesChange={handleDatesChange}
+        handleCurrencyChange={handleCurrencyChange}
         handleChangeOccupancy={handleChangeOccupancy}
       />
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <PropertiesList
             loading={isLoading}
+            currency={searchParams.currency}
             properties={propertiesData}
             onSelectProperty={setSelectProperty}
+            highlightedProperties={highlightedProperties}
+            onPropertyMouseOver={handlePropertyHighlight}
+            onPropertyMouseOut={handlePropertyShadow}
           />
         </div>
         <div className={styles.right}>
           {selectProperty && (
             <PropertyPreview
+              currency={searchParams.currency}
               property={selectProperty}
               onClearSelectProperty={onClearSelectProperty}
             />
@@ -150,6 +186,9 @@ export default function SearchPage() {
             properties={propertiesData}
             onChangeCallback={handleCoordinatesChange}
             onSelectProperty={setSelectProperty}
+            highlightedProperties={highlightedProperties}
+            onMarkerMouseOver={handlePropertyHighlight}
+            onMarkerMouseOut={handlePropertyShadow}
           />
         </div>
       </div>

@@ -20,11 +20,12 @@ import {
 import styles from "./hotel_page.module.css";
 
 export default function HotelPage() {
-  const { property, channelId } = useContext(BookingDataContext);
+  const { property, channelId, params } = useContext(BookingDataContext);
   const bookingActions = useContext(BookingActionsContext);
   const { init } = useContext(AppActionsContext);
   const { data: propertyData, isLoading } = property;
   const isPropertyPresent = propertyData && !isLoading;
+  const { currency, checkinDate, checkoutDate } = params;
 
   useEffect(
     function initApp() {
@@ -38,6 +39,23 @@ export default function HotelPage() {
       bookingActions.loadClosedDates(channelId);
     },
     [channelId, bookingActions],
+  );
+
+  useEffect(
+    function loadBestOffer() {
+      if (!currency && !channelId) {
+        return;
+      }
+
+      const requestParams = {
+        currency,
+        checkinDate,
+        checkoutDate,
+      };
+
+      bookingActions.loadBestOffer(channelId, requestParams);
+    },
+    [bookingActions, channelId, currency, checkinDate, checkoutDate],
   );
 
   if (!isPropertyPresent) {

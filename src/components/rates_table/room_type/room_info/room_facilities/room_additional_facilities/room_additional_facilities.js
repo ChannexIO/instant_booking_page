@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Accordion, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import classnames from "classnames";
 
 import FacilitiesContainer from "../facilities_container";
 
@@ -20,10 +21,12 @@ export default function RoomAdditionalFacilities({ facilities }) {
     return null;
   }
 
+  const containerClass = classnames(styles.container, isOpen && styles.containerExpanded);
+
   return (
-    <div className={styles.roomAdditionalFacilitiesContainer}>
+    <div className={containerClass}>
       <Accordion activeKey={isOpen}>
-        <Accordion.Collapse eventKey="0">
+        <Accordion.Collapse className={styles.facilities} eventKey="0">
           <FacilitiesContainer facilities={facilities} />
         </Accordion.Collapse>
       </Accordion>

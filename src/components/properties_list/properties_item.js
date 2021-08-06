@@ -1,24 +1,36 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
+import classNames from "classnames";
 
 import routes from "routing/routes";
 
 import buildPath from "utils/build_path";
 
+import BestOffer from "./best_offer";
+
 import EmptyIcon from "static/empty-property.svg";
 import styles from "./properties.module.css";
 
-export default function PropertiesItem({ property, onSelectProperty }) {
+export default function PropertiesItem(props) {
+  const { property, currency, isHighlighted, onSelectProperty, onMouseOver, onMouseOut } = props;
   const { t } = useTranslation();
   const history = useHistory();
 
-  const { description, photos, title, id } = property;
+  const { description, photos, title, id, bestOffer } = property;
 
-  const handleSelectProperty = useCallback(() => {
+  const handleMouseOver = () => {
+    onMouseOver(property);
+  };
+
+  const handleMouseOut = () => {
+    onMouseOut(property);
+  };
+
+  const handleSelectProperty = () => {
     onSelectProperty(property);
-  }, [property, onSelectProperty]);
+  };
 
   const selectRoomPath = buildPath(history.location.search, routes.hotelPage, { channelId: id });
 
@@ -34,8 +46,17 @@ export default function PropertiesItem({ property, onSelectProperty }) {
     );
   }, [photos, title]);
 
+  const itemClassName = classNames(styles.item, isHighlighted && styles.itemHighlighted);
+
   return (
-    <div className={styles.item} onClick={handleSelectProperty}>
+    <div
+      className={itemClassName}
+      onClick={handleSelectProperty}
+      onMouseOver={handleMouseOver}
+      onFocus={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onBlur={handleMouseOut}
+    >
       <div className={styles.overlay}>
         <div className={styles.previewBtnWrapper}>
           <Button className={styles.previewButton}>{t("properties:preview")}</Button>
@@ -52,6 +73,7 @@ export default function PropertiesItem({ property, onSelectProperty }) {
       </div>
 
       <div className={styles.footer}>
+        <BestOffer amount={bestOffer} currency={currency} />
         <Link to={selectRoomPath} className={styles.seeMoreLink}>
           {t("properties:book_now")}
         </Link>

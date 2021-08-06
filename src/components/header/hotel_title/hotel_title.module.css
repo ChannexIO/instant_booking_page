@@ -1,4 +1,5 @@
 .hotelTitle { 
+  flex: 1;
   font-size: 32px;
   line-height: 32px;
   font-weight: bold;

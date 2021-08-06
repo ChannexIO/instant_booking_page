@@ -43,7 +43,12 @@ export default function Select({ label, value, options, withSearch = false, onCh
 
   // TODO - unify dropdown menus for selects
   return (
-    <Dropdown show={isOpen} onSelect={onChange} onToggle={handleSelectToggle}>
+    <Dropdown
+      className={styles.dropdown}
+      show={isOpen}
+      onSelect={onChange}
+      onToggle={handleSelectToggle}
+    >
       <Dropdown.Toggle className={styles.toggle} variant="link">
         {label}
       </Dropdown.Toggle>

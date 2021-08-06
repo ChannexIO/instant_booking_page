@@ -13,6 +13,7 @@ export const SET_CLOSED_DATES_DATA = "SET_CLOSED_DATES_DATA";
 export const SET_PARAMS = "SET_PARAMS";
 export const SET_ROOMS_REQUEST_PARAMS = "SET_ROOMS_REQUEST_PARAMS";
 export const RESET_PARAMS = "RESET_PARAMS";
+export const SET_BEST_OFFER = "SET_BEST_OFFER";
 
 const setChannelId = (dispatch, payload) => {
   return dispatch({ type: SET_CHANNEL_ID, payload });
@@ -52,6 +53,20 @@ const setRoomsRequestParams = (dispatch, payload) => {
 
 const resetParams = (dispatch) => {
   return dispatch({ type: RESET_PARAMS });
+};
+
+const setBestOffer = (dispatch, payload) => {
+  return dispatch({ type: SET_BEST_OFFER, payload });
+};
+
+const loadBestOffer = async (dispatch, channelId, params) => {
+  try {
+    const newMinPriceParams = await ApiActions.getBestOffer(channelId, params);
+
+    setBestOffer(dispatch, newMinPriceParams);
+  } catch (_e) {
+    setBestOffer(dispatch, null);
+  }
 };
 
 const loadProperty = async (dispatch, channelId) => {
@@ -156,4 +171,5 @@ export const actions = {
   resetParams,
   setParamsAndLoadRoomsInfo,
   initBookingData,
+  loadBestOffer,
 };

@@ -1,39 +1,57 @@
-import React, { useCallback, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import classNames from "classnames";
 
 import styles from "./properties_search_map.module.css";
 
-export default function Marker({ item, handleSelectProperty }) {
+export default function Marker({ item, isHighlighted, onMouseOver, onMouseOut, onSelect }) {
   const { t } = useTranslation();
   const containerRef = useRef(null);
 
-  const onSelectProperty = useCallback(() => {
-    handleSelectProperty(item);
-  }, [handleSelectProperty, item]);
+  const handlePropertySelect = () => {
+    onSelect(item);
+  };
 
-  const handleMouseEnter = useCallback(() => {
+  const handleMouseOver = () => {
     if (!containerRef?.current) {
       return;
     }
 
+    onMouseOver(item);
     containerRef.current.parentNode.style.zIndex = 1;
-  }, [containerRef]);
+  };
 
-  const handleMouseLeave = useCallback(() => {
+  const handleMouseOut = () => {
     if (!containerRef?.current) {
       return;
     }
 
+    onMouseOut(item);
     containerRef.current.parentNode.style.zIndex = 0;
-  }, [containerRef]);
+  };
+
+  useEffect(
+    function handleMarkerHighlighted() {
+      if (!containerRef?.current) {
+        return;
+      }
+
+      containerRef.current.parentNode.style.zIndex = Number(isHighlighted);
+    },
+    [containerRef, isHighlighted],
+  );
+
+  const markerClassName = classNames(styles.marker, isHighlighted && styles.markerHighlited);
 
   return (
     <div
       ref={containerRef}
-      className={styles.marker}
-      onClick={onSelectProperty}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className={markerClassName}
+      onClick={handlePropertySelect}
+      onMouseOver={handleMouseOver}
+      onFocus={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onBlur={handleMouseOut}
     >
       <span className={styles.markerContent}>{item.bestOffer}</span>
       <span className={styles.markerOverlay}>{t("properties:preview")}</span>
