@@ -53,7 +53,6 @@ export default function RoomDetailsModal({ room, show, onHide }) {
               <Label className={styles.priceLabel}>{t("rates_table:price_from")}</Label>
               <div>
                 <Currency className={styles.roomPrice} amount={minPrice} currency={currency} />
-                <span className={styles.pricePostfix}>{t("rates_table:per_night")}</span>
               </div>
               <Caption>{t("rates_table:taxes_note")}</Caption>
             </div>
