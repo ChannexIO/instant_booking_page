@@ -58,6 +58,7 @@
     "price_per_night": "per notte",
     "rooms": "alloggi",
     "nights": "notti",
+    "guests": "Guests",
     "missing_spaces": "Gli alloggi selezionati sono insufficienti per ospitare il totale del tuo gruppo",
     "hotel_policy": {
       "checkin_time": "Orario Check-in",
@@ -146,6 +147,7 @@
     "reserve": "Prenota",
     "show_prices": "Mostra prezzi",
     "room_facilities": "Servizi",
+    "room_description": "Descripción de la habitación",
     "included": "incluso",
     "meals": "Pasti",
     "cancellation": "Cancellazione",
@@ -158,7 +160,11 @@
     "price_for_up_to": "Prezzo a partire da",
     "no_rates_placeholder": "Seleziona il Check-In e il Check-Out per favore",
     "no_available_rates_placeholder": "Non ci sono alloggi disponibili in queste date",
-    "no_room_description": "Descrizione mancante"
+    "no_room_photos": "No photos there yet",
+    "price_from": "From",
+    "taxes_note": "Includes taxes and charges",
+    "per_night": "per night",
+    "nights": "nights"
   },
   "payment_page": {
     "payment_form": {
@@ -304,7 +310,8 @@
     "book_now": "Prenota ora",
     "no_info": "Senza informazione",
     "no_search_results": "Non ci sono risultati",
-    "back_to_map": "Ritorna alla mappa"
+    "back_to_map": "Ritorna alla mappa",
+    "price_from": "From"
   },
   "facilities": {
     "24-hour front desk": "24-hour front desk",

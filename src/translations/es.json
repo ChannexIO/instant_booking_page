@@ -10,7 +10,11 @@
     "delete": "Borrar",
     "clear": "Limpiar",
     "search_page_doc_title": "Buscar",
-    "main_page_doc_title": "IBE"
+    "main_page_doc_title": "IBE",
+    "is": "is",
+    "and": "and",
+    "in": "in",
+    "for": "for"
   },
   "navigation": {
     "hotel_page": "Página del Hotel",
@@ -54,11 +58,15 @@
     "price_per_night": "Por noche",
     "rooms": "habitaciones",
     "nights": "noches",
+    "guests": "Guests",
     "missing_spaces": "Las habitaciones seleccionadas no tienen espacio suficiente para la cantidad de huéspedes seleccionados.",
     "hotel_policy": {
       "checkin_time": "Hora de Check-in",
       "checkout_time": "Hora de Check-out",
+      "adults_only": "Adults only",
+      "all_ages": "All ages welcome",
       "internet": {
+        "not_available": "Internet access is not available",
         "coverage_title": "Cobertura de acceso a Internet",
         "coverage_options": {
           "entire_property": "Propiedad entera",
@@ -80,6 +88,7 @@
         }
       },
       "parking": {
+        "not_available": "Parking is not available",
         "type_title": "tipo de Parking",
         "type_options": {
           "none": "Ninguno",
@@ -137,6 +146,7 @@
     "taxes_and_charges": "impuestos y cargos",
     "reserve": "Reservar",
     "show_prices": "Mostrar precios",
+    "room_facilities": "Amenities",
     "room_description": "Descripción de la habitación",
     "included": "incluido",
     "meals": "Comidas",
@@ -149,7 +159,12 @@
     "missing_spaces_description": "Compruebe cuántos invitados pueden dormir con las opciones disponibles",
     "price_for_up_to": "Precio hasta",
     "no_rates_placeholder": "Seleccionar fechas de Check-In y Check-Out para visualizar las tarifas disponibles",
-    "no_available_rates_placeholder": "Habitación no disponible para la fecha escogida"
+    "no_available_rates_placeholder": "Habitación no disponible para la fecha escogida",
+    "no_room_photos": "No photos there yet",
+    "price_from": "From",
+    "taxes_note": "Includes taxes and charges",
+    "per_night": "per night",
+    "nights": "nights"
   },
   "payment_page": {
     "payment_form": {
@@ -193,9 +208,17 @@
       "header": "Error",
       "text": "Algo no fué bien"
     },
+    "policy_info": {
+      "modal_header": "Booking Policies",
+      "hotel_policy": "Hotel Policy",
+      "policy": "Policy",
+      "no_policy_message": "No policy description yet"
+    },
     "back_to_hotel_page": "Regresar a la página del Hotel",
     "agree_and_book": "Aceptar y Reservar",
-    "currency_convertion_alert": "Debe tener en cuenta que la moneda de la transacción es {{currency}}. Es posible que el proveedor de su tarjeta le cobre una tarifa de conversión de moneda."
+    "currency_convertion_alert": "Debe tener en cuenta que la moneda de la transacción es {{currency}}. Es posible que el proveedor de su tarjeta le cobre una tarifa de conversión de moneda.",
+    "policy_agreement": "Check here to indicate that you read and agree with",
+    "booking_policy": "Booking Policies"
   },
   "confirmation_page": {
     "thank_you": "Gracias",
@@ -287,7 +310,8 @@
     "book_now": "Reserve ahora",
     "no_info": "No información",
     "no_search_results": "No resultados de búsqueda",
-    "back_to_map": "Volver al mapa"
+    "back_to_map": "Volver al mapa",
+    "price_from": "From"
   },
   "facilities": {
     "24-hour front desk": "24-hour front desk",
