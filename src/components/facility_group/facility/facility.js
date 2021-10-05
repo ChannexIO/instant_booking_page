@@ -8,7 +8,7 @@ export default function Facility({ code }) {
 
   return (
     <div className={styles.facility}>
-      <div className={styles.facilityTitle}>{t(`facilities:${code}`)}</div>
+      <div className={styles.facilityTitle}>{t(`facilities:${code.toLowerCase()}`)}</div>
     </div>
   );
 }
