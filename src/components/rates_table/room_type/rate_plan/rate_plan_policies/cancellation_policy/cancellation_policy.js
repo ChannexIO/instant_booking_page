@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import Alert from "components/alert";
 
-import { DATE_UI_FULL_MONTH_FORMAT } from "constants/formats";
+import { DATE_UI_DAY_FORMAT, DATE_UI_MONTH_FORMAT, DATE_UI_YEAR_FORMAT } from "constants/formats";
 
 const DEFAULT_CHECKIN_TIME = "00:00";
 
@@ -26,7 +26,10 @@ const buildDeadlineBasedPoicyMessage = (t, props) => {
     .set({ hour, minute, second: 0, millisecond: 0 })
     .subtract(cancellationPolicyDeadline, cancellationPolicyDeadlineType);
 
-  const deadlineDay = deadlineDate.format(DATE_UI_FULL_MONTH_FORMAT);
+  const deadlineMonthDay = deadlineDate.format(DATE_UI_DAY_FORMAT);
+  const deadlineMonth = deadlineDate.format(DATE_UI_MONTH_FORMAT);
+  const deadlineYear = deadlineDate.format(DATE_UI_YEAR_FORMAT);
+  const deadlineDay = `${deadlineMonthDay} ${t(`months:${deadlineMonth}`)} ${deadlineYear}`;
   const deadlineHour = deadlineDate.clone().subtract(1, "minute").format("HH:mm");
 
   return t("cancellation_policies:types:deadline", { deadlineDay, deadlineHour });
