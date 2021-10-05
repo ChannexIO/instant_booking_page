@@ -27,7 +27,7 @@ function RatePlanPriceBreakdown({ ratePlan, currency, className, ...popoverProps
         <div className={styles.priceRow}>
           <span>
             <Currency currency={currency} amount={perNightPrice} />
-            {` x ${lengthOfStay} nights`}
+            {` x ${lengthOfStay} ${t("rates_table:nights")}`}
           </span>
           <Currency currency={currency} amount={netPrice} />
         </div>
