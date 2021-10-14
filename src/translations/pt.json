@@ -10,7 +10,11 @@
     "delete": "Limpar",
     "clear": "Limpar",
     "search_page_doc_title": "Procurar",
-    "main_page_doc_title": "IBE"
+    "main_page_doc_title": "IBE",
+    "is": "is",
+    "and": "and",
+    "in": "in",
+    "for": "for"
   },
   "navigation": {
     "hotel_page": "Página do Hotel",
@@ -54,11 +58,15 @@
     "price_per_night": "Por noite",
     "rooms": "quartos",
     "nights": "noites",
+    "guests": "Guests",
     "missing_spaces": "Os quartos selecionados não têm espaço suficiente para o número de hóspedes selecionados.",
     "hotel_policy": {
       "checkin_time": "Hora do Check-in",
       "checkout_time": "Hora do Check-out",
+      "adults_only": "Adults only",
+      "all_ages": "All ages welcome",
       "internet": {
+        "not_available": "Internet access is not available",
         "coverage_title": "Cobertura de acesso à Internet",
         "coverage_options": {
           "entire_property": "Propriedade inteira",
@@ -80,6 +88,7 @@
         }
       },
       "parking": {
+        "not_available": "Parking is not available",
         "type_title": "tipo de estacionamento",
         "type_options": {
           "none": "Nenhum",
@@ -137,6 +146,7 @@
     "taxes_and_charges": "iimpostos e taxas",
     "reserve": "Reservar",
     "show_prices": "Mostrar preços",
+    "room_facilities": "Amenities",
     "room_description": "Descrição do quarto",
     "included": "incluído",
     "meals": "Comidas",
@@ -149,7 +159,12 @@
     "missing_spaces_description": "Verifique quantos convidados podem dormir com as opções disponíveis",
     "price_for_up_to": "Preço até",
     "no_rates_placeholder": "Selecione as datas de check-in e check-out para ver as taxas disponíveis",
-    "no_available_rates_placeholder": "Quarto não disponível para a data escolhida"
+    "no_available_rates_placeholder": "Quarto não disponível para a data escolhida",
+    "no_room_photos": "No photos there yet",
+    "price_from": "From",
+    "taxes_note": "Includes taxes and charges",
+    "per_night": "per night",
+    "nights": "nights"
   },
   "payment_page": {
     "payment_form": {
@@ -193,9 +208,17 @@
       "header": "Erro",
       "text": "Algo deu errado"
     },
+    "policy_info": {
+      "modal_header": "Booking Policies",
+      "hotel_policy": "Hotel Policy",
+      "policy": "Policy",
+      "no_policy_message": "No policy description yet"
+    },
     "back_to_hotel_page": "Voltar para a página do hotel",
     "agree_and_book": "Aceitar e reservar",
-    "currency_convertion_alert": "Você deve observar que a moeda da transação é {{currency}}. A operadora do cartão pode cobrar uma taxa de conversão de moeda."
+    "currency_convertion_alert": "Você deve observar que a moeda da transação é {{currency}}. A operadora do cartão pode cobrar uma taxa de conversão de moeda.",
+    "policy_agreement": "Check here to indicate that you read and agree with",
+    "booking_policy": "Booking Policies"
   },
   "confirmation_page": {
     "thank_you": "Obrigada",
@@ -287,7 +310,8 @@
     "book_now": "Reserve agora",
     "no_info": "Sem informação",
     "no_search_results": "Sem resultados de pesquisa",
-    "back_to_map": "Voltar ao mapa"
+    "back_to_map": "Voltar ao mapa",
+    "price_from": "From"
   },
   "facilities": {
     "24-hour front desk": "24-hour front desk",
