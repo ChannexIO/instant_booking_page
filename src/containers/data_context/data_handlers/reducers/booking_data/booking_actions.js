@@ -1,7 +1,6 @@
 import ApiActions from "api_actions";
 
 import { DEFAULT_CURRENCY } from "constants/defaults";
-import getChannelId from "utils/get_channel_id";
 
 export const SET_CHANNEL_ID = "SET_CHANNEL_ID";
 export const SET_PROPERTY_LOADING = "SET_PROPERTY_LOADING";
@@ -14,10 +13,6 @@ export const SET_PARAMS = "SET_PARAMS";
 export const SET_ROOMS_REQUEST_PARAMS = "SET_ROOMS_REQUEST_PARAMS";
 export const RESET_PARAMS = "RESET_PARAMS";
 export const SET_BEST_OFFER = "SET_BEST_OFFER";
-
-const setChannelId = (dispatch, payload) => {
-  return dispatch({ type: SET_CHANNEL_ID, payload });
-};
 
 const setPropertyLoading = (dispatch) => {
   return dispatch({ type: SET_PROPERTY_LOADING });
@@ -60,12 +55,16 @@ const setBestOffer = (dispatch, payload) => {
 };
 
 const loadBestOffer = async (dispatch, channelId, params) => {
-  try {
-    const newMinPriceParams = await ApiActions.getBestOffer(channelId, params);
-
-    setBestOffer(dispatch, newMinPriceParams);
-  } catch (_e) {
+  if (channelId === null) {
     setBestOffer(dispatch, null);
+  } else {
+    try {
+      const newMinPriceParams = await ApiActions.getBestOffer(channelId, params);
+
+      setBestOffer(dispatch, newMinPriceParams);
+    } catch (_e) {
+      setBestOffer(dispatch, null);
+    }
   }
 };
 
@@ -133,8 +132,8 @@ const setParamsAndLoadRoomsInfo = (dispatch, channelId, bookingParams) => {
   return loadRoomsInfo(dispatch, channelId, bookingParams);
 };
 
-const mergeBookingParams = (channelId, bookingQueryParams, savedBookingData) => {
-  if (!savedBookingData || channelId !== savedBookingData.channelId) {
+const mergeBookingParams = (bookingQueryParams, savedBookingData) => {
+  if (!savedBookingData || bookingQueryParams.channelId !== savedBookingData.channelId) {
     return bookingQueryParams;
   }
 
@@ -144,22 +143,18 @@ const mergeBookingParams = (channelId, bookingQueryParams, savedBookingData) => 
 };
 
 const initBookingData = (dispatch, bookingQueryParams, savedBookingData) => {
-  const channelId = getChannelId();
-
-  if (!channelId) {
+  if (!bookingQueryParams.channelId) {
     throw Error("PROPERY_NOT_FOUND");
   }
 
-  const bookingParams = mergeBookingParams(channelId, bookingQueryParams, savedBookingData);
+  const bookingParams = mergeBookingParams(bookingQueryParams, savedBookingData);
 
-  setChannelId(dispatch, channelId);
-
-  return loadProperty(dispatch, channelId).then((property) => {
+  return loadProperty(dispatch, bookingQueryParams.channelId).then((property) => {
     const { currency: propertyCurrency = DEFAULT_CURRENCY } = property;
     const { currency = propertyCurrency } = bookingParams;
     const updatedParams = { ...bookingParams, currency };
 
-    return setParamsAndLoadRoomsInfo(dispatch, channelId, updatedParams);
+    return setParamsAndLoadRoomsInfo(dispatch, bookingQueryParams.channelId, updatedParams);
   });
 };
 
