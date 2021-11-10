@@ -5,6 +5,7 @@ import routes from "routing/routes";
 
 import buildPath from "utils/build_path";
 import getBookingParamsFromUrl from "utils/get_booking_params_from_url";
+import getChannelId from "utils/get_channel_id";
 
 import { INITIAL_STATE, reducer } from "./reducers/app_data";
 
@@ -14,7 +15,8 @@ export default () => {
 
   const init = useCallback(
     async (bookingActions, savedState) => {
-      const bookingQueryParams = getBookingParamsFromUrl();
+      const channelId = getChannelId();
+      const bookingQueryParams = {channelId: channelId, ...getBookingParamsFromUrl()};
 
       try {
         await bookingActions.initBookingData(bookingQueryParams, savedState);
