@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/instant_booking_page/static/css/main.bbee2a7a.chunk.css",
-    "main.js": "/instant_booking_page/static/js/main.333f7ff8.chunk.js",
-    "main.js.map": "/instant_booking_page/static/js/main.333f7ff8.chunk.js.map",
+    "main.css": "/instant_booking_page/static/css/main.ff4a4dd3.chunk.css",
+    "main.js": "/instant_booking_page/static/js/main.450aadc1.chunk.js",
+    "main.js.map": "/instant_booking_page/static/js/main.450aadc1.chunk.js.map",
     "runtime-main.js": "/instant_booking_page/static/js/runtime-main.1e85cf77.js",
     "runtime-main.js.map": "/instant_booking_page/static/js/runtime-main.1e85cf77.js.map",
     "static/css/2.0c551c66.chunk.css": "/instant_booking_page/static/css/2.0c551c66.chunk.css",
     "static/js/2.29e8ae10.chunk.js": "/instant_booking_page/static/js/2.29e8ae10.chunk.js",
     "static/js/2.29e8ae10.chunk.js.map": "/instant_booking_page/static/js/2.29e8ae10.chunk.js.map",
     "index.html": "/instant_booking_page/index.html",
-    "precache-manifest.6d44b4cc232e1b325a1745ff8608a113.js": "/instant_booking_page/precache-manifest.6d44b4cc232e1b325a1745ff8608a113.js",
+    "precache-manifest.509f9ac9dc127c077b4c01fc911a12aa.js": "/instant_booking_page/precache-manifest.509f9ac9dc127c077b4c01fc911a12aa.js",
     "service-worker.js": "/instant_booking_page/service-worker.js",
     "static/css/2.0c551c66.chunk.css.map": "/instant_booking_page/static/css/2.0c551c66.chunk.css.map",
-    "static/css/main.bbee2a7a.chunk.css.map": "/instant_booking_page/static/css/main.bbee2a7a.chunk.css.map",
+    "static/css/main.ff4a4dd3.chunk.css.map": "/instant_booking_page/static/css/main.ff4a4dd3.chunk.css.map",
     "static/js/2.29e8ae10.chunk.js.LICENSE.txt": "/instant_booking_page/static/js/2.29e8ae10.chunk.js.LICENSE.txt",
     "static/media/empty-property.svg": "/instant_booking_page/static/media/empty-property.1d072e07.svg",
     "static/media/photo_slider.module.css": "/instant_booking_page/static/media/icons-arrowleft.db716542.svg",
@@ -37,7 +37,7 @@
     "static/js/runtime-main.1e85cf77.js",
     "static/css/2.0c551c66.chunk.css",
     "static/js/2.29e8ae10.chunk.js",
-    "static/css/main.bbee2a7a.chunk.css",
-    "static/js/main.333f7ff8.chunk.js"
+    "static/css/main.ff4a4dd3.chunk.css",
+    "static/js/main.450aadc1.chunk.js"
   ]
 }
