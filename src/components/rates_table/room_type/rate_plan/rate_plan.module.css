@@ -14,5 +14,6 @@
 @media screen and (max-width: 767px) {
   .flexibleContainer {
     flex-direction: column;
+    display: block;
   }
 }

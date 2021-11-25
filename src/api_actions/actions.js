@@ -55,6 +55,11 @@ export default {
 
   getPropertiesList: (queryParams, filter = {}) => {
     const { nw: _nw, se: _se, sw: _sw, ne: _ne, ...paramsWithoutFilter } = queryParams;
+    const GROUP_ID = process.env.REACT_APP_GROUP_ID;
+
+    if (GROUP_ID) {
+      filter["group_id"] = GROUP_ID;
+    }
 
     return transport.get(`${PATH_PREFIX}/property_list`, {
       is_available: true,
