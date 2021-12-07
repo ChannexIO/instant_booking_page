@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import moment from "moment";
 
 import Alert from "components/alert";
 
@@ -25,6 +26,10 @@ const buildDeadlineBasedPoicyMessage = (t, props) => {
     .clone()
     .set({ hour, minute, second: 0, millisecond: 0 })
     .subtract(cancellationPolicyDeadline, cancellationPolicyDeadlineType);
+
+  if (deadlineDate.diff(moment()) < 0) {
+    return buildNonRefundablePolicyMessage(t);
+  }
 
   const deadlineMonthDay = deadlineDate.format(DATE_UI_DAY_FORMAT);
   const deadlineMonth = deadlineDate.format(DATE_UI_MONTH_FORMAT);
