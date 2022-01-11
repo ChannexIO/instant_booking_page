@@ -5,10 +5,20 @@ import Link from "components/link";
 
 export default function PolicyLink() {
   const { t } = useTranslation();
+  const host = window.location.host;
+  let url;
 
-  return (
-    <Link to="https://channex.io/policy#Policy" target="_blank">
-      {t("footer:privacy_policy")}
-    </Link>
-  );
+  if (host.indexOf("channex.io") > -1) {
+    url = "https://channex.io/policy#Policy";
+  }
+
+  if (url) {
+    return (
+      <Link to={url} target="_blank">
+        {t("footer:privacy_policy")}
+      </Link>
+    );
+  } else {
+    return null;
+  }
 }

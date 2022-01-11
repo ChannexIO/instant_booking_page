@@ -7,13 +7,30 @@ import styles from "./get_channel_ad.module.css";
 
 export default function GetChannelAd() {
   const { t } = useTranslation();
+  const host = window.location.host;
+  let url;
+  let title;
 
-  return (
-    <div className={styles.container}>
-      <span className={styles.text}>{t("footer:get_free_channel")}</span>
-      <Link to="https://channex.io" target="_blank">
-        {t("footer:channex_io")}
-      </Link>
-    </div>
-  );
+  if (host.indexOf("channex.io") > -1) {
+    url = "https://channex.io";
+    title = t("footer:channex_io");
+  }
+
+  if (host.indexOf("easy-rez.com") > -1) {
+    url = "https://easy-rez.com";
+    title = "easy-rez";
+  }
+
+  if (url) {
+    return (
+      <div className={styles.container}>
+        <span className={styles.text}>{t("footer:get_free_channel")}</span>
+        <Link to={url} target="_blank">
+          {title}
+        </Link>
+      </div>
+    );
+  } else {
+    return null;
+  }
 }
