@@ -9,16 +9,38 @@ import MaterialSelect from "components/inputs/material_select";
 import FieldRow from "components/layout/field_row";
 import Panel from "components/layout/panel";
 
+import errors from "constants/errors";
+
 const TRANSLATION_PATH = "payment_page:payment_form:billing_address";
 
 export const getSchema = () =>
   yup.object({
-    address: yup.string(),
+    address: yup
+      .string()
+      .when("$billingAddressIsRequired", (isRequired, schema) =>
+        isRequired ? schema.required(errors.required()) : schema,
+      ),
     additionalAddress: yup.string(),
-    country: yup.string(),
-    city: yup.string(),
-    state: yup.string(),
-    zip: yup.string(),
+    country: yup
+      .string()
+      .when("$billingAddressIsRequired", (isRequired, schema) =>
+        isRequired ? schema.required(errors.required()) : schema,
+      ),
+    city: yup
+      .string()
+      .when("$billingAddressIsRequired", (isRequired, schema) =>
+        isRequired ? schema.required(errors.required()) : schema,
+      ),
+    state: yup
+      .string()
+      .when("$billingAddressIsRequired", (isRequired, schema) =>
+        isRequired ? schema.required(errors.required()) : schema,
+      ),
+    zip: yup
+      .string()
+      .when("$billingAddressIsRequired", (isRequired, schema) =>
+        isRequired ? schema.required(errors.required()) : schema,
+      ),
   });
 
 export function BillingAddress() {
