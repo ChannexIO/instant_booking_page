@@ -28,14 +28,17 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   );
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
   const [formData, setFormData] = useState(EMPTY_FORM);
+  const { requestCreditCard = true, requestBillingInfo = false } = property;
   const paymentFormMethods = useForm({
     mode: "onChange",
     resolver: yupResolver(getSchema()),
+    context: {
+      billingAddressIsRequired: requestBillingInfo
+    },
   });
   const captureFormRef = useRef();
   const paymentFormRef = useRef();
   const maxGuests = params.adults + params.children;
-  const { requestCreditCard = true } = property;
   const { handleSubmit } = paymentFormMethods;
 
   const handleSubmitError = useCallback(() => {
