@@ -1,5 +1,7 @@
 import dateFormatter from "utils/date_formatter";
 
+const ID_LENGTH = 36;
+
 const formatCardInfo = (cardInfo) => {
   const { expirationMonth, expirationYear, serviceCode, ...rest } = cardInfo;
   const expirationDate = `${expirationMonth}/${expirationYear}`;
@@ -94,6 +96,12 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
     const roomProps = rooms.find((room) => roomTypeCode === room.id);
 
     const bookedPerRoomId = Object.keys(selectedRates).reduce((acc, ratePlanCode) => {
+      let publicRatePlanCode = ratePlanCode;
+
+      if (ratePlanCode.length > ID_LENGTH) {
+        publicRatePlanCode = publicRatePlanCode.slice(0, ID_LENGTH);
+      }
+
       const rateSelectedAmount = selectedRates[ratePlanCode];
       const { occupancy } = roomProps.ratePlans.find((rate) => ratePlanCode === rate.id);
 
@@ -103,8 +111,8 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
 
         return {
           roomTypeCode,
-          ratePlanCode,
-          occupancy: rateOccupancy,
+          ratePlanCode: publicRatePlanCode,
+          occupancy: (occupancy.children || occupancy.infants) ? occupancy : rateOccupancy,
         };
       });
 
