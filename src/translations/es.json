@@ -58,7 +58,7 @@
     "price_per_night": "Por noche",
     "rooms": "habitaciones",
     "nights": "noches",
-    "guests": "Guests",
+    "guests": "Invitados",
     "missing_spaces": "Las habitaciones seleccionadas no tienen espacio suficiente para la cantidad de huéspedes seleccionados.",
     "hotel_policy": {
       "checkin_time": "Hora de Check-in",
