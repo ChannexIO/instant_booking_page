@@ -72,20 +72,18 @@ export default function SearchSection() {
       let availableChildSpaces = 0;
 
       Object.values(selectedRatesByRoom).forEach((room) => {
-        console.log(room);
-
         room.selectedRates.forEach((rate) => {
           const { amount, occupancy } = rate;
 
           availableAdultSpaces += amount * occupancy.adults;
-          availableChildSpaces += amount * occupancy.children;
+          availableChildSpaces += amount * occupancy.children + amount * occupancy.infants;
         });
       });
 
       const missingAdults = adults - availableAdultSpaces;
       const missingChildren = children - availableChildSpaces;
 
-      const newMissingSpaces = missingAdults > 0 || missingChildren > 0 ? missingAdults + missingChildren : 0;
+      const newMissingSpaces = (missingAdults > 0 || missingChildren > 0) ? missingAdults + missingChildren : 0;
 
       setMissingSpaces(newMissingSpaces);
     },
