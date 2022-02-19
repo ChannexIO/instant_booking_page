@@ -4,8 +4,6 @@ An open source booking engine to allow properties to accept bookings directly fr
 modify and host this app yourself, create a booking engine channel on Channex and you will be able
 to create a bookings at the following URL `app-location.com/{channel_id}`
 
-Example of booking engine:
-https://channexio.github.io/instant_booking_page/8f3610c2-ec33-49a8-80ce-a3082375df34?currency=GBP&checkinDate=21-04-2021&checkoutDate=24-04-2021&childrenAge=&adults=2
 
 ## How to use it:
 
