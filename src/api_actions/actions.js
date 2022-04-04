@@ -31,7 +31,6 @@ export default {
 
     formattedQueryParams = {
       ...formattedQueryParams,
-      exactMatch: true,
       withVirtualRatePlans: true
     };
 
