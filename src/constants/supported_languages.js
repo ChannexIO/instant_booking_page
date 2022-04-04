@@ -19,6 +19,18 @@ const supportedLanguages = [
     key: "it",
     value: "ITA",
   },
+  {
+    key: "de",
+    value: "GER",
+  },
+  {
+    key: "fr",
+    value: "FRE",
+  },
+  {
+    key: "el",
+    value: "GRE",
+  },
 ];
 
 export default supportedLanguages;
