@@ -78,6 +78,8 @@ export default function SearchSection() {
       let availableChildSpaces = 0;
 
       Object.values(selectedRatesByRoom).forEach((room) => {
+        console.log(room);
+
         room.selectedRates.forEach((rate) => {
           const { amount, occupancy } = rate;
 
