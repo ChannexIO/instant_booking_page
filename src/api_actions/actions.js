@@ -29,6 +29,11 @@ export default {
       formattedQueryParams = { ...formattedQueryParams, ...formattedDates };
     }
 
+    formattedQueryParams = {
+      ...formattedQueryParams,
+      withVirtualRatePlans: true
+    };
+
     return transport.get(`${PATH_PREFIX}/${propertyChannelId}/rooms`, formattedQueryParams);
   },
 

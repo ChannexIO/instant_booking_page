@@ -150,9 +150,9 @@ const initBookingData = (dispatch, bookingQueryParams, savedBookingData) => {
   const bookingParams = mergeBookingParams(bookingQueryParams, savedBookingData);
 
   return loadProperty(dispatch, bookingQueryParams.channelId).then((property) => {
-    const { currency: propertyCurrency = DEFAULT_CURRENCY } = property;
+    const { currency: propertyCurrency = DEFAULT_CURRENCY, exactMatch = false } = property;
     const { currency = propertyCurrency } = bookingParams;
-    const updatedParams = { ...bookingParams, currency };
+    const updatedParams = { ...bookingParams, currency, exactMatch };
 
     return setParamsAndLoadRoomsInfo(dispatch, bookingQueryParams.channelId, updatedParams);
   });

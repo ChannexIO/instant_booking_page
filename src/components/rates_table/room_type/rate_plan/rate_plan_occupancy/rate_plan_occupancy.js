@@ -5,6 +5,7 @@ import Cell from "components/layout/cell";
 import OccupancySection from "./occupancy_section";
 
 import IconGuestChild from "static/icons-guest-child.svg";
+import IconGuestInfant from "static/icons-guest-infant.svg";
 import IconGuestDouble from "static/icons-guest-double.svg";
 import IconGuestSingle from "static/icons-guest-single.svg";
 import styles from "./rate_plan_occupancy.module.css";
@@ -17,9 +18,10 @@ const getAdditionalSpaces = (spaces, baseAmount) => {
 };
 
 export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
-  const { adults, children } = occupancy;
+  const { adults, children, infants } = occupancy;
   const additionalChildSpaces = getAdditionalSpaces(children, CHILD_BASE_NUMBER);
   const isChildIconShown = children && childrenOccupancy;
+  const isInfantIconShown = infants && childrenOccupancy;
   const additionalAdultsSpaces = getAdditionalSpaces(adults, ADULT_BASE_NUMBER);
   const adultsOccupancyIcon = adults === 2 ? IconGuestDouble : IconGuestSingle;
 
@@ -36,6 +38,13 @@ export default function RatePlanOccupancy({ occupancy, childrenOccupancy }) {
             type="children"
             additionalSpaces={additionalChildSpaces}
             icon={IconGuestChild}
+          />
+        )}
+        {Boolean(isInfantIconShown) && (
+          <OccupancySection
+            type="infant"
+            additionalSpaces={additionalChildSpaces}
+            icon={IconGuestInfant}
           />
         )}
       </div>

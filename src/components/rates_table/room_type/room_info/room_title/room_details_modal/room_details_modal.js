@@ -31,8 +31,11 @@ export default function RoomDetailsModal({ room, show, onHide }) {
     () =>
       facilities
         .reduce((acc, facilityGroup) => [...acc, ...facilityGroup.facilities], [])
+        .map((facility) => {
+          return t(`facilities:${facility.toLowerCase()}`);
+        })
         .join(FACILITY_DIVIDER),
-    [facilities],
+    [facilities, t],
   );
 
   const isFacilitiesPresent = Boolean(roomFacilities.length);

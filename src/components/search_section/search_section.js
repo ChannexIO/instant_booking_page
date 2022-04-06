@@ -52,6 +52,12 @@ export default function SearchSection() {
     loadRoomsInfo(channelId, params);
   }, [channelId, params, loadRoomsInfo, clearDataFromStorage]);
 
+  const handleSearchChange = useCallback((params) => {
+    clearDataFromStorage();
+    params.ratesOccupancyPerRoom = {};
+    setParams(params);
+  }, [clearDataFromStorage, setParams]);
+
   useEffect(
     function setSummaryParams() {
       const summaryParams = calculateSummaryParams(propertyRooms, ratesOccupancyPerRoom);
@@ -78,14 +84,14 @@ export default function SearchSection() {
           const { amount, occupancy } = rate;
 
           availableAdultSpaces += amount * occupancy.adults;
-          availableChildSpaces += amount * occupancy.children;
+          availableChildSpaces += amount * occupancy.children + amount * occupancy.infants;
         });
       });
 
       const missingAdults = adults - availableAdultSpaces;
       const missingChildren = children - availableChildSpaces;
 
-      const newMissingSpaces = missingAdults > 0 || missingChildren > 0 ? missingAdults + missingChildren : 0;
+      const newMissingSpaces = (missingAdults > 0 || missingChildren > 0) ? missingAdults + missingChildren : 0;
 
       setMissingSpaces(newMissingSpaces);
     },
@@ -105,8 +111,8 @@ export default function SearchSection() {
         <div className={wrapperClasses.join(" ")}>
           <MinPricePanel bestOffer={bestOffer} params={params} />
           <div className={styles.searchSection}>
-            <DateSelect bookingParams={params} handleSearchChange={setParams} />
-            <OccupancySetting bookingParams={params} handleSearchChange={setParams} />
+            <DateSelect bookingParams={params} handleSearchChange={handleSearchChange} />
+            <OccupancySetting bookingParams={params} handleSearchChange={handleSearchChange} />
             <SummaryComponent
               selectedRatesByRoom={selectedRatesByRoom}
               bookingParams={params}
