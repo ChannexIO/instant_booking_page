@@ -469,7 +469,8 @@
     "terms_and_conditions": "Όροι και Προϋποθέσεις"
   },
   "general": {
-    "locale": "Αγγλικά"
+    "locale": "Αγγλικά",
+    "code": "el"
   },
   "global": {
     "and": "και",

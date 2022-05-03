@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { DateRangePicker } from "react-dates";
 import { useMedia } from "react-media";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -41,6 +42,7 @@ const getMinStayLength = (closedDates, checkinDate) => {
 };
 
 export default function RangePicker(props) {
+  const { t } = useTranslation();
   const { closedDates } = useContext(BookingDataContext);
   const {
     checkinDate,
@@ -65,6 +67,14 @@ export default function RangePicker(props) {
 
   const isMobile = matchedQueries.xs;
   const numberOfMonths = matchedQueries.xs || matchedQueries.sm ? 1 : 2;
+
+  if (checkinDate) {
+    checkinDate.locale(t("general.code"));
+  }
+
+  if (checkoutDate) {
+    checkoutDate.locale(t("general.code"));
+  }
 
   const getIsClosedToArrival = useCallback(
     (_day, formattedDay) => {

@@ -469,7 +469,8 @@
     "terms_and_conditions": "Allgemeine Geschäftsbedingungen"
   },
   "general": {
-    "locale": "Deutsch"
+    "locale": "Deutsch",
+    "code": "de"
   },
   "global": {
     "and": "und",
