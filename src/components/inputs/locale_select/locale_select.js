@@ -1,6 +1,15 @@
 import React, { useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
+import 'moment/locale/en-gb';
+import 'moment/locale/tr';
+import 'moment/locale/es';
+import 'moment/locale/pt';
+import 'moment/locale/it';
+import 'moment/locale/de';
+import 'moment/locale/fr';
+import 'moment/locale/el';
 
 import Select from "components/inputs/select";
 
@@ -15,7 +24,7 @@ export default function LocaleSelect() {
   const handleLocaleChange = useCallback(
     (localeKey) => {
       i18n.changeLanguage(localeKey);
-
+      moment.locale(localeKey);
       setUrlParams({ lang: localeKey }, history);
     },
     [i18n, history],
@@ -29,6 +38,7 @@ export default function LocaleSelect() {
         return;
       }
 
+      moment.locale(lang);
       i18n.changeLanguage(lang);
     },
     [i18n],

@@ -1,6 +1,7 @@
 {
   "general": {
-    "locale": "Türkçe"
+    "locale": "Türkçe",
+    "code": "tr"
   },
   "global": {
     "loading": "Yükleniyor...",

@@ -1,6 +1,7 @@
 {
   "general": {
-    "locale": "Français"
+    "locale": "Français",
+    "code": "fr"
   },
   "global": {
     "loading": "Chargement en cours...",

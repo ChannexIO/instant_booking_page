@@ -38,7 +38,7 @@ export default function Date({ date, type = CHECKIN_DATE }) {
       <div className={dateParams.className}>
         <img className={styles.icon} src={dateParams.iconSrc} alt={type} />
         <div>
-          <strong>{date.format(DATE_FORMAT)}</strong>
+          <strong>{date.locale(t("general.code")).format(DATE_FORMAT)}</strong>
         </div>
       </div>
     </div>
