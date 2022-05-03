@@ -1,6 +1,7 @@
 {
   "general": {
-    "locale": "English"
+    "locale": "English",
+    "code": "en-gb"
   },
   "global": {
     "loading": "Loading...",
