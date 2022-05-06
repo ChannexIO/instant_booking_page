@@ -69,11 +69,11 @@ export default function RangePicker(props) {
   const numberOfMonths = matchedQueries.xs || matchedQueries.sm ? 1 : 2;
 
   if (checkinDate) {
-    checkinDate.locale(t("general.code"));
+    checkinDate.locale(t("general:code"));
   }
 
   if (checkoutDate) {
-    checkoutDate.locale(t("general.code"));
+    checkoutDate.locale(t("general:code"));
   }
 
   const getIsClosedToArrival = useCallback(
