@@ -76,6 +76,8 @@ export default function RangePicker(props) {
     checkoutDate.locale(t("general:code"));
   }
 
+  moment.locale(t("general:code"));
+
   const getIsClosedToArrival = useCallback(
     (_day, formattedDay) => {
       const { closedToArrivalHash } = hashedClosedDates;
