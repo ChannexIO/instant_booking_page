@@ -10,6 +10,7 @@ import 'moment/locale/it';
 import 'moment/locale/de';
 import 'moment/locale/fr';
 import 'moment/locale/el';
+import 'moment/locale/sr';
 
 import Select from "components/inputs/select";
 
