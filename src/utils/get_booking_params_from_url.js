@@ -25,10 +25,11 @@ export default function getBookingParamsFromUrl() {
   const optionalParams = { ...DEFAULT_PARAMS };
 
   const parsedStartDate = moment(checkinDate, DATE_API_FORMAT);
+  const nextStartDate = moment(checkinDate, DATE_API_FORMAT).add(1, "day");
   const parsedEndDate = moment(checkoutDate, DATE_API_FORMAT);
 
   if (checkinDate && parsedStartDate.isValid()) {
-    const isCheckinAfterCurrent = moment().isSameOrBefore(parsedStartDate, "day");
+    const isCheckinAfterCurrent = moment().isSameOrBefore(nextStartDate, "day");
 
     optionalParams.checkinDate = isCheckinAfterCurrent ? parsedStartDate : null;
   }
