@@ -563,6 +563,11 @@
           "private": "Privat",
           "public": "Öffentlich zugänglich"
         },
+        "cost_title": "Parkplätze Gebühr",
+        "cost_options": {
+          "free": "Kostenlos",
+          "paid": "Bezahlt"
+        },
         "property_title": "Parkhaus",
         "reservation_options": {
           "needed": "Erforderlich",
