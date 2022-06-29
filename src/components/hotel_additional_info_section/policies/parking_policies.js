@@ -9,8 +9,7 @@ const TRANSLATION_PATH = "hotel_page:hotel_policy:parking";
 
 export default function ParkingPolicies({ hotelPolicy }) {
   const { t } = useTranslation();
-  const { parkingIsPrivate, parkingReservation, parkingType, currency } = hotelPolicy;
-  const parkingCost = "30.00";
+  const { parkingIsPrivate, parkingReservation, parkingCost, parkingType, currency } = hotelPolicy;
 
   const isParkingAvailable = parkingType !== "none";
   const parkingProperty = parkingIsPrivate ? "private" : "public";
