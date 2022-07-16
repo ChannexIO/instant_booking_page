@@ -12,9 +12,11 @@ import "./index.css";
 i18nInit().then(() => {
   return render(
     <I18nextProvider i18n={i18next}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <React.Suspense fallback="Loading...">
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </React.Suspense>
     </I18nextProvider>,
     document.getElementById("root"),
   );
