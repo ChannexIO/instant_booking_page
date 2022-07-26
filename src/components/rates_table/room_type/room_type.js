@@ -45,19 +45,7 @@ export default function RoomType(props) {
         return;
       }
 
-      const ratesByOccupancyMatch = ratePlans.sort((a, b) => {
-        const aOccupancyMatchRating =
-          Number(a.occupancy.children === childrenOccupancy) +
-          Number(a.occupancy.adults === adultsOccupancy);
-
-        const bOccupancyMatchRating =
-          Number(b.occupancy.children === childrenOccupancy) +
-          Number(b.occupancy.adults === adultsOccupancy);
-
-        return bOccupancyMatchRating - aOccupancyMatchRating;
-      });
-
-      setSortedRates([...ratesByOccupancyMatch]);
+      setSortedRates([...ratePlans]);
     },
     [ratePlans, adultsOccupancy, childrenOccupancy],
   );

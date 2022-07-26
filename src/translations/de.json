@@ -487,8 +487,10 @@
     "search_page_doc_title": "Suche"
   },
   "hotel_page": {
-    "adults": "Erwachsene",
-    "children": "Kinder",
+    "adults_one": "Erwachsene",
+    "adults_other": "Erwachsene",
+    "children_one": "Kinder",
+    "children_other": "Kinder",
     "expand": "Erweitern",
     "guests": "Gäste",
     "nights": "Nächte",

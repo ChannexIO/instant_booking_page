@@ -17,7 +17,9 @@ export default function OccupancySettings({ bookingParams, handleSearchChange })
 
   const isGuestsPresent = children || adults;
   const dropdownTitle = isGuestsPresent
-    ? `${adults} ${t("hotel_page:adults")} · ${children} ${t("hotel_page:children")}`
+    ? `${t("hotel_page:adults", { count: adults })} · ${t("hotel_page:children", {
+        count: children,
+      })}`
     : t("hotel_page:guests_placeholder");
 
   const handleChange = useCallback(
