@@ -487,8 +487,10 @@
     "search_page_doc_title": "Αναζήτηση"
   },
   "hotel_page": {
-    "adults": "ενήλικες",
-    "children": "παιδιά",
+    "adults_one": "ενήλικες",
+    "adults_other": "ενήλικες",
+    "children_one": "παιδιά",
+    "children_other": "παιδιά",
     "expand": "Επέκτεινε",
     "guests": "επισκέπτες",
     "nights": "νύχτες",

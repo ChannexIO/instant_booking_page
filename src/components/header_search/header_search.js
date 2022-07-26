@@ -29,8 +29,8 @@ export default function HeaderSearch({
   }, []);
 
   const getDropdownTitle = () => {
-    const title = `${searchParams.adults} ${t("hotel_page:adults")} ·
-    ${searchParams.children} ${t("hotel_page:children")}`;
+    const title = `${t("hotel_page:adults", { count: searchParams.adults })} ·
+    ${t("hotel_page:children", { count: searchParams.children })}`;
 
     return title;
   };

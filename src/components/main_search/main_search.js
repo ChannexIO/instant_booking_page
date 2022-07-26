@@ -46,8 +46,8 @@ export default function MainSearch() {
   );
 
   const getDropdownTitle = useCallback(() => {
-    const title = `${occupancyParams.adults} ${t("hotel_page:adults")} ·
-    ${occupancyParams.children} ${t("hotel_page:children")}`;
+    const title = `${t("hotel_page:adults", { count: occupancyParams.adults })} ·
+    ${t("hotel_page:children", { count: occupancyParams.children })}`;
 
     return title;
   }, [t, occupancyParams]);

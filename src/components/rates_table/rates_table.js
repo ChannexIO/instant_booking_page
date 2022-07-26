@@ -71,7 +71,12 @@ export default function RatesTable() {
       const isDatesMatchLastRequest =
         isCheckinDateMatchesLast && isCheckoutDateMatchesLast && isOccupancyChanged;
 
-      if (isStale && isDatesMatchLastRequest) {
+      const isOccupancyMatchLastRequest =
+        roomRequestParams.adults === params.adults &&
+        roomRequestParams.children === params.children &&
+        roomRequestParams.childrenAge === params.childrenAge;
+
+      if (isStale && isDatesMatchLastRequest && isOccupancyMatchLastRequest) {
         setIsStale(false);
         return;
       }
