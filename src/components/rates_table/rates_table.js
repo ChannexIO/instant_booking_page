@@ -54,6 +54,10 @@ export default function RatesTable() {
     function handleSearchParamsChange() {
       const isCheckinDateChanged = params.checkinDate !== prevParams.checkinDate;
       const isCheckoutDateChanged = params.checkoutDate !== prevParams.checkoutDate;
+      const isOccupancyChanged =
+        params.adults !== prevParams.adults ||
+        params.children !== prevParams.children ||
+        params.childrenAge !== prevParams.childrenAge;
       const isDatesChaged = isCheckinDateChanged || isCheckoutDateChanged;
 
       const isCheckinDateMatchesLast = moment(roomRequestParams.checkinDate).isSame(
@@ -64,14 +68,20 @@ export default function RatesTable() {
         params.checkoutDate,
         "day",
       );
-      const isDatesMatchLastRequest = isCheckinDateMatchesLast && isCheckoutDateMatchesLast;
+      const isDatesMatchLastRequest =
+        isCheckinDateMatchesLast && isCheckoutDateMatchesLast && isOccupancyChanged;
 
-      if (isStale && isDatesMatchLastRequest) {
+      const isOccupancyMatchLastRequest =
+        roomRequestParams.adults === params.adults &&
+        roomRequestParams.children === params.children &&
+        roomRequestParams.childrenAge === params.childrenAge;
+
+      if (isStale && isDatesMatchLastRequest && isOccupancyMatchLastRequest) {
         setIsStale(false);
         return;
       }
 
-      if (isDatesChaged) {
+      if (isDatesChaged || isOccupancyChanged) {
         setIsStale(true);
         setParams({ ...params, ratesOccupancyPerRoom: {} });
       }

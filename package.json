@@ -10,7 +10,7 @@
     "classnames": "^2.2.6",
     "country-state-city": "^1.0.5",
     "google-map-react": "^2.0.8",
-    "i18next": "^19.6.2",
+    "i18next": "^21.8.14",
     "lodash": "^4.17.21",
     "moment": "^2.27.0",
     "react": "^16.13.1",
