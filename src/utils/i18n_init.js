@@ -37,6 +37,7 @@ const i18nInit = () =>
   i18next.init({
     interpolation: { escapeValue: false },
     defaultNS: "common",
+    keySeparator: ".",
     lng: getDefaultLanguage(),
     resources: {
       en,
