@@ -34,14 +34,24 @@ export default (data) => {
 
   const { closed, closedToArrival, closedToDeparture, minStayArrival, minStayThrough } = data;
 
-  const closedHash = convertToHashmap(closed);
-  const CTAHash = convertToHashmap(closedToArrival);
+  const filteredClosedDates = closed.filter((date, index) => {
+    if (index !== 0) {
+      if (moment(date).diff(moment(closed[index - 1]), "day") > 1) {
+        closedToArrival.push(date);
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return true;
+    }
+  });
+
+  const closedHash = convertToHashmap(filteredClosedDates);
+  // const CTAHash = convertToHashmap(closedToArrival);
   const CTDHash = convertToHashmap(closedToDeparture);
 
-  const closedToArrivalHash = {
-    ...closedHash,
-    ...CTAHash,
-  };
+  const closedToArrivalHash = convertToHashmap(closedToArrival);
 
   const rangeBlockedByMinStayArrival = buildRangeBlockedHash(closedHash, minStayArrival);
   const rangeBlockedByMinStayThrough = buildRangeBlockedHash(closedHash, minStayThrough);

@@ -80,9 +80,24 @@ export default function RangePicker(props) {
 
   const getIsClosedToArrival = useCallback(
     (_day, formattedDay) => {
+      if (!hashedClosedDates) {
+        return false;
+      }
       const { closedToArrivalHash } = hashedClosedDates;
 
       return closedToArrivalHash[formattedDay];
+    },
+    [hashedClosedDates],
+  );
+
+  const getIsClosed = useCallback(
+    (_day, formattedDay) => {
+      if (!hashedClosedDates) {
+        return false;
+      }
+      const { closedHash } = hashedClosedDates;
+
+      return closedHash[formattedDay];
     },
     [hashedClosedDates],
   );
@@ -122,7 +137,7 @@ export default function RangePicker(props) {
       const formattedDay = day.format(DATE_API_FORMAT);
 
       if (focusedInput === START_DATE_INPUT) {
-        return getIsClosedToArrival(day, formattedDay);
+        return getIsClosed(day, formattedDay);
       }
 
       if (focusedInput === END_DATE_INPUT) {
@@ -131,7 +146,7 @@ export default function RangePicker(props) {
 
       return false;
     },
-    [hashedClosedDates, focusedInput, getIsClosedToArrival, getIsClosedToDeparture],
+    [hashedClosedDates, focusedInput, getIsClosed, getIsClosedToDeparture],
   );
 
   const getIsDayBlockedByMinStay = useCallback(
@@ -203,18 +218,21 @@ export default function RangePicker(props) {
   const renderCalendarDay = useCallback(
     (dayProps) => {
       const { day } = dayProps;
+      const formattedDay = day && day.format(DATE_API_FORMAT);
+      const isClosedToArrival = (focusedInput === START_DATE_INPUT && getIsClosedToArrival(day, formattedDay)) || false;
       const isMinStayRestricted =
         focusedInput === START_DATE_INPUT && getIsDayBlockedByMinStay(day);
 
       return (
         <DayCell
           {...dayProps}
+          isClosedToArrival={isClosedToArrival}
           isMinStayRestricted={isMinStayRestricted}
           minStayLength={minStayLength}
         />
       );
     },
-    [focusedInput, minStayLength, getIsDayBlockedByMinStay],
+    [focusedInput, minStayLength, getIsDayBlockedByMinStay, getIsClosedToArrival],
   );
 
   const renderCalendarInfo = useCallback(

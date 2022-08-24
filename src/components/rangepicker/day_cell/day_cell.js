@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from "react";
 
 import LengthOfStayTooltip from "./length_of_stay_tooltip";
+import ClosedToArrivalTootip from "./closed_to_arrival_tooltip";
 
 import styles from "./day_cell.module.css";
 
@@ -22,6 +23,7 @@ export default function DayCell(props) {
   const containerRef = useRef();
   const {
     isOutsideDay,
+    isClosedToArrival,
     minStayLength,
     modifiers = DEFAULT_MODIFIERS,
     day,
@@ -35,6 +37,7 @@ export default function DayCell(props) {
 
   const isSelectedStart = modifiers && modifiers.has("selected-start");
   const isTooltipShown = isSelectedStart && minStayLength >= MIN_STAY_TO_SHOW;
+  const isClosedToArrivalTooltipShown = isClosedToArrival && modifiers.has("hovered");
 
   modifiers.forEach((modifier) => dayStyling.push(CALENDAR_DAY_STYLE_MODIFICATORS[modifier]));
 
@@ -42,9 +45,19 @@ export default function DayCell(props) {
     dayStyling.push(styles.dayCellMinStayRestricted);
   }
 
+  if (isClosedToArrival) {
+    dayStyling.push(styles.dayCellClosedToArrival);
+  }
+
   const handleMouseEnter = useCallback(() => onDayMouseEnter(day), [day, onDayMouseEnter]);
   const handleMouseLeave = useCallback(() => onDayMouseLeave(day), [day, onDayMouseLeave]);
-  const handleClick = useCallback(() => onDayClick(day), [day, onDayClick]);
+  const handleClick = useCallback(() => {
+    if (isClosedToArrival) {
+      return false;
+    } else {
+      return onDayClick(day);
+    }
+  }, [day, isClosedToArrival, onDayClick]);
 
   if (isOutsideDay || !day) {
     return <td />;
@@ -65,6 +78,7 @@ export default function DayCell(props) {
         minStayLength={minStayLength}
         containerRef={containerRef}
       />
+      {isClosedToArrival && <ClosedToArrivalTootip show={isClosedToArrivalTooltipShown} containerRef={containerRef} />}
     </td>
   );
 }

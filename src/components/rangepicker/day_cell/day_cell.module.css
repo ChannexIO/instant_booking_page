@@ -7,10 +7,6 @@
   text-align: center;
 }
 
-.dayCellValid {
-
-}
-
 .dayCellValid:hover {
   color: var(--main-text-color);
   background: var(--rangepicker-cell-span);
@@ -24,6 +20,10 @@
 .dayCellBlocked {
   color: var(--rangepicker-cell-disabled-text);
   background: var(--rangepicker-cell-disabled);
+}
+
+.dayCellClosedToArrival{
+  text-decoration: line-through;
 }
 
 .dayCellMinNightsRestricted,
