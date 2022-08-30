@@ -33,11 +33,13 @@
     "sub_title": " We have curated and pre selected the top family friendly hotels in central\nLondon.\nAll hotels have a lift, breakfast and family rooms."
   },
   "hotel_page": {
+    "read_more": "Read more",
     "checkin_label": "Check-in",
     "checkout_label": "Check-out",
     "checkin_placeholder": "Check-in",
     "checkout_placeholder": "Check-out",
     "night_minimum": "night minimum",
+    "closed_to_arrival": "Closed to arrival",
     "total": "Total",
     "search": "Search",
     "expand": "Expand",
