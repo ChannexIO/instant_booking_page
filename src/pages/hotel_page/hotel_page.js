@@ -25,7 +25,7 @@ export default function HotelPage() {
   const { init } = useContext(AppActionsContext);
   const { data: propertyData, isLoading } = property;
   const isPropertyPresent = propertyData && !isLoading;
-  const { currency, checkinDate, checkoutDate } = params;
+  const { currency, checkinDate, checkoutDate, adults, childrenAge } = params;
 
   useEffect(
     function initApp() {
@@ -51,11 +51,13 @@ export default function HotelPage() {
         currency,
         checkinDate,
         checkoutDate,
+        adults,
+        childrenAge
       };
 
       bookingActions.loadBestOffer(channelId, requestParams);
     },
-    [bookingActions, channelId, currency, checkinDate, checkoutDate],
+    [bookingActions, channelId, currency, checkinDate, checkoutDate, adults, childrenAge],
   );
 
   if (!isPropertyPresent) {

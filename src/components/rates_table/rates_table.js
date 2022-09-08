@@ -110,7 +110,11 @@ export default function RatesTable() {
             checkoutDate={checkoutDate}
           />
           {roomsData.length ? (
-            roomsData.map((roomType, rowIndex) => (
+            roomsData.sort((a, b) => {
+              const val_a = a.isBestOffer ? 1 : 0
+              const val_b = b.isBestOffer ? 1 : 0
+              return val_b - val_a;
+            }).map((roomType, rowIndex) => (
               <RoomType
                 disabled={isStale}
                 roomType={roomType}
