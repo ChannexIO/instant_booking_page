@@ -40,11 +40,20 @@ export default {
   getBestOffer: (propertyChannelId, queryParams) => {
     const formattedQueryParams = {
       currency: queryParams.currency,
+      withVirtualRatePlans: true
     };
 
     if (queryParams.checkinDate && queryParams.checkoutDate) {
       formattedQueryParams.checkinDate = dateFormatter.toApi(queryParams.checkinDate);
       formattedQueryParams.checkoutDate = dateFormatter.toApi(queryParams.checkoutDate);
+    }
+
+    if (queryParams.adults) {
+      formattedQueryParams.adults = queryParams.adults;
+    }
+
+    if (queryParams.childrenAge) {
+      formattedQueryParams.childrenAge = queryParams.childrenAge;
     }
 
     return transport.get(`${PATH_PREFIX}/${propertyChannelId}/best_offer`, formattedQueryParams);
