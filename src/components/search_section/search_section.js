@@ -78,8 +78,6 @@ export default function SearchSection() {
       let availableChildSpaces = 0;
 
       Object.values(selectedRatesByRoom).forEach((room) => {
-        console.log(room);
-
         room.selectedRates.forEach((rate) => {
           const { amount, occupancy } = rate;
 
@@ -89,7 +87,7 @@ export default function SearchSection() {
       });
 
       const missingAdults = adults - availableAdultSpaces;
-      const missingChildren = children - availableChildSpaces;
+      const missingChildren = children - availableChildSpaces - (availableAdultSpaces - adults);
 
       const newMissingSpaces = (missingAdults > 0 || missingChildren > 0) ? missingAdults + missingChildren : 0;
 
