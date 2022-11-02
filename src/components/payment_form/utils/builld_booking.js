@@ -57,9 +57,18 @@ const getRateOccupancy = (occupancy, guestPool) => {
     additionlAdultsPool -= adultsToSpread;
   }
 
-  if (childrenPool > 0) {
+  if (childrenPool > 0 && occupancy.children > 0) {
     const childrenSpacesToFill =
       childrenPool > occupancy.children ? occupancy.children : childrenPool;
+
+    childrenOccupancy += childrenSpacesToFill;
+    childrenPool -= childrenSpacesToFill;
+  }
+
+  if (childrenPool > 0 && occupancy.children === 0) {
+    const adultSpacesLeft = (occupancy.adults - adultsOccupancy);
+    const childrenSpacesToFill =
+      childrenPool > adultSpacesLeft ? adultSpacesLeft : childrenPool;
 
     childrenOccupancy += childrenSpacesToFill;
     childrenPool -= childrenSpacesToFill;
@@ -83,7 +92,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { additionalAddress, address, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
   const { currency, requestCreditCard = true } = property;
-  const { ratesOccupancyPerRoom, checkinDate, checkoutDate, adults, children } = params;
+  const { ratesOccupancyPerRoom, checkinDate, checkoutDate, adults, children, childrenAge } = params;
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
   const guarantee = requestCreditCard ? formatCardInfo(cardInfo) : null;
@@ -108,11 +117,13 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
       const bookedRoomsPerRate = new Array(rateSelectedAmount).fill(null).map(() => {
         const { rateOccupancy, updatedGuestPool } = getRateOccupancy(occupancy, guestPool);
         guestPool = updatedGuestPool;
+        const ages = (childrenAge || []).splice(0, rateOccupancy.children);
 
         return {
           roomTypeCode,
           ratePlanCode: publicRatePlanCode,
-          occupancy: (occupancy.children || occupancy.infants) ? occupancy : rateOccupancy,
+          occupancy: rateOccupancy,
+          guestsAges: ages,
         };
       });
 

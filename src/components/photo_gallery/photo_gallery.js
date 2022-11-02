@@ -58,9 +58,7 @@ export default function PhotoGallery({ photos }) {
           const onOpenGallery = () => setActivePhotoIndex(index);
           const set = `
           ${photo.url}-/resize/${width}x/.jpg,
-          ${photo.url}-/resize/${width * 2}x/.jpg 2x,
-          ${photo.url}-/resize/${width * 3}x/.jpg 3x,
-          ${photo.url}-/resize/${width * 4}x/.jpg 4x`;
+          ${photo.url}-/resize/${width * 2}x/.jpg 2x`;
 
           return (
             <div className={itemClassName} key={photo.url} onClick={onOpenGallery}>
