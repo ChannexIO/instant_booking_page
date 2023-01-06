@@ -1,5 +1,5 @@
 .dropdownMenu {
-  z-index: 2;
+  z-index: 4;
   width: 100%;
   padding: 24px;
   flex-direction: column;
