@@ -22,7 +22,20 @@ const getCancellationPorlicyText = (cancellationPolicy) => {
     return i18n.t("cancellation_policies:types:free_detailed");
   }
 
-  const unit = cancellationPolicyMode === "percent" ? "%" : currency;
+  let unit;
+  switch (cancellationPolicyMode) {
+    case "percent":
+      unit = "%";
+      break;
+
+    case "nights":
+      unit = i18n.t("rates_table:night");
+      break;
+
+    default:
+      unit = currency;
+      break;
+  }
 
   const cancellationParams = {
     time: cancellationPolicyDeadline,
