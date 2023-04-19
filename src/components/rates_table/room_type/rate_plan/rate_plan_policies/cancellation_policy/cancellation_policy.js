@@ -34,7 +34,7 @@ const buildDeadlineBasedPoicyMessage = (t, props) => {
   const deadlineMonthDay = deadlineDate.format(DATE_UI_DAY_FORMAT);
   const deadlineMonth = deadlineDate.format(DATE_UI_MONTH_FORMAT);
   const deadlineYear = deadlineDate.format(DATE_UI_YEAR_FORMAT);
-  const deadlineDay = `${deadlineMonthDay} ${t(`months:${deadlineMonth}`)} ${deadlineYear}`;
+  const deadlineDay = `${deadlineMonthDay} ${deadlineMonth} ${deadlineYear}`;
   const deadlineHour = deadlineDate.clone().subtract(1, "minute").format("HH:mm");
 
   return t("cancellation_policies:types:deadline", { deadlineDay, deadlineHour });
