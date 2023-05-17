@@ -2,13 +2,32 @@ import React from "react";
 
 import styles from "./occupancy_section.module.css";
 
-export default function OccupancySection({ additionalSpaces, type, icon }) {
-  const captionText = `× ${additionalSpaces}`;
+const MAX_OCCUPANCIES = {
+  adults: 4,
+  children: 2,
+  infants: 2
+}
+
+export default function OccupancySection({ occupancy, type, icon }) {
+  const maxOccupancy = MAX_OCCUPANCIES[type];
+
+  if (occupancy <= maxOccupancy) {
+    const occupancies = new Array(occupancy).fill(0);
+    return (
+      <div className={styles.occupancyContainer}>
+        {type !== "adults" && (<div className={styles.occupancyCaption}>+</div>)}
+        {occupancies.map((_ => 
+          <img src={icon} alt={type} />
+        ))}
+      </div>
+    );  
+  }
 
   return (
     <div className={styles.occupancyContainer}>
+      {type !== "adults" && (<div className={styles.occupancyCaption}>+</div>)}
       <img src={icon} alt={type} />
-      {Boolean(additionalSpaces) && <div className={styles.occupancyCaption}>{captionText}</div>}
+      <div className={styles.occupancyCaption}>{`× ${occupancy}`}</div>
     </div>
   );
 }
