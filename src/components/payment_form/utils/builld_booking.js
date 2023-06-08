@@ -99,6 +99,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const fullAddress = [address, additionalAddress].filter(Boolean).join(", ");
 
   let guestPool = getGuestPool(ratesOccupancyPerRoom, adults, children);
+  let index = 0;
 
   const bookedRooms = Object.keys(ratesOccupancyPerRoom).reduce((roomsList, roomTypeCode) => {
     const selectedRates = ratesOccupancyPerRoom[roomTypeCode];
@@ -118,12 +119,15 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
         const { rateOccupancy, updatedGuestPool } = getRateOccupancy(occupancy, guestPool);
         guestPool = updatedGuestPool;
         const ages = (childrenAge || []).splice(0, rateOccupancy.children);
+        const roomGuests = guest[index].list;
+        index = index + 1;
 
         return {
           roomTypeCode,
           ratePlanCode: publicRatePlanCode,
           occupancy: rateOccupancy,
           guestsAges: ages,
+          guest: roomGuests,
         };
       });
 
@@ -132,8 +136,6 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
 
     return [...roomsList, ...bookedPerRoomId];
   }, []);
-
-  bookedRooms[0].guests = guest.list;
 
   const booking = {
     status: "new",

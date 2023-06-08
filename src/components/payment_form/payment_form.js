@@ -16,13 +16,26 @@ import SubmitSection from "./submit_section";
 const getSchema = () =>
   yup.object({
     customer: CustomerInfo.getSchema(),
-    guest: GuestInfo.getSchema(),
+    guest: yup.array().of(GuestInfo.getSchema()),
     billingAddress: BillingAddress.getSchema(),
   });
 
 const EMPTY_FORM = {};
 
 export default function PaymentForm({ channelId, property, rooms, params, onSuccess }) {
+  const guestRooms = Object.keys(params.ratesOccupancyPerRoom).reduce((roomsList, roomTypeCode) => {
+    const selectedRates = params.ratesOccupancyPerRoom[roomTypeCode];
+    const roomProps = rooms.find((room) => roomTypeCode === room.id);
+
+    const bookedPerRoomId = Object.keys(selectedRates).reduce((acc, ratePlanCode) => {
+      const ratePlan = roomProps.ratePlans.find((rate) => ratePlanCode === rate.id);
+      const room = new Array(selectedRates[ratePlanCode]).fill({title: roomProps.title, maxGuests: ratePlan.occupancy.adults + ratePlan.occupancy.children});
+      return [...acc, ...room];
+    }, roomsList);
+
+    return bookedPerRoomId;
+  }, []);
+
   const { setSubmitHandler, createBooking, setFormSubmitComplete } = useContext(
     PaymentFormActionsContext,
   );
@@ -38,7 +51,6 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   });
   const captureFormRef = useRef();
   const paymentFormRef = useRef();
-  const maxGuests = params.adults + params.children;
   const { handleSubmit } = paymentFormMethods;
 
   const handleSubmitError = useCallback(() => {
@@ -139,7 +151,9 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
       <FormProvider {...paymentFormMethods}>
         <form ref={paymentFormRef} onSubmit={handleSubmit(handlePaymentFormSubmitted)}>
           <CustomerInfo.Form />
-          <GuestInfo.Form maxGuests={maxGuests} />
+          {guestRooms.map((room, index) => (
+            <GuestInfo.Form key={index} maxGuests={room.maxGuests} room={room} index={index} />
+          ))}
           <BillingAddress.Form />
         </form>
         <CardCaptureForm
