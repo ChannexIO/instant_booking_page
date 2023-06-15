@@ -21,7 +21,7 @@ export default function MinPricePanel({ bestOffer, params }) {
 
   return (
     <a className={styles.minPriceContainer} onClick={handleClick} href="/">
-      {bestOffer && (
+      {bestOffer && bestOffer.minPrice && (
         <div className={styles.minPriceContent}>
           {t("hotel_page:price_from")}
           <Currency
