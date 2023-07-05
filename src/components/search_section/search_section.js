@@ -21,7 +21,7 @@ import styles from "./search_section.module.css";
 
 export default function SearchSection() {
   const [selectedRatesByRoom, setSelectedRatesByRoom] = useState({});
-  const [missingSpaces, setMissingSpaces] = useState(0);
+  const [missingSpaces, setMissingSpaces] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const bookingData = useContext(BookingDataContext);
   const { channelId, params, property, roomsInfo, bestOffer } = bookingData;
@@ -52,11 +52,14 @@ export default function SearchSection() {
     loadRoomsInfo(channelId, params);
   }, [channelId, params, loadRoomsInfo, clearDataFromStorage]);
 
-  const handleSearchChange = useCallback((params) => {
-    clearDataFromStorage();
-    params.ratesOccupancyPerRoom = {};
-    setParams(params);
-  }, [clearDataFromStorage, setParams]);
+  const handleSearchChange = useCallback(
+    (newParams) => {
+      clearDataFromStorage();
+      newParams.ratesOccupancyPerRoom = {};
+      setParams(newParams);
+    },
+    [clearDataFromStorage, setParams],
+  );
 
   useEffect(
     function setSummaryParams() {
@@ -80,16 +83,15 @@ export default function SearchSection() {
       Object.values(selectedRatesByRoom).forEach((room) => {
         room.selectedRates.forEach((rate) => {
           const { amount, occupancy } = rate;
-
           availableAdultSpaces += amount * occupancy.adults;
           availableChildSpaces += amount * occupancy.children + amount * occupancy.infants;
         });
       });
 
       const missingAdults = adults - availableAdultSpaces;
-      const missingChildren = children - availableChildSpaces - (availableAdultSpaces - adults);
-
-      const newMissingSpaces = (missingAdults > 0 || missingChildren > 0) ? missingAdults + missingChildren : 0;
+      const extraAdultSpaces = missingAdults < 0 ? missingAdults * -1 : 0;
+      const missingChildren = children - (availableChildSpaces + extraAdultSpaces);
+      const newMissingSpaces = missingAdults > 0 || missingChildren > 0;
 
       setMissingSpaces(newMissingSpaces);
     },
