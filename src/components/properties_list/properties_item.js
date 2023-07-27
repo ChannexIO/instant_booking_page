@@ -36,7 +36,7 @@ export default function PropertiesItem(props) {
 
   const photo = useMemo(() => {
     if (photos?.length > 0) {
-      return <div className={styles.image} style={{ backgroundImage: `url(${photos[0].url}-/resize/570x/.jpg)` }} />;
+      return <div className={styles.image} style={{ backgroundImage: `url(${photos[0].url}-/resize/570x454/.jpg)` }} />;
     }
 
     return (
