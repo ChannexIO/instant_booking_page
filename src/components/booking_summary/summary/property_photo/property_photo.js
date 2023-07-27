@@ -31,7 +31,7 @@ export default function PropertyPhoto({ photos }) {
         />
         <source media="(min-width: 1921px)" srcSet={`${photo.url} 1x`} />
 
-        <img className="d-block w-100" src={photo.url} alt={photo.description} />
+        <img className="d-block w-100" src={`${photo.url}-/resize/575x/575.jpg`} alt={photo.description} />
       </picture>
     </div>
   );

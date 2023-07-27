@@ -9,6 +9,8 @@ const DEFAULT_WIDTH_PHOTO = 275;
 const ONE_OR_TWO_WIDTH_PHOTO = 1140;
 const THREE_OR_FOUR_WIDTH_PHOTO = 855;
 const FIVE_OR_MORE_WIDTH_PHOTO = 570;
+const PRIMARY_PHOTO_HEIGHT = 454;
+const SECONDARY_PHOTO_HEIGHT = 222;
 
 export default function PhotoGallery({ photos }) {
   const [activePhotoIndex, setActivePhotoIndex] = useState(null);
@@ -43,6 +45,16 @@ export default function PhotoGallery({ photos }) {
     return width;
   };
 
+  const getPhotoHeight = (index) => {
+    let height = PRIMARY_PHOTO_HEIGHT;
+
+    if (index !== 0) {
+      height = SECONDARY_PHOTO_HEIGHT;
+    }
+
+    return height;
+  };
+
   const listClassName = classNames(styles.list, {
     [`${styles.list__oneOrTwo}`]: isOneOrTwoPhotos,
     [`${styles.list__threeOrFour}`]: isThreeOrFourPhotos,
@@ -55,14 +67,15 @@ export default function PhotoGallery({ photos }) {
         {previewList.map((photo, index) => {
           const itemClassName = classNames(styles.item, styles[`item--${index + 1}`]);
           const width = getPhotoWidth(index);
+          const height = getPhotoHeight(index);
           const onOpenGallery = () => setActivePhotoIndex(index);
           const set = `
-          ${photo.url}-/resize/${width}x/.jpg,
-          ${photo.url}-/resize/${width * 2}x/.jpg 2x`;
+          ${photo.url}-/scale_crop/${width}x${height}/smart/.jpg,
+          ${photo.url}-/scale_crop/${width * 2}x${height * 2}/smart/.jpg 2x`;
 
           return (
             <div className={itemClassName} key={photo.url} onClick={onOpenGallery}>
-              <img className="d-block w-100" srcSet={set} src={photo.url} alt={photo.description} />
+              <img className="d-block w-100" srcSet={set} src={`${photo.url}-/scale_crop/${width}x${height}/smart/.jpg`} alt={photo.description} />
             </div>
           );
         })}
