@@ -67,7 +67,7 @@ const actionHandlers = {
     return { ...state, closedDates };
   },
   [SET_PARAMS]: (state, action) => {
-    return { ...state, params: action.payload, ...{channelId: action.payload.channelId} };
+    return { ...state, params: action.payload, ...{ channelId: action.payload.channelId } };
   },
   [RESET_PARAMS]: (state) => {
     return { ...state, params: INITIAL_STATE.params };

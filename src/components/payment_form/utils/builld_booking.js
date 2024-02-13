@@ -66,9 +66,8 @@ const getRateOccupancy = (occupancy, guestPool) => {
   }
 
   if (childrenPool > 0 && occupancy.children === 0) {
-    const adultSpacesLeft = (occupancy.adults - adultsOccupancy);
-    const childrenSpacesToFill =
-      childrenPool > adultSpacesLeft ? adultSpacesLeft : childrenPool;
+    const adultSpacesLeft = occupancy.adults - adultsOccupancy;
+    const childrenSpacesToFill = childrenPool > adultSpacesLeft ? adultSpacesLeft : childrenPool;
 
     childrenOccupancy += childrenSpacesToFill;
     childrenPool -= childrenSpacesToFill;
@@ -92,7 +91,14 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
   const { additionalAddress, address, ...restAddress } = billingAddress;
   const { specialRequest, ...restCustomer } = customer;
   const { currency, requestCreditCard = true } = property;
-  const { ratesOccupancyPerRoom, checkinDate, checkoutDate, adults, children, childrenAge } = params;
+  const {
+    ratesOccupancyPerRoom,
+    checkinDate,
+    checkoutDate,
+    adults,
+    children,
+    childrenAge,
+  } = params;
   const arrivalDate = dateFormatter.toApi(checkinDate);
   const departureDate = dateFormatter.toApi(checkoutDate);
   const guarantee = requestCreditCard ? formatCardInfo(cardInfo) : null;
@@ -120,7 +126,7 @@ const buildBooking = (property, rooms, params, cardInfo, formData) => {
         guestPool = updatedGuestPool;
         const ages = (childrenAge || []).splice(0, rateOccupancy.children);
         const roomGuests = guest[index].list;
-        index = index + 1;
+        index += 1;
 
         return {
           roomTypeCode,

@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import HttpApi from 'i18next-http-backend';
+import HttpApi from "i18next-http-backend";
 
 import SUPPORTED_LANGUAGES from "constants/supported_languages";
 import getUrlParams from "utils/get_url_params";
@@ -33,8 +33,9 @@ const i18nInit = () =>
     fallbackLng: DEFAULT_LANG,
     keySeparator: ":",
     backend: {
-      loadPath: 'https://translations.fra1.digitaloceanspaces.com/translations/152597a0-8392-4dba-ab9a-ce9013144f36/{{lng}}.json'
-    }
+      loadPath:
+        "https://translations.fra1.digitaloceanspaces.com/translations/152597a0-8392-4dba-ab9a-ce9013144f36/{{lng}}.json",
+    },
   });
 
 export default i18nInit;

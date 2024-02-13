@@ -5,9 +5,9 @@ import Cell from "components/layout/cell";
 import BedOptions from "./bed_options";
 import Description from "./description";
 import RoomAvailability from "./room_availability";
+import RoomDetailsModal from "./room_details_modal";
 import RoomFacilities from "./room_facilities";
 import RoomTitle from "./room_title";
-import RoomDetailsModal from "./room_details_modal";
 
 import styles from "./room_info.module.css";
 

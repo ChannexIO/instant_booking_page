@@ -16,7 +16,7 @@ export default () => {
   const init = useCallback(
     async (bookingActions, savedState) => {
       const channelId = getChannelId();
-      const bookingQueryParams = {channelId: channelId, ...getBookingParamsFromUrl()};
+      const bookingQueryParams = { channelId, ...getBookingParamsFromUrl() };
 
       try {
         await bookingActions.initBookingData(bookingQueryParams, savedState);

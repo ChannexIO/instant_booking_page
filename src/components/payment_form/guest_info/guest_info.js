@@ -41,16 +41,22 @@ export const getSchema = () =>
 export function GuestInfo({ maxGuests, room, index }) {
   const { t } = useTranslation();
   const { setValue } = useFormContext();
-  const useCustomerValue = useWatch({ name: "guest[" + index + "].useCustomerValue", defaultValue: index === 0 });
+  const useCustomerValue = useWatch({
+    name: `guest[${index}].useCustomerValue`,
+    defaultValue: index === 0,
+  });
   const customerName = useWatch({ name: "customer.name", defaultValue: "" });
   const customerSurame = useWatch({ name: "customer.surname", defaultValue: "" });
-  const guestList = useWatch({ name: "guest[" + index + "].list", defaultValue: DEFAULT_GUEST_LIST });
+  const guestList = useWatch({
+    name: `guest[${index}].list`,
+    defaultValue: DEFAULT_GUEST_LIST,
+  });
   const [guestKeysList, setGuestKeysList] = useState([Date.now()]);
 
   const isGuestCouldBeAdded = !useCustomerValue && guestList.length !== maxGuests;
 
   const handleAddGuest = useCallback(() => {
-    setValue("guest[" + index + "].list", [...guestList, ...DEFAULT_GUEST_LIST]);
+    setValue(`guest[${index}].list`, [...guestList, ...DEFAULT_GUEST_LIST]);
     setGuestKeysList([...guestKeysList, Date.now()]);
   }, [guestKeysList, guestList, setValue, index]);
 
@@ -67,7 +73,7 @@ export function GuestInfo({ maxGuests, room, index }) {
       ];
 
       setGuestKeysList(updatedGuestList);
-      setValue("guest[" + index + "].list", updatedGuestListValue);
+      setValue(`guest[${index}].list`, updatedGuestListValue);
     },
     [guestKeysList, guestList, setValue, index],
   );
@@ -78,7 +84,7 @@ export function GuestInfo({ maxGuests, room, index }) {
         return;
       }
 
-      setValue("guest[" + index + "].list", [{ name: customerName, surname: customerSurame }]);
+      setValue(`guest[${index}].list`, [{ name: customerName, surname: customerSurame }]);
 
       if (guestKeysList.length > 1) {
         setGuestKeysList([guestKeysList[0]]);
@@ -89,15 +95,16 @@ export function GuestInfo({ maxGuests, room, index }) {
 
   return (
     <Panel
-      title={t(`${TRANSLATION_PATH}:title`) + " for " + room.title}
+      title={`${t(`${TRANSLATION_PATH}:title`)} for ${room.title}`}
       addOn={
-          index === 0 &&
+        index === 0 && (
           <FormalField
-            name={"guest[" + index + "].useCustomerValue"}
+            name={`guest[${index}].useCustomerValue`}
             defaultValue
             label={t(`${TRANSLATION_PATH}:use_customer`)}
             Component={Checkbox}
           />
+        )
       }
     >
       <>

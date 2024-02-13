@@ -18,7 +18,6 @@ export default function PolicyLink() {
         {t("footer:privacy_policy")}
       </Link>
     );
-  } else {
-    return null;
   }
+  return null;
 }

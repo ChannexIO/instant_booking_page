@@ -75,7 +75,12 @@ export default function PhotoGallery({ photos }) {
 
           return (
             <div className={itemClassName} key={photo.url} onClick={onOpenGallery}>
-              <img className="d-block w-100" srcSet={set} src={`${photo.url}-/scale_crop/${width}x${height}/smart/.jpg`} alt={photo.description} />
+              <img
+                className="d-block w-100"
+                srcSet={set}
+                src={`${photo.url}-/scale_crop/${width}x${height}/smart/.jpg`}
+                alt={photo.description}
+              />
             </div>
           );
         })}

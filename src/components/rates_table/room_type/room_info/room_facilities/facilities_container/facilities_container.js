@@ -7,7 +7,7 @@ const FACILITY_DIVIDER = " · ";
 
 export default function FacilitiesContainer({ facilities }) {
   const { t } = useTranslation();
-  const translated_facilities = facilities.map(facility => {
+  const translated_facilities = facilities.map((facility) => {
     return t(`facilities:${facility.toLowerCase()}`);
   });
 

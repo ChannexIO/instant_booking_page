@@ -26,7 +26,12 @@ export default function PropertyPreview({ currency, property, onClearSelectPrope
 
   const photo = useMemo(() => {
     if (photos?.length > 0) {
-      return <div className={styles.image} style={{ backgroundImage: `url(${photos[0].url}-/resize/1024x/.jpg)` }} />;
+      return (
+        <div
+          className={styles.image}
+          style={{ backgroundImage: `url(${photos[0].url}-/resize/1024x/.jpg)` }}
+        />
+      );
     }
 
     return (

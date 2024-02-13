@@ -52,7 +52,7 @@ export default function HotelPage() {
         checkinDate,
         checkoutDate,
         adults,
-        childrenAge
+        childrenAge,
       };
 
       bookingActions.loadBestOffer(channelId, requestParams);
