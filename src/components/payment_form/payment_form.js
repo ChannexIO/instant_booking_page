@@ -29,7 +29,10 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
 
     const bookedPerRoomId = Object.keys(selectedRates).reduce((acc, ratePlanCode) => {
       const ratePlan = roomProps.ratePlans.find((rate) => ratePlanCode === rate.id);
-      const room = new Array(selectedRates[ratePlanCode]).fill({title: roomProps.title, maxGuests: ratePlan.occupancy.adults + ratePlan.occupancy.children});
+      const room = new Array(selectedRates[ratePlanCode]).fill({
+        title: roomProps.title,
+        maxGuests: ratePlan.occupancy.adults + ratePlan.occupancy.children,
+      });
       return [...acc, ...room];
     }, roomsList);
 
@@ -46,7 +49,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
     mode: "onChange",
     resolver: yupResolver(getSchema()),
     context: {
-      billingAddressIsRequired: requestBillingInfo
+      billingAddressIsRequired: requestBillingInfo,
     },
   });
   const captureFormRef = useRef();

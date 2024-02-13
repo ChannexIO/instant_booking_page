@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 
-import LengthOfStayTooltip from "./length_of_stay_tooltip";
 import ClosedToArrivalTootip from "./closed_to_arrival_tooltip";
+import LengthOfStayTooltip from "./length_of_stay_tooltip";
 
 import styles from "./day_cell.module.css";
 
@@ -54,9 +54,8 @@ export default function DayCell(props) {
   const handleClick = useCallback(() => {
     if (isClosedToArrival) {
       return false;
-    } else {
-      return onDayClick(day);
     }
+    return onDayClick(day);
   }, [day, isClosedToArrival, onDayClick]);
 
   if (isOutsideDay || !day) {
@@ -78,7 +77,9 @@ export default function DayCell(props) {
         minStayLength={minStayLength}
         containerRef={containerRef}
       />
-      {isClosedToArrival && <ClosedToArrivalTootip show={isClosedToArrivalTooltipShown} containerRef={containerRef} />}
+      {isClosedToArrival && (
+        <ClosedToArrivalTootip show={isClosedToArrivalTooltipShown} containerRef={containerRef} />
+      )}
     </td>
   );
 }

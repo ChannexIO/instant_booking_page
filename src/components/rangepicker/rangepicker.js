@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { DateRangePicker } from "react-dates";
+import { useTranslation } from "react-i18next";
 import { useMedia } from "react-media";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import classNames from "classnames";
@@ -219,7 +219,8 @@ export default function RangePicker(props) {
     (dayProps) => {
       const { day } = dayProps;
       const formattedDay = day && day.format(DATE_API_FORMAT);
-      const isClosedToArrival = (focusedInput === START_DATE_INPUT && getIsClosedToArrival(day, formattedDay)) || false;
+      const isClosedToArrival =
+        (focusedInput === START_DATE_INPUT && getIsClosedToArrival(day, formattedDay)) || false;
       const isMinStayRestricted =
         focusedInput === START_DATE_INPUT && getIsDayBlockedByMinStay(day);
 

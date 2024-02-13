@@ -110,24 +110,26 @@ export default function RatesTable() {
             checkoutDate={checkoutDate}
           />
           {roomsData.length ? (
-            roomsData.sort((a, b) => {
-              const val_a = a.isBestOffer ? 1 : 0
-              const val_b = b.isBestOffer ? 1 : 0
-              return val_b - val_a;
-            }).map((roomType, rowIndex) => (
-              <RoomType
-                disabled={isStale}
-                roomType={roomType}
-                currency={currency}
-                rowIndex={rowIndex}
-                checkinDate={checkinDate}
-                adultsOccupancy={adults}
-                childrenOccupancy={children}
-                key={roomType.id}
-                ratesOccupancyPerRoom={ratesOccupancyPerRoom}
-                onRatesOccupancyChange={setRatesOccupancyPerRoom}
-              />
-            ))
+            roomsData
+              .sort((a, b) => {
+                const val_a = a.isBestOffer ? 1 : 0;
+                const val_b = b.isBestOffer ? 1 : 0;
+                return val_b - val_a;
+              })
+              .map((roomType, rowIndex) => (
+                <RoomType
+                  disabled={isStale}
+                  roomType={roomType}
+                  currency={currency}
+                  rowIndex={rowIndex}
+                  checkinDate={checkinDate}
+                  adultsOccupancy={adults}
+                  childrenOccupancy={children}
+                  key={roomType.id}
+                  ratesOccupancyPerRoom={ratesOccupancyPerRoom}
+                  onRatesOccupancyChange={setRatesOccupancyPerRoom}
+                />
+              ))
           ) : (
             <Placeholder
               icon={<FrownOutlined />}

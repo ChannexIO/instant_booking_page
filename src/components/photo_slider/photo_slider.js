@@ -20,7 +20,11 @@ export default function PhotoSlider({ photos, arrowStyle = "default" }) {
       {photos.map((photo) => (
         <Carousel.Item className={styles.carouselItem} key={photo.url}>
           <picture>
-            <img className="d-block w-100" src={`${photo.url}-/scale_crop/547x570/smart/.jpg 1x`} alt={photo.description} />
+            <img
+              className="d-block w-100"
+              src={`${photo.url}-/scale_crop/547x570/smart/.jpg 1x`}
+              alt={photo.description}
+            />
           </picture>
         </Carousel.Item>
       ))}

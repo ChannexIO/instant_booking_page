@@ -39,12 +39,10 @@ export default (data) => {
       if (moment(date).diff(moment(closed[index - 1]), "day") > 1) {
         closedToArrival.push(date);
         return false;
-      } else {
-        return true;
       }
-    } else {
       return true;
     }
+    return true;
   });
 
   const closedHash = convertToHashmap(filteredClosedDates);

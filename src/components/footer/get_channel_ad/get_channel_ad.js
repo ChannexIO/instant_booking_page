@@ -30,7 +30,6 @@ export default function GetChannelAd() {
         </Link>
       </div>
     );
-  } else {
-    return null;
   }
+  return null;
 }
