@@ -31,7 +31,7 @@ export default {
 
     formattedQueryParams = {
       ...formattedQueryParams,
-      withVirtualRatePlans: true
+      withVirtualRatePlans: true,
     };
 
     return transport.get(`${PATH_PREFIX}/${propertyChannelId}/rooms`, formattedQueryParams);
@@ -40,7 +40,7 @@ export default {
   getBestOffer: (propertyChannelId, queryParams) => {
     const formattedQueryParams = {
       currency: queryParams.currency,
-      withVirtualRatePlans: true
+      withVirtualRatePlans: true,
     };
 
     if (queryParams.checkinDate && queryParams.checkoutDate) {
@@ -72,7 +72,7 @@ export default {
     const GROUP_ID = process.env.REACT_APP_GROUP_ID;
 
     if (GROUP_ID) {
-      filter["group_id"] = GROUP_ID;
+      filter.group_id = GROUP_ID;
     }
 
     return transport.get(`${PATH_PREFIX}/property_list`, {

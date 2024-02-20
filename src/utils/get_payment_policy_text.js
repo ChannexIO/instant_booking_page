@@ -16,7 +16,23 @@ const getPaymentPolicyText = (cancellationPolicy) => {
     return i18n.t("payment_policies:types:full");
   }
 
-  const currencyUnit = isPercentBased ? "%" : currency;
+  let currencyUnit;
+
+  switch (guaranteePaymentPolicy) {
+    case "percent_based":
+      currencyUnit = "%";
+      break;
+
+    case "nights_based":
+      currencyUnit =
+        guaranteePaymentAmount === "1" ? i18n.t("rates_table:night") : i18n.t("rates_table:nights");
+      break;
+
+    default:
+      currencyUnit = currency;
+      break;
+  }
+
   const policyTextParams = { amount: guaranteePaymentAmount, currency: currencyUnit };
 
   return i18n.t("payment_policies:types:partial", policyTextParams);

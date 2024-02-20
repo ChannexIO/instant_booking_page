@@ -44,24 +44,58 @@ const buildFreePolicyMessage = (t) => {
   return t("cancellation_policies:types:free");
 };
 
+const buildGuaranteeAmountPolicyMessage = (t, _props) => {
+  return t("cancellation_policies:types:guarantee_non_refundable");
+};
+
+const buildPenaltyPolicyMessage = (t, _props) => {
+  return t("cancellation_policies:types:partial_refund");
+};
+
 const getPolicyPresentation = (t, props) => {
   const { cancellationPolicy } = props;
+  const afterReservationCancellationLogic = cancellationPolicy.afterReservationCancellationLogic;
+  const cancellationPolicyLogic = cancellationPolicy.cancellationPolicyLogic;
 
   const policyPresentationBuilders = {
-    deadline: buildDeadlineBasedPoicyMessage,
-    non_refundable: buildNonRefundablePolicyMessage,
-    free: buildFreePolicyMessage,
+    "-free": buildFreePolicyMessage,
+    "-non_refundable": buildNonRefundablePolicyMessage,
+    "-deadline": buildDeadlineBasedPoicyMessage,
+
+    "free-free": buildFreePolicyMessage,
+    "non_refundable-free": buildNonRefundablePolicyMessage,
+    "guarantee_amount-free": buildGuaranteeAmountPolicyMessage,
+    "nights_based-free": buildPenaltyPolicyMessage,
+    "percent_based-free": buildPenaltyPolicyMessage,
+
+    "free-non_refundable": buildDeadlineBasedPoicyMessage,
+    "non_refundable-non_refundable": buildNonRefundablePolicyMessage,
+    "guarantee_amount-non_refundable": buildGuaranteeAmountPolicyMessage,
+    "nights_based-non_refundable": buildPenaltyPolicyMessage,
+    "percent_based-non_refundable": buildPenaltyPolicyMessage,
+
+    "free-deadline": buildDeadlineBasedPoicyMessage,
+    "non_refundable-deadline": buildNonRefundablePolicyMessage,
+    "guarantee_amount-deadline": buildGuaranteeAmountPolicyMessage,
+    "nights_based-deadline": buildPenaltyPolicyMessage,
+    "percent_based-deadline": buildPenaltyPolicyMessage,
   };
 
-  const policyHandler = policyPresentationBuilders[cancellationPolicy.cancellationPolicyLogic];
+  const policyHandler =
+    policyPresentationBuilders[
+      `${afterReservationCancellationLogic}-${cancellationPolicyLogic}`
+    ];
 
   return policyHandler(t, props);
 };
 
 const getAlertVariant = (cancellationPolicy) => {
-  const { cancellationPolicyLogic } = cancellationPolicy;
+  const { cancellationPolicyLogic, afterReservationCancellationLogic } = cancellationPolicy;
 
-  if (cancellationPolicyLogic === "non_refundable") {
+  if (
+    cancellationPolicyLogic === "non_refundable" ||
+    afterReservationCancellationLogic !== "free"
+  ) {
     return "info";
   }
 
