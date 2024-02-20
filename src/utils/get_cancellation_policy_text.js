@@ -14,7 +14,7 @@ const buildAfterReservationMessage = (cancellationPolicy) => {
     if (cancellationPolicyLogic === "non_refundable" && !cancellationPolicyDeadline) {
       output = i18n.t("cancellation_policies:types:non_refundable");
     } else if (cancellationPolicyLogic === "deadline" && cancellationPolicyDeadline) {
-      output = i18n.t("cancellation_policies.after_reservation.free_with_deadline", {
+      output = i18n.t("cancellation_policies:after_reservation:free_with_deadline", {
         time: cancellationPolicyDeadline,
         unit: cancellationPolicyDeadlineType,
       });
