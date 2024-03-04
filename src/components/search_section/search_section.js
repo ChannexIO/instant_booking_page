@@ -34,7 +34,8 @@ export default function SearchSection() {
   const { data: propertyRooms, isLoading } = roomsInfo;
   const { data: propertyData } = property;
 
-  const { ratesOccupancyPerRoom, currency, checkinDate, checkoutDate, adults, children } = params;
+  const { ratesOccupancyPerRoom, currency, checkinDate, checkoutDate, adults, childrenAge } = params;
+  const infantMaxAge = bookingData.property.data.hotelPolicy.infantMaxAge || 1;
 
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
@@ -80,6 +81,8 @@ export default function SearchSection() {
       let availableAdultSpaces = 0;
       let availableChildSpaces = 0;
 
+      const children = (childrenAge || []).filter((age) => age <= infantMaxAge).length;
+
       Object.values(selectedRatesByRoom).forEach((room) => {
         room.selectedRates.forEach((rate) => {
           const { amount, occupancy } = rate;
@@ -95,7 +98,7 @@ export default function SearchSection() {
 
       setMissingSpaces(newMissingSpaces);
     },
-    [selectedRatesByRoom, adults, children],
+    [selectedRatesByRoom, adults, childrenAge, infantMaxAge],
   );
 
   const SummaryComponent = isMobile ? MobileSummary : Summary;
