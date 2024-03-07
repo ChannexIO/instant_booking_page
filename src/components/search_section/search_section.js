@@ -35,7 +35,7 @@ export default function SearchSection() {
   const { data: propertyData } = property;
 
   const { ratesOccupancyPerRoom, currency, checkinDate, checkoutDate, adults, childrenAge } = params;
-  const infantMaxAge = bookingData.property.data.hotelPolicy.infantMaxAge || 1;
+  const infantMaxAge = bookingData.property?.data?.hotelPolicy?.infantMaxAge || 1;
 
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
