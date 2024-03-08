@@ -44,7 +44,6 @@ export default function SearchSection() {
   } = params;
   const infantMaxAge = bookingData.property?.data?.hotelPolicy?.infantMaxAge || 1;
   const isAdultsOnly = bookingData.property?.data?.hotelPolicy?.isAdultsOnly || false;
-
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
 
