@@ -14,7 +14,7 @@ const MIN_ADULTS_AMOUNT = 1;
 const MAX_CHILDREN_AMOUNT = 11;
 const MIN_CHILDREN_AMOUNT = 0;
 
-export default function OccupancySettingsForm({ bookingParams, onClose, onChange }) {
+export default function OccupancySettingsForm({ bookingParams, isAdultsOnly, onClose, onChange }) {
   const { t } = useTranslation();
 
   return (
@@ -29,17 +29,25 @@ export default function OccupancySettingsForm({ bookingParams, onClose, onChange
           onChange={onChange}
         />
       </Cell>
-      <Cell noLine noPadding>
-        <IntegerInput
-          label={t("hotel_page:children_label")}
-          minValue={MIN_CHILDREN_AMOUNT}
-          maxValue={MAX_CHILDREN_AMOUNT}
-          name="children"
-          value={bookingParams.children}
-          onChange={onChange}
-        />
-      </Cell>
-      <ChildrenAgeSettings bookingParams={bookingParams} name="childrenAge" onChange={onChange} />
+      {!isAdultsOnly && (
+        <>
+          <Cell noLine noPadding>
+            <IntegerInput
+              label={t("hotel_page:children_label")}
+              minValue={MIN_CHILDREN_AMOUNT}
+              maxValue={MAX_CHILDREN_AMOUNT}
+              name="children"
+              value={bookingParams.children}
+              onChange={onChange}
+            />
+          </Cell>
+          <ChildrenAgeSettings
+            bookingParams={bookingParams}
+            name="childrenAge"
+            onChange={onChange}
+          />
+        </>
+      )}
       <div className={styles.closeSection}>
         <LinkButton onClick={onClose}>{t("global:close")}</LinkButton>
       </div>

@@ -8,7 +8,16 @@ import setUrlParams from "utils/set_url_params";
 
 import OccupancySettingsForm from "./occupancy_settings_form";
 
-export default function OccupancySettings({ bookingParams, handleSearchChange }) {
+const getDropdownTitle = (t, children, adults, isAdultsOnly) => {
+  if (isAdultsOnly) {
+    return `${t("hotel_page:adults", { count: adults })}`;
+  }
+  return `${t("hotel_page:adults", { count: adults })} · ${t("hotel_page:children", {
+    count: children,
+  })}`;
+};
+
+export default function OccupancySettings({ bookingParams, isAdultsOnly, handleSearchChange }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
@@ -17,9 +26,7 @@ export default function OccupancySettings({ bookingParams, handleSearchChange })
 
   const isGuestsPresent = children || adults;
   const dropdownTitle = isGuestsPresent
-    ? `${t("hotel_page:adults", { count: adults })} · ${t("hotel_page:children", {
-        count: children,
-      })}`
+    ? getDropdownTitle(t, children, adults, isAdultsOnly)
     : t("hotel_page:guests_placeholder");
 
   const handleChange = useCallback(
@@ -44,6 +51,7 @@ export default function OccupancySettings({ bookingParams, handleSearchChange })
     >
       <OccupancySettingsForm
         bookingParams={bookingParams}
+        isAdultsOnly={isAdultsOnly}
         onClose={handleToggle}
         onChange={handleChange}
       />

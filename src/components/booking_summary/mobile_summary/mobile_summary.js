@@ -11,7 +11,8 @@ import TotalPrice from "components/search_section/total_price";
 import Dates from "../dates";
 import Guests from "../guests";
 
-export default function MobileSummary({ params, selectedRatesByRoom, total }) {
+export default function MobileSummary({ params, selectedRatesByRoom, total, property }) {
+  const isAdultsOnly = property.hotelPolicy?.isAdultsOnly || false;
   const { t } = useTranslation();
   const { checkinDate, checkoutDate, currency } = params;
 
@@ -19,7 +20,7 @@ export default function MobileSummary({ params, selectedRatesByRoom, total }) {
     <MobileSummaryContainer>
       <ExpandableContainer title={t("payment_page:booking_summary:title")}>
         <Dates checkinDate={checkinDate} checkoutDate={checkoutDate} />
-        <Guests params={params} />
+        <Guests params={params} isAdultsOnly={isAdultsOnly} />
         <PriceBreakdown selectedRatesByRoom={selectedRatesByRoom} currency={currency} />
         <TotalPrice totalPrice={total} currency={currency} />
       </ExpandableContainer>
