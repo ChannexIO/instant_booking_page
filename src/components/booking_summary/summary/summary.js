@@ -15,6 +15,7 @@ import styles from "./summary.module.css";
 export default function Summary({ params, property, selectedRatesByRoom, total }) {
   const { t } = useTranslation();
   const { checkinDate, checkoutDate, currency } = params;
+  const isAdultsOnly = property.hotelPolicy?.isAdultsOnly || false;
 
   return (
     <div className={styles.summaryMainWrapper}>
@@ -25,7 +26,7 @@ export default function Summary({ params, property, selectedRatesByRoom, total }
       <div className={styles.summaryWrapper}>
         <Title property={property} />
         <Dates checkinDate={checkinDate} checkoutDate={checkoutDate} />
-        <Guests params={params} />
+        <Guests params={params} isAdultsOnly={isAdultsOnly} />
         <PriceBreakdown selectedRatesByRoom={selectedRatesByRoom} currency={currency} />
         <TotalPrice totalPrice={total} currency={currency} />
       </div>

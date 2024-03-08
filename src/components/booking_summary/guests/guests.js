@@ -4,13 +4,13 @@ import { useTranslation } from "react-i18next";
 import Label from "components/label";
 import Cell from "components/layout/cell";
 
-export default function Guests({ params }) {
+export default function Guests({ params, isAdultsOnly }) {
   const { t } = useTranslation();
 
   const adults = `${params.adults} ${t("payment_page:booking_summary:adults")}`;
   const children = `${params.children} ${t("payment_page:booking_summary:children")}`;
 
-  const text = `${adults} · ${children}`;
+  const text = isAdultsOnly ? adults : `${adults} · ${children}`;
 
   return (
     <Cell>

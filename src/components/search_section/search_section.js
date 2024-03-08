@@ -34,9 +34,16 @@ export default function SearchSection() {
   const { data: propertyRooms, isLoading } = roomsInfo;
   const { data: propertyData } = property;
 
-  const { ratesOccupancyPerRoom, currency, checkinDate, checkoutDate, adults, childrenAge } = params;
+  const {
+    ratesOccupancyPerRoom,
+    currency,
+    checkinDate,
+    checkoutDate,
+    adults,
+    childrenAge,
+  } = params;
   const infantMaxAge = bookingData.property?.data?.hotelPolicy?.infantMaxAge || 1;
-
+  const isAdultsOnly = bookingData.property?.data?.hotelPolicy?.isAdultsOnly || false;
   const isRateSelected = Boolean(Object.keys(selectedRatesByRoom).length);
   const isDatesSelected = moment(checkinDate).isValid() && moment(checkoutDate).isValid();
 
@@ -115,7 +122,11 @@ export default function SearchSection() {
           <MinPricePanel bestOffer={bestOffer} params={params} />
           <div className={styles.searchSection}>
             <DateSelect bookingParams={params} handleSearchChange={handleSearchChange} />
-            <OccupancySetting bookingParams={params} handleSearchChange={handleSearchChange} />
+            <OccupancySetting
+              bookingParams={params}
+              isAdultsOnly={isAdultsOnly}
+              handleSearchChange={handleSearchChange}
+            />
             <SummaryComponent
               selectedRatesByRoom={selectedRatesByRoom}
               bookingParams={params}

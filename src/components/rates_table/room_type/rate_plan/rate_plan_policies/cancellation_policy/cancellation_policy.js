@@ -82,9 +82,7 @@ const getPolicyPresentation = (t, props) => {
   };
 
   const policyHandler =
-    policyPresentationBuilders[
-      `${afterReservationCancellationLogic}-${cancellationPolicyLogic}`
-    ];
+    policyPresentationBuilders[`${afterReservationCancellationLogic}-${cancellationPolicyLogic}`];
 
   return policyHandler(t, props);
 };
