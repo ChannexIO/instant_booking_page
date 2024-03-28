@@ -75,8 +75,8 @@ const getRateOccupancy = (occupancy, guestPool) => {
 
   const updatedGuestPool = { baseAdultsPool, additionlAdultsPool, childrenPool };
   const rateOccupancy = {
-    adults: adultsOccupancy,
-    children: childrenOccupancy,
+    adults: adultsOccupancy || occupancy.adults,
+    children: childrenOccupancy || occupancy.children,
     infants: 0,
   };
 
