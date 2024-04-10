@@ -11,6 +11,8 @@ const CURRENCY_RATE_BY_CODE = {
   default: 0,
 };
 
+const NOT_SUPPORTED_CURRENCIES = ["BYN", "KPW"];
+
 export default function CurrencySelectControlled({ value, preferredCurrency, onChange }) {
   const { t } = useTranslation();
 
@@ -19,6 +21,7 @@ export default function CurrencySelectControlled({ value, preferredCurrency, onC
 
   const currencyOptions = useMemo(() => {
     let options = Object.values(currencies)
+      .filter(({ iso }) => !NOT_SUPPORTED_CURRENCIES.includes(iso.code))
       .map(({ name, iso }) => {
         const currencyName =
           iso.code === preferredCurrency ? `${t("currency_select:hotel_currency")}:` : name;
