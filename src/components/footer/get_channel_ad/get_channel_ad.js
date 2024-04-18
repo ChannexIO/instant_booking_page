@@ -11,11 +11,6 @@ export default function GetChannelAd() {
   let url;
   let title;
 
-  if (host.indexOf("channex.io") > -1) {
-    url = "https://channex.io";
-    title = t("footer:channex_io");
-  }
-
   if (host.indexOf("easy-rez.com") > -1) {
     url = "https://easy-rez.com";
     title = "easy-rez";
