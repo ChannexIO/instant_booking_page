@@ -19,8 +19,8 @@ const buildDeadlineBasedPoicyMessage = (t, props) => {
   }
 
   const { cancellationPolicyDeadline, cancellationPolicyDeadlineType } = cancellationPolicy;
-  const { checkinTime = DEFAULT_CHECKIN_TIME } = hotelPolicy ?? {};
-  const [hour, minute] = checkinTime.split(":");
+  const { checkinFromTime = DEFAULT_CHECKIN_TIME } = hotelPolicy ?? {};
+  const [hour, minute] = checkinFromTime.split(":");
 
   const deadlineDate = checkinDate
     .clone()
