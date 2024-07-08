@@ -22,7 +22,11 @@ export default function MapSection({ property }) {
       <Col xs="12">
         <div className={styles.contactsSection}>
           {mapIsActive && <Map location={location} />}
-          {!mapIsActive && <button className={styles.showMapButton} onClick={enableMap}>{t("show_map")}</button>}
+          {!mapIsActive && (
+            <div className={styles.mapPlaceholder}>
+              <button className={styles.showMapButton} onClick={enableMap}>{t("show_map")}</button>
+            </div>
+          )}
         </div>
       </Col>
     </SectionWrapper>

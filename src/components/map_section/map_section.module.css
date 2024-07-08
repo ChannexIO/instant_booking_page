@@ -2,9 +2,25 @@
   position: relative;
 }
 
-.showMapButton {
+.mapPlaceholder {
   height: 400px;
   width: 100%;
   border: 1px solid var(--border-color);
-  background: #d1e6d9;
+  background-image: url(https://app.channex.io/booking_confirmation_email_assets/map.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.showMapButton {
+  border: none;
+  background: var(--cta-color);
+  color: #fff;
+  font-weight: 400;
+  height: 40px;
+  width: 200px;
+  top: calc(50% - 20px);
+  left: calc(50% - 100px);
+  position: absolute;
 }
