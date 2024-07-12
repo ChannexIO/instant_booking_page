@@ -27,6 +27,7 @@ export default function RoomDetailsModal({ room, show, onHide }) {
   const { t } = useTranslation();
   const { photos, description, title, facilities, ratePlans = [] } = room;
 
+  const descriptionWithBreaks = description.replace(/\n/g, "<br />");
   const roomFacilities = useMemo(
     () =>
       facilities
@@ -62,7 +63,7 @@ export default function RoomDetailsModal({ room, show, onHide }) {
           )}
           {description && (
             <RoomDetailsSection>
-              <div className={styles.description}>{description}</div>
+              <div className={styles.description} dangerouslySetInnerHTML={{__html: descriptionWithBreaks}}></div>
             </RoomDetailsSection>
           )}
           {isFacilitiesPresent && (
