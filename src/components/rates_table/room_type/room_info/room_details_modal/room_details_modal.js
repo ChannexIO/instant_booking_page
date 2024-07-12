@@ -27,7 +27,7 @@ export default function RoomDetailsModal({ room, show, onHide }) {
   const { t } = useTranslation();
   const { photos, description, title, facilities, ratePlans = [] } = room;
 
-  const descriptionWithBreaks = description.replace(/\n/g, "<br />");
+  const descriptionWithBreaks = description ? description.replace(/\n/g, "<br />") : description;
   const roomFacilities = useMemo(
     () =>
       facilities
