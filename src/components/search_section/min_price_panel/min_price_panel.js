@@ -19,17 +19,19 @@ export default function MinPricePanel({ bestOffer, params }) {
   const { checkinDate, checkoutDate } = params;
   const hasEnteredDates = checkinDate && checkoutDate;
 
+  console.log(bestOffer);
+
   return (
     <a className={styles.minPriceContainer} onClick={handleClick} href="/">
       {bestOffer && bestOffer.offer && (
         <div className={styles.minPriceContent}>
-          {t("hotel_page:price_from")}
+          <span>{t("hotel_page:price_from")}</span>
           <Currency
             className={styles.minPrice}
             amount={bestOffer.offer}
             currency={bestOffer.currency}
           />
-          {!hasEnteredDates && t("hotel_page:price_per_night")}
+          <span>{!hasEnteredDates && t("hotel_page:price_per_night")}</span>
         </div>
       )}
     </a>

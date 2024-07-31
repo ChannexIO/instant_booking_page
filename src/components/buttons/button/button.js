@@ -26,7 +26,7 @@ export default function Button({
     >
       <>
         {loading && <Spinner animation="border" size="sm" className={styles.spinner} />}
-        {children}
+        <span>{children}</span>
       </>
     </BootstrapButton>
   );
