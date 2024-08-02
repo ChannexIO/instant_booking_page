@@ -39,6 +39,10 @@ const supportedLanguages = [
     key: "nl",
     value: "DUT",
   },
+  {
+    key: "hu",
+    value: "HUG",
+  },
 ];
 
 export default supportedLanguages;
