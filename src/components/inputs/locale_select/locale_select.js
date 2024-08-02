@@ -18,6 +18,8 @@ import "moment/locale/de";
 import "moment/locale/fr";
 import "moment/locale/el";
 import "moment/locale/sr";
+import "moment/locale/nl";
+import "moment/locale/hu";
 
 export default function LocaleSelect() {
   const { t, i18n } = useTranslation();
