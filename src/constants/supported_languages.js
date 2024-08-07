@@ -41,7 +41,7 @@ const supportedLanguages = [
   },
   {
     key: "hu",
-    value: "HUG",
+    value: "HUN",
   },
 ];
 
