@@ -22,7 +22,7 @@ export default function Header({ property = {} }) {
     strict: true,
   });
 
-  const isCurrencySelectShown = matchHotelPage?.isExact && !matchNotFoundPage;
+  const isCurrencySelectShown = matchHotelPage && !matchNotFoundPage;
   const { title, logo, hideLogo, hideTitle } = property;
 
   return (
