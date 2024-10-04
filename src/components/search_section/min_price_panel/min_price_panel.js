@@ -19,8 +19,6 @@ export default function MinPricePanel({ bestOffer, params }) {
   const { checkinDate, checkoutDate } = params;
   const hasEnteredDates = checkinDate && checkoutDate;
 
-  console.log(bestOffer);
-
   return (
     <a className={styles.minPriceContainer} onClick={handleClick} href="/">
       {bestOffer && bestOffer.offer && (

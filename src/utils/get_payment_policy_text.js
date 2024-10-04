@@ -5,15 +5,16 @@ const getPaymentPolicyText = (cancellationPolicy) => {
     return null;
   }
 
-  const { guaranteePaymentPolicy, currency, guaranteePaymentAmount } = cancellationPolicy;
+  const { guaranteePaymentPolicy, currency, guaranteePaymentAmount, guaranteeCollectedAtDays } = cancellationPolicy;
+  const suffix = guaranteeCollectedAtDays !== -1 ? "_at_days" : "";
 
   if (guaranteePaymentPolicy === "none") {
     return i18n.t("payment_policies:types:not_required");
   }
 
   const isPercentBased = guaranteePaymentPolicy === "percent_based";
-  if (isPercentBased && guaranteePaymentAmount === 100) {
-    return i18n.t("payment_policies:types:full");
+  if (isPercentBased && guaranteePaymentAmount === "100") {
+    return i18n.t(`payment_policies:types:full${suffix}`, { days: guaranteeCollectedAtDays });
   }
 
   let currencyUnit;
@@ -33,9 +34,9 @@ const getPaymentPolicyText = (cancellationPolicy) => {
       break;
   }
 
-  const policyTextParams = { amount: guaranteePaymentAmount, currency: currencyUnit };
+  const policyTextParams = { amount: guaranteePaymentAmount, currency: currencyUnit, days: guaranteeCollectedAtDays };
 
-  return i18n.t("payment_policies:types:partial", policyTextParams);
+  return i18n.t(`payment_policies:types:partial${suffix}`, policyTextParams);
 };
 
 export default getPaymentPolicyText;
