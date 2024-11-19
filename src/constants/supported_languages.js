@@ -46,6 +46,10 @@ const supportedLanguages = [
   {
     key: "th",
     value: "THA",
+  },
+  {
+    key: "pt_BR",
+    value: "BRA"
   }
 ];
 
