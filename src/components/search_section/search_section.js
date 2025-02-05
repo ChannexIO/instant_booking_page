@@ -88,7 +88,7 @@ export default function SearchSection() {
       let availableAdultSpaces = 0;
       let availableChildSpaces = 0;
 
-      const children = (childrenAge || []).filter((age) => age <= infantMaxAge).length;
+      const children = (childrenAge || []).filter((age) => age >= infantMaxAge).length;
 
       Object.values(selectedRatesByRoom).forEach((room) => {
         room.selectedRates.forEach((rate) => {
