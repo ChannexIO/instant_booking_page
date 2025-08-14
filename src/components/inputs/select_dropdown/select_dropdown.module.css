@@ -1,6 +1,6 @@
 
 .menu:global.dropdown-menu {
-  max-height: 400px;
+  max-height: 440px;
   display: flex;
   flex-direction: column;
   min-width: 100%;

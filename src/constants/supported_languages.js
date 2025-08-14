@@ -1,55 +1,55 @@
 const supportedLanguages = [
   {
     key: "en",
-    value: "ENG",
+    value: "English",
   },
   {
     key: "tr",
-    value: "TUR",
+    value: "Türkçe",
   },
   {
     key: "es",
-    value: "ESP",
+    value: "Español",
   },
   {
     key: "pt",
-    value: "PRT",
-  },
-  {
-    key: "it",
-    value: "ITA",
-  },
-  {
-    key: "de",
-    value: "GER",
-  },
-  {
-    key: "fr",
-    value: "FRE",
-  },
-  {
-    key: "el",
-    value: "GRE",
-  },
-  {
-    key: "sr",
-    value: "SRP",
-  },
-  {
-    key: "nl",
-    value: "DUT",
-  },
-  {
-    key: "hu",
-    value: "HUN",
-  },
-  {
-    key: "th",
-    value: "THA",
+    value: "Português",
   },
   {
     key: "pt_BR",
-    value: "BRA"
+    value: "Português Brasileiro"
+  },
+  {
+    key: "it",
+    value: "Italiano",
+  },
+  {
+    key: "de",
+    value: "Deutsch",
+  },
+  {
+    key: "fr",
+    value: "Français",
+  },
+  {
+    key: "el",
+    value: "Ελληνικά",
+  },
+  {
+    key: "sr",
+    value: "Srpski",
+  },
+  {
+    key: "nl",
+    value: "Nederlands",
+  },
+  {
+    key: "hu",
+    value: "Magyar",
+  },
+  {
+    key: "th",
+    value: "ภาษาอังกฤษ",
   }
 ];
 
