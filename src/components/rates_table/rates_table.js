@@ -100,6 +100,19 @@ export default function RatesTable() {
     return null;
   }
 
+  // Rooms without rate plans are returned when requested dates are not bookable
+  const {
+    checkinDate: requestedCheckinDate,
+    checkoutDate: requestedCheckoutDate,
+  } = roomRequestParams;
+  const isRequestedDatesSelected = [requestedCheckinDate, requestedCheckoutDate].every(
+    (date) => date && moment(date).isValid(),
+  );
+  const isRatesAvailable = roomsData.some(
+    ({ ratePlans }) => Array.isArray(ratePlans) && ratePlans.length,
+  );
+  const isRoomsShown = roomsData.length && (isRatesAvailable || !isRequestedDatesSelected);
+
   return (
     <LoadingContainer loading={isLoading}>
       <ReloadContainer disabled={isReloadDisabled} active={isStale} onRefresh={handleReload}>
@@ -109,7 +122,7 @@ export default function RatesTable() {
             checkinDate={checkinDate}
             checkoutDate={checkoutDate}
           />
-          {roomsData.length ? (
+          {isRoomsShown ? (
             roomsData
               .sort((a, b) => {
                 const val_a = a.isBestOffer ? 1 : 0;
