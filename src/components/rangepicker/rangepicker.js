@@ -29,16 +29,35 @@ const MIN_STAY_LENGTH = 1;
 const START_DATE_INPUT = "startDate";
 const END_DATE_INPUT = "endDate";
 
+const getRequiredStayLength = (closedDatesData, checkinDate, nights) => {
+  const { minStayArrival, minStayThrough } = closedDatesData;
+  const formattedCheckinDate = checkinDate.format(DATE_API_FORMAT);
+  let requiredLength = minStayArrival[formattedCheckinDate] || MIN_STAY_LENGTH;
+
+  // Min Stay Through restriction applies to every night of the stay
+  for (let index = 0; index < nights; index += 1) {
+    const night = checkinDate.clone().add(index, "day").format(DATE_API_FORMAT);
+    const minStayThroughValue = minStayThrough[night] || MIN_STAY_LENGTH;
+
+    requiredLength = Math.max(requiredLength, minStayThroughValue);
+  }
+
+  return requiredLength;
+};
+
 const getMinStayLength = (closedDates, checkinDate) => {
   if (!checkinDate || !closedDates.data) {
     return MIN_STAY_LENGTH;
   }
-  const { minStayArrival, minStayThrough } = closedDates.data;
-  const { [checkinDate]: minStayArrivalValue = MIN_STAY_LENGTH } = minStayArrival;
-  const { [checkinDate]: minStayThroughValue = MIN_STAY_LENGTH } = minStayThrough;
-  const minStayLength = Math.max(minStayArrivalValue, minStayThroughValue);
 
-  return minStayLength;
+  // Shortest stay satisfying restrictions for every night it covers
+  let nights = MIN_STAY_LENGTH;
+
+  while (nights < getRequiredStayLength(closedDates.data, checkinDate, nights)) {
+    nights += 1;
+  }
+
+  return nights;
 };
 
 export default function RangePicker(props) {
@@ -63,7 +82,7 @@ export default function RangePicker(props) {
   const matchedQueries = useMedia({ queries: MEDIA_QUERIES });
   const inputRef = useRef(null);
   const formattedCheckinDate = checkinDate && checkinDate.format(DATE_API_FORMAT);
-  const minStayLength = getMinStayLength(closedDates, formattedCheckinDate);
+  const minStayLength = getMinStayLength(closedDates, checkinDate);
 
   const isMobile = matchedQueries.xs;
   const numberOfMonths = matchedQueries.xs || matchedQueries.sm ? 1 : 2;
@@ -123,9 +142,16 @@ export default function RangePicker(props) {
       const isAfterClosed =
         closestClosed && day.isAfter(moment(closestClosed, DATE_API_FORMAT), "day");
 
-      return isAfterClosed;
+      if (isAfterClosed || !checkinDate) {
+        return isAfterClosed;
+      }
+
+      const nights = day.clone().startOf("day").diff(checkinDate.clone().startOf("day"), "day");
+      const requiredStayLength = getRequiredStayLength(hashedClosedDates, checkinDate, nights);
+
+      return nights < requiredStayLength;
     },
-    [hashedClosedDates, formattedCheckinDate],
+    [hashedClosedDates, checkinDate, formattedCheckinDate],
   );
 
   const getIsDayBlocked = useCallback(
