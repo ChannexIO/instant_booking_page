@@ -7,6 +7,7 @@ export const SET_FORM_SUBMIT_COMPLETE = "SET_FORM_SUBMIT_COMPLETE";
 export const SET_FORM_SUBMIT_ERROR = "SET_FORM_SUBMIT_ERROR";
 export const SET_SUBMIT_HANDLER = "SET_SUBMIT_HANDLER";
 export const SET_TURNSTILE_TOKEN = "SET_TURNSTILE_TOKEN";
+export const SET_TURNSTILE_UNAVAILABLE = "SET_TURNSTILE_UNAVAILABLE";
 
 const setSubmittedValue = (dispatch, payload) => {
   return dispatch({ type: SET_SUBMITTED_VALUE, payload });
@@ -30,6 +31,10 @@ const setSubmitHandler = (dispatch, payload) => {
 
 const setTurnstileToken = (dispatch, payload) => {
   return dispatch({ type: SET_TURNSTILE_TOKEN, payload });
+};
+
+const setTurnstileUnavailable = (dispatch) => {
+  return dispatch({ type: SET_TURNSTILE_UNAVAILABLE });
 };
 
 const setFormSubmitError = (dispatch, payload) => {
@@ -59,5 +64,6 @@ export const actions = {
   setFormSubmitComplete,
   setSubmitHandler,
   setTurnstileToken,
+  setTurnstileUnavailable,
   createBooking,
 };

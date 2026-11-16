@@ -43,9 +43,13 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
   }, []);
 
   const { t } = useTranslation();
-  const { setSubmitHandler, createBooking, setFormSubmitComplete, setTurnstileToken } = useContext(
-    PaymentFormActionsContext,
-  );
+  const {
+    setSubmitHandler,
+    createBooking,
+    setFormSubmitComplete,
+    setTurnstileToken,
+    setTurnstileUnavailable,
+  } = useContext(PaymentFormActionsContext);
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
   const [errorText, setErrorText] = useState(null);
   const [formData, setFormData] = useState(EMPTY_FORM);
@@ -90,9 +94,12 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
         "payment_page:turnstile:verification_error",
         "We could not verify that you are not a robot. Please complete the security check again and resubmit the booking.",
       );
-      const turnstileToken = IS_TURNSTILE_ENABLED ? turnstileRef.current?.getToken() : null;
+      // Not required when the widget can't run here (e.g. a custom domain): the API decides.
+      const isTurnstileRequired =
+        IS_TURNSTILE_ENABLED && Boolean(turnstileRef.current?.isRequired());
+      const turnstileToken = isTurnstileRequired ? turnstileRef.current.getToken() : null;
 
-      if (IS_TURNSTILE_ENABLED && !turnstileToken) {
+      if (isTurnstileRequired && !turnstileToken) {
         showErrorModal(turnstileErrorText);
 
         if (requestCreditCard) {
@@ -206,7 +213,11 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
           onValidate={handleCaptureFormValidated}
         />
         {IS_TURNSTILE_ENABLED && (
-          <TurnstileWidget ref={turnstileRef} onTokenChange={setTurnstileToken} />
+          <TurnstileWidget
+            ref={turnstileRef}
+            onTokenChange={setTurnstileToken}
+            onUnavailable={setTurnstileUnavailable}
+          />
         )}
         <SubmitSection />
       </FormProvider>
