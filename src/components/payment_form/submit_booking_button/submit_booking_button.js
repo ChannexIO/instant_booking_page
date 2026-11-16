@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "components/buttons/button";
+import { IS_TURNSTILE_ENABLED } from "components/payment_form/turnstile_widget";
 
 import { PaymentFormActionsContext, PaymentFormDataContext } from "containers/data_context";
 
@@ -11,8 +12,9 @@ export default function SubmitBookingButton() {
   const { t } = useTranslation();
   const [isPolicyAccepted, setIsPolicyAccepted] = useState(false);
   const { startSubmit } = useContext(PaymentFormActionsContext);
-  const { isSubmitting } = useContext(PaymentFormDataContext);
-  const isSubmitDisabled = !isPolicyAccepted || isSubmitting;
+  const { isSubmitting, turnstileToken } = useContext(PaymentFormDataContext);
+  const isTurnstilePending = IS_TURNSTILE_ENABLED && !turnstileToken;
+  const isSubmitDisabled = !isPolicyAccepted || isSubmitting || isTurnstilePending;
 
   return (
     <>

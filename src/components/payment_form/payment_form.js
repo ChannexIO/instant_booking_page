@@ -1,17 +1,20 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { PaymentFormActionsContext } from "containers/data_context";
 
 import buildBooking from "./utils/builld_booking";
+import isTurnstileError from "./utils/is_turnstile_error";
 import BillingAddress from "./billing_address";
 import CardCaptureForm from "./card_capture_form";
 import CustomerInfo from "./customer_info";
 import ErrorModal from "./error_modal";
 import GuestInfo from "./guest_info";
 import SubmitSection from "./submit_section";
+import TurnstileWidget, { IS_TURNSTILE_ENABLED } from "./turnstile_widget";
 
 const getSchema = () =>
   yup.object({
@@ -39,10 +42,12 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
     return bookedPerRoomId;
   }, []);
 
-  const { setSubmitHandler, createBooking, setFormSubmitComplete } = useContext(
+  const { t } = useTranslation();
+  const { setSubmitHandler, createBooking, setFormSubmitComplete, setTurnstileToken } = useContext(
     PaymentFormActionsContext,
   );
   const [isErrorModalVisible, setErrorModalVisibility] = useState(false);
+  const [errorText, setErrorText] = useState(null);
   const [formData, setFormData] = useState(EMPTY_FORM);
   const { requestCreditCard = true, requestBillingInfo = false } = property;
   const paymentFormMethods = useForm({
@@ -53,6 +58,7 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
     },
   });
   const captureFormRef = useRef();
+  const turnstileRef = useRef();
   const paymentFormRef = useRef();
   const { handleSubmit } = paymentFormMethods;
 
@@ -65,35 +71,69 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
     setErrorModalVisibility(!isErrorModalVisible);
   }, [isErrorModalVisible, handleSubmitError]);
 
+  const showErrorModal = useCallback(
+    (text = null) => {
+      setErrorText(text);
+      toggleErrorModal();
+    },
+    [toggleErrorModal],
+  );
+
   const handleCreateBooking = useCallback(
     async (formParams, cardParams) => {
       if ((requestCreditCard && !cardParams) || !formParams) {
-        toggleErrorModal();
+        showErrorModal();
+        return;
+      }
+
+      const turnstileErrorText = t(
+        "payment_page:turnstile:verification_error",
+        "We could not verify that you are not a robot. Please complete the security check again and resubmit the booking.",
+      );
+      const turnstileToken = IS_TURNSTILE_ENABLED ? turnstileRef.current?.getToken() : null;
+
+      if (IS_TURNSTILE_ENABLED && !turnstileToken) {
+        showErrorModal(turnstileErrorText);
+
+        if (requestCreditCard) {
+          captureFormRef.current.resetSession();
+        }
+
+        setFormData(EMPTY_FORM);
         return;
       }
 
       const booking = buildBooking(property, rooms, params, cardParams, formParams);
 
       try {
-        const bookingParams = await createBooking(channelId, booking);
+        const bookingParams = await createBooking(channelId, booking, turnstileToken);
 
         onSuccess(bookingParams);
       } catch (error) {
-        toggleErrorModal();
+        const isTurnstileFailed = await isTurnstileError(error);
+
+        showErrorModal(isTurnstileFailed ? turnstileErrorText : null);
         captureFormRef.current.resetSession();
+      } finally {
+        // The token is single-use: the API consumes it on every push_booking call.
+        if (turnstileRef.current) {
+          turnstileRef.current.reset();
+        }
       }
 
       setFormData(EMPTY_FORM);
     },
     [
+      t,
       channelId,
       createBooking,
       requestCreditCard,
       captureFormRef,
+      turnstileRef,
       property,
       rooms,
       params,
-      toggleErrorModal,
+      showErrorModal,
       onSuccess,
     ],
   );
@@ -165,9 +205,12 @@ export default function PaymentForm({ channelId, property, rooms, params, onSucc
           onSubmit={handleCaptureFormSubmitted}
           onValidate={handleCaptureFormValidated}
         />
+        {IS_TURNSTILE_ENABLED && (
+          <TurnstileWidget ref={turnstileRef} onTokenChange={setTurnstileToken} />
+        )}
         <SubmitSection />
       </FormProvider>
-      <ErrorModal visible={isErrorModalVisible} onClose={toggleErrorModal} />
+      <ErrorModal visible={isErrorModalVisible} text={errorText} onClose={toggleErrorModal} />
     </>
   );
 }
