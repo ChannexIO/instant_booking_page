@@ -12,8 +12,10 @@ export default function SubmitBookingButton() {
   const { t } = useTranslation();
   const [isPolicyAccepted, setIsPolicyAccepted] = useState(false);
   const { startSubmit } = useContext(PaymentFormActionsContext);
-  const { isSubmitting, turnstileToken } = useContext(PaymentFormDataContext);
-  const isTurnstilePending = IS_TURNSTILE_ENABLED && !turnstileToken;
+  const { isSubmitting, turnstileToken, isTurnstileUnavailable } = useContext(
+    PaymentFormDataContext,
+  );
+  const isTurnstilePending = IS_TURNSTILE_ENABLED && !isTurnstileUnavailable && !turnstileToken;
   const isSubmitDisabled = !isPolicyAccepted || isSubmitting || isTurnstilePending;
 
   return (

@@ -6,6 +6,7 @@ import {
   SET_SUBMIT_HANDLER,
   SET_SUBMITTED_VALUE,
   SET_TURNSTILE_TOKEN,
+  SET_TURNSTILE_UNAVAILABLE,
 } from "./form_actions";
 
 const DEFAULT_ERRORS = {};
@@ -16,6 +17,7 @@ export const INITIAL_STATE = {
   isSubmitting: false,
   submitHandler: () => {},
   turnstileToken: null,
+  isTurnstileUnavailable: false,
 };
 
 const actionHandlers = {
@@ -39,6 +41,9 @@ const actionHandlers = {
   },
   [SET_TURNSTILE_TOKEN]: (state, action) => {
     return { ...state, turnstileToken: action.payload };
+  },
+  [SET_TURNSTILE_UNAVAILABLE]: (state) => {
+    return { ...state, turnstileToken: null, isTurnstileUnavailable: true };
   },
 };
 

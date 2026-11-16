@@ -26,6 +26,10 @@ export default () => {
     [dispatch],
   );
 
+  const setTurnstileUnavailable = useCallback(() => {
+    return actions.setTurnstileUnavailable(dispatch);
+  }, [dispatch]);
+
   const startSubmit = useCallback(() => {
     actions.setFormSubmitting(dispatch);
 
@@ -43,8 +47,16 @@ export default () => {
       startSubmit,
       setFormSubmitComplete,
       setTurnstileToken,
+      setTurnstileUnavailable,
     }),
-    [setSubmitHandler, createBooking, startSubmit, setFormSubmitComplete, setTurnstileToken],
+    [
+      setSubmitHandler,
+      createBooking,
+      startSubmit,
+      setFormSubmitComplete,
+      setTurnstileToken,
+      setTurnstileUnavailable,
+    ],
   );
 
   return useMemo(() => ({ paymentFormData, paymentFormActions }), [
