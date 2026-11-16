@@ -59,8 +59,15 @@ export default {
     return transport.get(`${PATH_PREFIX}/${propertyChannelId}/best_offer`, formattedQueryParams);
   },
 
-  createBooking: (propertyChannelId, booking) => {
-    return transport.post(`${PATH_PREFIX}/${propertyChannelId}/push_booking`, { booking });
+  createBooking: (propertyChannelId, booking, turnstileToken) => {
+    const headers = turnstileToken ? { "cf-turnstile-response": turnstileToken } : {};
+
+    return transport.post(
+      `${PATH_PREFIX}/${propertyChannelId}/push_booking`,
+      { booking },
+      undefined,
+      headers,
+    );
   },
 
   getCaptureFormUrl: () => {

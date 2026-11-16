@@ -43,12 +43,13 @@ const getUrl = (apiUrl, path, params) => {
   return `${apiUrl}${path}${urlParams}`;
 };
 
-const getRequestOptions = (method, params) => {
+const getRequestOptions = (method, params, headers) => {
   const requestOptions = {
     method,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      ...headers,
     },
   };
 
@@ -59,12 +60,12 @@ const getRequestOptions = (method, params) => {
   return requestOptions;
 };
 
-const request = async (method, apiUrl, path, payload, queryParams) => {
+const request = async (method, apiUrl, path, payload, queryParams, headers = {}) => {
   const formattedPayload = caseConverter.convertToSnakeCase(payload);
   const formattedQueryParams = caseConverter.convertToSnakeCase(queryParams);
 
   const url = getUrl(apiUrl, path, formattedQueryParams);
-  const requestOptions = getRequestOptions(method, formattedPayload);
+  const requestOptions = getRequestOptions(method, formattedPayload, headers);
 
   try {
     const response = await fetch(url, requestOptions);
@@ -75,8 +76,8 @@ const request = async (method, apiUrl, path, payload, queryParams) => {
   }
 };
 
-const requestWithBodyParams = (method, apiUrl) => (path, payload, queryParams) => {
-  return request(method, apiUrl, path, payload, queryParams);
+const requestWithBodyParams = (method, apiUrl) => (path, payload, queryParams, headers) => {
+  return request(method, apiUrl, path, payload, queryParams, headers);
 };
 
 const requestWithoutBodyParams = (method, apiUrl) => (path, queryParams) => {

@@ -6,6 +6,7 @@ export const SET_FORM_SUBMITTING = "SET_FORM_SUBMITTING";
 export const SET_FORM_SUBMIT_COMPLETE = "SET_FORM_SUBMIT_COMPLETE";
 export const SET_FORM_SUBMIT_ERROR = "SET_FORM_SUBMIT_ERROR";
 export const SET_SUBMIT_HANDLER = "SET_SUBMIT_HANDLER";
+export const SET_TURNSTILE_TOKEN = "SET_TURNSTILE_TOKEN";
 
 const setSubmittedValue = (dispatch, payload) => {
   return dispatch({ type: SET_SUBMITTED_VALUE, payload });
@@ -27,16 +28,20 @@ const setSubmitHandler = (dispatch, payload) => {
   return dispatch({ type: SET_SUBMIT_HANDLER, payload });
 };
 
+const setTurnstileToken = (dispatch, payload) => {
+  return dispatch({ type: SET_TURNSTILE_TOKEN, payload });
+};
+
 const setFormSubmitError = (dispatch, payload) => {
   return dispatch({ dispatch, payload });
 };
 
-const createBooking = async (dispatch, channelId, formParams) => {
+const createBooking = async (dispatch, channelId, formParams, turnstileToken) => {
   setFormSubmitting(dispatch);
   setSubmittedValue(dispatch, formParams);
 
   try {
-    const newBookingInfo = await ApiActions.createBooking(channelId, formParams);
+    const newBookingInfo = await ApiActions.createBooking(channelId, formParams, turnstileToken);
 
     setFormSubmitComplete(dispatch);
 
@@ -53,5 +58,6 @@ export const actions = {
   setFormSubmitting,
   setFormSubmitComplete,
   setSubmitHandler,
+  setTurnstileToken,
   createBooking,
 };
