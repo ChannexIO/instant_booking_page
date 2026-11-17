@@ -6,8 +6,8 @@ export default () => {
   const [paymentFormData, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   const createBooking = useCallback(
-    (channelId, bookingData) => {
-      return actions.createBooking(dispatch, channelId, bookingData);
+    (channelId, bookingData, turnstileToken) => {
+      return actions.createBooking(dispatch, channelId, bookingData, turnstileToken);
     },
     [dispatch],
   );
@@ -18,6 +18,17 @@ export default () => {
     },
     [dispatch],
   );
+
+  const setTurnstileToken = useCallback(
+    (token) => {
+      return actions.setTurnstileToken(dispatch, token);
+    },
+    [dispatch],
+  );
+
+  const setTurnstileUnavailable = useCallback(() => {
+    return actions.setTurnstileUnavailable(dispatch);
+  }, [dispatch]);
 
   const startSubmit = useCallback(() => {
     actions.setFormSubmitting(dispatch);
@@ -35,8 +46,17 @@ export default () => {
       createBooking,
       startSubmit,
       setFormSubmitComplete,
+      setTurnstileToken,
+      setTurnstileUnavailable,
     }),
-    [setSubmitHandler, createBooking, startSubmit, setFormSubmitComplete],
+    [
+      setSubmitHandler,
+      createBooking,
+      startSubmit,
+      setFormSubmitComplete,
+      setTurnstileToken,
+      setTurnstileUnavailable,
+    ],
   );
 
   return useMemo(() => ({ paymentFormData, paymentFormActions }), [

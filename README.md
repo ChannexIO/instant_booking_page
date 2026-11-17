@@ -13,3 +13,8 @@ directory and then deploy wherewer you want. Use `yarn start` to run in dev mode
 Note on .env: `REACT_APP_BASE_PATH` is required if you want to host the app on url like
 `your-host.com/path/{channel_id}`, in this case `/path` should be set as a base path in config, otherwise it can be ommitted.
 `REACT_APP_PUBLIC_URL` - should point to directory static assets will be served from.
+`REACT_APP_TURNSTILE_SITE_KEY` - optional [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/) site key.
+When set, the booking form shows a Turnstile challenge and sends its token with `push_booking` in the
+`cf-turnstile-response` header. The page hostname must be added to the widget's hostnames in Cloudflare.
+On hostnames that aren't listed (e.g. a client's custom domain) the widget hides itself and the booking is
+sent without a token. Leave it unset to disable the challenge.
